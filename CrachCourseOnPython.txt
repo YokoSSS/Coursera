@@ -1,0 +1,102 @@
+
+
+
+<week1 Crash Course on Python>
+
+*-----Specialization Introduction-----*
+
+Working in IT is more than just a job. It's a career path. Research shows that the field of IT support is a launchpad for future career growth and better wages. In fact, a study on the subject was recently conducted by the Harvard Business School Accenture and Burning Glass entitled Bridge the Gap. It found that among today's middle-skilled jobs which require training but not a formal college degree, IT support offers clear pathways to prosperity. We saw this phenomenon play out here at Google, in our IT support program. Those who push themselves to learn how to code in Python typically saw strong career growth. They built skills that are critical to accessing higher level positions in the IT field, and after honing those skills through hard work and determination, they advanced into more technical IT support specialists. Systems administrators, technical solutions engineers, and even site reliability engineers. The common thread across all of these roles is knowing how to write code to solve problems and automate solutions. By expanding your toolbox to include coding skills, you open a window into the world of systems management that can lead you towards more advanced technical roles down the line. Python in particular is having a huge surgeons. According to the 2019 Stack Overflow Developer Survey, Python is the coding language most people want to learn. The second most loved by those who already know it and the fourth most popular overall. So why take this program to learn how to code in Python? Well, first it's geared towards people who are already in or aspiring to be in the field of IT. Maybe you're thinking bigger about your current IT role and want to work towards managing operations at scale, or maybe you're just starting out and looking to break into the IT industry. Perhaps you've taken our IT Support Professional Certificate program on Coursera already, or you have equivalent IT support knowledge with basic computing skills, like working with files and directories, familiarity with networking concepts, and understanding how to install software on your computer. In any case, this program is tailor-made for you. Second, this program offers three hands-on methods of teaching coding and Python and automation. Code blocks, Jupyter notebooks, and Qwiklabs. Third, we've assembled an awesome group of Googlers who will serve as your instructors in each course. They all started their careers in IT support then learned programming and moved onto more technical roles like me. We can't wait to share our stories with you on how we use Python in our day-to-day. Oh and hey, I should probably introduce myself. My name is Christine Rafla, and I'm a Systems Administrator at Google. I will be your instructor in this course. This program has been entirely designed and developed by Google and we even filmed each course at different cool Google spaces. It will introduce you to the Python programming language with a special focus on how this language applies to automating tasks in the world of IT systems support and administration. I'm super excited to be here with you. When I was younger, I had no idea that careers in IT even existed. There are a lot of reasons I wanted to participate in the certificate program. But one of my biggest motivations is that I want to see more women represented in the industry. I remember going to a System Administration Summit where there were hundreds of men and about three women that were sysadmins. A lot has changed since then but there's still so much we can do to bring new ideas and representation into the IT field. That's why I want to share my knowledge with as many people as possible. I love my job and I love the people I work with because they make it easy to ask for help and offer their guidance. This type of support network allows our team and ultimately our industry to be more successful. I understand from experience that it can feel pretty intimidating and maybe even a bit scary to learn a coding language. Just remember, everyone started where you are right now with the first command, the first script, and of course, the first of many errors. When I started out in my career, I strive to get everything perfectly right the first time I tried it. But that actually slowed down my progress. So don't be afraid to make mistakes, it will give you a leg up. So let's get down to it. What's ahead? The program begins with a crash course in Python where you will learn to write simple programs and understand their role in automation. Next, we'll get more hands-on focus on how Python interacts with the operating system. After that, we'll cover how to use Git and GitHub to manage versions of your code. Then we will focus on troubleshooting and debugging techniques to find and solve the root cause of problems in IT infrastructure. The next course covers automating at scale where you will learn to deploy configuration management on a fleet of either physical or virtual machines running in the Cloud. Last up, we will bring all this knowledge together and complete a final project designed to solve tasks that you might encounter in real-world IT settings. Bonus, you can post your projects to GitHub to show off your fancy new skills to employers or friends or both. That was a lot to rattle off. Are you excited or what? Now I'd like to quickly introduce you to my fellow instructors who you will get to meet along the way. Hey, my name is Roger Martinez. I'm a Linux System Administrator, and I'll be your instructor in the course on using Python's interacts with operating system. Hi. I'm Kenny Sulma, and I'll be your guide in the course about using Git and GitHub to manage versions of your code. Hi there. I'm Amanda Ballas, and I'll be teaching you about troubleshooting and debugging. Hey, I'm Phelan Vendeville, and in my course, we'll learn about Automation at scale using Configuration Management and the Cloud. Thanks everyone. This all-star team was brought together to guide you on your adventures in coding. You're in very good hands. Okay, I think that's everything. Let's get ready to learn some new skills and maybe even have some laughs along the way. I'll see you in the next video.
+
+
+
+IT で働くことは単なる仕事ではありません。キャリアパスです。調査によると、IT サポートの分野は将来のキャリアアップとより良い賃金の出発点です。実際、このテーマに関する研究が最近行われました。ハーバード ビジネス スクール アクセンチュアと「Bridge the Gap」というタイトルの Burning Glass。その結果、今日のミドルスキルの仕事の中で、訓練は必要だが、正式な大学の学位は必要としない、IT サポートは、繁栄への明確な道筋を提供します。この現象が Google で実際に起こっているのを見てきました。私たちのITサポートプログラムで。コーディングの方法を学ぼうとする人Python は通常、強力なキャリア成長を遂げました。彼らは重要なスキルを構築しましたIT分野のより高いレベルのポジションにアクセスし、そしてそれらのスキルを磨いてから努力と決意によって、彼らは、より技術的な IT サポート スペシャリストに昇進しました。システム管理者、テクニカル ソリューション エンジニア、さらにはサイト信頼性エンジニアまで。これらすべての役割に共通するスレッドは次のとおりです。解決するコードの書き方を知る問題を解決し、ソリューションを自動化します。ツールボックスを拡張してコーディング スキルを含めることで、システム管理の世界への窓を開きますそれはあなたを導くことができます将来のより高度な技術的役割。特に Python には巨大な外科医がいます。2019 年の Stack Overflow Developer Survey によると、Python は、ほとんどの人が学びたいコーディング言語です。2番目に愛されているそれを知っており、全体で 4 番目に人気があります。では、Python でコーディングする方法を学ぶためにこのプログラムを利用するのはなぜでしょうか?まず、次のような人向けです。ITの分野にすでにいる、またはこれからになりたいと考えている。現在の IT の役割について、より深く考えているかもしれません。大規模な運用管理に取り組みたいまたは多分あなたは始めたばかりで、IT業界への参入を目指しています。おそらくあなたは取った当社の IT サポート プロフェッショナル認定プログラムCourseraではすでにまたは同等の IT サポートを受けている基本的なコンピューティングスキルを備えた知識、ファイルやディレクトリの操作と同様に、ネットワークの概念に精通しているインストール方法の理解コンピューター上のソフトウェア。いずれにせよ、このプログラムはあなたのために作られています。第二に、このプログラムは3つを提供しますコーディングを教える実践的な方法Python と自動化。コード ブロック、Jupyter ノートブック、Qwiklabs。第三に、私たちは素晴らしいグループを集めましたを務める Google 社員各コースのインストラクター。彼らは全員、IT サポートでキャリアをスタートさせ、その後学びました。プログラミングし、私のようなより技術的な役割に移りました。私たちのストーリーを共有するのが待ちきれません日常で Python をどのように使用しているかについて説明します。ああ、ちょっと、私はおそらく自己紹介する必要があります。私の名前はクリスティン・ラフラです。私は Google のシステム管理者です。私はこのコースであなたのインストラクターになります。このプログラムはGoogle が完全に設計および開発した各コースの撮影も行いましたさまざまなクールな Google スペースで。紹介してくれますPython プログラミング言語この言語がどのように機能するかに特に焦点を当てていますの世界でのタスクの自動化に適用されますIT システムのサポートと管理。私はあなたと一緒にここにいることにとても興奮しています。私が若い頃、私は持っていましたIT のキャリアが存在することさえ知らなかったのです。志望理由はたくさんあった証明書プログラムに参加します。しかし、私の最大の動機の 1 つは、より多くの女性がこの業界に参加することを望んでいます。に行ったのを覚えていますシステム管理サミットがありました何百人もの男性とシステム管理者だった約 3 人の女性。それ以来、多くのことが変わりましたが、まだ多くのことが残っています新しいアイデアをもたらすためにできることIT分野への代表。だからこそ、私の知識を共有したいのですできるだけ多くの人と。私は自分の仕事が大好きで、一緒に働く人々が大好きです。彼らは簡単に尋ねることができます助け、彼らの指導を提供します。このタイプのサポート ネットワークにより、私たちのチームと最終的に私たちの業界がより成功するように。経験上理解しているそれはかなり威圧的に感じることができますコーディング言語を学ぶのは少し怖いかもしれません。覚えておいてください、誰もがどこから始めたのですかあなたは今、最初のコマンドで、最初のスクリプト、そしてもちろん多くのエラーの最初のエラー。キャリアをスタートした時、私はすべてを得るために努力します初めて試したときは完全に正しい。しかし、それは実際に私の進歩を遅らせました。だから間違いを恐れず、それはあなたに足を上げます。それでは、それに取り掛かりましょう。何が先ですか？で始まるプログラムあなたがするPythonの短期集中コース簡単なプログラムの書き方を学び、自動化における自分の役割を理解する。次に、より実践的な焦点を当てますPython がオペレーティング システムと対話する方法について説明します。その後、Git の使用方法について説明します。コードのバージョンを管理するための GitHub。次に、焦点を当てますトラブルシューティングとデバッグのテクニック根本原因を見つけて解決するITインフラストラクチャの問題の。次のコースの内容学習する大規模な自動化のフリートに構成管理を導入するクラウドで実行されている物理マシンまたは仮想マシン。最後に、お届けしますこのすべての知識をまとめて完全にタスクを解決するために設計された最終プロジェクト実際の IT 設定で遭遇する可能性があります。おまけに、プロジェクトを GitHub に投稿して自慢できます雇用主や友人、またはその両方にあなたの素晴らしい新しいスキルを。それはガタガタすることがたくさんありました。あなたは興奮していますか？それでは早速ご紹介したいと思います私の仲間のインストラクター途中で出会う。ねえ、私の名前はロジャー・マルティネスです。私は Linux システム管理者です。使用に関するコースの講師を務めますPython はオペレーティング システムと対話します。やあ。私はケニー・スルマです。使用に関するコースのガイドになりますコードのバージョンを管理するための Git と GitHub。やあ。私はアマンダ・バラスです。そして、私はあなたに教えますトラブルシューティングとデバッグ。こんにちは、私はフェラン・ヴァンデビルです。私のコースでは、大規模な自動化について学びます構成管理とクラウドを使用します。みんな、ありがとう。このオールスターチームが結集したコーディングの冒険をガイドします。あなたはとても良い手にしています。わかりました、それですべてだと思います。いくつかの新しいスキルを学ぶ準備をしましょう途中で笑うことさえあるかもしれません。次のビデオでお会いしましょう。
+
+
+
+*-----Course Introduction-----*
+
+
+[MUSIC] If you work in IT, computer programming skills open up an incredible amount of opportunity. Being able to write scripts and programs that tell your computer to perform a task equips you with an invaluable tool. Not only does it make your work easier and more efficient, it can help you grow faster and advance further in your IT career. But how do you even start to learn a programming language like Python? How do you recognize when to tell a computer to perform a task? And how do you then write a program to actually get your computer complete the task you want it to do? The thought of learning to write a program in Python can make you feel a whole bunch of emotions excitement, anticipation that feeling of wanting to dive right in and get going and also fear. You might ask yourself, can I really learn how to code or do I have it in me? I'm here to tell you, yes, you can absolutely do this. Learning how to program can be scary and intimidating, but at the same time it's really fun and really exciting. In coding as in life, if we're going to get philosophical, the most rewarding work is usually a bit challenging, but ultimately well worth the effort. Of course, I'm able to say all this from experience, especially the cheesy parts. My name is Christine Rafla. I'm a systems administrator at Google and I'm going to be your instructor and guide in this course. The role of a sysadmin can vary a lot from company to company and even within different teams in the same company. I happen to work in the corporate identity and access management operations team, which is a really long way of saying that we make sure that everyone is represented correctly and if they need to access certain resources, they can. What I love the most about being a sysadmin is that the role has so many diverse functions. We handle loads of unique problems and edge cases from tinkering with different systems to collaborating with other teams. I am always learning something new, so it's really hard to get bored. It all starts with knowing how to automate, if you're an IT support specialist, a systems administrator, or in a role somewhere in between knowing how to get computers to do the hard work for you will set you apart from others in similar it roles and make your life much easier. Think about it, would you rather manually deploy 100 computers on your own or tell your computer to do it all for you all at once? No-brainer, right, having a coding skill set can help you grow into more specialized roles like a systems administrator, Cloud Solutions engineer, DevOps specialist, site reliability engineer, or who knows maybe even web developer or data analyst. The point is, being able to write a program is an essential tool in your IT toolkit and more and more employers are looking for these skills in the people they hire. If you've ever learned a new skill, like playing a musical instrument, speaking a foreign language, knitting, or skateboarding. You know that getting good at something new requires a lot of practice. For me, I love to learn new languages and I'm proud to say I speak Spanish, Arabic, French, and I even know ten words in Russian. Our world is shaped by the words and the languages we speak and while some words may be unique to one language you can always find similarities that help you learn and understand. Being able to connect the dots between cultures allows me to see things others might not, kind of sounds like this applies to IT programming,huh? My point is, whether you're learning French or Python, it 's never easy. You have to start small, learn the basics and practice those until you master them. Only then can you move on to more complex and impressive stuff and I'm here to help you along that path along with my colleagues who you'll meet in later courses. We'll start slow, master the foundation's together and you'll soon be ready for more challenging stuff. So are you wondering why we filmed this course in a cabin on a lake in Canada. The truth is were actually in a game room at one of the Google offices in Sunnyvale, California. We chose a different themed office space for each course of the program just to mix things up and I think I scored with this one. I should warn my manager that I'll be hanging out in this one well after the course ends because it's super comfy. By the end of this course, you'll understand the benefits of programming in IT roles. You'll be able to write simple programs using Python, figure out how the building blocks of programming fit together, and combine all this knowledge to solve a complex programming problem. That's right, by the end of this course, you're going to write a program in Python that's designed to solve a real-world IT problem, super exciting right? We'll start off by diving into the basics of writing a computer program. You'll get hands-on experience with programming concepts through interactive exercises and real-world examples. You'll quickly start to see how computers can perform a multitude of tasks. You just have to write code that tells them what to do. Along the way, we'll be talking about automation, which is process of getting computers to automatically do a task that us humans normally have to do by hand. Now, some of the stuff can get a little complex and confusing. I promise to do my best to make these lessons clear and easy to understand, but if you get stuck at any point, please feel free to re-watch the videos. Practice as much as you like and take the time you really need to stand these topics. The goal of this course isn't to teach you everything there is to know about software engineering because yikes, that would be a long course. Instead, we're going to introduce you to some of the key concepts of programming and scripting that will empower you to spot opportunities for automation in real life. You're about to learn a skill that can help you take your career to whole new levels. Are you excited? I'm excited, so let's jump in
+
+書くことができるかけがえのないツールを提供します。作業が楽になり、効率が上がるだけでなく、IT キャリアをより速く成長させ、さらに前進させるのに役立ちます。しかし、Python のようなプログラミング言語をどのように学び始めるのでしょうか?コンピュータにタスクを実行するよう指示するタイミングをどのように認識しますか?そして、どのようにプログラムを作成しますか実際にコンピューターにやりたいタスクを完了させますか?Pythonでプログラムを書くことを学ぶという考えは、あなたをたくさん感じさせることができます感情のドキドキ、期待、飛び込みたくなる気持ち、行き、また恐れます。あなたは自問するかもしれません、私は本当にコーディングする方法を学ぶことができますか、それとも私の中にありますか?私はあなたに言うためにここにいます、はい、あなたは絶対にこれを行うことができます.プログラミングの方法を学ぶことは、怖くて威圧的かもしれませんが、同時に、それは本当に楽しく、本当にエキサイティングです。人生と同じようにコーディングでも、哲学的になろうとするなら、最もやりがいのあることです仕事は通常少しやりがいがありますが、最終的には努力する価値があります。もちろん、これはすべて経験から言えますが、特に安っぽい部分はそうです。私の名前はクリスティン・ラフラです。私は Google のシステム管理者であり、あなたのインストラクターとして、このコースのガイド。システム管理者の役割は、会社によって大きく異なります。同じ会社の異なるチーム内であっても。私はたまたまコーポレートアイデンティティとアクセス管理の運用チームで働いています。これは非常に長い言い方です。正しく表現され、特定のリソースにアクセスする必要がある場合はアクセスできます。システム管理者であることについて私が最も気に入っているのは、その役割が非常に優れていることです多くの多様な機能。私たちは多くのユニークな問題を処理し、さまざまなシステムのいじくりから、他のチームとのコラボレーションまで、エッジケース。私は常に何か新しいことを学んでいるので、退屈するのは本当に難しい.すべては自動化の方法を知ることから始まり、あなたが IT サポート スペシャリスト、システム管理者、または役割を担っている場合コンピュータに大変な仕事をさせる方法を知ることの中間のどこかで、同様の役割を果たしている他の人からあなたを際立たせ、あなたの人生をより楽にします。考えてみてください。100 台のコンピューターを自分で手動で展開するか、それともコンピューターにすべてを一度に実行するように指示しますか?当然のことながら、コーディング スキル セットを持っていると、より多くのスキルを身に付けることができます。システム管理者、クラウド ソリューション エンジニア、DevOps スペシャリスト、サイト信頼性エンジニア、またはWeb 開発者やデータ アナリストでさえも知っています。ポイントは、プログラムを作成できることは、IT ツールキットに不可欠なツールであり、ますます多くの雇用主が、採用する人材にこれらのスキルを求めるようになっています。楽器を演奏するなど、新しいスキルを習得したことがある場合は、外国語を話したり、編み物をしたり、スケートボードをしたり。何か新しいことを上手にするには、多くの練習が必要であることを知っています。私にとって、私は新しい言語を学ぶのが大好きで、スペイン語、アラビア語、フランス語、そしてロシア語の単語を 10 語も知っています。私たちの世界は、私たちが話す言葉と言語によって形作られています。一部の単語は 1 つの言語に固有の場合がありますが、学習と理解に役立つ類似点を常に見つけてください。文化の間の点をつなぐことができることで、私は物事を見ることができます他の人はそうではないかもしれませんが、これは IT プログラミングに当てはまりますね。私が言いたいのは、あなたがフランス語を学んでいようが Python を学んでいようが、決して簡単ではないということです。小さく始めて、基本を学び、マスターするまで練習する必要があります。そうして初めて、より複雑で、印象的なものであり、私はその道に沿ってあなたを助けるためにここにいます後のコースで会う私の同僚と一緒に。ゆっくり始めて基礎を一緒にマスターしてすぐに、より挑戦的なものへの準備が整います。では、なぜこのコースをカナダの湖のキャビンで撮影したのか疑問に思われているでしょうか。実のところ、サニーベールにある Google オフィスの 1 つのゲームルームで、カリフォルニア。プログラムのコースごとに異なるテーマのオフィス スペースを選択しました。物事がうまくいき、私はこれで得点したと思います。私はマネージャーに、私がこれにぶらぶらしていることを警告する必要があります。超快適なのでコース終了。このコースの終わりまでに、IT の役割におけるプログラミングの利点を理解できます。Python を使用して簡単なプログラムを作成できるようになります。プログラミングの構成要素がどのように組み合わされるかを理解し、このすべての知識を組み合わせて、複雑なプログラミングの問題を解決します。そうです、このコースの終わりまでに、Python でプログラムを作成することになります。これは、現実世界の IT 問題を解決するように設計されており、非常にエキサイティングですよね?まず、コンピューター プログラムを作成するための基礎に飛び込みます。インタラクティブなプログラミングを通じて、プログラミングの概念を実践的に体験できます。演習と実際の例。コンピューターがさまざまなタスクをどのように実行できるかがすぐにわかります。何をすべきかを伝えるコードを書くだけです。途中で、取得のプロセスである自動化について話します。通常は人間が手作業で行う作業をコンピューターが自動的に行うようにします。さて、いくつかのことは少し複雑で混乱を招く可能性があります.これらのレッスンを明確で理解しやすいものにするために最善を尽くすことをお約束しますが、どこかで行き詰まった場合は、お気軽にビデオをもう一度ご覧ください。好きなだけ練習して、これらのトピックに立ち向かうために本当に必要な時間を取ってください。このコースの目的は、ソフトウェアについて知っておくべきことをすべて教えることではありません。エンジニアリングは、長いコースになるからです。代わりに、プログラミングの重要な概念のいくつかを紹介します。機会を見つけやすくするスクリプト現実の自動化。キャリアアップに役立つスキルを習得しようとしています。まったく新しいレベル。あなたは興奮していますか？ワクワクするから飛び込もう
+
+
+*-----Specialization Introduction-----*
+
+新しいスキルを身に着けて私とクライアントの業務効率化を目指すこと。
+
+
+*-----Course Introduction-----*
+
+
+
+*-----Take a Minute to Set Yourself up for Success-----*
+
+
+
+*-----Welcome to the Course!-----*
+
+
+
+*-----Program Surveys-----*
+
+
+
+*-----Automation with Python Participant Entry Survey-----*
+
+
+
+*-----ディスカッションのプロンプト: Meet & Greet-----*
+
+
+
+*-----Introduction to Programming-----*
+
+*-----The Beginning of Your Programming Journey-----*
+
+*-----What is programming?-----*
+
+*-----What is automation?-----*
+
+*-----Getting Computers to Work for You-----*
+
+
+*-----ディスカッションのプロンプト: Your Hopes for Automation-----*
+
+*-----練習問題: Practice Quiz: Introduction to Programming5 個の問題-----*
+
+
+*-----Introduction to Python-----*
+
+*-----What is Python?-----*
+
+*-----A Note on Syntax and Code Blocks-----*
+
+*-----Why is Python relevant to IT?-----*
+
+*-----More About Python-----*
+
+*-----Other Languages-----*
+
+*-----練習問題: Practice Quiz: Introduction to Python5 個の問題-----*
+
+*-----Hello World-----*
+
+*-----Hello, World!-----*
+
+*-----Getting Information from the User-----*
+
+*-----Python Can Be Your Calculator-----*
+
+*-----First Programming Concepts Cheat Sheet10 分-----*
+
+*-----練習問題: Practice Quiz: Hello World5 個の問題-----*
+
+*-----Module Review-----*
+
+*-----First Steps Wrap Up1 分-----*
+
+*-----Meet Marga, the Curriculum Developer1 分-----*
+
+*-----テスト: Module 1 Graded Assessment10 個の問題-----*
+
