@@ -1,0 +1,103 @@
+Deep Learning Models　テスト30 分 
+
+1.
+質問 1
+Why is the convolutional layer important in convolutional neural networks?
+畳み込みニューラルネットワークにおいて、なぜ畳み込み層が重要なのか？
+1点
+
+Because a convolutional layer would make the model overfit the training data so that it generalizes better
+
+
+Because convolutional neural networks are unsupervised deep learning models and therefore, a convolutional layer helps the model better 
+fit the data
+
+
+Because if we do not use a convolutional layer, we will end up with a massive number of parameters that will need to be 
+optimized and it will be super computationally expensive
+Correct
+
+
+Because convolutional neural networks take flattened images as input and therefore the convolutional layer helps 
+the model regenerate the input images 
+
+
+None of the above
+
+
+2.
+質問 2
+The following is a typical architecture of a convolutional neural network.
+以下は、畳み込みニューラルネットワークの典型的なアーキテクチャである。
+
+True
+
+False　correct
+
+
+
+3.
+質問 3
+For unsupervised learning, which of the following deep neural networks would you choose? Select all that apply
+教師なし学習では、次のディープニューラルネットワークのうちどれを選ぶか？該当するものを全て選択してください。
+1点
+
+Recurrent Neural Networks
+
+
+Autoencoders　　correct
+
+
+Long Short Term Memory Networks
+
+
+Convolutional Neural Netwroks
+
+
+Restricted Boltzmann Machines　  correct
+
+
+4.
+質問 4
+Recurrent Neural Networks are networks with loops, that don't just take a new input at a time, but also take as input the output 
+from the data point at the previous instance.
+リカレントニューラルネットワークは、ループを持つネットワークで、一度に新しい入力を取るだけでなく、
+前のインスタンスのデータポイントからの出力も入力として取ります。
+
+1点
+
+True　  correct
+
+
+False
+
+
+5.
+質問 5
+Which of the following statements is correct?
+次の記述のうち、正しいものはどれですか。
+
+1点
+
+A convolutional neural network is an unsupervised neural network model that uses backpropagation by setting the target 
+variable to be the same as the input
+コンボリューショナルニューラルネットワークは、教師なしニューラルネットワークのモデルであり、
+ターゲット変数を入力と同じにすることでバックプロパゲーションを使用する。
+
+An autoencoder is an unsupervised neural network model that uses backpropagation by setting the target variable to be 
+the same as the input 
+オートエンコーダーは教師なしニューラルネットワークの一つで、目的変数を入力と同じにしてバックプロパゲーショ ンを行うモデルである。
+Correct
+
+An autoencoder consists of a series of convolutional, ReLU, and pooling layers, as well as a number of fully connected layers
+オートエンコーダーは、一連の畳み込み層、ReLU層、プーリング層、およびいくつかの完全接続層で構成される
+
+Just like conventional neural networks, a convolutional neural network takes (n x 1) vectors as input
+従来のニューラルネットワークと同様に、畳み込みニューラルネットワークは（n×1）個のベクトルを入力として受け取る
+
+Recurrent neural networks are best for solving problems related to image recognition, object detection, and other computer vision applications
+リカレントニューラルネットワークは、画像認識、物体検出、およびその他のコンピュータビジョンアプリケーションの問題解決に最適です。
+
+
+
+
