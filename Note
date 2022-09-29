@@ -40,3 +40,51 @@ Module 5 - Course Assignment
 
 
 <Week1 - Welcome>
+
+
+<week2 - Training a Neural Network>
+
+
+<week2 - Gradient Descent>
+https://en.wikipedia.org/wiki/Loss_function
+Loss function
+From Wikipedia, the free encyclopedia
+Jump to navigationJump to search
+In mathematical optimization and decision theory, a loss function or cost function (sometimes also called an error function) [1] is 
+a function that maps an event or values of one or more variables onto a real number intuitively representing some "cost" associated 
+with the event. An optimization problem seeks to minimize a loss function. An objective function is either a loss function or its 
+opposite (in specific domains, variously called a reward function, a profit function, a utility function, a fitness function, etc.), 
+in which case it is to be maximized. The loss function could include terms from several levels of the hierarchy.
+
+In statistics, typically a loss function is used for parameter estimation, and the event in question is some function of the difference 
+between estimated and true values for an instance of data. The concept, as old as Laplace, was reintroduced in statistics by Abraham Wald 
+in the middle of the 20th century.[2] In the context of economics, for example, this is usually economic cost or regret. In classification, 
+it is the penalty for an incorrect classification of an example. In actuarial science, it is used in an insurance context to model benefits 
+paid over premiums, particularly since the works of Harald Cramér in the 1920s.[3] In optimal control, the loss is the penalty for failing to 
+achieve a desired value. In financial risk management, the function is mapped to a monetary loss.
+数学的最適化および意思決定理論では、損失関数またはコスト関数(エラー関数とも呼ばれます) [1]は、 1 つまたは複数の変数のイベントまたは値を、
+関連する「コスト」を直感的に表す実数にマッピングする関数です。行事。最適化問題は、損失関数を最小化しようとします。
+目的関数は、損失関数またはその逆のいずれかです (特定のドメインでは、報酬関数、利益関数、効用関数、適応関数などとさまざまに呼ばれます)。など)、
+その場合は最大化されます。損失関数には、階層のいくつかのレベルからの項を含めることができます。
+
+統計では、通常、パラメータ推定に損失関数が使用され、問題のイベントは、データのインスタンスの推定値と真の値の差の関数です。
+ラプラスと同じくらい古い概念は、20 世紀半ばにアブラハム ウォルドによって統計に再導入されました。[2]たとえば、経済学 の文脈では、これは通常、
+経済的コストまたは後悔です。分類では、例の誤った分類に対するペナルティです。保険数理科学では、保険のコンテキストで、保険料よりも支払われる給付を
+モデル化するために使用されます。1920年代のハラルド・クラメール。[3]最適制御では、損失は目的の値を達成できなかった場合のペナルティです。
+Financial risk managementでは、関数は金銭的損失にマッピングされます。
+
+
+
+
+<week2 - Backpropagation>
+
+
+<week2 - Vanishing Gradient>
+
+
+
+<week2 - Activation Functions>
+
+
+
+
