@@ -1,0 +1,120 @@
+1.The weights and biases in a neural network are optimized using:
+
+
+Activation Descent
+
+
+Logistic Descent
+
+
+Activation Function
+
+
+Gradient Descent
+
+
+Vanishing Gradient
+
+
+2.For a cost function, J = \sum_{i=1}^{m}{(z_{i} - wx_{i} - b)^2} J=∑ 
+i=1
+m
+​
+ (z 
+i
+​
+ −wx 
+i
+​
+ −b) 
+2
+ , that we would like to minimize, which of the following expressions represent updating the parameter, w w, using gradient descent?
+
+
+w  \rightarrow w  + b - \eta * \frac{\partial J}{\partial w} w→w+b−η∗ 
+∂w
+∂J
+​
+ 
+
+
+w  \rightarrow w  + \eta * \frac{\partial J}{\partial w} w→w+η∗ 
+∂w
+∂J
+​
+ 
+
+
+w  \rightarrow w  - \eta * \frac{\partial J}{\partial w} w→w−η∗ 
+∂w
+∂J
+​
+ 
+
+
+w  \rightarrow w  - \eta * x\frac{\partial J}{\partial w} w→w−η∗x 
+∂w
+∂J
+​
+ 
+
+
+w  \rightarrow w  - \eta * b\frac{\partial J}{\partial w} w→w−η∗b 
+∂w
+∂J
+​
+ 
+
+3.What type of activation function is this?
+
+
+
+Leaky ReLU
+
+
+Linear Function
+
+
+Binary Function
+
+
+Sigmoid Function
+
+
+Hyperbolic Tangent Function
+
+
+ReLU
+
+
+
+4.What type of activation function is this?
+
+
+
+Hyperbolic Tangent Function
+
+
+ReLU
+
+
+Sigmoid Function
+
+
+Leaky ReLU
+
+
+Binary Function
+
+
+Linear Function
+
+
+5.Softmax activation function is most commonly used in hidden layers?
+
+
+True
+
+
+False
+
