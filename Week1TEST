@@ -1,0 +1,61 @@
+Introduction to Neural Networks and Deep Learning テスト30 分 • 30 分
+.
+
+1.Which of the following are applications of deep learning?
+
+
+Color Restoration in Greyscale Images
+
+
+Self-Driving Cars
+
+
+Automatic Machine Translation
+
+
+Automatic Handwriting Generation 
+
+
+All of the Above		Correst
+
+2.An artificial neural network can be composed of which of the following types of layers?
+
+Hidden Layer		Correst
+
+Sparse Layer
+
+
+Output Layer		Correst
+
+Intermediate Layer
+
+
+Input Layer		Correst
+
+3.A artificial neuron is so powerful that it can perform complex tasks by simply performing a linear combination of its inputs.
+
+
+True
+
+
+False　Correst
+
+
+4.Given below is a neural network with one neuron that takes two float numbers as inputs.
+x1 = 0.5
+x2 = -0.35
+w1 = 0.55
+w2 = 0.45
+b1 = 0.15
+a = f(z)
+
+
+What is the value of z for the given x1 and x2 (Give your answer to three decimal places)
+Answer:0.268
+Correct
+
+5.The model in the previous question uses the sigmoid activation function. What is the output of the network?
+Answer:0.29
+0.567
+
+
