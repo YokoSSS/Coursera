@@ -1,120 +1,64 @@
 1.The weights and biases in a neural network are optimized using:
-
+1.ニューラルネットワークの重みとバイアスを最適化する方法。
 
 Activation Descent
-
+活性化降下法
 
 Logistic Descent
-
+ロジスティック降下法
 
 Activation Function
+活性化関数
 
-
-Gradient Descent
-
+Gradient Descent  Correct
+勾配降下法
 
 Vanishing Gradient
+バニシンググラディエント
 
+2.For a cost function,J=∑^mi=1(zi−xi−b)^2, that we would like to minimize, which of the following expressions represent updating 
+the parameter, w, using gradient descent?
 
-2.For a cost function, J = \sum_{i=1}^{m}{(z_{i} - wx_{i} - b)^2} J=∑ 
-i=1
-m
-​
- (z 
-i
-​
- −wx 
-i
-​
- −b) 
-2
- , that we would like to minimize, which of the following expressions represent updating the parameter, w w, using gradient descent?
-
-
-w  \rightarrow w  + b - \eta * \frac{\partial J}{\partial w} w→w+b−η∗ 
-∂w
-∂J
-​
- 
-
-
-w  \rightarrow w  + \eta * \frac{\partial J}{\partial w} w→w+η∗ 
-∂w
-∂J
-​
- 
-
-
-w  \rightarrow w  - \eta * \frac{\partial J}{\partial w} w→w−η∗ 
-∂w
-∂J
-​
- 
-
-
-w  \rightarrow w  - \eta * x\frac{\partial J}{\partial w} w→w−η∗x 
-∂w
-∂J
-​
- 
-
-
-w  \rightarrow w  - \eta * b\frac{\partial J}{\partial w} w→w−η∗b 
-∂w
-∂J
-​
- 
+ w→w+b−η∗∂J/∂w
+ w→w+η∗∂J/∂w
+ w→w−η∗∂J/∂w　 Correct
+ w→w−η∗x∗∂J/∂w
+ w→w−η∗b∗∂J/∂w
 
 3.What type of activation function is this?
 
-
-
 Leaky ReLU
-
 
 Linear Function
 
-
 Binary Function
-
 
 Sigmoid Function
 
-
 Hyperbolic Tangent Function
 
-
-ReLU
+ReLU　　Correct
 
 
 
 4.What type of activation function is this?
 
-
-
-Hyperbolic Tangent Function
-
+Hyperbolic Tangent Function Correct
 
 ReLU
 
-
 Sigmoid Function
-
 
 Leaky ReLU
 
-
 Binary Function
-
 
 Linear Function
 
 
 5.Softmax activation function is most commonly used in hidden layers?
 
-
 True
 
-
-False
+False 1
 
