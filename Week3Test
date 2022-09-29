@@ -1,0 +1,98 @@
+1.Which ofthe following statements is correct?
+次の記述のうち、正しいものはどれですか。
+
+Keras and PyTorch are both supported by Google and are being actively used at Google for both research and production needs.
+KerasとPyTorchはどちらもGoogleによってサポートされており、Googleでは研究と生産の両方のニーズで活発に使用されています。
+
+PyTorch normally runs on top of a low-level library such as TensorFlow. 
+PyTorchは通常、TensorFlowのような低レベルのライブラリの上で実行されます。
+
+TensorFlow is the cousin of the Torch framework, which is in Lua, and supports machine learning algorithms running on GPUs in particular.
+TensorFlowはTorchフレームワークのいとこで、Luaでできており、特にGPU上で動作する機械学習アルゴリズムをサポートしています。
+
+Keras is a high-level API that facilitates fast development and quick prototyping of deep learning models.  correct
+Kerasは、深層学習モデルの高速開発と迅速なプロトタイピングを容易にする高水準のAPIです。
+
+Among TensorFlow, PyTorch, and Keras, Keras is the most popular library and is mostly used in production of deep learning models.
+TensorFlow、PyTorch、Kerasの中で、Kerasは最も人気のあるライブラリで、深層学習モデルの制作に使われることがほとんどである。
+
+
+2.Both TensorFlow and PyTorch are high level APIs for building deep learning models. They provide limited control over the different nodes 
+and layers in a network. If you are seeking more control over a network, then Keras is the right library.
+TensorFlowとPyTorchはどちらも深層学習モデルを構築するための高レベルなAPIです。これらのAPIは、ネットワーク内の異なるノード 
+とレイヤーを制限しています。もし、ネットワークに対するより多くの制御を求めるのであれば、Kerasは適切なライブラリである。
+
+
+True
+
+
+False  Correct
+
+
+3.There are three model classes in the Keras library, the Sequential model, the Dense model, and the Model class used with the functional API.
+Kerasライブラリには、Sequentialモデル、Denseモデル、関数型APIで使用するModelクラスの3つのモデルクラスが存在します。
+
+True
+
+False  Correct
+
+4.Which of the following codes creates the followig neural network using the Keras library?
+
+
+https://user-images.githubusercontent.com/19603921/193066550-b2f70576-f88f-4444-814a-c55e3286de17.png
+
+(1)
+1 model = Sequential()
+2 model.Dense(add(8, activation='relu', input_shape=(8,)))
+3 model.Dense(add(5, activation='relu'))
+4 model.Dense(add(5, activation='relu'))
+5 model.Dense(add(1))
+
+(2) Correct
+1 model = Sequential()
+2 model.add(Dense(8, activation='relu', input_shape=(4,)))
+3 model.add(Dense(5, activation='relu'))
+4 model.add(Dense(5, activation='relu'))
+5 model.add(Dense(1))
+
+(3)
+1 model = Sequential()
+2 model.add_Dense(5, activation='relu', input_shape=(4,)))
+3 model.add_Dense(8, activation='relu'))
+4 model.add_Dense(4, activation='relu'))
+5 model.add_Dense(1))
+
+(4)
+1 model = Sequential()
+2 model.add(Dense(8, activation='relu', input_shape=(8,)))
+3 model.add(Dense(5, activation='relu'))
+4 model.add(Dense(5, activation='relu'))
+5 model.add(Dense(1))
+
+(5)
+1 model = Sequential()
+2 model.Dense(add(8, activation='relu', input_shape=(4,)))
+3 model.Dense(add(5, activation='relu'))
+4 model.Dense(add(5, activation='relu'))
+5 model.Dense(add(1))
+
+
+5.If a model can be saved using the Keras library, which of following methods is the correct method to do so?
+Kerasライブラリを使ってモデルを保存できる場合、以下のどの方法が正しいですか？
+
+model.model_save()
+
+
+model.save()  Correct
+
+
+model.save_model()
+
+
+model.pickle()
+
+
+You cannot save a model with the Keras library
+
+
+
