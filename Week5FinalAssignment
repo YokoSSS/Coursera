@@ -398,14 +398,35 @@ TASK1: Add title to the dashboard
 TASK1: ダッシュボードにタイトルを追加する
 Provide title of the dash application title as US Domestic Airline Flights Performance.
 ダッシュアプリのタイトルをUS Domestic Airline Flights Performanceとして提供する。
-Make the heading center aligned, set color as #503D36, and font size as 24. Sample: style={'textAlign': 'left', 'color': '#000000', 'font-size': 0}
+Make the heading center aligned, set color as #503D36, and font size as 24. 
+Sample: style={'textAlign': 'left', 'color': '#000000', 'font-size': 0}
 Reference link
-見出しを中央揃えにし、色を#503D36、フォントサイズを24に設定します。サンプル：style={'textAlign': 'left', 'color': '#000000', 'font-size': 0}.
+見出しを中央揃えにし、色を#503D36、フォントサイズを24に設定します。
+サンプル：style={'textAlign': 'left', 'color': '#000000', 'font-size': 0}.
 参考リンク
+76行目あたり
+'US Domestic Airline Flights Performance',
+78行目あたり
+style={'textAlign': 'center', 'color': '#503D36', 'font-size': 24}
 
 *****STEP8*****
 TASK2: Add a dropdown menu
 TASK2: ドロップダウン メニューを追加する 
+Dropdown(options=Component.UNDEFINED, value=Component.UNDEFINED, multi=Component.UNDEFINED, 
+clearable=Component.UNDEFINED, searchable=Component.UNDEFINED, search_value=Component.UNDEFINED, 
+placeholder=Component.UNDEFINED, disabled=Component.UNDEFINED, optionHeight=Component.UNDEFINED, 
+maxHeight=Component.UNDEFINED, style=Component.UNDEFINED, className=Component.UNDEFINED, 
+id=Component.UNDEFINED, loading_state=Component.UNDEFINED, persistence=Component.UNDEFINED,
+
+92行目あたり
+                                        dcc.Dropdown(id='input-type', 
+                                            options=[
+                                                    {'label': 'Yearly Airline Performance Report', 'value': 'OPT1'},
+                                                    {'label': 'Yearly Airline Delay Report', 'value': 'OPT2'}
+                                                    ],
+                                            placeholder='Select a report type',
+                                            style={, 'width': '80%', 'padding': '3px', 'textAlign': 'center', 'font-size': 20}),
+
 Create a dropdown menu and add two chart options to it. Below is the skeleton:
 ドロップダウン メニューを作成し、それに 2 つのチャート オプションを追加します。以下はスケルトンです。
 
@@ -448,6 +469,11 @@ Add a division with two empty divisions inside. For reference, observe how code 
 内部に 2 つの空の部門がある部門を追加します。参考までに、REVIEW3 の下のコードがどのように構成されているかを観察してください。
 Provide division ids as plot4 and plot5. Display style as flex.
 区画 ID を plot4 および plot5 として提供します。スタイルをフレックスとして表示します。
+                            html.Div([
+                                    html.Div([ ], id='plot4'),
+                                    html.Div([ ], id='plot5')
+                            ], style={'display': 'flex'})
+
 
 *****STEP10*****
 
@@ -467,6 +493,12 @@ Component ids will be plot1 , plot2, plot2, plot4, and plot5. Skeleton is provid
  Output(....),
  Output(....)]
 
+
+@app.callback([Output(component_id='plot1', component_property='children'),
+Output(component_id='plot2', component_property='children'),
+Output(component_id='plot3', component_property='children'),
+Output(component_id='plot4', component_property='children'),
+Output(component_id='plot5', component_property='children')],
 
 
 *****STEP11*****
@@ -488,7 +520,9 @@ x as Month, y as AirTime, color as Reporting_Airline and title as Average monthl
 Below is the skeleton:
 
 figure_name = px.line(input_data, x='....', y='...', color='...', title='....')
-
+↓
+line_fig = px.line(line_data, x='Month', y='AirTime', color='Reporting_Airline', title='Average monthly flight time (minutes) by airline')
+            
 
 
 *****STEP12*****
@@ -524,6 +558,13 @@ tree_fig = px.treemap(data, path=['...', '...'],
                       color='...',
                       color_continuous_scale='...',
                       title='...'
+                )
+
+tree_fig = px.treemap(tree_data, path=['DestState', 'Reporting_Airline'], 
+                      values='Flights',
+                      color='Flights',
+                      color_continuous_scale='RdBu',
+                      title='Flight count by airline to destination state'
                 )
 
 
