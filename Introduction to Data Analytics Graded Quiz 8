@@ -1,0 +1,104 @@
+Introduction to Data Analytics Graded Quiz 8
+
+1.
+質問 1
+"A presentation is not a data dump”. What is the one thing you would do to ensure your presentation is not a data dump?
+
+1点
+
+ Include only that information as is needed to address the business problem
+
+
+Deliver the findings in a single slide
+
+
+Not use visuals in the presentation
+
+
+Not include facts and figures in the presentation
+
+2.
+質問 2
+ What is the discipline of communicating information through the use of visual elements?  
+
+1点
+
+ Data profiling   
+
+
+ Data visualization 
+
+
+ Data regression 
+
+
+ Data type conversion 
+
+3.
+質問 3
+Matplotlib is a widely used Python data visualization library.
+
+1点
+
+True
+
+
+False
+
+4.
+質問 4
+What is the goal of Data Visualization? 
+
+1点
+
+Make collaboration easy 
+
+
+Establish trust in the audience 
+
+
+Make the presentation look attractive 
+
+
+Make information easy to comprehend, interpret, and retain 
+
+5.
+質問 5
+What can you do to help your audience trust you?
+
+1点
+
+Share the detailed documentation of every aspect of your project so they can verify all details 
+
+
+Hand them copies of the data sets you have used for analysis 
+
+
+Share your data sources, hypotheses, and validations 
+
+
+Make your presentation look good 
+
+
+
+
+Q5
+
+#seaborn ライブラリの関数 regplot を使用して、機能 sqft_above が価格と正または負の相関関係に
+#あるかどうかを判断します。
+#sns.regplot(x=データ名.列名1, y=データ名.列名2)
+df=pd.read_csv(file_name)
+sns.set_style("whitegrid")
+#データセット名として指定可能なものの一覧は次のようにして取得することができます。
+print(sns.get_dataset_names())
+
+tips = sns.load_dataset("tips")
+sns.regplot(x="total_bill", y="tip", data=tips)
+#df=pd.DataFrame(index=['money','sqft_above'])
+#sns.regplot(x=df.money, y=df.sqft_above, data=df)
+#data1=df.loc[:, 'money']
+#data2=df.loc[:, 'sqft_above']
+#data1
+#sns.regplot(x=df.money, y=df.sqft_above);
+#sns.regplot(x=data1.money, y=fata2.sqft_above);
+
