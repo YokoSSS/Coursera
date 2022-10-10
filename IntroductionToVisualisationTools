@@ -1,0 +1,81 @@
+
+Describe a story that you enjoy. It can be a book, a movie, a TV show-any story.What do you like best about the story? How do you think it could be better?  
+
+
+Films can tell us a lot about the country where they were made. What have you learned about another country from watching its movies?
+
+There are many things that I have learned from watching Korean films. Firstly, the most interesting thing I have learned is about Korean eating customs. For example, when dining at a restaurant Koreans usually order a large amount of food that is shared among all guests rather than each person ordering their own dish. Also, through films I have improved my Korean language skills. Although I am studying Korean at a college, watching Korean movies has taught me a lot of spoken expressions that do not appear in textbooks. To sum up, I have learned a great deal about Korean culture and language from watching its films
+
+
+Many people believe that schools should be banned from serving fast Do you agree or disagree? Provide reasons. food to their students
+
+I agree that children should be banned from eating fast food at school for two important reasons. First, fast food is detrimental to children's health. For instance, fast food is often packed with fat, sugar, salt, and preservatives, which makes them extremely unhealthy for children. In addition, schools should stop serving fast food because it is very expensive. It is a well-known fact that fresh food from a supermarket is significantly cheaper than pre-made fast food. To conclude, for reasons presented above, I believe it is vital that schools stop serving fast food to their students
+
+3番目
+What are the benefits of reading? Include specific examples in your answer
+
+Reading is probably one the most beneficial activities you can do. The first reason why reading is so beneficial is because it increases your knowledge. Filling your mind with new facts, new information, and new ideas will make you better at conversations as you'll always have something interesting to talk about. Furthermore, it is a well-known fact that reading frequently improves your vocabulary. The more you read the more words you will be exposed to. which will improve your ability to articulate your thoughts more effectively. Overall, reading on a consistent basis will benefit your life in many different ways.
+
+4番目
+Some people believe that technology has made us more social. Do you agree or disagree with this statment
+
+I agree that the advent of modern technology such as smartphones has improved people's social lives. Firstly, the invention of online social media sites, such as Twitter and Facebook, has dramatically reduced the need to have face to-face interactions. Through these social apps, people can easily keep in touch and communicate with whoever they want, close friends or total strangers, from anywhere they choose. Secondly, people can share any type of news, information, and photos with their loved ones in an instant keeping a feeling of closeness. To sum up, I firmly believe that overall sociability has advanced enormously thanks to technology
+
+
+
+5番目
+Many people think that zoos are cruel. Do you agree or disagree
+
+
+Many believe that zoos are cruelly exploitative while others argue they protect endangered animals. I agree with the former. Firstly, even though some species are under threat, there are lots of animals at zoos that are not. While it may be fun and educational to see them, animals are not meant to be caged, and their distress can often be seen in many ways. Furthermore, if the prime reason for having zoos is to protect animals, this could be done in other environments such as wildlife parks where the animals can live more naturally. For these reasons, I agree that zoos are cruel and should be shut down.
+
+
+
+1.
+質問 1
+Area plots are unstacked by default.
+
+0 / 1点
+
+True.
+不正解
+Incorrect. Area plots are actually stacked by default.
+
+False.
+
+
+
+2.
+質問 2
+The following code will create a histogram of a pandas series, series_data, and align the bin edges with the horizontal tick marks.
+
+count, bin_edges = np.histogram(series_data)
+series_data.plot(kind='hist', xticks = bin_edges)
+
+
+count, bin_edges = np.histogram(series_data)
+series_data.plot(kind='hist', xticks = count, bin_edges)
+
+True. 正解
+
+
+3.
+質問 3
+Given a pandas dataframe, question, which of the following will create a horizontal bar chart of the data in question?
+
+question.plot(type='bar', rot=90)
+
+question.plot(kind='bar', orientation='horizontal')
+
+question.plot(kind='barh')
+
+question.plot(kind='barh')
+
+question.plot(kind='bar')
+
+question.plot(kind='bar', type='horizontal')
+
+
+The following code will create a horizontal bar chart of the data in a pandas dataframe, question.
+
+1question.plot(type='bar', rot=90)
