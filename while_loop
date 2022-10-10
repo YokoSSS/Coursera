@@ -1,0 +1,74 @@
+
+
+問題
+Can you work out what this function does?
+Try passing different parameters to the attempts function to see what it does. 
+
+def attempts(n):
+    x = 1
+    while x <= n:
+        print("Attempt " + str(x))
+        x += 1
+    print("Done")
+    
+attempts(5)
+
+
+Attempt 1
+Attempt 2
+Attempt 3
+Attempt 4
+Attempt 5
+Done
+
+
+
+1	x = 0
+2	while x < 5:
+3	  print("Not there yet, x=" + str(x))
+4	  x = x + 1
+5	print("x=" + str(x))
+
+How many times will "Not there yet" be printed?
+5
+正解
+You got it! The variable x starts at 0 and gets incremented once per iteration, so there are 5 iterations for which x is smaller than 5.
+
+
+問題
+In this code, there's an initialization problem that's causing our function to behave incorrectly. Can you find the problem and fix it?
+
+1	def count_down(start_number):
+2	  while (start_number > 0):
+3	    print(start_number)
+4	    start_number = start_number - 1
+5	  print("Zero!")
+6	
+7	count_down(3)
+
+
+Here is your output:
+3
+2
+1
+Zero!
+
+You nailed it! By initializing the current variable you got
+the function to behave correctly.
+
+
+
+問題
+The following code causes an infinite loop. Can you figure out what’s missing and how to fix it?
+次のコードは無限ループを引き起こします。何が足りないのか、どう直せばいいのか、わかりますか？
+
+1def print_range(start, end):
+2	# Loop through the numbers from start to end
+3	n = start
+4	while n <= end:
+5		print(n)
+		n = n + 1
+6
+7print_range(1, 5)  # Should print 1 2 3 4 5 (each number on its own line) 
+
+
