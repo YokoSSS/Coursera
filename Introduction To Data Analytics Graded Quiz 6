@@ -1,0 +1,102 @@
+Introduction To Data Analytics Graded Quiz 6
+
+What does a typical data wrangling workflow include? 
+
+1 / 1点
+
+Recognizing patterns 
+
+
+Using mathematical techniques to identify correlations in data 
+
+
+Validating the quality of the transformed data 正解
+
+
+Predicting probabilities 
+
+正解
+Validating the quality of transformed data is an essential step in a data wrangling workflow.
+
+2.
+質問 2
+OpenRefine is an open-source tool that allows you to:  
+
+0 / 1点
+
+Automatically detect schemas, data types, and anomalies 
+
+
+Transform data into a variety of formats such as TSV, CSV, XLS, XML, and JSON 
+正解
+
+Use add-ins such as Microsoft Power Query to identify issues and clean data 
+
+
+Enforces applicable data governance policies automatically 不正解
+
+不正解
+This is not the correct use case for OpenRefine.
+
+3.
+質問 3
+What is one of the steps in a typical data cleaning workflow? 
+
+0 / 1点
+
+Building classification models  
+
+
+Inspecting data to detect issues and errors 正解
+
+
+Establishing relationships between data events  
+
+
+Clustering data  不正解
+
+不正解
+Clustering data is not one of the steps in a data cleaning workflow.
+
+4.
+質問 4
+When you’re combining rows of data from multiple source tables into a single table, what kind of data transformation are you performing? 
+
+1 / 1点
+
+Joins 
+
+
+Denormalization 
+
+
+Unions 正解
+
+
+Normalization 
+
+正解
+Unions are a common structural transformation used for combining rows of data from multiple source tables.
+
+5.
+質問 5
+When you detect a value in your data set that is vastly different from other observations in the same data set, what would you report that as? 
+
+1 / 1点
+
+Outlier 正解
+
+
+Syntax error 
+
+
+Missing value 
+
+
+Irrelevant data 
+
+正解
+Outliers are values in your data set that may be vastly different from other values in the same data field.
+
+
+
