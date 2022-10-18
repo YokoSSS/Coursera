@@ -1,0 +1,230 @@
+
+1.Which PROC SQL option restricts the number of rows in the query output?
+クエリ出力の行数を制限するPROC SQLのオプションはどれですか？
+
+OUTOBS = 10
+
+INOBS = 10
+Uncorrect
+
+ROWNUM = 10
+
+ROWS = 10
+correct
+
+不正解
+The INOBS= option restricts the number of rows that PROC SQL reads 
+from all tables specified in the FROM clause. Use the OUTOBS= option to restrict the number of rows 
+in the query output. Review SQL Options.
+
+2.Which of the following objects can you create by using only the SQL procedure?
+2.SQLプロシージャのみを使用して作成できるオブジェクトは、次のうちどれですか。
+1点
+SAS tables
+Uncorrect
+
+SAS views
+
+DBMS tables
+
+all of the above
+correct
+
+不正解
+A PROC SQL query can create reports, SAS tables and views, and DBMS tables and views. Review What Is PROC SQL?
+
+3.What does the following statement create?
+3.次の文は何を作成するか。
+describe table sq.profit;
+テーブルsq.profit.Describeを作成します。
+1点
+
+
+The query produces an error.
+クエリはエラーを発生させる。
+
+A list of all tables in the sq library.　sqライブラリのすべてのテーブルのリストです
+Uncorrect
+
+A report with the name of the table and who created the table.
+テーブルの名前とテーブルを作成した人を含むレポート。
+
+A report including the column name, type and other information from the table.
+テーブルのカラム名、型、その他の情報を含むレポート。
+
+
+不正解
+The DESCRIBE TABLE statement creates a report with the column names, types, and other information. 
+DESCRIBE TABLE文は、列名、型、その他の情報を含むレポートを作成します。
+Review Exploring Tables.
+テーブルの探索を復習する。
+
+
+4.Which PROC SQL option adds the row number to a report?
+4.PROC SQLのオプションで、レポートに行番号を追加するものはどれですか？
+
+ROWNUM
+Uncorrect
+
+NUMBER
+
+OBS
+
+NUM
+
+不正解
+ROWNUM is not a valid PROC SQL option. The NUMBER option adds the row number to a report. Review SQL Options.
+
+5.What is required to modify this query to produce a report including only the columns Customer_ID, 
+Last_Name, Purchase_Date, and Purchase?
+5.このクエリを修正して、Customer_ID、Last_Name、Purchase_Date、およびPurchase列のみを含むレポートを作成するには、何が必要ですか？
+
+proc sql;
+select *
+    from sq.orders;
+quit;
+
+After the asterisk (*), add COLUMNS and the names of the desired columns.
+アスタリスク（*）の後に、COLUMNSと必要な列の名前を追加します。
+Uncorrect
+
+After the asterisk (*), add the names of the desired columns separated by a comma.
+アスタリスク（*）の後に、必要な列の名前をカンマで区切って追加します。
+
+Remove the asterisk (*) and add the names of the desired columns separated by a comma.
+アスタリスク（*）を削除し、必要な列の名前をカンマで区切って追加します。
+
+Remove the asterisk (*) and add the names of the desired columns separated by a space.
+アスタリスク（*）を削除し、必要な列の名前をスペースで区切って追加します。
+
+不正解
+The asterisk (*) shows all columns from the table and should be removed. Then add the specific column 
+names separated by a comma. Review Demo: Exploring the Customer Table.
+アスタリスク（*）はテーブルのすべての列を示すため、削除する必要があります。次に、特定の列の名前をカンマで区切って追加します。
+デモを確認する。Customer テーブルを調べる。
+
+
+6.The same SQL query written directly in an external database management system (DBMS) is 
+guaranteed to execute in PROC SQL.
+6.外部のデータベース管理システム（DBMS）で直接書かれた同じSQLクエリが、PROC SQLで実行されることが保証されています。
+
+True
+Uncorrect
+
+False
+
+不正解
+Although SQL has a set of standards, it is important to understand that each DBMS offers different 
+implementations of the standard SQL including unique keywords, features, and enhancements that may 
+not be valid in other environments. Review What Is SQL?
+SQLには標準がありますが、各DBMSでは標準SQLの実装が異なることを理解することが重要です。
+標準SQLの実装には、独自のキーワード、機能、および拡張機能が含まれており、他の環境では有効でない場合があります。
+他の環境では有効でない場合もあります。SQLとは何か？
+
+7.The orion.sales table includes the following columns in this order:
+7.orion.salesテーブルには、次の列がこの順序で含まれている。
+
+Employee_ID
+
+First_Name
+
+Last_Name
+
+Gender
+
+Salary
+
+Job_Title
+
+City
+
+Birth_Date
+
+Hire_Date
+
+Which SELECT statement creates a report showing Employee_ID, Job_Title, Salary, and Hire_Date in that sequence?
+この順序でEmployee_ID、Job_Title、Salary、Hire_Dateを表示するレポートを作成するSELECT文はどれか。
+
+1点
+
+
+select Employee_ID, Salary, Job_Title, Hire_Date
+    from orion.sales
+    order by Employee_ID,Job_Title, Salary,
+       Hire_Date;
+
+select Employee_ID, Job_Title, Salary, Hire_Date
+    from orion.sales;
+
+select Employee_ID, Salary, Job_Title, Hire_Date
+    from orion.sales
+    col order Employee_ID, Job_Title, Salary,
+       Hire_Date;
+
+select Employee ID Salary Job Title Hire Date
+    from orion.sales;
+
+不正解
+You must specify names of the columns separated by commas in the SELECT clause, and then specify the input 
+table in the FROM clause. The columns appear in the query output in the order they are listed in the SELECT clause. 
+Review PROC SQL Syntax.
+SELECT 句でカンマで区切られた列の名前を指定し、FROM 句で入力テーブルを指定する必要があります。
+列は、SELECT 句に列挙された順にクエリ出力に表示されます。
+PROC SQL の構文を確認する。
+
+8.Which statement is true regarding the order of columns in a query result?
+8.クエリ結果の列の順序について、どの文が正しいですか。
+
+1点
+
+The order of columns in a query result depends on the sequence of columns in the table listed in the FROM clause.
+クエリ結果のカラムの順序は、FROM句に列挙されたテーブルのカラムの順序に依存します。
+Uncorrect
+
+The order of columns in a query result depends on the sequence of column names listed in the SELECT clause.
+クエリ結果の列の順序は、SELECT 句に列挙された列名の順序に依存します。
+
+The order of columns in a query result is random.
+クエリ結果内の列の順序はランダムです。
+
+The order of columns in a query result depends on the sequence of column names listed in the ORDER BY clause.
+クエリ結果における列の順序は、ORDER BY 節に列挙された列名の順序に依存します。
+
+不正解
+In query output, the columns appear in the order in which they are listed in the SELECT clause. Review PROC SQL Syntax.
+クエリ出力では、列はSELECT句にリストされた順番で表示されます。PROC SQL 構文を復習してください。
+
+9.PROC SQL provides many SAS enhancements that are not available in other implementations of SQL.
+9.PROC SQL は、他の SQL の実装では利用できない多くの SAS の機能拡張を提供します。
+1点
+
+True
+Correct
+
+False
+
+正解
+PROC SQL follows most of the guidelines set by the American National Standards Institute (ANSI) in its implementation of SQL. 
+However, it is not fully compliant with the current ANSI standard for SQL. You can include SAS enhancements that go beyond the 
+ANSI standard.
+正解
+PROC SQLは、ANSI(American National Standards Institute)が定めたSQLの実装に関するガイドラインのほとんどに準拠しています。
+ただし、現在のANSI標準SQLに完全準拠しているわけではありません。ANSI 標準を超える SAS の機能拡張を含めることができます。
+
+10.If present, the clauses in a SELECT statement must be in which order?
+10.SELECT文の句が存在する場合、どの順序でなければなりませんか？
+
+SELECT, FROM, WHERE, GROUP BY, ORDER BY, HAVING
+Uncorrect
+
+SELECT, FROM, WHERE, GROUP BY, HAVING, ORDER BY
+Correct
+
+不正解
+If present, the clauses must be in this order: SELECT, FROM, WHERE, GROUP BY, HAVING, and ORDER BY, 
+but not all clauses must be present. For example, you can use the WHERE clause and ORDER BY clause and 
+not use the GROUP BY or HAVING clauses. Review PROC SQL Syntax.
+もしあれば、句はこの順序でなければなりません。SELECT、FROM、WHERE、GROUP BY、HAVING、ORDER BYの順です。
+しかし、すべての句が存在しなければならないわけではありません。例えば、WHERE句とORDER BY句を使用し、GROUP BY句やORDER BY句を使用しないことも可能です。
+GROUP BY 節または HAVING 節を使用しないこともできます。PROC SQL の構文を確認する。
+
