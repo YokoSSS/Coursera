@@ -1,0 +1,71 @@
+
+Activity 1.01　練習問題10 分 • 10 分
+
+1.If necessary, start SAS Studio before you begin. If you restarted your SAS session, 
+submit your libname.sas program to access the practice data.
+
+Open s101a04.sas from the activities folder and perform the following tasks to explore 
+the sq.customer table:  
+
+Remove the asterisk and select only the FirstName, LastName, and State columns. 
+
+Run the query and view the log and results.  
+
+Did you get the results you expected?
+
+1点
+
+No, I received an error.  
+
+
+Yes, the query selected the first 10 rows from the customer table and all columns.
+
+
+Yes, the query selected the first 10 rows from the customer table and only the FirstName, LastName and State columns in that order.  
+Correct
+
+
+2.Remove the OBS=10 data set option and add the INOBS=10 PROC SQL option after the PROC SQL keywords and before the semicolon. 
+
+Run the query. 
+
+Are the results the same using the INOBS=10 option? 
+
+1点
+
+Yes: the results are the same because the INOBS= and OUTOBS= options do the same thing. 
+
+
+Yes: the results are the same, but the INOBS= option only processes n number of rows, while the OUTOBS= option processes all rows but only returns the first n number of rows. 
+Correct
+
+No: the results are different.
+
+
+---
+The INOBS= option restricts the number of rows that PROC SQL retrieves from any single source. The results are the same, but the log returns a warning.  
+---
+
+
+3.After the INOBS= option, add the NUMBER option. 
+
+Run the query. 
+
+Which column was added to the results?  
+
+1点
+
+The Obs column.
+
+
+The Number column.
+
+
+The Row column.
+Correct
+
+No column is added.
+
+
+
+
