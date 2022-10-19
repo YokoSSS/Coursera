@@ -1,0 +1,43 @@
+
+Date, Time, and Datetime Values
+You can also use date, time, and datetime values in your WHERE expressions. 
+日付、時刻、および日時の値
+WHERE式では、日付、時刻、およびdatetime値も使用することができます。
+A date value is stored as an integer that represents the number of days since January 1, 
+1960. To specify a date constant you surround the date in the DATE9 format with single or 
+double quotes followed by a d. A date constant is internally converted to its corresponding SAS
+date value equivalent.
+日付値は、1960年1月1日からの日数を表す整数値として格納されます。日付定数を指定するには、
+DATE9形式の日付を一重引用符または二重引用符で囲み、その後にdをつけます。
+
+where DOB < "01JAN2000"d
+
+A time value is the number of seconds since midnight. To specify a time constant, 
+surround the time in single or double quotes followed by the letter t for time. 
+For example, SAS reads '14:45:32't as 53132, which is 2:45:32PM. Seconds are optional for time values.
+時間値は、午前0時からの秒数です。時刻定数を指定するには、時刻を一重引用符または二重引用符で囲み、
+その後に時刻を表す文字tを付けます。例えば、SAS は '14:45:32't を 53132 と読み、
+これは 2:45:32PM となります。時刻の値では、秒は省略可能です。
+
+where Time >= "14:45:32"t
+
+A datetime value is the number of seconds since midnight on January 1, 1960. 
+To specify datetime constants, write the date and time in single quotes followed by 
+the letters dt for datetime. Write the date part using the same syntax as for date constants. 
+Follow the date part with the hours, minutes, and seconds, separating the parts with colons.
+datetime値は、1960年1月1日午前0時からの秒数である。datetime定数を指定するには、日付と時刻を
+一重引用符で囲み、その後にdatetimeを表す文字dtを書きます。日付の部分は、日付定数と同じ構文で書きます。
+日付の部分の後に、時、分、秒をコロンで区切って書きます。
+
+
+where DateTime <= "01JAN2000 12:00:00"dt
+
+SAS offers many functions that extract information from date, time or datetime values, 
+perform interval calculations, or shift values based on a specified interval. 
+You can visit the SAS documentation for more information.
+SAS には、日付、時刻、または datetime 値から情報を抽出したり、間隔計算を実行したり、
+指定した間隔に基づいて値をシフトする関数が多数用意されています。詳細については、
+SASのドキュメントをご覧ください。
+
+
+
