@@ -1,0 +1,48 @@
+
+1.If necessary, start SAS Studio before you begin. If you restarted your SAS session, submit your libname.sas program to access the practice data.
+
+Open s102a03.sas from the activities folder and perform the following tasks to sort the report by CreditScore and LastName:
+
+Complete the ORDER BY clause and sort by CreditScore.
+
+Run the query and examine the report.
+
+What is the default sort order?
+
+1点
+
+Ascending
+
+
+Descending
+
+
+
+2.Add the keyword DESC after the CreditScore column in the ORDER BY clause. 
+
+Run the query and examine the report. The sort order should now be descending.
+
+Add a secondary sort column to sort by LastName. 
+
+Run the query. 
+
+What is the last name of the first customer on the report?
+
+1点
+こちらに回答を入力
+
+
+
+3.Remove LastName from the SELECT clause. 
+
+Run the query. 
+
+Are the results still sorted by LastName within CreditScore?  
+
+1点
+
+Yes
+
+
+No
+
