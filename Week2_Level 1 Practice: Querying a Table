@@ -1,0 +1,31 @@
+
+1.If necessary, start SAS Studio before you begin. If you restarted your SAS session, submit your libname.sas program to access the practice data.
+必要であれば、事前に SAS Studio を起動してください。SAS セッションを再起動した場合は、練習データにアクセスするために libname.sas プログラムを送信します。
+
+The sq.transactionfull table contains customer and transaction information.  
+sq.transactionfull テーブルには、顧客情報および取引情報が含まれています。 
+Using the sq.transactionfull table, write a PROC SQL step to generate a report for large transactions that are not related to tuition payments to universities. 
+sq.transactionfull テーブルを使用して、大学への授業料の支払いに関連しない大規模なトランザクションのレポートを生成する PROC SQL ステップを作成します。
+Use the following requirements as you generate the report:
+レポートを生成する際には、以下の要件を使用してください。
+
+Display the following columns in this order: CustomerName, MerchantName, Type, Service, and Amount from the sq.transactionfull table.
+以下の列をこの順序で表示する。sq.transactionfull テーブルから CustomerName、MerchantName、Type、Service、および Amount をこの順序で表示します。
+
+Select rows that have a transaction Amount value greater than $1,000 and a Service value not equal to University.
+トランザクションの金額が 1,000 ドル以上で、サービスの値が University 以外である行を選択します。
+Order the rows such that the largest transaction is listed first.
+最大の取引が最初に表示されるように、行を並べ替えます。
+Format the Amount column with the DOLLAR10.2 format.
+金額列を DOLLAR10.2 形式でフォーマットします。
+Label CustomerName as Customer Name, and Amount as Transaction Amount.
+CustomerName を「顧客名」、Amount を「取引額」と表示します。
+Add the title Large Non-Educational Transactions.
+Large Non-Educational Transactions (大規模な非教育機関向け取引) というタイトルを追加します。
+Run the program and view the results.
+プログラムを実行し、結果を表示します。
+What is the first value for Transaction Amount?  
+Transaction Amount の最初の値は何ですか？
+
+
+
