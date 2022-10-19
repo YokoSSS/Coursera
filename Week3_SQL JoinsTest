@@ -1,0 +1,1244 @@
+Structured Query Language (SQL) using SAS Week3 SQL Joins Test
+
+1.How many rows does the following query produce in the report? 
+1.次のクエリは、レポートに何行を作成しますか？
+
+select *
+    from sq.employee_donations, sq.employees;
+
+employee_donations
+
+Employee_ID  Qtr1  Qtr2  Qtr3  Qtr4  
+120265       .     .     .     25
+120267       15    15    15    15
+120269       20    20    20    20
+120270       20    10    5     .
+
+employees
+
+EmpID       Name
+120265      Panagiotis
+120267      Emma
+120269      Fatima
+120270      Sofia
+120272      Owen
+
+
+
+No rows are returned.
+
+4
+
+8
+
+16
+correct
+正解
+The default JOIN combines every row in each table. This is called the Cartesian product. In this example, 
+all 4 rows from the employee_donations table will be joined with each of the 4 rows in the employees table. The new report contains 16 rows.
+正解
+デフォルトのJOINは、各テーブルのすべての行を結合します。これは、デカルト積と呼ばれます。この例では、employee_donationsテーブルの4行すべてが、
+employeesテーブルの4行それぞれと結合されます。新しいレポートには16行が含まれます。
+
+
+
+2.Which query produces a report including the matching values of EmpID from the employee_donations and employees tables?
+2.どのクエリが、employee_donationsテーブルとemployeesテーブルからEmpIDの一致する値を含むレポートを作成しますか。
+
+employee_donations
+
+Employee_ID  Qtr1  Qtr2  Qtr3  Qtr4  
+120265       .     .     .     25
+120267       15    15    15    15
+120269       20    20    20    20
+120270       20    10    5     .
+
+employees
+
+EmpID       Name
+120265      Panagiotis
+120267      Emma
+120269      Fatima
+120270      Sofia
+120272      Owen
+
+
+select EmpID, Qtr1, Qtr2, Qtr3, Qtr4, Name
+    from employee_donations as d inner join
+       employees as e
+    on EmpID=EmpID;
+correct
+
+select *
+    from employee_donations as d inner join
+       employees as e
+    on d.EmpID=e.EmpID;
+uncorrect
+不正解
+To produce an inner join with matching rows only in the result, use the keywords INNER JOIN between tables on the FROM clause. 
+The ON clause describes the join criteria for matching rows in tables. If columns with the same name appear in both tables, you 
+must qualify those columns as table.column or alias.column. In this example, EmpID must be qualified in both the SELECT and ON clauses. 
+Review Joining Two Tables with an Inner Join.
+不正解
+一致する行を結果のみに含む内部結合を生成するには、FROM句でテーブル間のINNER JOINキーワードを使用します。
+ON句は、テーブル内の行をマッチさせるための結合条件を記述します。同じ名前の列が両方のテーブルにある場合、それらの列を table.column または 
+alias.column として修飾する必要があります。この例では、SELECT句とON句の両方でEmpIDを修飾する必要があります。内部結合を使用した 2 つのテーブルの
+結合を確認します。
+
+
+select e.EmpID, Qtr1, Qtr2, Qtr3, Qtr4, Name
+    from employee_donations as d inner join
+       employees as e
+    on d.EmpID=e.EmpID;
+
+
+3.In PROC SQL, a natural join automatically joins tables based on columns that have the same name and type in both tables.
+3.PROC SQLでは、自然結合は、両方のテーブルで同じ名前と型を持つ列に基づいて、自動的にテーブルを結合します。
+1点
+
+True
+correct
+正解
+A natural join identifies columns in each table that have the same name and type, and uses those matching columns as the join criteria. 
+The ON clause is implied and table aliases are not necessary to qualify column names that are common to both tables.
+
+
+False
+
+
+
+4. How many rows are returned from the following query? 
+4. 次のクエリから返される行は何行ですか。
+
+select p.Prod_ID, Color, Price 
+    from products as p inner join
+         saleitems as s
+    on p.Prod_ID=s.Prod_ID and Color='Yellow';
+
+products
+
+Prod_ID Color
+1       Blue
+2       Red
+3       Red
+4       Yellow
+5       Blue
+6       Yellow
+
+saleitems
+
+Prod_ID     Price
+1           12.99
+4           45.99
+
+
+
+6
+
+1
+correct
+正解
+The SELECT clause qualifies the Prod_ID column name, so the result set has only one Prod_ID column. 
+The ON clause joins the rows that have the same matching values of Prod_ID and the color equal to Yellow.
+SELECT句はProd_ID列の名前を修飾しているので、結果セットにはProd_ID列が1つだけあります。
+ON句は、Prod_IDの値が一致し、かつ、色がYellowに等しい行を結合しています。
+
+0
+
+2
+
+
+
+5.How many rows will the following query return?
+5.次のクエリは何行を返しますか？
+
+select p.Prod_ID, Color, Price
+    from products as p inner join 
+         saleitems as 
+    on p.Prod_ID=s.Prod_ID and p.Prod_ID is 
+       not null;
+
+
+
+Prod_ID  Color
+
+1  Blue
+2  Red
+3  Red
+.  Green
+.  Blue
+
+saleitems
+
+Prod_ID Price
+1   12.99
+4   45.99
+.   .99
+.   1.99
+
+
+0
+
+1
+correct
+正解
+PROC SQL treats missing values as valid values and matches for joins. By default, any missing value from one table matches with each 
+missing value of the same type (character or numeric) in the other table. In this query, the ON clause excludes missing values from the join condition.
+PROC SQLは、欠落値を有効な値として扱い、結合のために照合します。デフォルトでは、一方のテーブルの欠損値は、他方のテーブルの同じ型（文字または数値）
+の各欠損値と一致します。このクエリでは、ON句が結合条件から欠損値を除外しています。
+
+4
+
+5
+
+
+
+6.Which of the following queries produces the desired results?
+6.次のクエリのうち、望ましい結果が得られるものはどれですか?
+
+products
+
+Prod_ID   Price
+1         125.99
+2         90.99
+3         1.99
+
+producttiers
+Tiers     Low    High
+Tier 1    0      9.99
+Tier 2    10     99.99
+Tier 3    100    999.99
+
+
+desired results
+
+Prod_ID   Price   Tiers
+1         125.99  Tier 3
+2         90.99   Tier 2
+3         1.99    Tier 
+
+
+select p.Prod_ID, Price, Tiers
+    from products as p inner join
+       productTiers as t
+    on p.Price>=t.Low and p.Price<=t.High
+    order by p.Prod_ID;
+correct
+
+select p.Prod_ID, Price, Tiers
+    from products as p inner join
+       productTiers as t
+    on p.Price>=t.Low or p.Price<=t.High
+    order by p.Prod_ID;
+uncorrect
+不正解
+The ON clause you can use comparison operators instead of equality for the JOIN criteria. The p.Price column must be greater than or 
+equal to the t.Low value, and less than or equal to the t.High value for the row to join. Review Creating Non-Equijoins.
+ON 節では、JOIN 条件に等号の代わりに比較演算子を使用できます。p.Price 列は、結合する行の t.Low 値以上、かつ t.High 値以下である必要があります。
+非等値結合の作成」を参照してください。
+
+select p.Prod_ID, Price, Tiers
+    from products as p inner join
+       productTiers as t
+    on p.Price<=t.High
+    order by p.Prod_ID;
+
+select p.Prod_ID, Price, Tiers
+    from products as p inner join
+       productTiers as t
+    on p.Price>=t.Low
+    order by p.Prod_ID;
+
+
+
+7.How many rows will the following query return?
+7.次のクエリは何行を返しますか？
+
+select p.Prod_ID, Color, Price
+    from products as p left join
+         saleitems as s
+    on p.Prod_ID=s.Prod_ID
+    where s.Price > 20;
+    
+    
+products
+Prod_ID   Color
+1         Blue
+2         Red
+3         Red
+4         Green
+5         Blue
+
+saleitems
+
+Prod_ID  Price
+1        12.99
+4        45.99
+6        99.99
+
+1
+correct
+正解
+A left join lists every item in the left table ( products ) with or without a match in the right table ( saleitems ). 
+Then the WHERE clause filters the remaining rows for a Price greater than 20.
+左結合では、左側のテーブル（products）のすべての商品と、右側のテーブル（saleitems）が一致するかしないかをリストアップします。
+そして WHERE 句は、価格が 20 より大きい残りの行をフィルタリングします。
+
+5
+
+3
+
+2
+
+
+8.The following code will produce the results shown below.
+8.以下のようなコードで、以下に示すような結果が得られます。
+
+select g1.Tag as Tag
+    from group1 as g1 full join group2 as g2
+    on g1.Tag=g2.Tag;
+
+group1
+
+Tag    FName
+a      Fred
+d      Sek
+e      Lars
+
+group2
+Tag    LName
+b      Zhou
+c      Amos
+
+Results
+
+Tag
+
+a
+
+b
+
+c
+
+d
+
+e
+
+1点
+
+True
+correct
+不正解
+The COALESCE function is required to create this result set. To overlay two columns, you must specify 
+the two columns as arguments in the COALESCE function. This query only returns the values from the Tag column 
+in the group1 table. Review Joining Two Tables with a Full Join.
+この結果セットを作成するには、COALESCE関数が必要です。2 つの列をオーバーレイするには、COALESCE 関数の引数として 2 つの列を指定する必要があります。
+このクエリは、group1 テーブルの Tag 列からの値のみを返します。フルジョインによる 2 つのテーブルの結合を確認します。
+
+False
+
+
+9.Which query produces the results shown below? Select all that apply.
+9.以下に示すような結果をもたらすのは、どのクエリですか？該当するものをすべて選択してください。
+
+widgets
+
+ID      Type
+89      FL
+46      UI
+47      TA
+92      QY
+
+
+locations
+
+ID    Bin
+1     B98
+46    B63
+74    B02
+85    B98
+99    B02
+
+Results
+
+ID   Type  Bin
+1          B98
+46   UI    B63
+74         B02
+85         B98
+99         B02
+
+
+
+ect w.ID as ID, Type, Bin
+    from widgets as w right join locations as I
+    on w.ID=I.ID
+    order by w.ID;
+
+select w.ID as ID, Type, Bin
+    from widgets as w left join locations as I
+    on w.ID=I.ID
+    order by w.ID;
+
+select w.ID as ID, Type, Bin
+    from widgets as w inner join locations as I
+    on w.ID=I.ID
+correct
+This should not be selected
+The results include all rows from the locations table and only the matching row from the widget table. 
+A left join that specifies the locations table as the left, or first table can create these results. 
+A right join can create this result set only if the location table is specified as the right, or second, table. 
+Review Performing Left and Right Outer Joins.
+これは選択されるべきではない
+結果には、locationテーブルのすべての行と、widgetテーブルの一致する行だけが含まれます。
+左側、つまり最初のテーブルとしてlocationテーブルを指定した左結合では、このような結果を作成することができます。
+右結合では、locationテーブルが右、つまり2番目のテーブルとして指定されている場合にのみ、この結果セットが作成されます。
+左および右外部結合の実行を確認します。
+
+
+select w.ID as ID, Type, Bin
+    from widgets as w right join locations as I
+    on w.ID=I.ID
+    order by w.ID;
+Correct
+The results include all rows from the locations table and only the matching row from the widget table. 
+A right join can create this result set only if the location table is specified as the right, or second, table. 
+Review Performing Left and Right Outer Joins.    
+修正
+結果には、ロケーションテーブルのすべての行と、ウィジェットテーブルの一致する行だけが含まれます。
+右結合では、locationテーブルが右、つまり2番目のテーブルとして指定されている場合にのみ、この結果セットが作成されます。
+左および右外部結合の実行を確認します。    
+
+不正解
+You didn't select all the correct answers
+
+
+
+10.Which syntax is appropriate for a self-join on the employees table? 
+10.従業員テーブルの自己結合には、どの構文が適切ですか？
+1点
+
+
+select e1.ID, e1.Name as EmpName,
+       e2.Name as ManagerName
+    from employees inner join employees
+    on ID = ID;
+uncorrect
+不正解
+To create a self-join, the FROM clause lists the same table twice with different aliases. The columns listed in the SELECT and 
+ON clauses must be qualified with an alias. Review Demo: Performing a Reflexive Join.
+自己接合を作成するために、FROM句は同じテーブルを異なるエイリアスで2回リストアップします。
+SELECTおよびON句にリストされる列は、エイリアスで修飾する必要があります。ON 句にリストされるカラムは、
+エイリアスで修飾する必要があります。デモを確認する。Reflexive Join の実行。
+
+
+select e1.ID, e1.Name as EmpName,
+       e2.Name as ManagerName
+    from employees as e1 and employees as e2
+    on e1.ID = e2.ID;
+
+select e1.ID, e1.Name as EmpName,
+       e2.Name as ManagerName
+    from employees as e1 inner join employees as e2
+    on e1.ID = e2.ID;
+
+
+
+-----------------------------------------------------------------------------------------------------------------------------------
+
+1.The sq.orders table contains 10 rows and the sq.products table contains 5 rows. How many rows are returned by the following query?
+1.sq.ordersテーブルには10行、sq.productsテーブルには5行が含まれています。次のクエリによって返される行はいくつですか？
+
+select *
+    from sq.order, sq.products;
+
+1点
+
+It depends on the number of matching and non-matching rows.
+
+5
+
+50
+correct
+正解
+The default JOIN combines every row in each table. This is called the Cartesian product. In this example, all 10 rows 
+from the sq.orders table will be joined with each of the 5 rows in the sq.productstable. The new report contains 50 rows. Review Joining Tables.
+デフォルトのJOINは、各テーブルのすべての行を結合します。これは、デカルト積と呼ばれます。
+この例では、sq.ordersテーブルのすべての10行が、sq.productstableの5行のそれぞれと結合されます。
+新しいレポートには、50 行が含まれます。テーブルの結合を確認する。
+
+
+10
+
+
+
+
+2.How many rows are produced from the following query?
+2.次のクエリから何行が生成されますか。
+
+select e.EmpID, Qtr1, Qtr2, Qtr3, Qtr4, Name
+    from employee_donations as d inner join
+         employees as e
+    on d.EmpID=e.EmpID;
+
+employee_donations
+
+EmpID   Qtr1 Qtr2 Qtr3 Qtr4
+120265  .    .    .    25
+120267  15   15   15   15
+120269  20   20   20   20
+120270  20   10   5    .
+
+employees
+
+EmpID    Name
+120265   Panagiotis
+120267   Emma
+120269   Fatima
+120270   Sofia
+120272   Owen
+
+
+9
+
+4
+
+5
+
+20
+uncorrect
+不正解
+The INNER JOIN is used to create a new table that contains only matching values for EmpID. Only four EmpID values match. 
+Review Joining Two Tables with an Inner Join.
+INNER JOIN を使用して、EmpID の一致する値のみを含む新しいテーブルを作成します。4 つの EmpID 値だけが一致します。
+2 つのテーブルを内部結合で結合する方法を確認します。
+
+
+3.Which program correctly displays a list of qualified column names in the SAS log?
+3.SASログに修飾列名のリストを正しく表示するプログラムはどれですか。
+
+
+proc sql noexec;
+select *
+    from acme.staff;
+quit;
+
+proc sql list;
+select *
+    from acme.staff;
+quit;
+
+proc sql;
+    describe table acme.staff;
+quit;
+correct
+不正解
+The DESCRIBE TABLE statement lists column metadata. The FEEDBACK option on the PROC SQL statement displays an 
+expanded query in the log, including a list of qualified column names. Review Matching Rows with a Natural Join.
+DESCRIBE TABLE ステートメントは、列のメタデータを一覧表示します。PROC SQL 文の FEEDBACK オプションを使用すると、
+修飾列名のリストを含む拡張クエリがログに表示されます。自然結合を使用した行のマッチングを確認する。
+
+
+proc sql feedback;
+select *
+    from acme.staff;
+quit;
+
+
+4.Which result set does the following inner join produce? 
+4.次の内部結合はどの結果セットを生成しますか？
+
+select p.Prod_ID, Color, Price
+    from products as p inner join
+         saleitems as s
+    on p.Prod_ID=s.Prod_ID and Color='Blue';
+
+
+products
+
+Prod_ID Color
+1       Blue
+2       Red
+3       Red
+4       Yellow
+5       Blue
+6       Yellow
+
+saleitems
+
+Prod_ID     Price
+1           12.99
+4           45.99
+
+
+
+An error is produced.
+
+Prod_ID	Color	Price
+1	      Blue	12.99
+correct
+正解
+The SELECT clause qualifies the Prod_ID column name, so the result set has only one Prod_ID column. 
+This is an inner join, so the ON clause joins only the rows that have the matching values of Prod_ID and Color equal to Blue.
+SELECT句はProd_IDカラム名を修飾していますので、結果セットにはProd_IDカラムが1つだけあります。これは内部結合ですので、
+ON句はProd_IDの値が一致し、かつ、ColorがBlueに等しい行のみを結合しています。
+
+
+Prod_ID	Color	Prod_ID	Price
+1	      Blue	1	      12.99
+5	      Blue	5	      .
+
+Prod_ID	Color	Price
+1	      Blue	12.99
+5	      Blue	.
+
+
+
+5.How many rows will the following query return?
+5. 次のクエリは何行を返しますか？
+select p.Prod_ID, Color, Price
+    from products as p inner join 
+         saleitems as s 
+    on p.Prod_ID=s.Prod_ID;
+
+products
+
+Prod_ID　　Color
+1　　　　　Blue
+2　　　　　Red
+.　　　　　Green
+.　　　　　Blue
+
+saleitems
+
+Prod_ID　　Price
+1　　　　　12.99
+3　　　　　45.99
+.　　　　　.99
+
+
+
+0
+
+1
+
+3
+correct
+PROC SQL treats missing values as valid values and matches for joins. Any missing value from one table matches with each missing value 
+of the same type (character or numeric) in the other table.
+PROC SQLは欠落値を有効な値として扱い、結合のためのマッチングを行います。
+一方のテーブルの欠損値は、他方のテーブルの同じ型（文字または数値）の各欠損値と一致します。
+
+4
+
+
+
+
+6.Which of the following queries produces the desired results?
+6. 次のクエリのうち、望ましい結果を生成するのはどれですか。
+
+products
+
+Prod_ID　　Price
+1　　　　　125.99
+2　　　　　90.99
+3　　　　　1.99
+
+producttiers
+
+Tiers　　 Low　　 High
+
+Tier 1　　0       9.99
+Tier 2    10      99.99
+Tier 3    100     999.99
+
+
+desired results
+
+Prod_ID    Price    Tiers
+1          125.99   Tier 3
+2          90.99    Tier 2
+3          1.99     Tier 
+
+
+
+select p.Prod_ID, Price, Tiers
+    from products as p inner join
+       productTiers as t
+    on p.Price<=t.High
+    order by p.Prod_ID;
+
+
+select p.Prod_ID, Price, Tiers
+    from products as p inner join
+       productTiers as t
+    on p.Price>=t.Low and p.Price<=t.High
+    order by p.Prod_ID;
+correct
+正解
+The ON clause you can use comparison operators instead of equality for the JOIN criteria. 
+The p.Price column must be greater than or equal to the t.Low value, and less than or equal to the t.High value for the row to join.
+ON 句では、JOIN 条件に等号の代わりに比較演算子を使用できます。p.Price列は、結合する行のt.Low値以上、t.High値以下である必要があります。
+
+select p.Prod_ID, Price, Tiers
+    from products as p inner join
+       productTiers as t
+    on p.Price>=t.Low or p.Price<=t.High
+    order by p.Prod_ID;
+
+
+select p.Prod_ID, Price, Tiers
+    from products as p inner join
+       productTiers as t
+    on p.Price>=t.Low
+    order by p.Prod_ID;
+
+
+
+
+7.Which program correctly produces the following results?
+7.次の結果を正しく生成するプログラムはどれですか。
+
+products
+Prod_ID Color
+1       Blue
+2       Red
+3       Red
+4       Green
+5       Blue
+
+
+saleitems
+Prod_ID　　Price
+1　　　　　12.99
+4　　　　　45.99
+6　　　　　99.99
+
+
+Results
+Prod_ID  Color  Price
+1        Blue   12.99
+2        Red    .
+3        Red    .
+4        Green  45.99
+5        Blue   .
+
+
+select p.Prod_ID, Color, Price
+    from products as p inner join
+       saleitems as s
+    on p.Prod_ID=s.Prod_ID;
+uncorrect
+不正解
+An inner join includes only matching rows from both tables. The query should include all rows from products. 
+Review Performing Left and Right Outer Joins.
+内部結合は、両方のテーブルから一致する行のみを含みます。クエリにはproductのすべての行を含める必要があります。
+左外部結合と右外部結合の実行を確認します。
+
+
+select p.Prod_ID, Color, Price
+    from products as p right join
+       saleitems as s
+    on p.Prod_ID=s.Prod_ID;
+
+select p.Prod_ID, Color, Price
+    from products as p full join
+       saleitems as s
+    on p.Prod_ID=s.Prod_ID;
+
+select p.Prod_ID, Color, Price
+    from products as p left join
+       saleitems as s
+    on p.Prod_ID=s.Prod_ID;
+
+
+
+8.Which query joins the tables group1 and group2 and overlays the Tag columns to produce the result set shown below? 
+8. テーブルgroup1とgroup2を結合し、Tag列をオーバーレイして、次のような結果セットを生成するクエリはどれですか。
+
+group1
+
+Tag   FName
+a     Fred
+d     Sek
+e     Lars
+
+
+group2
+
+Tag LName
+b   Zhou
+c   Amos
+
+Results
+
+Tag
+
+a
+
+b
+
+c
+
+d
+
+e
+
+
+select g1.Tag
+    from group1 as g1 group2 as g2
+    where g1.Tag=g2.Tag
+
+select coalesce(g1.Tag, g2.Tag) as Tag
+    from group1 as g1 full join group2 as g2
+    on g1.Tag=g2.Tag;
+Correct    
+正解
+The full join with the COALESCE function creates this result set. To overlay two columns, you must specify the two columns as 
+arguments in the COALESCE function.    
+COALESCE関数を使った完全結合により、この結果セットが作成されます。2つの列をオーバーレイするには、COALESCE関数の引数として2つの
+列を指定する必要があります。
+
+select coalesce(Tag) as Tag
+    from group1 as g1 full join group2 as g2
+    on g1.Tag=g2.Tag;
+
+
+9.Which query produces the results shown below? 
+9.以下の結果を生成するのはどのクエリですか。
+
+widgets
+ID     Type
+89     FL
+46     UI
+47     TA
+92     QY
+
+
+locations
+
+ID    Bin
+1     B98
+46    B63
+74    B02
+85    B98
+99    B02
+
+Results
+ID    Type   Bin
+46    UI     B63
+47    TA
+89    FL
+92    QY
+
+
+select coalesce(w.ID, I.ID) as ID, Type, Bin
+    from widgets as w right join locations as I
+    on w.ID = I.ID order by w.ID;
+
+select coalesce(w.ID, I.ID) as ID, Type, Bin
+    from widgets as w left join locations as I
+    on w.ID = I.ID order by w.ID;
+Correct
+正解
+The results include all rows from the widgets table and only the matching row from the locations table. 
+A left join with widgets listed first specifies that all rows from widgets should be included in the results.
+
+
+
+
+10.What product will the following query create?
+次のクエリはどのような製品を作成しますか。
+
+select e1.ID, e.1.Name as EmpName,
+       e2.Name as ManagerName
+    from employees as e1 inner join
+         employees as e2
+    on e1.ID = e2.ID;
+
+
+A reflexive (self) join on the employees table
+employeesテーブルへの反射的（自己）結合
+
+A Cartesian product combining every row from both tables
+両テーブルのすべての行を結合したデカルト積
+
+A left join on the employees table
+employeesテーブルへの左ジョイン
+correct
+不正解
+A relexive (self) join joins a table with itself. The FROM clause lists the same table twice with different aliases. 
+The columns listed in the SELECT and ON clauses must be qualified with an alias. Review Demo: Performing a Reflexive Join.
+
+A right join on the employees table
+
+
+--------------------------------------------------------------------------------------------------------------------------------
+
+1.What is the result of this query?
+1.このクエリの結果はどうなりますか？
+
+select *
+    from sq.employee_donations,sq.employees;
+
+employee_donations
+
+
+All 4 rows from the employee_donations table join with every row in the employees table and the final result contains 16 rows.
+employee_donationsテーブルの4行すべてがempiecesテーブルのすべての行と結合し、最終結果には16行が含まれます。
+correct
+正解
+The default JOIN combines every row in each table. This is called the Cartesian product. In this example, 
+all 4 rows from the employee_donations table will be joined with each of the 4 rows in the employees table. The new report contains 16 rows.
+デフォルトのJOINは、各テーブルのすべての行を結合します。これは、デカルト積と呼ばれます。この例では、employee_donationsテーブルの4行すべてが、
+employeesテーブルの4行それぞれと結合されます。新しいレポートには16行が含まれます。
+
+Rows are joined based on the matching column Employee_ID and EmpID. The final result contains 4 rows.
+行は一致する列Employee_IDおよびEmpIDに基づいて結合されます。最終結果には4行が含まれます。
+
+Rows from both tables are concatentated into a single table with 8 rows.
+両方のテーブルの行が結合され、8行からなる1つのテーブルになります。
+
+Rows are joined sequentially so that the first row from both tables are matched, the second rows are matched, and so on. The final result contains 4 rows.
+行は、両方のテーブルの最初の行がマッチし、2番目の行がマッチし、というように順次結合されます。最終結果は、4行です。
+
+
+2.When joining two tables, the FROM clause specifies the first table, the keywords INNER JOIN, followed by the second table. 
+Following the table names and join type, the syntax requires an ON clause. What does the ON clause do?
+2つのテーブルを結合する場合、FROM句は最初のテーブルを指定し、キーワードはINNER JOIN、その後に2番目のテーブルを指定します。
+テーブル名と結合タイプに続いて、構文上ではON句が必要です。ON句は何をするのでしょうか？
+
+select *
+    from orders inner join products
+    on ____________;
+
+1点
+
+The ON clause names the library that contains the joined tables.
+ON 節は、結合されたテーブルを含むライブラリの名前を指定します。
+
+The ON clause describes the join criteria for matching rows in the tables.
+ON 節は、テーブルの行をマッチさせるための結合条件を記述しています。
+correct
+The ON clause describes the join criteria for matching rows in tables. If the matching columns have the same name in both tables, 
+you must qualify the columns as table.column.
+ON句は、テーブル内の行をマッチさせるための結合条件を記述します。一致する列が両方のテーブルで同じ名前を持つ場合、
+その列を table.column として修飾する必要があります。
+
+The ON clause specifies the order by which the columns are displayed.
+ON 節は、列を表示する順序を指定します。
+
+The ON clause assigns a table alias and the columns to join.
+ON 節は、テーブルの別名と結合する列を割り当てます。
+
+
+
+3.Which PROC SQL option displays an expanded query in the log, including a list of qualified column names?
+3.PROC SQLのどのオプションが、修飾された列名のリストを含む拡張クエリをログに表示しますか？
+1点
+
+DESCRIBE TABLE  それぞれの DICTIONARY テーブルの定義を表示する
+
+NOEXEC 
+PROC SQL ステップの構文を、実際に実行せずにチェックするには、NOEXEC オプションまたは VALIDATE ステートメントを使用します。NOEXEC オプションを PROC
+SQL ステートメントで 1 回使用するだけで、その PROC SQL ステップに含まれるすべ
+てのクエリの構文について、実行することなく正確さをチェックできます。
+
+LIST
+
+FEEDBACK
+FEEDBACK オプションを指定すると、SELECT * (ALL)ステートメントは、それが表す
+列のリストに展開されます。すべての PROC SQL ビューは、元になるクエリに展開さ
+れ、すべての式は、それらの評価順序を示すかっこで囲まれます。
+correct
+The FEEDBACK option displays an expanded query in the log, including a list of qualified column names. Review Matching Rows with a Natural Join.
+FEEDBACKオプションは、修飾された列名のリストを含む、拡張されたクエリをログに表示します。自然結合による行のマッチングを確認する。
+
+4.
+質問 4
+How many rows are returned from the following query? 
+次のクエリから何行が返されるか？
+
+
+select p.Prod_ID, Color, Price
+    from products as p inner join 
+         saleitems as s
+    on p.Prod_ID=s.Prod_ID;
+
+products
+
+
+products
+
+Prod_ID Color
+1       Blue
+2       Red
+3       Red
+4       Yellow
+5       Blue
+6       Yellow
+
+saleitems
+
+Prod_ID     Price
+1           12.99
+4           45.99
+
+
+6
+
+1
+
+2
+correct
+The SELECT clause qualifies the Prod_ID column name, so the result set has only one Prod_ID column. 
+The ON clause joins the rows that have the same matching values of Prod_ID.
+
+0
+
+5.How many rows will the following query return?
+5.次のクエリは何行を返しますか？
+
+select p.Prod_ID, Color, Price
+    from products as p inner join 
+         saleitems as s 
+    on p.Prod_ID=s.Prod_ID;
+
+products
+
+Prod_ID  Color
+1        Blue
+2        Red
+.        Green
+.        Blue
+
+saleitems
+
+Prod_ID   Price
+1         12.99
+3         45.99
+.         .99
+
+
+0
+
+1
+
+3
+correct
+PROC SQL treats missing values as valid values and matches for joins. Any missing value from one table matches with each missing 
+value of the same type (character or numeric) in the other table.
+PROC SQLでは、欠損値を有効な値として扱い、結合のためのマッチングを行います。一方のテーブルの欠損値は、他方のテーブルの同じ型（文字または数値）の
+各欠損値と一致します。
+
+4
+
+
+6.Which of the following queries produces the desired results?
+6.次のクエリのうち、望ましい結果をもたらすものはどれか。
+products
+
+Prod_ID Price 
+1       125.99
+2       90.99
+3       1.99
+
+
+producttiers
+
+Tiers  Low  High
+Tier 1 0    9.99
+Tier 2 10   99.99
+Tier 3 100  999.99
+
+
+desired results
+
+Prod_ID  Price   Tiers
+1        125.99  Tier 3
+2        90.99   Tier 2
+3        1.99    Tier 
+
+
+
+Select p.Prod_ID, Price, Tiers
+    from products as p inner join
+       productTiers as t
+    on p.Price>=t.Low
+    order by p.Prod_ID;
+
+select p.Prod_ID, Price, Tiers
+    from products as p inner join
+       productTiers as t
+    on p.Price<=t.High
+    order by p.Prod_ID;
+
+select p.Prod_ID, Price, Tiers
+    from products as p inner join
+       productTiers as t
+    on p.Price>=t.Low or p.Price<=t.High
+    order by p.Prod_ID;
+unCorrect
+The ON clause you can use comparison operators instead of equality for the JOIN criteria. The p.Price column must be greater 
+than or equal to the t.Low value, and less than or equal to the t.High value for the row to join. Review Creating Non-Equijoins.
+ON 節では、JOIN 条件に等号の代わりに比較演算子を使用できます。p.Price 列は、結合する行の t.Low 値以上、かつ t.High 値以下である必要があります。
+非等値結合の作成」を参照してください。
+
+select p.Prod_ID, Price, Tiers
+    from products as p inner join
+       productTiers as t
+    on p.Price>=t.Low and p.Price<=t.High
+    order by p.Prod_ID;
+
+
+7.How many rows will the following query return?
+7.次のクエリは何行を返しますか？
+select p.Prod_ID, Color, Price
+    from products as p left join
+         saleitems as s
+    on p.Prod_ID=s.Prod_ID
+    where s.Price > 20;
+
+
+products
+Prod_ID Color
+1       Blue
+2       Red
+3       Red
+4       Green
+5       Blue
+
+
+
+saleitems
+Prod_ID　　Price
+1　　　　　12.99
+4　　　　　45.99
+6　　　　　99.99
+
+
+
+3
+
+5
+
+2
+
+1
+correct
+正解
+A left join lists every item in the left table ( products ) with or without a match in the right table ( saleitems ). 
+Then the WHERE clause filters the remaining rows for a Price greater than 20.
+左結合は、左テーブル(products)のすべての商品と右テーブル(saleitems)の商品が一致するかしないかをリストアップします。
+そしてWHERE句は、価格が20より大きい残りの行をフィルタリングします。
+
+8.Which query joins the tables group1 and group2 and overlays the Tag columns to produce the result set shown below? 
+8.どのクエリがテーブルgroup1とgroup2を結合し、Tag列をオーバーレイして、以下に示す結果セットを生成しますか。
+
+group1 
+Tag    FName
+a      Fred
+d      Sek
+e      Lars
+
+group2
+Tag   LName
+b     Zhou
+c     Amos
+
+
+Results
+Tag
+a
+b
+c
+d
+e
+
+
+select g1.Tag
+    from group1 as g1 group2 as g2
+    where g1.Tag=g2.Tag
+
+select coalesce(Tag) as Tag
+    from group1 as g1 full join group2 as g2
+    on g1.Tag=g2.Tag;
+
+select coalesce(g1.Tag, g2.Tag) as Tag
+    from group1 as g1 full join group2 as g2
+    on g1.Tag=g2.Tag;
+Correct
+正解
+The full join with the COALESCE function creates this result set. To overlay two columns, you must specify the 
+two columns as arguments in the COALESCE function.
+COALESCE関数を使った完全結合により、この結果セットが作成されます。2つの列をオーバーレイするには、
+COALESCE関数の引数として2つの列を指定する必要があります。
+
+9.Which query produces the results shown below? 
+9.どのクエリが以下に示す結果を生成するか？
+
+widgets
+ID    Type
+89    FL
+46    UI
+47    TA
+92    QY
+
+locations
+ID    Bin
+1     B98
+46    B63
+74    B02
+85    B98
+99    B02
+
+Results
+
+ID   Type  Bin
+46   UI    B63
+47   TA    
+89   FL
+92   QY
+
+select coalesce(w.ID, I.ID) as ID, Type, Bin
+    from widgets as w right join locations as I
+    on w.ID = I.ID order by w.ID;
+uncorrect
+不正解
+The results include all rows from the widgets table and only the matching row from the locations table. 
+A left join with widgets listed first specifies that all rows from widgets should be included in the results. 
+Review Performing Left and Right Outer Joins.
+結果には、widgetsテーブルの全ての行と、locationテーブルの一致する行のみが含まれます。
+widgetsが最初に表示される左結合は、widgetsからのすべての行が結果に含まれることを指定します。
+左外部結合と右外部結合の実行を確認してください。
+
+select coalesce(w.ID, I.ID) as ID, Type, Bin
+    from widgets as w left join locations as I
+    on w.ID = I.ID order by w.ID;
+
+
+10.What is a join called if a table is joined with itself?
+10.テーブルと自分自身を結合する場合、結合は何と呼ばれますか？
+1点
+自然結合
+NATURAL JOIN(自然結合)では、2 つのテーブルの同名同タイプの列に同じ値が入
+っている行を選択します。2 つの列が同じ名前で、タイプが異なる場合、エラーが発生
+します。自然結合を指定するときに結合仕様を省略すると、INNER が暗黙的に含ま
+れます。類似する列が見つからない場合、クロス結合が実行されます。
+
+A cartesian product
+
+A reflexive join
+
+A cross join
+
+A natural join
+correct
+不正解
+A relexive (self) join joins a table with itself. The FROM clause lists the same table twice with different aliases. 
+The columns listed in the SELECT and ON clauses must be qualified with an alias. Review Demo: Performing a Reflexive Join.
+再レクティブ（自己）結合は、テーブルをそれ自身と結合します。FROM句は、同じテーブルを異なるエイリアスで2回リストします。
+SELECT句とON句にリストされる列は、エイリアスで修飾する必要があります。レビューデモ。Reflexive Join の実行。
+
+
+
