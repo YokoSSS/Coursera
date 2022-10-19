@@ -1,23 +1,34 @@
 
-1.If necessary, start SAS Studio before you begin. If you restarted your SAS session, submit your libname.sas program to access the practice data.
+1.If necessary, start SAS Studio before you begin. If you restarted your SAS session, 
+submit your libname.sas program to access the practice data.
+1.必要であれば、事前にSAS Studioを起動してください。SAS セッションを再起動した場合は、
+練習データにアクセスするために libname.sas プログラムを提出します。
 
 Open s102a02.sas from the activities folder and perform the following tasks to find all customers with a nonmissing CreditScore value that is less than 500: 
+アクティビティフォルダから s102a02.sas を開き、以下のタスクを実行して、CreditScore 値が 500 未満で非欠落のすべての
+顧客を検索してください。
 
-Examine the query. 
+Examine the query. クエリを調べます。
 
 Add a WHERE clause to find all customers with a CreditScore value that is less than 500 and run the query. 
+WHERE 節を追加して、CreditScore 値が 500 未満のすべての顧客を検索し、クエリを実行します。
 
 How many rows are in your report?  
+レポートには何行ありますか。
 
 1点
-こちらに回答を入力
+Answer: 2197
 
-
-2.Include the AND operator in the WHERE clause to find all rows that are less than 500 and not null. Use the syntax of your choice. 
+2.Include the AND operator in the WHERE clause to find all rows that are less than 500 and not null. 
+Use the syntax of your choice. 
+2.WHERE 節に AND 演算子を入れて、500 未満で null でないすべての行を検索します。
+お好みの構文を使用してください。
 
 Run the query.
+クエリーを実行します。
 
 How many rows are in your final report?  
+最終的なレポートには何行が含まれますか。
 
-1点
+Answer: 196
 
