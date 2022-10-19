@@ -1,0 +1,60 @@
+
+
+1.If necessary, start SAS Studio before you begin. If you restarted your SAS session, submit your libname.sas program to access the practice data.
+必要であれば、事前に SAS Studio を起動してください。SAS セッションを再起動した場合は、練習データにアクセスするために libname.sas プログラムを提出します。
+Open s102a04.sas from the activities folder and perform the following tasks to enhance a report:  
+アクティビティフォルダから s102a04.sas を開き、次のタスクを実行してレポートを強化します。 
+Examine the query. 
+
+Add the title "Customers from Hawaii" and a footnote using today's date. 
+クエリを確認します。「ハワイからのお客様」というタイトルと、今日の日付を使用した脚注を追加します。
+
+Run the program and examine the new title and footnote in your report.  
+プログラムを実行し、レポート内の新しいタイトルと脚注を確認します。 
+
+Apply LABEL="Email Address" to the UserID column and LABEL= "Estimated Income" to the Income column.  
+LABEL="電子メールアドレス "をUserID列に、LABEL="推定所得 "を所得列に適用します。 
+
+Apply FORMAT=DATE9. to the DOB column and FORMAT=DOLLAR16.2 to the Income column. 
+DOB列にFORMAT=DATE9.を、Income列にFORMAT=DOLLAR16.2を適用してください。
+
+Run the program and examine the report.  
+プログラムを実行し、レポートを確認します。 
+
+How are values in the Income column formatted? 
+Income」列の値はどのようにフォーマットされていますか？
+
+1点
+
+The income values have dollar signs, commas and no decimal points.
+収入の値には、ドル記号、カンマ、小数点以下があります。
+
+The income values have dollar signs, commas and decimal points.
+収入の値には、ドル記号、カンマ、および小数点があります。
+
+The income values have only commas and decimal points.    
+収入の値には、カンマと小数点だけがあります。   
+
+The income values have no format.
+収入値にはフォーマットがありません。
+
+
+2.Change the DOLLAR16.2 format to DOLLAR7.2. 
+DOLLAR16.2 の形式を DOLLAR7.2 に変更します。
+
+Run the program. 
+プログラムを実行します。
+
+What happens to the values in the Income column?  
+Income 欄の値はどうなりますか？ 
+1点
+
+The income values format did not change.
+Income 値の形式は変更されませんでした。
+
+The income values have dollar signs, commas and decimal points.
+Income 値には、ドル記号、カンマ、小数点があります。
+
+When the format width is not large enough, SAS preserves the number, removes non-essential symbols, and rounds the decimal to one digit where applicable.
+フォーマットの幅が十分でない場合、SAS は数値を保持し、必要でない記号を削除し、該当する場合は小数点を 1 桁に丸めます。
+
