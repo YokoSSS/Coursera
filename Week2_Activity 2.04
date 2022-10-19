@@ -24,19 +24,39 @@ Run the program and examine the report.
 How are values in the Income column formatted? 
 Income」列の値はどのようにフォーマットされていますか？
 
+title "Customers from Hawaii";
+footnote "March 6";
+proc sql;
+select FirstName, LastName, State, 
+       UserID label="Email Address", 
+       Income label="Estimated Income" format=dollar16.2, 
+       DOB format=date9.
+    from sq.customer
+    where State = "HI" and 
+          BankID is not null
+    order by Income desc;
+quit;
+
+title; 
+footnote;
+
+
 1点
 
 The income values have dollar signs, commas and no decimal points.
 収入の値には、ドル記号、カンマ、小数点以下があります。
+uncorrect
 
 The income values have dollar signs, commas and decimal points.
 収入の値には、ドル記号、カンマ、および小数点があります。
+correct
 
 The income values have only commas and decimal points.    
 収入の値には、カンマと小数点だけがあります。   
 
 The income values have no format.
 収入値にはフォーマットがありません。
+uncorrect
 
 
 2.Change the DOLLAR16.2 format to DOLLAR7.2. 
@@ -57,4 +77,4 @@ Income 値には、ドル記号、カンマ、小数点があります。
 
 When the format width is not large enough, SAS preserves the number, removes non-essential symbols, and rounds the decimal to one digit where applicable.
 フォーマットの幅が十分でない場合、SAS は数値を保持し、必要でない記号を削除し、該当する場合は小数点を 1 桁に丸めます。
-
+correct
