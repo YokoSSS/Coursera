@@ -1,6 +1,8 @@
 
-1.If necessary, start SAS Studio. Open s102a05.sas from the activities folder and perform the following tasks to find all customers 70 years old and older:
-1.必要であれば、SAS Studioを起動します。activities フォルダから s102a05.sas を開き、以下の作業を行い、70 歳以上のすべての顧客を検索します。
+1.If necessary, start SAS Studio. Open s102a05.sas from the activities folder and perform 
+the following tasks to find all customers 70 years old and older:
+1.必要であれば、SAS Studioを起動します。activities フォルダから s102a05.sas を開き、
+以下の作業を行い、70 歳以上のすべての顧客を検索します。
 
 Examine and run the query. 
 クエリを調べて実行する。
@@ -27,10 +29,9 @@ default1
 
 age
 
-
 The column does not have a name.
 このカラムには名前がありません。
-
+Correct
 
 
 2.Add AS Age after the function. 
@@ -45,6 +46,8 @@ What changes?
 
 The new column is named Age. 
 新しい列の名前はAgeです。
+Correct
+
 
 There is no change from the previous query.
 前のクエリからの変更はありません。
@@ -68,5 +71,5 @@ Yes
 
 
 No
-
+Correct
 
