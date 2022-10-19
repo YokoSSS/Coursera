@@ -1,0 +1,643 @@
+
+1.Which SELECT statement creates a report that displays only the unique combinations of 
+the Customer_Type_ID, City, and Country columns from the orion.customer table
+1.どのSELECT文が、orion.customerテーブルからCustomer_Type_ID、City、およびCountry列の
+一意の組み合わせのみを表示するレポートを作成するか。
+
+select distinct Customer_Type_ID City Country
+    from orion.customer;
+
+select distinct Customer_Type_ID, distinct City,
+    distinct Country
+    from orion.customer;
+
+select Customer_Type_ID, City, Country
+    from orion.customer
+    where distinct Customer_Type_ID, City, and
+       Country;
+
+select distinct Customer_Type_ID, City, Country
+    from orion.customer;
+Correct
+
+正解
+To select unique combinations of the values of multiple columns, place the DISTINCT keyword 
+once in the SELECT clause before the entire column list. Columns must be separated by commas.
+
+
+2.Which WHERE clause subsets rows based on NewSalary, an alias created in the SELECT clause? 
+2.どのWHERE句が、SELECT句で作成されたエイリアスであるNewSalaryに基づいて行をサブセットしますか。
+
+where NewSalary>=75000 and NewSalary<=100000
+Uncorrect
+不正解
+The SAS keyword CALCULATED enables you to use the results of an expression in the same SELECT clause or 
+in the WHERE clause. The keyword CALCULATED is required when specifying the alias of a calculated column. 
+Review Subsetting Calculated Values.
+SAS キーワード CALCULATED を使用すると、同じ SELECT 節または WHERE 節で式の結果を使用することができます。
+WHERE 句で使用できます。キーワード CALCULATED は、計算された列のエイリアスを指定するときに必要です。
+計算された値のサブセットを確認します。
+
+where 75000<= calculated Salary<=100000
+
+where 75000<=Salary calculated <=100000
+correct
+
+where 75000<=calculated NewSalary<=100000
+
+
+3.Which of the following options uses the SAS enhancement to assign a label of Monthly Sales?
+3.次のオプションのうち、SAS拡張機能を使用して月次売上高のラベルを割り当てるものはどれですか。
+
+label = 'Monthly Sales'
+Correct
+
+' Monthly Sales' = label
+
+label 'Monthly Sales'
+
+label: 'Monthly Sales'
+
+正解
+The LABEL=' text ' column modifier is a SAS enhancement to specify labels and is not ANSI standard.
+LABEL=' text ' 列修飾子は、ラベルを指定するためのSASの機能拡張であり、ANSI標準ではありません。
+
+
+4. Which of the following expressions creates a new column in the SELECT clause?
+4. SELECT句で新しい列を作成する式は次のうちどれですか。
+
+Salary*.03 Bonus
+
+Job_Level as Scan (Job_Title,1,' ')
+
+Salary *.01 as Increase
+Correct
+
+Bonus=Salary*.03
+
+正解
+In the SELECT statement, define the expression that creates the column, then use the keyword AS and specify the new column name.
+SELECT文の中で、列を作成する式を定義し、キーワードASを使用して新しい列名を指定します。
+
+
+5.Which ORDER BY clause sorts the results of the Salary column in descending order?
+5. どの ORDER BY 句が Salary 列の結果を降順でソートしますか。
+
+order by desc Salary
+
+order by Salary
+
+order by Salary(desc)
+
+order by Salary desc
+Correct
+
+正解
+The keyword DESC follows after the column name to reverse the sort sequence.
+列名の後にDESCを付けると、並べ替えの順序が逆になる。
+
+
+6.Which ORDER BY clause will sort the query results by descending Year?
+6. どの ORDER BY 句がクエリ結果を Year の降順で並べ替えるのですか。
+
+proc sql;
+select Employee_ID, 
+       Employee_Term_Date format=date9.,
+       year(Employee_Term_Date) as year
+    from orion.employee_payroll
+    <insert order by>;
+quit;
+
+1点
+
+order by year desc
+年による順序 desc
+Correct
+
+order by year(desc)
+年による順序(desc)
+
+order by year
+年による順序
+
+order by desc year
+降順で並べる
+
+正解
+Add the keyword DESC after a column name to change the default sort sequence to descending.
+列名の後に DESC というキーワードを追加すると、デフォルトのソート順序を降順に変更することができます。
+
+
+7.Which program modification will successfully display the footnote with the query result? Select all that apply.
+7.クエリ結果に脚注を表示させるために、どのプログラムを修正するとうまくいくか。該当するものをすべて選択してください。
+proc sql;
+select Employee_ID
+    from orion.order_fact;
+quit;
+footnote 'Employee Orders';
+脚注「社員の注文」。
+
+Move the FOOTNOTE keyword and text inside the SELECT statement.
+FOOTNOTE キーワードとテキストを SELECT 文の内側に移動します。
+Uncorrect
+
+Move the FOOTNOTE statement before the QUIT statement.
+FOOTNOTE ステートメントを QUIT ステートメントの前に移動します。
+Uncorrect
+
+Move the FOOTNOTE statement before the SELECT statement.
+FOOTNOTE ステートメントを SELECT ステートメントの前に移動します。
+Correct
+
+Move the FOOTNOTE statement before the PROC SQL statement.
+FOOTNOTE ステートメントを PROC SQL ステートメントの前に移動します。
+Correct
+
+不正解
+You didn't select all the correct answers
+あなたはすべての正しい答えを選択していない
+
+
+8.If the value of Age is 10, what is the value of AgeGroups in the query result?
+8. Ageの値が10である場合、クエリ結果のAgeGroupsの値は何であるか？
+
+select name,
+    case
+        when 0 <= Age <= 10 then 'Group 1'
+        when 10 < Age <= 15 then 'Group 2'
+        else 'Other' as AgeGroups
+    from sashelp.class;
+
+1点
+
+Group 1
+Uncorrect
+不正解
+The END keyword is required to end the CASE expression prior to the AS keyword. 
+Review Assigning Values Conditionally with the CASE Expression.
+AS キーワードの前に END キーワードを使用して CASE 式を終了する必要があります。
+CASE式による条件付き値の代入を復習してください。
+
+Group 2
+
+Other
+
+The program generates a syntax error.
+Correct
+
+
+
+9.What is the result of the following program?
+9. 次のプログラムの結果はどうなりますか？
+
+proc sql;
+select count (Qtr1)
+    from orion.employee_donations;
+quit;
+
+
+3
+Correct
+
+1
+
+4　Uncorrect
+不正解
+The COUNT function returns the total number of nonmissing values. Review Summarizing Data Using the COUNT Function.
+COUNT関数は、欠落していない値の総数を返します。COUNT 関数を使用したデータの要約を確認します。
+
+2
+
+
+10.What does the following query generate?
+10.次のクエリは何を生成するのですか？
+
+select Product_Group, count(*) as Products
+    from orion.product_dim
+    group by Product_Group;
+
+1点
+
+A report that lists all products by Product_Group.
+Product_Groupで全製品をリストアップするレポート。
+
+A report that shows the number of products in each value of Product_Group.
+Product_Groupの各値に含まれる製品の数を示すレポート。
+Correct
+
+A report that gives a total count of all products.
+全製品の合計数を示すレポート。
+
+A report that shows the missing number of rows for each value of Product _Group.
+Product_Groupの各値の行の不足数を示すレポート。
+
+正解
+The GROUP BY clause groups all products by Product_Group, then counts the number of products in each group.
+GROUP BY句は、Product_Groupによってすべての製品をグループ化し、次に各グループ内の製品の数を数えます。
+
+
+11.Which rows are returned from the following WHERE clause?
+11. 次のWHERE句からどの行が返されますか？
+
+ where Make="Toyota" and Price>=30000
+
+1点
+
+All Toyota vehicles that are priced at $30,000.
+価格が$30,000のすべてのトヨタ車。
+
+The WHERE clause produces errors in the log.
+WHERE句は、ログにエラーを発生させます。
+
+All Toyota cars that are priced greater than or equal to $30,000.
+価格が30,000ドル以上のすべてのトヨタ車。
+Correct
+
+All Toyota cars that are priced greater than $30,000.
+価格が30,000ドル以上のすべてのトヨタ車。
+
+
+正解
+This WHERE clause shows all Toyota cars greater than or equal 30000 in Price.
+このWHERE句は、価格30000以上のすべてのトヨタ車を表示します。
+
+12.What output will the following query display?
+12. 次のクエリはどのような出力を表示しますか。
+
+select avg(Salary) as AvgSalary,
+       avg(YearsEmployed) as AvgYearsEmployed
+    from proclib.payroll;
+
+
+A result with two columns and a single row
+2つの列と1つの行からなる結果
+
+A result with one column and two rows
+1 つの列と 2 つの行からなる結果
+
+A result that returns multiple rows, summarizing the data across for each row in the table.
+複数行を返す結果で、テーブルの各行に対して横断的にデータを要約したもの
+
+正解
+With a single argument in a summary function, the summarization occurs down a column and returns a single number. 
+The result will show two columns, one for each summary function, and a single row that contains the calculation.
+要約関数の引数が1つの場合、要約は列を下って行われ、1つの数値が返される。
+結果は、2 つの列、各集約関数、および計算を含む 1 つの行を表示します。
+
+
+13.Which clause is required to filter the query results based on the calculated TotalEmployees?
+13. 計算された TotalEmployees に基づいてクエリ結果をフィルタリングするには、どの句が必要ですか？
+
+select Department, count(*) as TotalEmployees
+    from orion.employees
+    group by Department
+    _______ TotalEmployees < 30;
+
+1点
+
+WHERE
+Uncorrect
+不正解
+The GROUP BY and HAVING clauses are required to filter summarized rows. 
+GROUP BY句とHAVING句は、要約された行をフィルタリングするために必要です。
+The GROUP BY clause defines the groups for which summary statistics are calculated. 
+GROUP BY句は、要約統計が計算されるグループを定義します。
+The HAVING clause filters the query results based on summarized values. Review Grouping Data.
+HAVING句は、要約された値に基づいてクエリ結果をフィルタリングします。データをグループ化するを参照してください。
+
+HAVING
+Correct
+
+FILTER
+
+IF
+
+
+
+14.Fill in the blank to create new table named results from the query.
+14. 空欄を埋めて、クエリからresultsという名前の新しいテーブルを作成する。
+
+_____________ results as
+select ...
+
+TABLE CREATE
+
+TABLE
+
+CREATE
+
+CREATE TABLE
+Correct
+
+正解
+The CREATE TABLE statement at the beginning of a query generates a table instead of a report. 
+Follow CREATE TABLE with the new table name, the keyword AS, then the query.
+クエリの最初にあるCREATE TABLE文は、レポートではなく、テーブルを生成します。
+CREATE TABLEの後に、新しいテーブル名、キーワードAS、そしてクエリを記述してください。
+
+
+15.Which of the following dictionary tables produces a report of all available tables in the SAS session?
+15. SAS セッションで利用可能なすべてのテーブルのレポートを作成するディクショナリテーブルは次のうちどれですか？
+
+select *
+    from dictionary.listtables;
+
+select *
+    from dictionary.tables;
+Correct
+
+select *
+    from dictionary.sastables;
+
+select *
+    from dictionary.vtables;
+
+正解
+The tables DICTIONARY table shows all available tables in the SAS session.
+
+-----------------------------------------------------------------------------------------------
+2.The following WHERE clause subsets rows based on NewSalary, a calculated column created in the SELECT clause.
+
+where 75000 <= NewSalary <= 1000000
+
+True
+
+False
+Correct
+正解
+The SAS keyword CALCULATED is required. It enables the use of results of an expression in the same 
+SELECT clause or in the WHERE clause. The keyword CALCULATED precedes the column name in the expression.
+
+
+4.Which expression creates a column named Increase that is 1% of Salary?
+Salaryの1%であるIncreaseという名前の列を作成するのはどの式ですか？
+
+Increase = .01*Salary
+
+Salary *.01 as Increase
+correct
+
+Increase as .01 * Salary
+
+Salary * .01 Increase
+
+
+5.Which clause orders the rows in a query?
+どの句はクエリ内の行を順序付けますか？
+1点
+
+ORDER ROWS
+
+ROW ORDER
+
+ROW ASC
+uncorrect
+不正解
+The ORDER BY clause orders the rows in the query output. Review Sorting the Output with the ORDER BY Clause.
+ORDER BY 句は、クエリ出力内の行を並べ替えるものです。ORDER BY 句を使用した出力の並べ替えを確認します。
+
+ORDER BY
+correct
+
+6.Which statement about this query is true if the values of the calculated column Year are . (missing), 2020, 2021, and 2022?
+計算された列Yearの値が.（欠番）、2020、2021、2022の場合、このクエリに関するどのステートメントが正しいですか？
+
+proc sql;
+select Employee_ID, 
+       Employee_Term_Date format=date9.,
+       year(Employee_Term_Date) as year
+    from orion.employee_payroll
+    order by desc year;
+quit;
+
+
+The first row in the query results is Year =. (missing).
+
+The first row in the query results is Year =2022.
+uncorrect
+不正解
+Add the keyword DESC after a column name to change the default sort sequence to descending. 
+Review Sorting the Output with the ORDER BY Clause.
+列名の後に DESC キーワードを追加して、デフォルトの並べ替え順序を降順に変更します。
+ORDER BY 句を使用した出力の並べ替えを確認します。
+
+The first row in the query results is Year =2020.
+
+A syntax error is generated.
+
+
+
+8.What is the result of the following query?
+8.次のクエリの結果はどうなりますか？
+
+select name, 
+    case Married
+        when "M" then "Married"
+        when "D" then "Divorced"
+        when "S" then "Single"
+        else "Unknown"
+    end as Category
+
+
+The CASE expression overwrites the original Married column with new values.
+CASE 式は、元の Married 列を新しい値で上書きします。
+
+The CASE expression assigns values based on equality and creates a new column named Category.
+CASE 式は、等値性に基づいて値を割り当て、Category という名前の新しい列を作成します。
+correct
+正解
+When the value of Married equals one of the values listed in the WHEN conditions, 
+then the corresponding value is assigned to the new column Category.
+Married の値が WHEN 条件にリストされた値の 1 つに等しい場合、対応する値が新しい列 Category に割り当てられます。
+
+The CASE expression returns an error.
+CASE 式はエラーを返します。
+
+
+
+10.Which SELECT statement creates a report that shows the number of products in each product group?
+10.どのSELECT文が、各製品グループの製品数を示すレポートを作成しますか。
+1点
+
+select Product_Group, count(*) as Products
+    from orion.product_dim
+    group by Product_Group, Products;
+
+select Product_Group, count(*) as Products
+    from orion.product_dim;
+uncorrect
+不正解
+This query requires a GROUP BY clause that specifies the Product_Group column to count the number of products 
+in each group. Review Grouping Data .
+このクエリでは、各グループの製品数をカウントするために Product_Group 列を指定した GROUP BY 句が必要です。レビュー データのグループ化 .
+
+select Product_Group, count(*) as Products
+    from orion.product_dim
+    group by Product_Group;
+
+
+11.In which of the following queries can you replace the SAS summary function MEAN with the ANSI summary 
+function AVG and get the same results?
+11.次のクエリのうち、SAS サマリー関数 MEAN を ANSI サマリー関数 AVG に置き換えることができるのはどれですか。
+関数AVG に置き換えて、同じ結果を得ることができますか。
+
+1点
+
+select mean(of Qtr1:) as Mean_Qtr_1
+    from orion.employee_donations;
+
+select mean(Qtr1) as Mean_Qtr_1
+    from orion.employee_donations;
+
+select mean(Qtr1, Qtr2, Qtr3, Qtr4) as Mean_Annual
+    from orion.employee_donations;
+uncorrect
+不正解
+Unlike most SAS summary functions, ANSI summary functions can take only a single argument. Also, because PROC SQL follows 
+ANSI standards, shortcuts to reference a range of variables in an argument list within a function are not acceptable in 
+PROC SQL as they are in other SAS procedures. Review Summarizing Data.
+ほとんどのSAS要約関数とは異なり、ANSI要約関数は1つの引数のみを取ることができます。また、PROC SQLはANSI規格に準拠しているため 
+ANSI 標準に準拠しているため、関数内の引数リストで変数の範囲を参照するショートカットは、他の SAS プロシージャのように 
+PROC SQL では受け入れられません。データの要約を復習する
+
+
+select Employee_ID, mean(Qtr1, Qtr2, Qtr3, Qtr4) as
+       Mean_Annual
+    from orion.employee_donations;
+
+----------------------------------------------------------------------------------------------------------------------------------
+1.Which SELECT statement creates a report that displays only the unique combinations of Customer_Type_ID and Country? 
+Customer_Type_IDとCountryのユニークな組み合わせのみを表示するレポートを作成するSELECT文はどれですか？
+
+select distinct Customer_Type_ID Country
+    from orion.customer;
+
+select distinct Customer_Type_ID, Country
+    from orion.customer;
+correct
+
+select Customer_Type_ID, Country
+    from orion.customer
+    where distinct Customer_Type_ID and Country;
+
+select distinct Customer_Type_ID, distinct Country
+    from orion.customer;
+    
+    
+2.The following WHERE clause subsets rows based on NewSalary, a calculated column created in the SELECT clause.
+2.次のWHERE句は、SELECT句で作成した計算列であるNewSalaryに基づいて行をサブセットします。
+
+where 75000 <= NewSalary <= 1000000
+
+True
+
+False
+
+
+3.Which column modifier will apply a label of Monthly Sales to the column MonSales? Select all that apply.
+3.どの列修飾子が、MonSales列にMonthly Salesというラベルを適用しますか。該当するものをすべて選択してください。
+1点
+
+MonSales 'Monthly Sales'
+
+MonSales ('Monthly Sales')
+
+MonSales(label='Monthly Sales')
+correct
+
+MonSales label='Monthly Sales'
+correct
+
+
+4.What is the correct syntax to define a new column in the SELECT clause?
+SELECT句で新しいカラムを定義するための正しい構文は何ですか？
+
+expression AS columnName
+
+columnName AS expression
+correct
+
+expression = columnName
+
+columnName = expression
+
+
+6.The values returned by the YEAR function are .(missing), 2018, 2019, and2020. Which value for year is displayed first in the query result? 
+YEAR関数が返す値は、.(欠番)、2018、2019、および2020です。クエリ結果に最初に表示されるyearの値はどれですか？
+
+proc sql;
+select Employee_ID,
+       Employee_Term_Date format=date9., 
+       year(Employee_Term_Date) as year
+    from orion.employee_payroll
+    order by year;
+quit; 
+
+1点
+
+2020
+
+. (missing)
+correct
+
+2018
+
+2019
+
+
+
+7.Which query generates a report with the title Manager Report? Select all that apply.
+7.どのクエリがマネージャーレポートというタイトルのレポートを作成しますか？該当するものをすべて選択してください。
+1点
+
+proc sql;
+title = 'Manager Report';
+select Employee_ID,
+       Employee_Term_Date format=date9.,
+       year(Employee_Term_Date) as year
+    from orion.employee_payroll;
+quit;
+
+title "Manager Report";
+proc sql;
+select Employee_ID,
+       Employee_Term_Date format=date9.,
+       year(Employee_Term_Date) as year
+    from orion.employee_payroll;
+quit;
+
+proc sql;
+title 'Manager Report';
+select Employee_ID,
+       Employee_Term_Date format=date9.,
+       year(Employee_Term_Date) as year
+    from orion.employee_payroll;
+quit;
+
+proc sql;
+select Employee_ID,
+       Employee_Term_Date format=date9.,
+       year(Employee_Term_Date) as year
+    from orion.employee_payroll
+    title 'Manager Report';
+quit;
+
+
+
+9.The two SELECT statements in PROC SQL generate the same result. 
+9.PROC SQLの2つのSELECT文は、同じ結果を生成します。
+
+proc sql;
+select count(*)
+    from orion.employee_donations;
+select count(Qtr1)
+    from orion.employee_donations;
+quit; 
+
+
+True
+
+False
+correct
+
+
