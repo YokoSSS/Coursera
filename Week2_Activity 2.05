@@ -1,0 +1,72 @@
+
+1.If necessary, start SAS Studio. Open s102a05.sas from the activities folder and perform the following tasks to find all customers 70 years old and older:
+1.必要であれば、SAS Studioを起動します。activities フォルダから s102a05.sas を開き、以下の作業を行い、70 歳以上のすべての顧客を検索します。
+
+Examine and run the query. 
+クエリを調べて実行する。
+
+View the results.
+結果を表示します。
+
+Add the expression yrdif(dob,'01jan2019'd) in the SELECT clause after UserID to create a new column. 
+SELECT 節の UserID の後に yrdif(dob,'01jan2019'd) という式を追加して、新しい列を作成します。
+
+Run the query and examine the results. 
+クエリを実行し、その結果を確認します。
+
+What is the name of the new column?
+新しい列の名前は何ですか。
+
+1点
+
+temp1
+
+
+default1
+
+
+age
+
+
+The column does not have a name.
+このカラムには名前がありません。
+
+
+
+2.Add AS Age after the function. 
+2.関数の後にAS Ageを追加します。
+Run the query and examine the results. 
+クエリを実行し、結果を調べます。
+
+What changes?  
+何が変わりましたか？ 
+
+1点
+
+The new column is named Age. 
+新しい列の名前はAgeです。
+
+There is no change from the previous query.
+前のクエリからの変更はありません。
+
+An error occurs.
+エラーが発生しました。
+
+
+3.Remove the OBS= data set option in the FROM clause and add a WHERE clause to return rows where Age is greater than or equal to 70. 
+3.FROM 節の OBS= データセット・オプションを削除し、Age が 70 以上である行を返す WHERE 節を追加します。
+
+Run the query. 
+クエリを実行します。
+
+Did the query run successfully?  
+クエリは正常に実行されましたか？ 
+
+1点
+
+Yes
+
+
+No
+
+
