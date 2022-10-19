@@ -1,48 +1,84 @@
 
-1.If necessary, start SAS Studio before you begin. If you restarted your SAS session, submit your libname.sas program to access the practice data.
+1.If necessary, start SAS Studio before you begin. If you restarted your SAS session, 
+submit your libname.sas program to access the practice data.
+1.必要であれば、事前にSAS Studioを起動してください。SAS セッションを再起動した場合は、
+練習データにアクセスするために libname.sas プログラムを提出します。
 
-Open s102a03.sas from the activities folder and perform the following tasks to sort the report by CreditScore and LastName:
+Open s102a03.sas from the activities folder and perform the following tasks to sort the 
+report by CreditScore and LastName:
+アクティビティフォルダから s102a03.sas を開き、以下のタスクを実行して、
+レポートを CreditScore と LastName で並べ替えます。
 
 Complete the ORDER BY clause and sort by CreditScore.
+ORDER BY 節を完成させ、CreditScore で並べ替えます。
 
 Run the query and examine the report.
-
+クエリを実行し、レポートを確認します。
 What is the default sort order?
-
+デフォルトの並べ替え順序は何ですか。
 1点
 
 Ascending
-
+Correct
 
 Descending
 
-
+ 122        proc sql;
+ 123        select FirstName, LastName, CreditScore
+ 124        from sq.customer
+ 125        where CreditScore > 830
+ 126        order by CreditScore;
+ 127        quit;
 
 2.Add the keyword DESC after the CreditScore column in the ORDER BY clause. 
+2.ORDER BY 節の CreditScore カラムの後に DESC キーワードを追加してください。
 
 Run the query and examine the report. The sort order should now be descending.
+クエリを実行し、レポートを確認してください。ソート順は降順になっているはずです。
+proc sql;
+select FirstName, LastName, CreditScore
+	from sq.customer
+	where CreditScore > 830
+	order by CreditScore desc;
+quit;
 
 Add a secondary sort column to sort by LastName. 
-
+LastName でソートするために、二次ソートカラムを追加します。
 Run the query. 
+クエリを実行します。
+proc sql;
+select FirstName, LastName, CreditScore
+  from sq.customer
+  where CreditScore > 830
+  order by CreditScore desc, LastName;
+quit;
 
 What is the last name of the first customer on the report?
-
+レポート上の最初の顧客の姓は何ですか。
 1点
 こちらに回答を入力
-
+Leyva
+Correct
 
 
 3.Remove LastName from the SELECT clause. 
+3.SELECT句からLastNameを削除します。
 
 Run the query. 
+クエリを実行します。
 
 Are the results still sorted by LastName within CreditScore?  
-
+結果は、CreditScore 内で LastName でソートされたままですか。 
 1点
 
 Yes
-
+Correct
 
 No
 
+ 146        proc sql;
+ 147        select FirstName, CreditScore
+ 148        from sq.customer
+ 149        where CreditScore > 830
+ 150        order by CreditScore desc, LastName;
+ 151        quit;
