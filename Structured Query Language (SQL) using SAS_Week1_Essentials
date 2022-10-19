@@ -51,7 +51,7 @@ A report with the name of the table and who created the table.
 
 A report including the column name, type and other information from the table.
 テーブルのカラム名、型、その他の情報を含むレポート。
-
+Correct
 
 不正解
 The DESCRIBE TABLE statement creates a report with the column names, types, and other information. 
@@ -67,6 +67,7 @@ ROWNUM
 Uncorrect
 
 NUMBER
+correct
 
 OBS
 
@@ -74,6 +75,8 @@ NUM
 
 不正解
 ROWNUM is not a valid PROC SQL option. The NUMBER option adds the row number to a report. Review SQL Options.
+ROWNUM は PROC SQL の有効なオプションではありません。NUMBERオプションは、行番号をレポートに追加します。SQL オプションを確認します。
+
 
 5.What is required to modify this query to produce a report including only the columns Customer_ID, 
 Last_Name, Purchase_Date, and Purchase?
@@ -90,6 +93,7 @@ Uncorrect
 
 After the asterisk (*), add the names of the desired columns separated by a comma.
 アスタリスク（*）の後に、必要な列の名前をカンマで区切って追加します。
+correct
 
 Remove the asterisk (*) and add the names of the desired columns separated by a comma.
 アスタリスク（*）を削除し、必要な列の名前をカンマで区切って追加します。
@@ -155,6 +159,7 @@ select Employee_ID, Salary, Job_Title, Hire_Date
 
 select Employee_ID, Job_Title, Salary, Hire_Date
     from orion.sales;
+Correct
 
 select Employee_ID, Salary, Job_Title, Hire_Date
     from orion.sales
@@ -183,6 +188,7 @@ Uncorrect
 
 The order of columns in a query result depends on the sequence of column names listed in the SELECT clause.
 クエリ結果の列の順序は、SELECT 句に列挙された列名の順序に依存します。
+Correct
 
 The order of columns in a query result is random.
 クエリ結果内の列の順序はランダムです。
