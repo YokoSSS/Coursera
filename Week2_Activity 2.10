@@ -1,0 +1,69 @@
+Activity 2.10
+
+1.If necessary, start SAS Studio before you begin. If you restarted your SAS session, submit your libname.sas program to access the practice data.
+
+Open s102a10.sas from the activities folder and perform the following tasks to create a new table and insert rows into it:  
+
+Examine the CREATE TABLE statement and run the first query only. 
+
+Confirm that the highcredit table was created with four columns and zero rows.  
+
+In the Inserting Rows with a Query section of the program, enter the correct column names to complete the INSERT INTO statement. 
+
+Run the query. 
+
+How many rows were inserted into the table highcredit? Note: Type a numeric value.
+
+1 / 1点
+26006
+Correct
+A note in the log indicates that 26006 rows were inserted into work.highcredit.  
+
+1 proc sql;
+2 insert into work.highcredit(FirstName,LastName,
+3                             UserID,CreditScore)
+4     select FirstName, LastName,  
+5            UserID, CreditScore
+6     from sq.customer
+7     where CreditScore > 700;
+8 quit;
+
+
+
+2.In the Inserting Rows with the SET Clause section of the program, complete the INSERT INTO statement with the SET clause and insert yourself as a customer into the highcredit table. 
+
+Run the query. 
+
+What does the note in the log say?
+
+1 / 1点
+
+NOTE: Table WORK.HIGHCREDIT has not been updated.  
+
+
+NOTE: 1 row was inserted into WORK.HIGHCREDIT.  
+
+Correct
+
+
+
+3.Complete the code to drop the HighCredit table. 
+
+Run the query.
+
+Is there a note in the log?
+
+1 / 1点
+
+Yes
+
+
+No
+
+Correct
+NOTE: Table WORK.HIGHCREDIT has been dropped.  
+1 proc sql;
+2    drop table highcredit;
+3quit;
+4
+
