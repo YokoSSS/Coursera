@@ -1,0 +1,35 @@
+1.If necessary, start SAS Studio before you begin. If you restarted your SAS session, submit your libname.sas program to access the practice data.
+
+Write a query to create a report that displays the count of the number of tables in the SQ library.  
+
+Use DICTIONARY.tables as input.
+
+Name the calculated column TableCount.
+
+Add an appropriate title.
+
+Run the program and view the results.
+
+How many tables are in the sq library?  
+
+
+
+
+Solution code:
+/*s102s08.sas*/
+
+title 'Count of SQ Tables';
+proc sql;
+select count(*) as TableCount
+    from dictionary.tables
+    where libname='SQ';
+quit;
+title;
+
+
+My Answer: 27
+Count of SQ Tables
+
+TableCount
+27
+
