@@ -1,0 +1,58 @@
+Level 1 Practice: Eliminating Duplicates
+
+1.If necessary, start SAS Studio before you begin. If you restarted your SAS session, submit your libname.sas program to access the practice data.
+
+The sq.globalfull table contains estimated financial information by geographic region and country for the population age 15 years and older. 
+Using the sq.globalfull table, write a query to generate a report that displays the unique CountryCode values. 
+
+Use the following requirements as you generate the report:  
+
+Order the rows by the CountryCode.
+
+Add the title Unique Country Codes.
+
+Run the program and view the results.
+
+Do you see any duplicate country codes?
+
+/*s102s05.sas*/
+
+title 'Unique Country Codes';
+proc sql;
+select distinct CountryCode
+    from sq.globalfull
+    order by CountryCode;
+quit;
+
+
+1点
+
+Yes
+
+
+No
+correct
+
+
+
+2.Modify the query to produce a count of the unique CountryCode values.
+
+Name the result of the count CountryCount.
+
+Add the title Count of Unique Country Codes.
+
+Run the program and view the results.
+
+How many unique country codes are in the sq.globalfull table?  
+
+title 'Count of Unique Country Codes';
+proc sql;
+select count(distinct CountryCode) as CountryCount
+    from sq.globalfull;
+quit;
+title;
+
+
+answer:151
+
+
