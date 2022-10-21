@@ -1,0 +1,42 @@
+1.If necessary, start SAS Studio before you begin. If you restarted your SAS session, submit your libname.sas program 
+to access the practice data.
+
+Open s102a08.sas from the activities folder and perform the following tasks to summarize data using date functions:
+
+Examine and run the query. 
+
+View the results. 
+
+Which month has the highest value for MedianSpent? Note: Type the month number as shown in the results.
+
+1点
+こちらに回答を入力
+My Answer: 2
+
+
+2.Replace the MONTH function with the QTR function. 
+
+Change the name of the Month column to Qtr. 
+
+Run the query. 
+
+Does the program run successfully?  
+
+1点
+
+Yes
+
+No
+Correct
+
+
+3.Replace Month in the GROUP BY clause with Qtr. 
+
+Run the query. 
+
+Which quarter has the highest value for MedianSpent?  Note: Type the quarter number as shown in the results.
+
+My answer: 1
+correct
+
+
