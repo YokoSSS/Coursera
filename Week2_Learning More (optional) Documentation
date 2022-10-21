@@ -1,0 +1,83 @@
+Learning More (optional)
+
+Documentation
+For more information on material taught in PROC SQL Fundamentals, review the following documentation links:
+
+SAS® 9.4 Formats and Informats: Reference
+https://go.documentation.sas.com/?docsetId=leforinforref&docsetTarget=n0p2fmevfgj470n17h4k9f27qjag.htm&docsetVersion=9.4&locale=en
+
+SAS® 9.4 Functions and CALL Routines: Reference, Fifth Edition
+https://go.documentation.sas.com/?docsetId=lefunctionsref&docsetTarget=n01f5qrjoh9h4hn1olbdpb5pr2td.htm&docsetVersion=9.4&locale=en
+
+YRDIF Function
+https://go.documentation.sas.com/?docsetId=lefunctionsref&docsetTarget=p1pmmr2dtec32an1vbsqmm3abil5.htm&docsetVersion=9.4&locale=en
+
+CREATE TABLE Statement
+https://go.documentation.sas.com/?docsetId=sqlproc&docsetTarget=n07kfcv1vbih8rn1k9epo45umxil.htm&docsetVersion=9.4&locale=en
+
+INSERT Statement
+https://go.documentation.sas.com/?docsetId=sqlproc&docsetTarget=n00p1g1wr4q7pzn1e6o5i82n7iml.htm&docsetVersion=9.4&locale=en
+
+Accessing SAS Information By Using DICTIONARY Tables
+https://go.documentation.sas.com/?docsetId=sqlproc&docsetTarget=n02s19q65mw08gn140bwfdh7spx7.htm&docsetVersion=9.4&locale=en
+
+Beyond PROC SQL Fundamentals
+Want to go beyond the material? Check out the following resources:
+
+Want to learn more about the SQL procedure?
+
+Introduction to Proc SQL
+https://support.sas.com/resources/papers/proceedings/proceedings/sugi29/268-29.pdf
+
+Efficiency Techniques for Beginning PROC SQL Users
+https://support.sas.com/resources/papers/proceedings/proceedings/sugi29/127-29.pdf
+
+PROC SQL for SQL Die-hards
+https://support.sas.com/resources/papers/proceedings16/7540-2016.pdf
+
+Top Ten Reasons to Use PROC SQL 
+https://support.sas.com/resources/papers/proceedings/proceedings/sugi29/042-29.pdf
+
+Top 10 SQL Tricks in SAS®
+https://support.sas.com/resources/papers/proceedings14/1561-2014.pdf
+
+Top 10 Most Powerful Functions for PROC SQL  
+http://support.sas.com/resources/papers/proceedings13/257-2013.pdf
+
+Want to learn more about DICTIONARY tables?
+
+An Introduction to SAS® Dictionary Tables 
+https://www.lexjansen.com/pharmasug/2006/Tutorials/TU03.pdf
+
+Exploring DICTIONARY Tables and SASHELP Views
+http://support.sas.com/resources/papers/proceedings10/155-2010.pdf
+
+Simple Ways to Use PROC SQL and SAS DICTIONARY TABLES to
+ Verify Data Structure of the Electronic Submission Data Sets
+https://www.lexjansen.com/pharmasug/2006/Tutorials/TU03.pdf
+
+
+Want to learn more about data visualization in SAS?
+
+
+Getting Started with SGPLOT Blog Series
+https://blogs.sas.com/content/graphicallyspeaking/2016/12/05/getting-started-sgplot-index/
+
+Data Visualization Blogs
+https://blogs.sas.com/content/topic/data-visualization/
+
+SGPLOT Procedures Tip Sheet
+https://support.sas.com/rnd/app/ODSGraphics/TipSheet_SGPLOT.pdf
+
+Want to learn more about managing data?
+
+PROC DATASETS: Managing Data Efficiently
+https://support.sas.com/resources/papers/proceedings/proceedings/sugi28/190-28.pdf
+
+DATASETS Procedure Tip Sheet
+https://support.sas.com/rnd/base/Tipsheet_DATASETS.pdf
+
+Want to learn more about exploring data?
+
+Know Thy Data: Techniques for Data Exploration  
+http://support.sas.com/resources/papers/proceedings13/145-2013.pdf
