@@ -1,0 +1,45 @@
+1.If necessary, start SAS Studio before you begin. If you restarted your SAS session, submit your 
+libname.sas program to access the practice data.
+
+Open s102a07.sas from the activities folder and perform the following tasks to summarize a table using the COUNT function:
+
+Examine and run the query. 
+
+View the results. 
+
+Why is the value of MaritalStatus different from the value of TotalRows?
+
+Note: All attempts on this activity receive credit. Type your response and  compare your answer to the answer provided.    
+
+1点
+どのように思われますか？
+回答は1000文字以内でお願いします。
+result:
+TotalRows	MaritalStatus
+100,004	  92,850
+My answer:
+Because there is a blank or null value in the value of MaritalStatus.
+
+Correct:
+TotalRows counts all rows in the table. MaritalStatus counts every nonmissing occurrence in the Married column.  
+
+
+
+
+2.Inside the COUNT function, add the DISTINCT keyword in front of the Married column. 
+
+Run the query.
+
+What does the new report show?  
+
+Note: All attempts on this activity receive credit. Type your response and  compare your answer to the answer provided.  
+
+1点
+どのように思われますか？
+回答は1000文字以内でお願いします。
+My answer:
+Due to the deletion of duplicate values of MaritalStatus.
+
+Correct: 
+The number of distinct, nonmissing values from the Married column.  
+
