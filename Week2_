@@ -1,0 +1,37 @@
+Practice Level 2: Counting the Number of Tables in All Libraries
+
+
+1.If necessary, start SAS Studio before you begin. If you restarted your SAS session, submit your libname.sas program to access the practice data.
+
+Write a query to create a report that displays the count of the number of tables in all libraries.
+
+Use DICTIONARY.tables as input.
+
+Name the calculated column TableCount.
+
+Group the results by the library name.
+
+Add an appropriate title and display the library name and table count.
+
+Run the program and view the results.
+
+Which library has the most tables?
+
+Note: This is a free response question and all attempts receive credit. Type your response and compare your answer to the answer provided.
+
+
+
+1点
+Answer:
+MAPSGFK
+
+/*s102s09.sas*/
+
+title 'Count of All Tables';
+proc sql;
+select libname, count(*) as TableCount
+    from dictionary.tables
+    group by libname;
+quit;
+title;
+
