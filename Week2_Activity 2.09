@@ -1,0 +1,33 @@
+
+1.If necessary, start SAS Studio before you begin. If you restarted your SAS session, submit your libname.sas program to access the practice data.
+
+Open s102a09.sas from the activities folder and perform the following tasks:  
+
+Examine and run the query in the Create a Table from a Query section. 
+
+View the results.
+
+Add the CREATE TABLE statement and create a table named Top5States. 
+
+Run the query. 
+
+Was the table created successfully?
+
+1点
+
+Yes
+correct
+
+No
+
+
+
+2.Run the code in the Use the Table in a Visualization section of the program.
+
+In the visualization, which state has the lowest population estimate? 
+
+1点
+こちらに回答を入力
+IL
+
+
