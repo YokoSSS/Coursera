@@ -1,0 +1,46 @@
+Level 2 Practice: Working with Datetime Values
+
+1.If necessary, start SAS Studio before you begin. If you restarted your SAS session, submit your libname.sas program to access the practice data.
+
+The sq.transactionfull table contains a list of customer and transaction information.  
+Using the sq.transactionfull table, write a query to create a report displaying transactions that took place in November and December of any year. 
+
+Use the following requirements as you generate the report:  
+
+Display the following columns in this order: CustomerName, MerchantName, and Amount.
+
+Create a new column named TransactionDate by using the DATEPART function to extract the SAS date value from the DateTime column. Format the new column using the DATE9. format. If necessary, you can review the DATEPART function here.
+
+Filter the data to select rows where the month of the transaction date is November or December and the Service value is not equal to University.
+
+Order the report by the original DateTime column.
+
+Format the Amount column with the DOLLAR10.2 format.
+
+Label CustomerName as Customer Name, MerchantName as Merchant Name, Amount as Transaction Amount, and TransactionDate as Transaction Date.
+
+Add the title November/December Transactions.
+
+Run the program and view the results.
+
+What value of MerchantName is on the first documented transaction in December?  
+
+Answer:
+Big Burgers, Inc.  
+
+
+/*s102s03.sas*/
+
+title 'November/December Transactions';
+proc sql;
+select CustomerName label='Customer Name', 
+       MerchantName label='Merchant Name',
+       Amount format=dollar10.2 label='Transaction Amount',
+       datepart(DateTime) as TransactionDate format=date9. 
+                             label='Transaction Date'
+    from sq.transactionfull
+    where Service ^= 'University' and 
+          month(calculated TransactionDate) in (11, 12)
+    order by DateTime;
+quit;
+title;
