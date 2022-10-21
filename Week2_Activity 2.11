@@ -1,0 +1,33 @@
+
+
+1.If necessary, start SAS Studio before you begin. 
+If you restarted your SAS session, submit your libname.sas program to access the practice data.
+1.必要に応じて、開始する前にSAS Studioを開始します。 
+SAS セッションを再開した場合は、libname.sas プログラムをサブミットしてプラクティス データにアクセスします。
+
+Open s102a11.sas from the activities folder and perform the following tasks to find all the available 
+DICTIONARY tables in your SAS session:
+アクティビティ フォルダーから s102a11.sas を開き、次のタスクを実行して、SAS セッションで使用可能なすべての 
+DICTIONARY テーブルを見つけます。
+
+Examine and run the program. View the log and results.プログラムを調べて実行します。 ログと結果を表示します。
+
+In the log, note the column labels for the first two columns: Member Name is the DICTIONARY table, 
+and Data Set Label is the description of that table.
+ログで、最初の 2 つの列の列ラベルに注意してください。Member Name は DICTIONARY テーブルであり、
+Data Set Label はそのテーブルの説明です。
+
+Replace the asterisk in the SELECT clause and select the distinct memname and memlabel columns. 
+SELECT 句のアスタリスクを置き換えて、個別の memname 列と memlabel 列を選択します。
+
+Run the query and examine all the available DICTIONARY tables in your SAS session.
+クエリを実行し、SAS セッションで使用可能なすべての DICTIONARY テーブルを調べます。
+
+What is the data set label of the MEMBERS DICTIONARY table? Note: Copy and paste the value from 
+the results or type it exactly as shown in the results.
+MEMBERS DICTIONARY テーブルのデータ セット ラベルは何ですか? 
+注: 結果から値をコピーして貼り付けるか、結果に示されているとおりに正確に入力します。
+
+My Answer:Tables, catalogs, and views
+
+
