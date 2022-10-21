@@ -31,3 +31,21 @@ Which CustomerID value had the highest percentage of suspicious transactions?
 
 Answer:
 1973179983
+
+/*s102s06.sas*/
+
+title 'Customers with High Percentage of Suspicious Transactions';
+proc sql;
+select CustomerID, 
+       count(*) as TotalTransactions,
+       sum(Amount >= 500) as SuspiciousTransactions, 
+       calculated SuspiciousTransactions/calculated 
+                  TotalTransactions as PCTSuspicious format=percent8.2
+    from sq.transactionfull
+    where Service ^= 'University'
+    group by CustomerID
+    having PCTSuspicious>.05
+    order by PCTSuspicious desc;
+quit;
+title;
+
