@@ -1,0 +1,44 @@
+Level 1 Practice: Querying a Table
+
+1.If necessary, start SAS Studio before you begin. If you restarted your SAS session, submit your libname.sas program to access the practice data.
+
+The sq.transactionfull table contains customer and transaction information.  Using the sq.transactionfull table, 
+write a PROC SQL step to generate a report for large transactions that are not related to tuition payments to universities. 
+
+Use the following requirements as you generate the report:
+
+Display the following columns in this order: CustomerName, MerchantName, Type, Service, and Amount from the sq.transactionfull table.
+
+Select rows that have a transaction Amount value greater than $1,000 and a Service value not equal to University.
+
+Order the rows such that the largest transaction is listed first.
+
+Format the Amount column with the DOLLAR10.2 format.
+
+Label CustomerName as Customer Name, and Amount as Transaction Amount.
+
+Add the title Large Non-Educational Transactions.
+
+Run the program and view the results.
+
+What is the first value for Transaction Amount?  
+
+Answer:
+The first value is $4,072.08.
+Solution code:
+
+/*s102s01.sas*/
+
+title 'Large Non-Educational Transactions';
+proc sql;
+select CustomerName label='Customer Name', 
+       MerchantName, Type, Service, 
+       Amount format=dollar10.2 label='Transaction Amount'
+    from sq.transactionfull
+    where Amount >1000 and 
+          Service ne 'University'
+    order by Amount desc;
+quit;
+
+
+
