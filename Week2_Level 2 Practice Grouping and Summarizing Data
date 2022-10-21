@@ -1,0 +1,33 @@
+Level 2 Practice: Grouping and Summarizing Data
+
+
+1.If necessary, start SAS Studio before you begin.  If you restarted your SAS session, submit your libname.sas program to access the practice data.
+
+The sq.transactionfull table contains a list of customers with transaction information.  
+Using the sq.transactionfull table, write a query to generate a report that identifies which customers 
+have the greatest percentage of suspiciously large transactions (over $500). 
+
+Use the following requirements as you generate the report:  
+
+Select and group the report by CustomerID.  
+
+Create the column TotalTransactions using the COUNT(*) function to count the number of transactions for each value of CustomerID.  
+
+Create the column SuspiciousTransactions as SUM(Amount >= 500) to count the number of transactions greater than 500.  
+
+Create the column PCTSuspicious by dividing SuspiciousTransactions by TotalTransactions. Format the new column with PERCENT8.2.  
+
+Select only transactions where the Service value is not equal to University.
+
+Filter the output to display only summary rows where PCTSuspicious > .05.
+
+Order the report by descending PCTSuspicious.
+
+Add the title Customers with High Percentage of Suspicious Transactions.
+
+Run the program and view the results.
+
+Which CustomerID value had the highest percentage of suspicious transactions?  
+
+Answer:
+1973179983
