@@ -1,0 +1,45 @@
+Activity 2.06
+
+
+1.If necessary, start SAS Studio before you begin. If you restarted your SAS session, submit your libname.sas program to access the practice data.
+
+Open s102a06.sas from the activities folder and perform the following tasks to eliminate duplicate values in a table:
+
+Examine and run the query. View the results.
+
+Change the State column in the SELECT clause to the Employed column. 
+
+Run the query. 
+
+What does this query show?
+
+1点
+
+Frequency counts and unique values of the Employed column.    
+
+
+Only unique values Y and N of the Employed column.
+correct
+
+The query does not run successfully.
+
+
+
+2.Add the Married column in the SELECT clause after the Employed column. 
+
+Run the query. 
+
+What does this query show?  
+
+1点
+
+Unique values of the Employed column, ALL values of the Married column.
+uncorrect
+
+Unique values of the Employed column in one result, and unique values of the Married column in another result.
+uncorrect
+
+Unique combinations of Employed and Married values.
+correct
+
+
