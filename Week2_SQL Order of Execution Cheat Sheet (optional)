@@ -1,0 +1,11 @@
+
+The syntax order and order of execution of SQL clauses differ. 
+SQL句の構文順序と実行順序が異なります。
+
+The following cheat sheet shows a high level overview of the processing order of an SQL query.
+次のチート シートは、SQL クエリの処理順序の概要を示しています。
+
+
+https://d3c33hcgiwev3.cloudfront.net/1N85wQkcTyCfOcEJHI8gyQ_1a94064ebe0b454ca190a032529166c1_SQL-Order-of-Execution.pdf?Expires=1666483200&Signature=FG01v7jHm4O2b1Tn~wQ6K8aoPK6Nwjkw8em3Q8BurQbuApnCCciAYH5O4MToJ8-NxLBz-D9FuJtcAREemGniQ9H0FzzUFre0c2l8hInOJWpzh26zC~-hMtw0vgBy6tNmhGAuyDoIu~In8BYGx2zMcLJU1Nk8HPv6rg5BSv0m72Q_&Key-Pair-Id=APKAJLTNE6QMUY6HBC5A
+
+
