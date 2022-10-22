@@ -492,3 +492,183 @@ and the FROM clause specifies the data source.
 
 正解
 Great, you got all the right answers.
+
+
+************************************************************************************************************************************
+1.Which option reads 10 rows from the input table in a query?
+
+ROWNUM=10
+
+ROW=10
+uncorrect
+不正解
+ROW= is not a valid PROC SQL option. The INOBS= option restricts the number of rows that PROC SQL reads from all tables specified 
+in the FROM clause. Review SQL Options.
+
+INOBS=10
+correct
+
+OUTOBS=10
+
+
+2.Which of the following objects can you create by using only the SQL procedure?
+
+1点
+
+AS tables
+
+SAS views
+
+DBMS tables
+
+all of the above
+correct
+正解
+A PROC SQL query can create reports, SAS tables and views, and DBMS tables and views.
+
+
+3.Which code displays the column information in the sq.customer table?
+
+proc sql;
+    describe sq.customer;
+quit;
+
+proc sql;
+    describe table sq.customer;
+quit;
+correct
+正解
+The DESCRIBE TABLE statement displays column information.
+
+proc sql;
+    contents table sq.customer;
+quit;
+
+proc sql;
+    select table sq.customer content;
+quit;
+
+
+4.What does the NUMBER option on the PROC SQL statement add in the query results?
+
+The NUMBER limits the number of rows returned by the query.
+
+The NUMBER option displays the column numbers in the query results.
+
+The NUMBER option displays the row number as the first column in the query results.
+correct
+正解
+The NUMBER option displays the row number as the first column in the query results.
+
+The NUMBER option adds the total number observations that are retrieved in the query results.
+
+
+
+5.Which SELECT statement produces a report that includes every column from the sashelp.cars table? 
+
+
+SELECT ALL
+
+SELECT *
+correct
+正解
+The asterisk (*) represents all columns of the table or tables listed in the FROM clause.
+
+SELECT _ALL_
+
+SELECT _COLUMNS_
+
+
+6.All SQL keywords, features, and enhancements available in an external database management 
+system (DBMS) are also valid in PROC SQL when reading data from that particular DBMS.
+
+True
+uncorrect
+不正解
+Although SQL has a set of standards, it is important to understand that each DBMS offers different implementations 
+of the standard SQL including unique keywords, features, and enhancements that may not be valid in other environments. Review What Is SQL?
+
+False
+correct
+
+
+7.Which query produces a report based on the sq.customer table that displays the Date_Purchase, Purchase, and Price columns?
+
+
+select Date_Purchase, Purchase, Price
+    from sq.customer;
+correct
+正解
+Specify the names of the columns separated by commas in the SELECT clause, and then specify the input table in the FROM clause.
+
+from sq.customer
+    select Date_Purchase, Purchase, Price;
+
+from sq.customer
+    select Purchase Date_Purchase Price;
+
+select Date_Purchase Purchase Price
+    from sq.customer;
+
+
+
+8.Which statement is true regarding the order of columns in a query result?
+クエリ結果の列の順序に関して、どの文が正しいですか？
+
+The order of columns in a query result depends on the sequence of columns in the table listed in the FROM clause.
+クエリ結果のカラムの順序は、FROM句に列挙されたテーブルのカラムの順序に依存します。
+
+The order of columns in a query result is random.
+クエリ結果のカラムの順序はランダムです。
+
+The order of columns in a query result depends on the sequence of column names listed in the ORDER BY clause.
+クエリ結果のカラムの順序は、ORDER BY 節に列挙されたカラム名の順序に依存します。
+
+The order of columns in a query result depends on the sequence of column names listed in the SELECT clause.
+クエリ結果における列の順序は、SELECT句に列挙された列名の順序に依存します。
+correct
+正解
+In query output, the columns appear in the order in which they are listed in the SELECT clause.
+
+
+9.PROC SQL provides many SAS enhancements that are not available in other implementations of SQL.
+PROC SQLは、他のSQLの実装では利用できない多くのSASの機能拡張を提供します。
+1点
+
+True
+correct
+正解
+PROC SQL follows most of the guidelines set by the American National Standards Institute (ANSI) in its implementation of SQL. 
+However, it is not fully compliant with the current ANSI standard for SQL. You can include SAS enhancements that go beyond the ANSI standard.
+
+False
+
+
+10.Which two clauses are required to execute a query?
+
+1点
+
+
+WHERE
+
+FROM
+correct
+Correct
+The SELECT and FROM clauses are required to execute a query in SAS. The SELECT clause specifies a list of column names to retrieve, 
+and the FROM clause specifies the data source.
+
+ORDER BY
+
+GROUP BY
+
+HAVING
+
+SELECT
+correct
+Correct
+The SELECT and FROM clauses are required to execute a query in SAS. 
+The SELECT clause specifies a list of column names to retrieve, and the FROM clause specifies the data source.
+正解
+Great, you got all the right answers.
+
+
