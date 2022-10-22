@@ -1,0 +1,218 @@
+Using and Creating Macro Variables in SQL
+
+
+1.A SAS macro variable stores the following data type(s)?
+SAS マクロ変数には、次のデータ型が格納されるか。
+
+All of the above
+correct
+不正解
+A SAS macro variable stores text that is substituted in your code when it runs. Review Creating User-Defined Macro Variables.
+SAS マクロ変数には、コード実行時に置換されるテキストが格納されます。ユーザー定義マクロ変数の作成」を参照してください。
+
+DOUBLE
+
+TEXT
+
+ARRAY
+
+
+
+2.Which of the following lines of code correctly references a macro variable?
+次のコードのうち、マクロ変数を正しく参照している行はどれでしょうか？
+
+title 'The Sales of the &Country Offices';
+
+where salary > "%avgSal";
+
+where salary > '%avgSal';
+uncorrect
+不正解
+When you reference a macro variable, you must precede the macro variable name with an ampersand. 
+You can reference macro variables anywhere in SAS code. When you reference a macro variable within a text string, 
+you must enclose the text string within double quotation marks. The macro processor will not resolve macro variable 
+references that appear within single quotation marks. Review Creating User-Defined Macro Variables.
+マクロ変数を参照する場合、マクロ変数名の前にアンパサンドを付けなければなりません。
+マクロ変数は、SAS コードの任意の場所で参照できます。テキスト文字列内でマクロ変数を参照する場合、そのテキスト文字列を
+二重引用符で囲む必要があります。マクロ プロセッサは、一重引用符で囲まれたマクロ変数の参照は解決しません。
+ユーザー定義マクロ変数の作成」を参照してください。
+
+
+title "The Sales of the &Country Offices";
+
+
+
+
+3.The SYMBOLGEN system option shows you what the macro variable resolves to in the log.
+SYMBOLGENシステムオプションは、マクロ変数がログで何に解決されるかを表示します。
+1点
+
+True
+correct
+正解
+The SYMBOLGEN system option shows what the macro variable resolves to in the log.
+
+False
+
+
+4.Which statement correctly creates the user-defined path macro variable with the value of s:/workshop/data? 
+s:/workshop/dataの値を持つユーザー定義パスマクロ変数を作成する正しい文はどれか。
+1点
+
+%macro path=s:/workshop/data;
+
+%user path=s:/workshop/data;
+
+%let path=s:/workshop/data;
+correct
+正解
+To create a user-defined macro variable, you use the %LET statement and specify the name of the macro variable, 
+followed by an equal sign, and then the text string you want to store.
+ユーザー定義マクロ変数を作るには、%LET文を使い、マクロ変数名、イコール記号、そして格納したいテキスト文字列の順に指定します。
+
+%path=s:/workshop/data;
+
+
+5.Which of these queries places one value from the first row returned by the SQL query into a macro variable?
+これらのクエリのうち、SQLクエリが返す最初の行から1つの値をマクロ変数に配置するものはどれですか。
+1点
+
+select avg(Salary)
+    into %MeanSalary
+    from store.employee;
+uncorrect
+不正解
+The INTO clause creates one macro variable and assigns the value from the first column of the first row of the query result. 
+INTO句は1つのマクロ変数を作成し、クエリ結果の最初の行の最初の列から値を代入する。
+The name in the INTO clause is preceded with a colon not a percent sign. Review Creating Data-Driven Macro Variables.
+INTO句の名前の前には、パーセント記号ではなくコロンが付きます。レビュー データ駆動型マクロ変数の作成。
+
+select avg(Salary)
+    into :MeanSalary
+    from store.employee;
+
+select avg(Salary)
+    into &MeanSalary
+    from store.employee;
+
+
+
+6.You created a macro variable named MeanSalary and want to display the macro variable value in the log. 
+Which statement produces the value in the log? 
+あなたはMeanSalaryという名前のマクロ変数を作成し、ログにマクロ変数の値を表示したいと思います。
+どのステートメントがログに値を生成しますか？
+1点
+
+%PUT &=MeanSalary;
+correct
+正解
+When you want to view the resolved value of a macro variable without having to include it in a report, 
+you can use the %PUT statement to display the resolved macro variable value along with descriptive text in the SAS log.
+マクロ変数の解決値をレポートに含めずに表示したい場合、%PUT ステートメントを使用すると、
+解決したマクロ変数値を説明テキストと共に SAS ログに表示することができます。
+
+%PUT MeanSalary;
+
+PUT &=MeanSalary;
+
+PUT MeanSalary;
+
+
+7.Which clause can be used to create multiple macro variables from query results?
+クエリ結果から複数のマクロ変数を作成するために、どの句を使用できますか？
+1点
+
+HAVING clause
+
+INTO clause
+correct
+正解
+The INTO clause creates multiple macro variables by specifying each macro variable name with a colon. 
+Each macro variable will be assigned the summarized value from the SELECT clause.
+INTO句は、各マクロ変数名をコロンで指定することにより、複数のマクロ変数を作成する。
+各マクロ変数には、SELECT句から要約された値が代入される。
+
+GROUP BY clause
+
+INSERT clause
+
+
+8.Which SELECT clause stores a list of products in a macro variable named InventoryList from the inventory table? 
+Each product should be delimited by a comma. 
+インベントリテーブルからInventoryListという名前のマクロ変数に商品のリストを格納するSELECT句はどれか。
+各商品はカンマで区切らなければならない。
+
+inventory
+Product   Quantity
+Shirt     5
+Shoes     3
+Pants     2
+
+select Product
+    into :InventoryList ","
+    from inventory;
+
+select Product
+    into :InventoryList delimited by ","
+    from inventory;
+
+select Product
+    into :InventoryList separated by ","
+    from inventory;
+correct
+正解
+Use the SEPARATED BY keywords to specify a character to delimit the values in the macro variable.
+SEPARATED BYキーワードで、マクロ変数の値を区切る文字を指定します。
+
+9.Values assigned by the INTO clause use the BEST8. format by default. Large numeric values might be displayed 
+using scientific notation. How can large numeric values be displayed without scientific notation?
+INTO句で割り当てられた値は、デフォルトでBEST8.形式を使用します。大きな数値が科学的記数法で表示されることがあります。
+科学的記数法を使わずに大きな数値を表示するにはどうしたらよいでしょうか。
+1点
+
+Use the INTO clause only in the outer query of a SELECT statement, not in a subquery.
+INTO 節は、SELECT 文の外部クエリでのみ使用し、サブクエリでは使用しないでください。
+unCorrect
+不正解
+When storing a number, SAS uses the BEST8. Format. If the number is larger than eight digits, scientific notation is 
+often used. To display larger numeric values without scientific notation, use another format, such as the w. format. Review Activity 6.02.
+数値を格納する場合、SASはBEST8を使用します。形式を使用します。数値が8桁より大きい場合、科学的記数法がよく使われます。
+科学的記数法を使わずに大きな数値を表示するには、w.フォーマットのような別のフォーマットを使用します。アクティビティ6.02を復習してください。
+
+
+Trim the leading zeros and trailing blanks from the values that are stored using the TRIMMED keyword.
+TRIMMED キーワードを使用して、格納される値から先頭のゼロと末尾の空白を切り詰めます。
+
+Use another format, such as the w. format in the SELECT clause.
+SELECT 節では、w.形式などの別の形式を使用します。
+
+Use SQLOBS to determine the number of digits that is produced by the query.
+SQLOBS を使用して、クエリによって生成される桁数を決定します。
+
+
+10.Given the table Revenue below, the sum of Revenue is to be stored in a macro variable named TotalRevenue. 
+Will the query below produce and store the exact value of $900,000,000 in the macro variable? 
+以下の表「Revenue」がある場合、「Revenue」の合計を「TotalRevenue」という名前のマクロ変数に格納することになる。
+以下のクエリは、マクロ変数に正確な値 $900,000,000 を生成して格納しますか？
+
+select sum(Revenue)
+    into :TotalRevenue format=dollar16.
+    from revenue;
+
+
+revenue
+Product   Revenue
+Shirt     $200,000,000
+Shoes     $300,000,000
+Pants     $400,000,000
+
+
+No
+
+
+Yes
+uncorrect
+不正解
+Use the FORMAT= column modifier in the SELECT clause to format the summarized value. Review Activity 6.02.
+SELECT句のFORMAT=列修飾子を使用して、要約された値をフォーマットしてください。アクティビティ6.02を復習してください。
+
