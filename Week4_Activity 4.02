@@ -1,0 +1,30 @@
+
+
+1.If necessary, start SAS Studio before you begin. If you restarted your SAS session, submit your libname.sas program to 
+access the practice data.
+
+Open s104a02.sas from the activities folder and perform the following tasks to use a subquery in the HAVING clause:
+
+Examine and run the first query. View the results.
+
+Modify the second query. Copy the value returned by the first query into the subquery against the HAVING clause to 
+return divisions with an average PopEstimate1 value greater than the total average of PopEstimate1.
+
+Run the query you just modified. 
+
+How many divisions have a higher average PopEstimate1 value than the average PopEstimate1 value of all the states? Note: Type a numeric value.
+
+
+
+2.Remove the static value and add a subquery in the HAVING clause.
+
+Run the query.
+
+Did you get the same result this time you ran the query?
+
+1点
+
+Yes
+
+
+No
