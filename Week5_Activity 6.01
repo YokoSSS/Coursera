@@ -1,0 +1,82 @@
+
+1.If necessary, start SAS Studio before you begin. If you restarted your SAS session, submit your libname.sas program to access 
+the practice data.
+
+Open s106a01.sas from the activities folder and perform the following tasks to create and use user-defined macro variables:
+アクティビティフォルダからs106a01.sasを開き、以下の作業を行い、ユーザー定義マクロ変数を作成・使用します。
+
+Run the program. プログラムを実行する。
+
+Examine the log and output data. Confirm that the name of the newly created table is CUSTOMERGA and contains 957 rows.
+ログと出力データを調べる。新しく作成されたテーブルの名前が CUSTOMERGA であり、957 行が含まれていることを確認します。
+
+Replace the values GA and 650 in the %LET statements with NC and 700. 
+LET 文の値 GA および 650 を NC および 700 に置き換えます。
+
+Run the program. Examine the log and output data. 
+プログラムを実行します。ログと出力データを調べます。
+
+What is the name of the newly created table? 
+新しく作成されたテーブルの名前は何ですか。
+
+My answer: WORK.CUSTOMERNC
+
+正解
+The table name is CUSTOMERNC.  
+
+%let State=NC;
+%let CreditMin=700;
+
+1点
+
+
+2.How many rows are in the new table? Note: Type a numeric value.
+2.新しいテーブルには何行ありますか？注：数値を入力してください。
+
+My ANSWER: 700
+
+正解
+There are 700 rows in CUSTOMERNC.
+
+
+3.Change the double quotation marks in the WHERE clause expression to single quotation marks. 
+3.WHERE句の式のダブルクォーテーションをシングルクォーテーションに変更します。
+
+
+%let State=NC;
+%let CreditMin=700;
+proc sql;
+create table Customer&State as
+select CustomerID, Employed, Race, 
+       Married, State, CreditScore
+    from sq.customer
+    where State=”&State” and
+          CreditScore > &CreditMin;
+quit; 
+
+↓
+
+%let State=NC;
+%let CreditMin=700;
+proc sql;
+create table Customer&State as
+select CustomerID, Employed, Race, 
+       Married, State, CreditScore
+    from sq.customer
+    where State='&State' and
+          CreditScore > &CreditMin;
+quit; 
+
+
+Run the query. 
+クエリーを実行します。
+
+How many rows are in the new table?  Note: Type a numeric value.
+新しいテーブルには何行ありますか？ 注：数値を入力してください。
+
+正解
+Zero rows are returned. The macro variable doesn't resolve inside of single quotation marks. 
+Instead, the WHERE clause is searching for the character string '&State'.  
+
+
+
