@@ -1,0 +1,75 @@
+1.If necessary, [start SAS Studio](http://dl.liveweb.sas.com/eldata/start_SAS_Studio.htm) before you begin. 
+If you restarted your SAS session, submit your libname.sas program to access the practice data.
+
+Open s103p02.sas from the practices folder. Modify the program to join the sq.customer and sq.agegroup tables based on a customer's year of birth.  
+
+Add a PROC SQL step to the top of the program to create a table named work.generation that combines sq.customer and sq.agegroup. 
+
+Use the following requirements:  
+
+Select FirstName and LastName.
+
+Create a column named Year that uses the DOB (Date of Birth) column in the sq.customer to determine the year the customer was born. 
+
+Select the Name column from the sq.agegroup table.
+
+The StartYear and EndYear columns in the sq.agegroup table indicate the starting and ending years for each generation. 
+Use these columns to perform a non-equijoin using the calculated Year value from the previous step.
+
+Run the query and view the results.
+
+Run the PROC SGPLOT step below your query to generate the bar chart. 
+
+Which age group has the most customers?
+
+1点
+
+Baby Boomers
+
+
+Thirteeners or Generation X
+
+
+Millennials or Generation Y
+
+
+/*s103s02.sas*/
+
+/*Solution*/
+proc sql;
+create table work.generation as
+select c.FirstName, 
+       c.LastName, 
+       year(c.DOB) as Year,
+       a.Name
+    from sq.Customer as c inner join
+         sq.AgeGroup as a
+    on year(c.DOB) between a.StartYear and a.EndYear;
+quit;
+
+/*Alternate Solution*/
+proc sql;
+create table work.generation as
+select c.FirstName, 
+       c.LastName, 
+       year(c.DOB) as Year,
+       a.Name
+    from sq.Customer as c, sq.AgeGroup as a
+    where calculated Year between a.StartYear and a.EndYear;
+quit;
+
+
+/*Bar Chart*/
+title 'Count of Customers by Generation';
+proc sgplot data=work.generation noautolegend;
+    hbar Name / 
+          stat=freq
+          dataskin=sheen 
+          categoryorder=respdesc 
+          datalabel 
+          datalabelattrs=(size=9pt) 
+          FILLATTRS=(color=cx6f7eb3);
+          yaxis label='Generation';
+          xaxis grid label='Count';
+run;
+title;
