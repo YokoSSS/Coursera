@@ -1,0 +1,25 @@
+Learning More (optional)
+
+Documentation
+For more information on material taught in Subqueries, review the following documentation links:
+
+
+Using Subqueries to Select Data
+https://go.documentation.sas.com/?cdcId=pgmsascdc&cdcVersion=9.4_3.4&docsetId=sqlproc&docsetTarget=p1st65qbmqdks3n1mch4yfcctexi.htm&locale=en
+
+When to Use Joins and Subqueries
+https://go.documentation.sas.com/?docsetId=sqlproc&docsetTarget=n1dvk6nw2jgit3n1wp3xf9q3fkvv.htm&docsetVersion=9.4&locale=en
+
+WORKING WITH SUBQUERY IN THE SQL PROCEDURE
+https://www.lexjansen.com/nesug/nesug98/dbas/p005.pdf
+
+
+Beyond Subqueries
+Want to go beyond the material? Check out the following resources:
+
+Building an SQL subquery in SAS Enterprise Guide
+https://blogs.sas.com/content/sasdummy/2013/06/28/building-an-sql-subquery-in-sas-enterprise-guide/
+
+Nifty Uses of SQL Reflexive Join and Sub-query in SAS®
+https://support.sas.com/resources/papers/proceedings15/3455-2015.pdf
+
