@@ -1,0 +1,29 @@
+1.If necessary, start SAS Studio before you begin. If you restarted your SAS session, submit your libname.sas program to access the practice data.
+
+Open s103a04.sas from the activities folder and perform the following tasks to use a non-equijoin:
+
+Complete the ON clause to join on rows where customer Income is greater than the LowIncome range, 
+and less than or equal to the HighIncome range using the BETWEEN-AND WHERE operator.
+BETWEEN-AND WHERE 演算子を使用して、顧客所得が LowIncome の範囲より大きく、HighIncome の
+範囲以下の行に結合する ON 節を完成させます。
+
+Run the query.
+
+What tax bracket is Olga Comstock in? Note: Type the answer as shown in the results.
+Olga Comstockは、何番目の税率に属していますか？注：結果に表示されているように答えを入力してください。
+
+1点
+
+My answer:12%
+correct
+Olga Comstock is in the 12% tax bracket. 
+
+
+proc sql;
+select FirstName, LastName, Income format=dollar16., 
+       TaxBracket
+	from sq.smallcustomer as c inner join 
+         sq.taxbracket as t
+    on c.Income between t.LowIncome and t.HighIncome
+	order by TaxBracket desc, Income desc;
+quit;
