@@ -52,4 +52,3 @@ select Division, avg(PopEstimate1) as avgDivisionPop
         from sq.statepopulation);
 quit;
 
-
