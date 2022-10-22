@@ -216,3 +216,182 @@ uncorrect
 Use the FORMAT= column modifier in the SELECT clause to format the summarized value. Review Activity 6.02.
 SELECT句のFORMAT=列修飾子を使用して、要約された値をフォーマットしてください。アクティビティ6.02を復習してください。
 
+
+******************************************************************************************************************************************************
+
+1.What do all the following values have in common with regard to a macro variable?
+
+9.2
+10/18/2022
+1345020
+Baseballs
+Flower buds
+
+1点
+
+They are specialized keywords to get the system time from a macro.
+
+Each one is a system option for a macro variable.
+
+All can be stored as a text string in a macro variable.
+
+All can be stored as either a numeric macro variable, or text macro variable.
+
+
+
+2.The following line of code correctly references the Country macro variable.
+
+title 'The Sales of the &Country Offices';
+
+1点
+
+True
+
+False
+
+
+3.Which of the following options displays messages in the log regarding macro variable resolution?
+
+1点
+
+
+SYMBOLGEN
+
+SYMBOLLOG
+
+FEEDBACK
+
+MPRINT
+
+
+
+4.Which statement correctly creates the user-defined path macro variable with the value of s:/workshop/data? 
+
+1点
+
+
+%macro path=s:/workshop/data;
+
+%path=s:/workshop/data;
+
+%user path=s:/workshop/data;
+
+%let path=s:/workshop/data;
+
+
+
+5.What is the INTO clause doing in the following query?
+
+select count(ID)
+    into :CountID
+    from store.employee;
+
+1点
+
+The INTO clause counts the number of time ID exists in the table and stores it in a macro variable named CountID.
+
+The INTO clause creates a range of macro variables, one for each unique value, and stores each unique value in one of the macro variables.
+
+The INTO clause trims leading blanks from the value of the macro variable.
+
+The INTO clause creates a macro variable named MeanSalary.
+
+
+
+6.You created a macro variable named MeanSalary and want to display the macro variable value in the log. Which statement produces the value in the log? 
+
+1点
+
+%PUT MeanSalary;
+
+%PUT &=MeanSalary;
+
+PUT &=MeanSalary;
+
+PUT MeanSalary;
+
+
+7.When trying to store the descriptive statistics of the Price column from the inventory table into multiple macro variables, 
+you keep receiving an error. Why won’t the following query successfully store mean, median, min, and max?
+
+select mean(Price), median(Price), min(msrp), 
+       max(Price)
+    into: MeanPrice, MedianPrice, MinPrice, 
+          MaxPrice
+    from inventory;
+
+1点
+
+The INTO clause cannot create multiple macro variables.
+
+Remove the commas between each macro variable name in the INTO clause.
+
+The INTO clause is missing a ‘separated by’ clause.
+
+Specify each macro variable name with a preceding colon in the INTO clause.
+
+
+
+8.What is the value of the macro variable InventoryList?
+
+select Product
+    into :InventoryList separated by ","
+    from inventory; 
+
+inventory
+
+Product   Quantity
+Shirt     5
+Shoes     3
+Pants     2
+
+"Shirt","Shoes","Pants"
+
+Three macro variables are created for Shirt, Shoes and Pants that contain the corresponding value.
+
+Shirt,Shoes,Pants
+
+The query returns an error.
+
+
+
+9.Given the Revenue table below, you want to store the sum of Revenue in a macro variable named TotalRevenue. Which query will 
+store the exact value 400000 in a macro variable?
+
+revenue
+Product   Revenue
+Software  $300,000
+Training  $100,000
+
+Select sum(Revenue)
+    into TotalRevenue format=dollar16.
+    from revenue;
+
+select sum(Revenue)
+    into TotalRevenue trimmed
+    from revenue;
+
+select sum(Revenue)
+    into :TotalRevenue format=dollar16.
+    from revenue;
+
+select sum(Revenue)
+    into :TotalRevenue trimmed
+    from revenue;
+
+
+
+10.When storing a value in a single macro variable, PROC SQL preserves leading or trailing blanks. 
+The ______________ option can be used to trim the leading and trailing blanks from values that are stored in a single macro variable.
+
+The SEPARATED BY option
+
+The TRIMMED option
+
+The FORMAT option
+
+The NOTRIM option
+
+
+
+
