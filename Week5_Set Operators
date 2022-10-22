@@ -1,0 +1,316 @@
+Set Operators
+
+1.How many rows will this query produce? 
+このクエリで生成される行数は何行ですか？
+
+proc sql;
+select *
+    from a
+intersect
+select *
+    from b;
+quit; 
+
+a
+ID   Pet
+1    Cat
+1    Dog
+1    Pig
+
+b
+ID   Pet
+1    Cat
+2    Cow
+3    Dog
+
+
+
+6
+
+1
+correct
+正解
+The INTERSECT operator returns the unique rows that occur in both queries.
+
+5
+
+2
+
+
+2.By default, these three set operators remove duplicate rows from the query results
+2.デフォルトでは、これら 3 つの集合演算子はクエリ結果から重複する行を削除します。
+1点
+
+EXCEPT, OUTER UNION, and JOIN
+
+EXCEPT, INTERSECT, and UNION
+correct
+正解
+Although they do not remove the duplicate rows at the same point, the EXCEPT, INTERSECT, and UNION set operators remove duplicate rows.
+
+
+OUTER UNION, JOIN, and INTERSECT
+
+UNION, JOIN, and INTERSECT
+
+
+
+
+3.This query will produce three rows.
+このクエリでは3つの行が生成されます。
+proc sql;
+select *
+    from a
+except
+select *
+    from b;
+quit;
+
+a
+ID   Pet
+1    Cat
+1    Dog
+1    Pig
+
+b
+ID   Pet
+1    Cat
+2    Cow
+3    Dog
+
+False
+correct
+正解
+The EXCEPT set operator selects unique rows from the first query that are not found in the second query. 
+In this case, the unique rows from the first query that are not in the second query are only two.
+
+True
+
+
+
+4.How many rows will this query produce? 
+
+proc sql;
+select *
+    from a
+except corr all
+select * 
+    from b;
+quit;
+
+a
+ID  Pet
+1   Cat
+1   Dog
+1   Pig
+
+b
+ID  Pet
+1   Cat
+2   Cow
+3   Dog
+
+
+5
+
+2
+correct
+3
+
+1
+
+
+
+5.How many rows will this query produce? 
+
+proc sql;
+select *
+    from a
+outer union
+select *
+    from b;
+quit;
+
+
+a
+ID  Pet
+1   Cat
+1   Dog
+1   Pig
+
+b
+ID  Pet
+1   Cat
+2   Cow
+3   Dog
+
+
+5
+
+2
+correct
+正解
+The CORR keyword overlays columns that have the same name in both tables and the ALL keyword does not make a 
+second pass through the data to eliminate duplicate rows. In this query, the column names are identical, and no 
+duplicate rows are returned by the query.
+
+3
+
+1
+
+
+5.How many rows will this query produce? 
+
+proc sql;
+select *
+    from a
+outer union
+select *
+    from b;
+quit;
+
+a
+ID  Pet
+1   Cat
+1   Dog
+1   Pig
+
+b
+ID  Pet
+1   Cat
+2   Cow
+3   Dog
+
+
+2
+
+5
+
+6
+correct
+正解
+The OUTER UNION set operator selects all rows from both query results.
+
+1
+
+
+6.The UNION operator does not return duplicate rows by default. If a row occurs more than once, then only one occurrence is returned.
+UNION演算子は、デフォルトでは重複した行を返しません。ある行が複数回発生した場合、1回分だけが返されます。
+
+True
+correct
+正解
+The UNION set operator returns unique rows from both queries and removes duplicates.
+
+False
+
+
+
+7.When the keyword ALL is used in a query, what happens to PROC SQL? (Select all that apply.)
+クエリでキーワードALLを使用した場合、PROC SQLはどうなりますか？(該当するものをすべて選択してください)
+1点
+
+
+PROC SQL does not allow ALL to be used with the OUTER UNION operator.
+PROC SQLはALLをOUTER UNION演算子で使用することを許可していません。
+
+PROC SQL does not make a second pass at the data to eliminate duplicate rows.
+PROC SQLは、重複行を削除するためにデータの2回目の通過を行いません。
+correct
+Correct
+The ALL keyword does not suppress duplicate rows. When the ALL keyword is specified, 
+PROC SQL does not make a second pass at the data to eliminate duplicate rows.
+ALL キーワードは、重複行を抑制しません。ALL キーワードが指定された場合、PROC SQL は重複行を排除するためにデータを 2 度処理しません。
+
+PROC SQL overlays columns that have the same name in both tables.
+PROC SQLは、両方のテーブルで同じ名前の列をオーバーレイします。
+correct
+This should not be selected
+The CORRESPONDING keyword overlays columns that have the same name in both tables. 
+The ALL keyword does not suppress duplicate rows. When the ALL keyword is specified, 
+PROC SQL does not make a second pass at the data to eliminate duplicate rows. Review Using Set Operators.
+これは選択されるべきではない
+CORRESPONDING キーワードは、両方のテーブルで同じ名前を持つ列を重ね合わせます。
+ALL キーワードは、重複する行を削除しません。ALL キーワードを指定すると、PROC SQL はデータに対して 
+2 度目の処理を行い、重複行を削除しません。集合演算子の使用方法を確認します。
+
+
+PROC SQL makes the column names of the first query become the column names of the output table
+PROC SQLは、最初のクエリの列名を出力テーブルの列名にします。
+
+
+8.Which statement about using the keyword CORR in a set operation is true?
+8.セット操作でキーワードCORRを使用することに関するどのステートメントが正しいですか？
+1点
+
+
+When used with the INTERSECT operator, the CORR keyword instructs PROC SQL to overlay columns by position in the final results.
+INTERSECT 演算子と共に使用すると、CORR キーワードは PROC SQL に対し、最終結果において位置によって列を重ねるように指示します。
+
+When used with the EXCEPT operator, the CORR keyword instructs PROC SQL to position by same-name columns and 
+eliminate columns that do not have the same name in both tables from the final results.
+EXCEPT 演算子と共に使用すると、CORR キーワードは PROC SQL に対して、同名の列で位置を決め、
+両方のテーブルで同名でない列を最終結果から除外するように指示します。
+
+When used with the OUTER UNION operator, the CORR keyword instructs PROC SQL to eliminate columns that do not 
+have the same name in both tables from the final results.
+OUTER UNION 演算子と共に使用すると、CORR キーワードは PROC SQL に対して、最終結果から両方のテーブルで
+同じ名前を持たない列を削除するように指示します。
+uncorrect
+不正解
+When the CORR keyword is used with EXCEPT and INTERSECT, it instructs PROC SQL to align columns that the query 
+results have in common. The OUTER UNION CORR aligns by like column names in both tables and includes columns that do not 
+have the same name in both tables. Review Using Set Operators.
+CORR キーワードを EXCEPT および INTERSECT と共に使用すると、PROC SQL に対して、問い合わせ結果に共通する列を揃えるように指示します。
+OUTER UNION CORR は、両方のテーブルで同じような列名で整列し、両方のテーブルで同じ名前を持たない列を含めます。
+セット演算子の使用方法を確認する。
+
+
+9.Which statement about using the keyword ALL in a set operation is true?
+9.セット操作でキーワードALLを使用することに関するどのステートメントが正しいですか？
+1点
+
+PROC SQL does not allow duplicate rows to remain eligible for processing.
+PROC SQL は、重複した行を処理対象として残すことを許可しません。
+
+Generally, using the keyword ALL is more efficient because it avoids an extra pass through the data.
+一般に、キーワードALLを使用すると、データの余分な通過を避けることができるため、より効率的です。
+
+The keyword ALL is not an implied part of the OUTER UNION set operator and is not necessary.
+キーワードALLは、OUTER UNIONセット演算子の暗黙の部分ではないので、必要ありません。
+correct
+正解
+Not using the keyword ALL is generally less efficient because it requires PROC SQL to make an extra pass through 
+the data to eliminate duplicate rows.
+キーワードALLを使用しない場合、PROC SQLが重複行を排除するためにデータを余分に通過させる必要があるため、一般に効率が悪くなります。
+
+Generally, using the keyword ALL is less efficient because it requires an extra pass through the data.
+一般に、キーワードALLを使用すると、データを余分に通過させる必要があるため、効率が悪くなります。
+
+
+10.The INTERSECT, EXCEPT and UNION set operators align columns by position and remove duplicate rows by default. 
+10.INTERSECT、EXCEPT、およびUNIONセット演算子は、列を位置によって整列し、デフォルトで重複行を削除します。
+
+What does the OUTER UNION set operator do by default?
+OUTER UNION セット演算子のデフォルトの動作は？
+
+The OUTER UNION set operator returns one unique row from the first table, but not the second.
+OUTER UNION セット演算子は、最初のテーブルから一意の行を返しますが、2 番目のテーブルからは返しません。
+
+The OUTER UNION set operator returns unique rows from the two tables.
+OUTER UNION set 演算子は、2 つのテーブルから一意な行を返します。
+
+The OUTER UNION set operator overlays the columns in the same position and removes extra columns.
+OUTER UNION set 演算子は、同じ位置の列を重ね合わせ、余分な列を削除します。
+
+The OUTER UNION set operator includes all columns and rows by default.
+OUTER UNION セット演算子は、デフォルトですべての列と行を含む。
+correct
+正解
+The OUTER UNION operator concatenates the results of the queries. It does not overlay columns from the two tables. 
+To overlay columns in the same position, use the CORRESPONDING keyword.
+OUTER UNION演算子は、クエリの結果を連結する。この演算子は、2 つのテーブルの列を重ね合わせることはありません。
+同じ位置の列を重ね合わせるには、CORRESPONDING キーワードを使用します。
+
+
+
