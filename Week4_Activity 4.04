@@ -1,0 +1,27 @@
+
+Activity 4.04
+
+1.If necessary, start SAS Studio before you begin. If you restarted your SAS session, submit your libname.sas program to access the practice data.
+
+Open s104a04.sas from the activities folder and perform the following tasks to create and use a view:
+
+Create a view named VWtotalcustomer from the query. 
+
+Run the query and examine the log.
+
+Run the Use the View in the PROCS Below section of the program. 
+
+Which state has the highest number of customers?
+
+1点
+My answer: CA
+
+正解
+CA (California
+
+proc sql;
+create view VWtotalcustomer as
+select State,count(*) as TotalCustomer
+    from sq.customer
+    group by State;
+quit;
