@@ -1,0 +1,40 @@
+1.If necessary, start SAS Studio before you begin. If you restarted your SAS session, submit your libname.sas program to 
+access the practice data.
+
+Use the EXCEPT set operator to generate a report listing of merchants in the sq.merchant table who are not listed 
+in the sq.transaction table.  
+
+Write a query using the following requirements:
+
+Select MerchantID from the sq.merchant table.
+
+Use the EXCEPT set operator.
+
+Select MerchantID from the sq.transaction table.
+
+Order the results by MerchantID.
+
+Add an appropriate title.
+
+Run the query and view the results.
+
+How many merchants do not have a transaction?  Note: Type a numeric value.
+トランザクションがないマーチャントはいくつありますか？ 注：数値を入力してください。
+1点
+6
+正解
+/*s105s01.sas*/
+
+title 'Merchants without Transactions';
+proc sql;
+select MerchantID
+    from sq.merchant
+    except
+select MerchantID
+    from sq.transaction
+    order by MerchantID;
+quit;
+title;
+
+
+https://github.com/YokoSSS/Coursera/issues/57#issue-1419412410
