@@ -23,5 +23,19 @@ Run the query and examine the report.
 How many transactions do not have a customer associated with them? Note: Type a numeric value.
 顧客に関連付けられていないトランザクションはいくつありますか。注：数値を入力してください。
 
+My Answer:7
 
+正解
+seven transactions
+
+proc sql;
+select FirstName, LastName, Income, 
+       c.AccountID "c.AccountID", 
+       t.AccountID "t.AccountID", 
+       DateTime, MerchantID
+    from sq.smalltransaction2 as t left join 
+         sq.smallcustomer2 as c
+      on c.AccountID = t.AccountID and t.AccountID is not null
+      where c.AccountID is null;
+quit;
 
