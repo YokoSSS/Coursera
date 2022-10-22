@@ -1,0 +1,74 @@
+1.If necessary, start SAS Studio before you begin. If you restarted your SAS session, submit your libname.sas program to access the practice data.
+
+Find the top 10 countries that have the highest percentage of estimated global population using the population 
+estimates of ages 15+ in the sq.globalfull table.  
+
+Use the sq.globalfull table to write a query to sum the EstYear1Pop of all countries. Use the following requirements:
+
+Use an in-line view to select the distinct CountryCode and EstYear1Pop values from the sq.globalfull table. 
+Note: You must find the distinct estimated population of each country because the data contains the estimated 
+population for each country multiple times.
+
+Sum the EstYear1Pop column and name the column new column EstPct. Format the column using the COMMA format.
+
+Run the query and view the results.
+
+What is the value of EstPct?  Note: Copy and paste the value from the results or type it exactly as shown in the results.
+
+1点
+こちらに回答を入力
+5,271,101,653
+
+正解
+/*s104s10.sas*/
+
+/*part 1*/
+title 'Estimated Population of Ages 15+ for Next Year';
+proc sql;
+select sum(EstYear1Pop) as EstPct format=comma16.
+    from (select distinct CountryCode, EstYear1Pop
+              from sq.globalfull);
+quit;
+title;
+
+
+
+2.Create a new query using the query you just ran to determine the estimated global population percentage of each country. 
+Use the following requirements:
+
+Select the distinct CountryCode and ShortName values.
+
+Determine the percentage population by creating a new column. Divide the EstYear1Pop value of each country by 
+the total value calculated in step 1. Name the new column PctPop and format using the PERCENT format.
+
+Use the sq.globalfull table.
+
+Order the results by descending PctPop.
+
+Limit the results to the top 10 countries.
+
+Add an appropriate title.
+
+Run the query and view the results.
+
+Which country has the highest estimated population of individuals 15 or over?  
+
+My answer: CHN
+正解
+China with 21.3%  
+
+
+/*part 2*/
+title 'Top 10 Countries by Estimate Population';
+title2 'Ages 15+';
+proc sql outobs=10;
+select distinct CountryCode, ShortName, 
+       EstYear1Pop/
+               (select sum(EstYear1Pop) as EstPct format=comma16.
+                    from (select distinct CountryCode, EstYear1Pop
+                              from sq.globalfull)) 
+                                   as PctPop format=percent7.2
+    from sq.globalfull
+    order by PctPop desc;
+quit;
+title;
