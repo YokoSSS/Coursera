@@ -1,0 +1,42 @@
+Activity 5.02
+
+1.If necessary, start SAS Studio before you begin. If you restarted your SAS session, 
+submit your libname.sas program to access the practice data.
+
+Open s105a02.sas from the activities folder and perform the following tasks to find all target 
+customers who have not responded to the sales phone call:
+アクティビティフォルダからs105a02.sasを開き、以下のタスクを実行して、営業電話に応答していないすべての対象顧客を見つけます。
+
+Run the first queries in the Preview Tables section of the program to preview the sq.salesemail and sq.salesphone tables. 
+プログラムの［テーブルのプレビュー］セクションの最初のクエリを実行して、sq.salesemail テーブルと sq.salesphone テーブルをプ レビューします。
+Examine the columns in both tables.
+両方のテーブルの列を調べます。
+
+In the EXCEPT section of the program, complete the query to find all customers from the sq.saleslist table who have not responded to the sales call in sq.salesphone.
+プログラムの EXCEPT セクションで、sq.saleslist テーブルから sq.salesphone のセールスコールに応答していないすべての顧客を検索するクエリを完成させます。
+How many customers have not responded to the phone call? Note: Type a numeric value.
+電話に応答していない顧客は何人ですか。注：数値を入力してください。
+
+My Answer:5
+
+正解
+5 customers have not responded
+
+proc sql;
+select *
+    from sq.saleslist
+except corr
+select *
+    from sq.salesphone;
+quit;
+
+/* OR */
+
+select CustomerID
+    from sq.saleslist
+except
+select CustomerID
+    from sq.salesphone;
+quit;
+
+https://github.com/YokoSSS/Coursera/issues/56#issuecomment-1287856803
