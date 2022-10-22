@@ -1,0 +1,32 @@
+
+1.If necessary, start SAS Studio before you begin. If you restarted your SAS session, submit your libname.sas program to access the practice data.
+
+The sq.statepopulation table contains estimated population statistics for every state in the US and its territories. 
+You want to determine which states have an estimated three-year population growth greater than the average for all states.
+
+Using the sq.statepopulation table, write a query that displays the average three-year population growth for all states. 
+
+Use the nPopChg3 column to calculate the average from the sq.statepopulation table. 
+
+Run the program and view the results.
+
+Use the query you just wrote to display the states that have a projected three-year population growth greater than the 
+overall average. Use the following requirements:
+
+Include Name and nPopChg3 in the results.
+
+Label nPopChg3 as Estimated Growth and format the values with commas.
+
+Use the query from step 1 to subset the table.
+
+Order the results by descending nPopChg3.
+
+Add an appropriate title.
+
+Run the query and view the results.
+
+Which state has the greatest estimated growth in your results?
+
+
+
+
