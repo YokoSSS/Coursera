@@ -472,7 +472,9 @@ The subquery has an extra semicolon after the AND operator.
 The subquery must be in a HAVING clause.
 
 The subquery must reference the same table as the outer query.
-
+correct
+不正解
+The subquery does not have to reference the same table as the outer query. Review Using a Subquery in the WHERE Clause.
 
 
 2.The following query produces a table with the ID, Job_Title and Salary of employees who make more than the average of all employees.
@@ -485,7 +487,10 @@ select ID, Job_Title, Salary
 1点
 
 True
-
+correct
+正解
+A noncorrelated subquery must be a valid query inside parentheses in the WHERE or HAVING clause. 
+It must return a single column with one or more rows.
 
 False
 
@@ -496,6 +501,8 @@ True
 
 
 False
+正解
+A noncorrelated subquery can be extracted and run independently of the outer query.
 
 
 4.Which query finds the ID, Job_Title and Salary of all employees in the Engineering department? 
@@ -520,13 +527,19 @@ select ID, Job_Title, Salary
     where ID in (select ID
     from staff
     where Department ="Engineering");
+Correct
+正解
+The IN operator is required in the WHERE clause because it can accept multiple values from the subquery.
+
 
 
 
 5.An in-line view can return multiple rows and columns.
 
 True
-
+correct
+正解
+An in-line view acts as a virtual table and can return values from one column or multiple columns.
 
 False
 
@@ -546,6 +559,10 @@ False
 
 create view as CustomerView
 select...
+uncorrect
+不正解
+To create a view from a query result, you use a CREATE VIEW statement with the new view name and the AS keyword, 
+followed by the query. Review Creating a View.
 
 create view CustomerView;
 select...
@@ -563,6 +580,12 @@ select...
 LIBREF
 
 USING
+correct
+正解
+Use the embedded LIBNAME statement in the USING clause to make the view definition portable. 
+If you use a one-level name for the source table in a view definition, the view and the source table must reside in the same location.
+
+
 
 TABLE
 
@@ -578,7 +601,11 @@ select Order_Type, min(Quantity)
 1点
 
 True
-
+correct
+不正解
+GROUP BY Order_Type must be added to calculate the minimum value of Quantity for each distinct value of Order_Type. 
+Without the GROUP BY clause, the query calculates the minimum of the full column Quantity and remerges that value with 
+the column Order_Type. Review Remerging Summary Statistics in PROC SQL.
 
 False
 
@@ -595,6 +622,10 @@ select Product,
 
 
 Remove the SELECT keyword prior to the SUM function.
+正解
+The SELECT keyword in front of the SUM summary function is not necessary. 
+Without SELECT, the query first calculates the sum of Quantity. That value is remerged with Product and divides 
+Quantity by the sum of Quantity for each row to calculate Pct.
 
 Add a GROUP BY clause and list the Product column.
 
