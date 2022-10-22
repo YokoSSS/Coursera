@@ -1,0 +1,50 @@
+Activity 5.01
+
+1.If necessary, start SAS Studio before you begin. If you restarted your SAS session, submit your libname.sas program to 
+access the practice data.
+
+Open s105a01.sas from the activities folder and perform the following tasks to find unique 
+customers who have responded by phone and email:
+
+Run the first queries to preview the sq.salesemail and sq.salesphone tables. 
+
+Examine the columns in both tables.
+
+Examine the Intersect section of the program.
+
+Run the query. 
+
+Did the query run successfully? 
+
+1点
+
+Yes
+
+
+No
+correct
+正解
+ERROR: Column 2 from the first contributor of INTERSECT is not the same type as its counterpart from the second.
+
+By default, the INTERSECT set operator matches by column position, and the data must be of the same type. 
+EmailResp is character, and SalesRep is numeric.  
+
+
+
+
+2.Add the CORR keyword after the INTERSECT set operator. 
+
+Run the query. 
+
+Did the query run successfully? 
+
+1点
+
+Yes
+correct
+正解
+The CORR keyword matches columns by name, and nonmatching columns are removed from the intermediate result sets.  
+
+No
+
+
