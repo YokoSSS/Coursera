@@ -1,0 +1,142 @@
+Practice Level 2: Creating a Macro Variable with a List of Values from an SQL Query
+
+1.If necessary, start SAS Studio before you begin. If you restarted your SAS session, submit your libname.sas program to 
+access the practice data.
+
+In this practice, you write a program that dynamically determines a list of countries in a specified region. 
+Then determine the percentage of people who have borrowed from a financial institution or used a credit card (% age 15+), 
+and whether it is increasing or decreasing from the year 1 estimate to the year 3 estimate.
+この実習では、指定された地域にある国のリストを動的に決定するプログラムを作成します。
+次に、金融機関から借りたり、クレジットカードを使用したことのある人の割合（15歳以上の割合）を求め、
+それが1年目の推定値から3年目の推定値まで増加しているか減少しているかを判断してください。
+
+
+Using sq.globalmetadata, write a query to create a macro variable that lists the distinct values of CountryCode for a specified region. 
+Use the following requirements:
+sq.globalmetadata を使用して、指定された地域の CountryCode の異なる値をリストするマクロ変数を作成するクエリを作成します。
+以下の要件を使用します。
+
+Create a macro variable named RegionValue with the value South Asia.
+RegionValue という名前のマクロ変数を、South Asia という値で作成する。
+
+Use the RegionValue macro variable in a query to create a data-driven macro variable named Countries that lists the country codes in
+the specified region. The value list should be comma separated, and each value should be enclosed in quotation marks.
+クエリでマクロ変数 RegionValue を使用し、指定された地域の国コードをリストするデータ駆動型マクロ変数 Countries を作成する。
+値のリストはカンマで区切り、各値は引用符で囲む必要がある。
+
+Use the NOPRINT option in the PROC SQL statement.
+PROC SQL 文で NOPRINT オプションを使用します。
+
+Use %PUT below your query to view the value of the macro variable Countries.
+クエリの下に %PUT を使用して、マクロ変数 Countries の値を表示します。
+
+Run the query and %PUT statement, and then view the log.
+クエリと %PUT 文を実行し、ログを表示します。
+
+What is the value of the macro variable Countries as shown in the log? Note: Copy and paste the value from the log window or type 
+the value as shown in the log.
+ログに表示されるマクロ変数 Countries の値は何ですか。注：ログウィンドウから値をコピーして貼り付けるか、
+ログに表示されているように値を入力してください。
+
+1点
+
+My answer:
+COUNTRIES="AFG","BGD","BTN","IND","LKA","NPL","PAK"
+
+正解
+COUNTRIES="AFG","BGD","BTN","IND","LKA","NPL","PAK"
+ /*s106s02.sas*/
+
+/*a*/
+%let RegionValue=South Asia;
+proc sql noprint;
+select quote(strip(CountryCode))
+    into :Countries separated by ","
+    from sq.globalmetadata
+    where Region="&RegionValue";
+quit;
+%put &=Countries;
+
+
+
+2.Using the sq.globalfindex, write another query to select the countries in the region that you specified. 
+2.sq.globalfindexを使用して、指定した地域の国を選択する別のクエリを記述する。
+Convert the whole numbers to percentages, and determine whether the estimate value is increasing, decreasing, or unknown. 
+Use the following requirements:
+整数をパーセントに変換し、推定値が増加しているか、減少しているか、不明であるかを判断しなさい。
+次の条件を使用します。
+
+1)  Select the CountryCode and IndicatorName columns. 
+CountryCode 列と IndicatorName 列を選択します。
+
+2)  Create three new columns as follows:
+次のように 3 つの新しい列を作成する。
+
+First divide EstYear1 by 100 and name the column EstYear1PCT. Format using percentages.
+まず、EstYear1 を 100 で割って、EstYear1PCT という列を作成します。パーセンテージを使用してフォーマットします。
+
+Follow the previous step for EstYear3.
+EstYear3 については、前のステップに従います。
+
+Use the CASE expression to determine whether the value is Increasing, Decreasing, or Unknown. The value is Unknown when 
+the value is null. Name the column Forecast. Hint: In the CASE expression, make sure that the first WHEN tests whether a value is missing.
+CASE 式を使用して、値が増加、減少、または不明であるかを判断します。値が NULL の場合、値は不明です。
+です。列に Forecast という名前を付けます。ヒント: CASE 式では、最初の WHEN が値が不足しているかどうかをテストすることを確認します。
+
+
+3)  Filter rows by CountryCode using the Countries macro variable and whether IndicatorName is equal to Borrowed from a 
+financial institution or used a credit card (% age 15+).
+マクロ変数 Countries を使って CountryCode で行をフィルタリングし、IndicatorName が Borrowed from a financial institution or used a credit card (金融機関から借りた、またはクレジットカードを使った) と等しいかどうかを調べます。
+金融機関から借りた、またはクレジットカードを使った (% age 15+).
+
+
+4)  Order by Forecast.
+Forecast で並べる。
+
+5)  Add the title Countries in &RegionValue.
+&RegionValue に Countries というタイトルを追加する。
+
+6)  Change the RegionValue macro variable at the beginning of the program to North America.  
+プログラム冒頭のマクロ変数RegionValueをNorth Americaに変更する。 
+
+7)  Run the query and view the results.
+クエリを実行し、結果を表示する。
+
+What is the Forecast value when CountryCode is CAN? 
+CountryCodeがCANのときのForecastの値は？
+
+My answer: Increasing
+正解
+The forecast is increasing.
+
+%let RegionValue=North America;
+
+proc sql noprint;
+select quote(strip(CountryCode))
+    into :Countries separated by ","
+    from sq.globalmetadata
+    where Region="&RegionValue";
+quit;
+%put &=Countries;
+
+title "Countries in &RegionValue";
+proc sql;
+select CountryCode, IndicatorName, 
+       EstYear1/100 as EstYear1PCT format=percent7.2, 
+       EstYear3/100 as EstYear3PCT format=percent7.2,
+       case
+         when (EstYear1 is null or EstYear3 is null) then "Unknown"
+         when calculated EstYear1PCT < calculated EstYear3PCT then "Increasing"
+         when calculated EstYear1PCT > calculated EstYear3PCT then "Decreasing"
+         else "No Change"
+       end as Forecast
+    from sq.globalfindex
+	where CountryCode in (&Countries) and
+          IndicatorName="Borrowed from a financial institution or used a credit card (% age 15+)"
+    order by Forecast;
+quit;
+title;
+
+
+
+
