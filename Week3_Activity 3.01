@@ -1,0 +1,45 @@
+Week3_Activity 3.01
+
+1.If necessary, start SAS Studio before you begin. If you restarted your SAS session, submit your libname.sas program to access the practice data.
+
+Open s103a01.sas from the activities folder and perform the following tasks to perform a default join of two tables:
+
+Examine and run the two queries to explore the sq.smallcustomer and sq.smalltransaction tables. 
+
+Confirm that the sq.smallcustomer contains 8 rows and the sq.smalltransaction contains 12 rows.
+
+In the next section, list the sq.smallcustomer and sq.smalltransaction table in the FROM clause and separate the tables by a comma. 
+
+Run the query and view the log. 
+
+What note do you see?
+
+1点
+
+The join ran successfully.
+
+
+Include a keyword when attempting to join tables.
+
+
+The execution of this query involves performing one or more Cartesian product joins that can not be optimized.
+
+2.View the results. What issues do you see with the report.  
+
+1点
+
+There is a syntax error.
+
+
+Need to use a summary function on the Income column.
+
+
+There are redundant columns.
+
+
+DateTime is formatted incorrectly.
+
+
+There are nonmatching IDs.
+
+
