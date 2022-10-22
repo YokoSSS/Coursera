@@ -505,7 +505,10 @@ select Employee_ID, mean(Qtr1, Qtr2, Qtr3, Qtr4) as
        Mean_Annual
     from orion.employee_donations;
 
+
 ----------------------------------------------------------------------------------------------------------------------------------
+
+
 1.Which SELECT statement creates a report that displays only the unique combinations of Customer_Type_ID and Country? 
 Customer_Type_IDとCountryのユニークな組み合わせのみを表示するレポートを作成するSELECT文はどれですか？
 
@@ -515,6 +518,9 @@ select distinct Customer_Type_ID Country
 select distinct Customer_Type_ID, Country
     from orion.customer;
 correct
+正解
+To select unique combinations of the values of multiple columns, you place the DISTINCT keyword once in the SELECT 
+clause before the entire column list. Columns must be separated by commas.
 
 select Customer_Type_ID, Country
     from orion.customer
@@ -532,6 +538,11 @@ where 75000 <= NewSalary <= 1000000
 True
 
 False
+correct
+正解
+The SAS keyword CALCULATED is required. It enables the use of results of an expression in the same SELECT clause or in the WHERE clause. 
+The keyword CALCULATED precedes the column name in the expression.
+
 
 
 3.Which column modifier will apply a label of Monthly Sales to the column MonSales? Select all that apply.
@@ -552,6 +563,8 @@ MonSales label='Monthly Sales'
 correct
 The LABEL=' text ' column modifier is a SAS enhancement to specify labels and is not ANSI standard.
 
+
+
 4.What is the correct syntax to define a new column in the SELECT clause?
 SELECT句で新しいカラムを定義するための正しい構文は何ですか？
 
@@ -567,6 +580,28 @@ SELECT ステートメントで、列を作成する式を定義し、キーワ�
 expression = columnName
 
 columnName = expression
+
+
+5.
+質問 5
+Which clause orders the rows in a query?
+
+1 / 1点
+
+
+ORDER BY
+correct
+正解
+The ORDER BY clause orders the rows in the query output.
+
+ORDER ROWS
+
+ROW ASC
+
+ROW ORDER
+
+
+
 
 6.The values returned by the YEAR function are .(missing), 2018, 2019, and2020. Which value for year is displayed first in the query result? 
 YEAR関数が返す値は、.(欠番)、2018、2019、および2020です。クエリ結果に最初に表示されるyearの値はどれですか？
@@ -643,6 +678,33 @@ TITLE および FOOTNOTE 文は、SELECT 文の前に置かなければなりま
 You didn't select all the correct answers
 
 
+8.
+質問 8
+If the value of Age is 10, what is the value of AgeGroups in the query result?
+
+select name,
+    case
+        when 0 <= Age <= 10 then 'Group 1'
+        when 10 < Age <= 15 then 'Group 2'
+        else 'Other' as AgeGroups
+    from sashelp.class;
+
+1 / 1点
+
+
+Group 1
+
+Group 2
+
+Other
+
+The program generates a syntax error.
+correct
+正解
+The END keyword is required to end the CASE expression prior to the AS keyword.
+
+
+
 9.The two SELECT statements in PROC SQL generate the same result. 
 9.PROC SQLの2つのSELECT文は、同じ結果を生成します。
 
@@ -660,6 +722,8 @@ False
 correct
 COUNT(*) counts the total number of rows in a table or in a subset. COUNT(QTR1) counts the numer of nonmissing values for that column.
 COUNT(*) は、テーブル内またはサブセット内の行の総数を数えます。COUNT(QTR1) は、その列の非欠落値の数値を数えます。
+
+
 
 10.Which query calculates the column TotalDonation as the sum of Total for each unique value of Employee_Department?
 10.どのクエリがEmployee_Departmentのユニークな値ごとにTotalの合計として列TotalDonationを計算しますか。
@@ -715,6 +779,7 @@ Toyota は引用符で囲む必要があり、大文字と小文字が区別さ�
 where Make = "Toyota" or Price < $30,000
 
 where Make = "Toyota" and Price < 30000
+correct
 
 where Make = "Toyota" or Price < 30000
 
@@ -760,6 +825,28 @@ select Department, count(*) as TotalEmployees
     group by Department;*
 
 
+14.Fill in the blank to create new table named results from the query.
+
+_____________ results as
+select ...
+
+1 / 1点
+
+
+CREATE TABLE
+correct
+正解
+The CREATE TABLE statement at the beginning of a query generates a table instead of a report. Follow CREATE TABLE with the new table name, the keyword AS, then the query.
+
+TABLE
+
+CREATE
+
+TABLE CREATE
+
+
+
+
 15.Which query produces a report listing all available libraries in the SAS session?
 15.どのクエリが、SAS セッションで利用可能なすべてのライブラリのリストを作成しますか？
 
@@ -779,4 +866,670 @@ The libnames DICTIONARY table shows all available SAS libraries in the session.
 
 
 
+*****************************************************************************************************************************************************
 
+1.Which SELECT statement creates a report that displays only the unique combinations of the Customer_Type_ID, City, 
+and Country columns from the orion.customer table
+
+1点
+
+select distinct Customer_Type_ID, City, Country
+    from orion.customer;
+correct
+
+select distinct Customer_Type_ID, distinct City,
+    distinct Country
+    from orion.customer;
+
+select distinct Customer_Type_ID City Country
+    from orion.customer;
+
+select Customer_Type_ID, City, Country
+    from orion.customer
+    where distinct Customer_Type_ID, City, and
+       Country;
+
+
+
+
+2.The following WHERE clause subsets rows based on NewSalary, a calculated column created in the SELECT clause.
+
+where 75000 <= calculated NewSalary <= 1000000
+
+1点
+
+True
+correct
+
+False
+
+
+
+3.Which column modifier will apply a label of Monthly Sales to the column MonSales? Select all that apply.
+
+1点
+
+
+MonSales ('Monthly Sales')
+
+MonSales(label='Monthly Sales')
+
+MonSales label='Monthly Sales'
+correct
+
+MonSales 'Monthly Sales'
+
+
+4.Which expression creates a column named Increase that is 1% of Salary?
+
+1点
+
+Increase = .01*Salary
+
+Salary *.01 as Increase
+correct
+
+Salary * .01 Increase
+
+Increase as .01 * Salary
+
+
+5.
+質問 5
+Which ORDER BY clause sorts the results of the Salary column in descending order?
+
+1点
+
+order by Salary desc
+correct
+
+order by Salary
+
+order by desc Salary
+
+order by Salary(desc)
+
+
+
+6.
+質問 6
+The values returned by the YEAR function are .(missing), 2018, 2019, and2020. Which value for year is displayed first in the query result? 
+
+proc sql;
+select Employee_ID,
+       Employee_Term_Date format=date9., 
+       year(Employee_Term_Date) as year
+    from orion.employee_payroll
+    order by year;
+quit; 
+
+1点
+
+.(missing)
+correct
+
+2020
+
+2019
+
+2018
+
+
+
+7.Which program modification will successfully display the footnote with the query result? Select all that apply.
+
+proc sql;
+select Employee_ID
+    from orion.order_fact;
+quit;
+footnote 'Employee Orders';
+
+1点
+
+
+
+Move the FOOTNOTE keyword and text inside the SELECT statement.
+
+Move the FOOTNOTE statement before the QUIT statement.
+
+Move the FOOTNOTE statement before the PROC SQL statement.
+correct
+Correct
+TITLE and FOOTNOTE statements must come before the SELECT statement. They can either be before the PROC SQL step or inside the step.
+
+Move the FOOTNOTE statement before the SELECT statement.
+correct
+Correct
+TITLE and FOOTNOTE statements must come before the SELECT statement. They can either be before the PROC SQL step or inside the step.
+正解
+Great, you got all the right answers.
+
+
+8.If the value of Age is 10, what is the value of AgeGroups in the query result?
+
+select name,
+    case
+        when 0 <= Age <= 10 then 'Group 1'
+        when 10 < Age <= 15 then 'Group 2'
+        else 'Other' as AgeGroups
+    from sashelp.class;
+
+1点
+
+Group 1
+
+Group 2
+
+Other
+
+The program generates a syntax error.
+correct
+正解
+The END keyword is required to end the CASE expression prior to the AS keyword.
+
+9.What is the result of the following PROC SQL program?
+
+proc sql;
+select count (*)
+    from orion.employee_donations;
+quit;
+
+Employee_ID   Qtr1   Qtr2   Qtr3   Qtr4
+120265        .      .      .      25
+120267        15     15     15     15
+120269        20     20     20     20
+120270        20     10     5      .
+
+
+1点
+
+3
+
+2
+
+4
+correct
+正解
+COUNT(*) counts the total number of rows in a table or in a subset. COUNT( column ) counts the numer of nonmissing values for that column.
+1
+
+
+
+10.What does the following query generate?
+
+select Product_Group, count(*) as Products
+    from orion.product_dim
+    group by Product_Group;
+
+1点
+
+A report that shows the missing number of rows for each value of Product _Group.
+
+A report that gives a total count of all products.
+
+A report that lists all products by Product_Group.
+
+A report that shows the number of products in each value of Product_Group.
+correct
+正解
+The GROUP BY clause groups all products by Product_Group, then counts the number of products in each group.
+
+11.Which WHERE clause produces a report that includes all Toyotas with a Price value less than$30,000? 
+
+Make    Model   Price     MPG
+Toyota  RAV4    $28,750   23
+Honda   Accord  $19,350   32
+Honda   Pilot   $32,500   22
+BMW     135i    $25,200   24
+
+1点
+
+where Make = "Toyota" or Price < 30000
+
+where Make = "Toyota" or Price < $30,000
+
+where Make = "Toyota" and Price < $30,000
+
+where Make = "Toyota" and Price < 30000
+correct
+正解
+To select all rows where Make equals Toyota and Price is less than 30000 you must use the AND operator. 
+Toyota must be in quotation marks and is case sensitive. The numeric price value must be in standard numeric form excluding special symbols.
+
+
+12.If a summary function in the SELECT clause includes more than one argument, the statistic is calculated for each row.
+12.SELECT句のsummary関数が複数の引数を含む場合、統計値は各行に対して計算されます。
+1点
+
+True
+correct
+正解
+Specifying more than one argument in a summary function calculates the statistic for each row.
+
+False
+
+
+13.You want to count the number of employees in each department and return the departments with over 30 employees. 
+Which query will produce the correct report?
+あなたは、各部門の従業員数を数え、30人以上の従業員を持つ部門を返したいと思っています。
+どのクエリが正しいレポートを作成しますか。
+1点
+
+select Department, count(*) as TotalEmployees
+    from orion.employees
+    group by Department
+    having TotalEmployees > 30;*
+
+correct
+正解
+The GROUP BY and HAVING clauses are required to filter summarized rows. The GROUP BY clause defines the groups for which summary 
+statistics are calculated. The HAVING clause filters the query results based on summarized values. The GROUP BY clause must come 
+before the HAVING clause.
+
+select Department, count(*) as TotalEmployees
+    from orion.employees
+    where calculated TotalEmployees > 30
+    group by Department;*
+
+select Department, count(*) as TotalEmployees
+    from orion.employees
+    having TotalEmployees > 30
+    group by Department;*
+    
+    
+14.Fill in the blank to create new table named results from the query.
+
+_____________ results as
+select ...
+
+1点
+   
+TABLE CREATE
+
+CREATE
+
+CREATE TABLE
+correct
+正解
+The CREATE TABLE statement at the beginning of a query generates a table instead of a report. Follow CREATE TABLE with the new table name, 
+the keyword AS, then the query.
+
+TABLE
+ 
+
+15.Which of the following queries produces a report listing all columns from every table in the sashelp library? 
+
+1点
+
+select *
+    from dictionary.columns
+    where libname="SASHELP";
+correct
+正解
+The columns DICTIONARY table shows all columns in every table. The WHERE clause limits the report to all tables in the SASHELP library. 
+All library values are stored in uppercase.
+
+select *
+    from dictionaries.columns
+    where libname="SASHELP";
+    
+ERROR: ライブラリ参照名は8文字までです。dictionariesは切り捨てられます。
+
+select *
+    from dictionary.vcolumn
+    where libname="SASHELP";
+    
+ERROR: VCOLUMN は定義されている PROC SQL 辞書テーブルではありません。
+ 
+
+************************************************************************************************************************************
+
+1.Which query creates a report that displays the unique combinations of Customer_Type_ID and Country from the orion.customer table?
+
+1 / 1点
+
+
+select distinct Customer_Type_ID, Country;
+    from orion.customer
+
+select distinct Customer_Type_ID, Country
+    from orion.customer;
+correct
+正解
+To select unique combinations of the values of multiple columns, place the DISTINCT keyword once in the SELECT 
+clause before the entire column list. Columns must be separated by commas and the entire statement must end with a semicolon.
+
+select distinct Customer_Type_ID Country
+    from orion.customer;
+
+select Customer_Type_ID, Country
+    from orion.customer
+    where distinct Customer_Type_ID and Country;
+
+
+2.
+質問 2
+The following WHERE clause subsets rows based on NewSalary, a calculated column created in the SELECT clause.
+
+where 75000 <= NewSalary <= 1000000
+
+0 / 1点
+
+True
+
+False
+
+不正解
+The SAS keyword CALCULATED is required. It enables the use of results of an expression in the same SELECT clause 
+or in the WHERE clause. The keyword CALCULATED precedes the column name in the expression. Review Subsetting 
+Calculated Values.
+
+
+3.Which column modifier will apply a label of Monthly Sales to the column MonSales? Select all that apply.
+
+0 / 1点
+
+MonSales label='Monthly Sales'
+Correct
+The LABEL=' text ' column modifier is a SAS enhancement to specify labels and is not ANSI standard.
+
+MonSales ('Monthly Sales')
+
+MonSales(label='Monthly Sales')
+
+MonSales 'Monthly Sales'
+
+不正解
+You didn't select all the correct answers
+
+4.
+質問 4
+Which expression creates a column named Increase that is 1% of Salary?
+
+1 / 1点
+
+Salary *.01 as Increase
+correct
+正解
+In the SELECT statement, define the expression that creates the column, then use the keyword AS and specify 
+the new column name.
+
+Salary * .01 Increase
+
+Increase = .01*Salary
+
+Increase as .01 * Salary
+
+
+
+5.Which clause orders the rows in a query?
+
+1 / 1点
+
+ROW ASC
+
+ORDER BY
+correct
+正解
+The ORDER BY clause orders the rows in the query output.
+
+ROW ORDER
+
+ORDER ROWS
+
+
+6.
+質問 6
+The values returned by the YEAR function are .(missing), 2018, 2019, and2020. Which value for year is displayed first in the query result? 
+
+proc sql;
+select Employee_ID,
+       Employee_Term_Date format=date9., 
+       year(Employee_Term_Date) as year
+    from orion.employee_payroll
+    order by year;
+quit; 
+
+1 / 1点
+
+2020
+
+2018
+
+2019
+
+. (missing)
+correct
+正解
+The default sort order is ascending. Missing numeric values appear first.
+
+
+
+7.Which query generates a report with the title Manager Report? Select all that apply.
+
+0 / 1点
+
+proc sql;
+title = 'Manager Report';
+select Employee_ID,
+       Employee_Term_Date format=date9.,
+       year(Employee_Term_Date) as year
+    from orion.employee_payroll;
+quit;
+
+proc sql;
+title 'Manager Report';
+select Employee_ID,
+       Employee_Term_Date format=date9.,
+       year(Employee_Term_Date) as year
+    from orion.employee_payroll;
+quit;
+Correct
+TITLE and FOOTNOTE statements must come before the SELECT statement. They can either be before the PROC SQL step or inside the step.
+
+title "Manager Report";
+proc sql;
+select Employee_ID,
+       Employee_Term_Date format=date9.,
+       year(Employee_Term_Date) as year
+    from orion.employee_payroll;
+quit;
+
+proc sql;
+select Employee_ID,
+       Employee_Term_Date format=date9.,
+       year(Employee_Term_Date) as year
+    from orion.employee_payroll
+    title 'Manager Report';
+quit;
+
+不正解
+You didn't select all the correct answers
+
+
+
+8.
+質問 8
+Which of the following CASE expressions is correct?
+
+0 / 1点
+
+case
+    when Score <= 50 then 'Low'
+    else 'High'
+end as ScoreCat
+
+case
+    when Score <= 50 then 'Low'
+    else 'High' as ScoreCat
+
+case Score
+    when Score <= 50 then 'Low',
+    else 'High'
+end as ScoreCat
+
+case Score
+    when Score <= 50 then 'Low'
+    else 'High'
+end as ScoreCat
+correct
+不正解
+When you need to use a comparison operator other than equal, you use a simple case expression. 
+The column name Score should not be listed after the keyword CASE. Review Assigning Values Conditionally 
+with the CASE Expression.
+
+
+9.
+質問 9
+The two SELECT statements in PROC SQL generate the same result. 
+
+proc sql;
+select count(*)
+    from orion.employee_donations;
+select count(Qtr1)
+    from orion.employee_donations;
+quit; 
+
+Employee_ID   Qtr1   Qtr2   Qtr3   Qtr4
+120265        .      .      .      25
+120267        15     15     15     15
+120269        20     20     20     20
+120270        20     10     5      .
+
+
+1 / 1点
+True
+
+False
+correct
+正解
+COUNT(*) counts the total number of rows in a table or in a subset. COUNT(QTR1) counts the numer of nonmissing values for that column.
+
+10.
+質問 10
+What does the following query generate?
+
+select Product_Group, count(*) as Products
+    from orion.product_dim
+    group by Product_Group;
+
+1 / 1点
+
+
+A report that gives a total count of all products.
+
+A report that lists all products by Product_Group.
+
+A report that shows the missing number of rows for each value of Product _Group.
+
+A report that shows the number of products in each value of Product_Group.
+correct
+正解
+The GROUP BY clause groups all products by Product_Group, then counts the number of products in each group.
+
+11.
+質問 11
+Which WHERE clause will produce the following results?
+
+Make   Model  Price    MPG
+Toyota RAV4   $28,750  23
+Honda  Accord $19,350  32
+Honda  Pilot  $32,500  22
+BMW    135i   $25,200  24
+
+1 / 1点
+
+
+where Make = "Toyota" Make = "Honda" Make = "BMW"
+
+where Make = "Toyota", "Honda", "BMW"
+
+where Make = "Toyota" and Make = "Honda" and Make = "BMW"
+
+where Make = "Toyota" or Make = "Honda" or Make = "BMW"
+正解
+When the WHERE clause condition is met and the condition resolves to true, the rows are displayed 
+in the result table or no rows are displayed. The WHERE clause must use the OR operator with each expression.
+
+
+
+12.In which of the following queries can you replace the SAS summary function MEAN with the ANSI summary function AVG and get the same results?
+
+1 / 1点
+
+
+select mean(Qtr1) as Mean_Qtr_1
+    from orion.employee_donations;
+正解
+Unlike most SAS summary functions, ANSI summary functions can take only a single argument. Also, because PROC SQL follows ANSI standards, shortcuts to reference a range of variables in an argument list within a function are not acceptable in PROC SQL as they are in other SAS procedures.
+
+select Employee_ID, mean(Qtr1, Qtr2, Qtr3, Qtr4) as
+       Mean_Annual
+    from orion.employee_donations;
+
+select mean(Qtr1, Qtr2, Qtr3, Qtr4) as Mean_Annual
+    from orion.employee_donations;
+
+select mean(of Qtr1:) as Mean_Qtr_1
+    from orion.employee_donations;
+
+
+
+13.Which clause is required to filter the query results based on the calculated TotalEmployees?
+
+select Department, count(*) as TotalEmployees
+    from orion.employees
+    group by Department
+    _______ TotalEmployees < 30;
+
+1 / 1点
+
+FILTER
+
+HAVING
+correct
+正解
+The GROUP BY and HAVING clauses are required to filter summarized rows. The GROUP BY clause defines the groups 
+for which summary statistics are calculated. The HAVING clause filters the query results based on summarized values. 
+Review Grouping Data.
+
+WHERE
+
+IF
+
+
+
+14.Which of the following statements creates a new table named results from a query? 
+
+1 / 1点
+
+create table results like select ...
+
+create table results (select ...)
+
+create table results as select ...
+正解
+The CREATE TABLE statement at the beginning of a query generates a table instead of a report. 
+Follow CREATE TABLE with the new table name, the keyword AS, then the query.
+
+create table results from select ...
+
+
+
+15.Which query produces a report listing all available libraries in the SAS session?
+
+1 / 1点
+
+select *
+    from dictionary.sas_libnames;
+
+select *
+    from dictionary.saslibnames;
+
+select *
+    from dictionary.libnames;
+正解
+The libnames DICTIONARY table shows all available SAS libraries in the session.
+
+select *
+    from dictionary.names;
