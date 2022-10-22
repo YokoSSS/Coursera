@@ -1,0 +1,45 @@
+
+1.If necessary, start SAS Studio before you begin. If you restarted your SAS session, submit your libname.sas program to 
+access the practice data.
+
+Open s106a02.sas from the activities folder and perform the following tasks to store a number larger than eight digits in a macro variable:
+アクティビティフォルダからs106a02.sasを開き、以下の作業を行い、8桁より大きな数値をマクロ変数に格納します。
+Run STEP 1 of the program to create the macro variables MaxPop and TotalCtry. The macro variables store the estimated 
+maximum three-year population estimate for a country and the total number of countries. 
+プログラムのSTEP1を実行し、マクロ変数MaxPopとTotalCtryを作成する。マクロ変数には、ある国の3年間の推定最大人口と、国の総数が格納されます。
+View the log. Notice that MaxPop stores a value in scientific notation. When storing a number, SAS uses the BEST8. format. 
+If the number is larger than eight digits, scientific notation is often used.  
+
+ログを表示します。MaxPop は科学的記数法で値を格納することに注意してください。数値を格納するとき、SAS は BEST8.Format を使用します。
+数値が 8 桁より大きい場合、科学的記法がよく使われます。 
+
+Examine STEP 2 of the program. This query uses the macro variables and finds the country with the maximum estimated three-year population. 
+プログラムの STEP2 を見てみましょう。このクエリは、マクロ変数を使用し、3年間の推定人口が最大の国を見つけます。
+Run the program. 
+プログラムを実行します。
+
+Confirm that no rows were returned. The scientific notation value is different from the original, and thus, SAS doesn't find a match.  
+行が返されないことを確認する。科学的記数法の値がオリジナルと異なるため、SASは一致するものを見つけられませんでした。 
+
+Add the FORMAT=10. column modifier to the max(estYear3Pop) column in STEP 1 of the program. 
+プログラムのSTEP1のmax(estYear3Pop)列にFORMAT=10.列修飾子を追加する。
+Run the entire program. 
+プログラム全体を実行します。
+Which country has the largest three-year estimated population?
+3年間の推定人口が最も多いのはどの国ですか？
+
+My Answer: CHN
+正解
+China
+
+proc sql noprint;
+select max(EstYear3Pop) format=10.,
+       count(distinct CountryCode)
+    into :MaxPop trimmed, :TotalCtry trimmed
+    from sq.globalfull;
+quit;
+%put &=MaxPop &=TotalCtry;
+
+
+
+
