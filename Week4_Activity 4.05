@@ -1,0 +1,72 @@
+
+1.If necessary, start SAS Studio before you begin. If you restarted your SAS session, submit your libname.sas program to access the practice data.
+
+Open s104a05.sas from the activities folder and perform the following tasks to disable remerging of summary statistics:
+
+Examine and run the query. 
+
+What note do you see in the log?
+
+Note: All attempts on this activity receive credit. Type your response and  compare your answer to the answer provided.  
+
+1点
+どのように思われますか？
+回答は1000文字以内でお願いします。
+Total population of all states
+
+正解
+NOTE: The query requires remerging summary statistics back with the original data.  
+
+2.Add the PROC SQL option NOREMERGE. 
+PROC SQL のオプション NOREMERGE を追加します。
+Run the query. 
+クエリを実行します
+Did it run successfully? What was the error in the log?  
+正常に実行されましたか？ログに表示されたエラーは何でしたか?  
+
+Note: All attempts on this activity receive credit. Type your response and  compare your answer to the answer provided.  
+注：このアクティビティは、すべての試行が単位として認められます。あなたの回答を入力し、提供された回答と比較してください。
+
+
+1点
+どのように思われますか？
+回答は1000文字以内でお願いします。
+ERROR: The query requested but is not allowed to remerge summary statistics with the original data.
+The NOREMERGE procedure option or the NOSQLREMERGE system option is specified.
+
+正解
+No. The NOREMERGE option disables remerging of summary statistics.
+
+ERROR: The query requires remerging summary statistics back with the original data. 
+This is disallowed due to the NOREMERGE proc option or NOSQLREMERGE system option.  
+
+
+proc sql noremerge;
+select Region, 
+       sum(PopEstimate1) as TotalRegion format=comma14.
+    from sq.statepopulation;
+quit;
+
+
+3.Add a GROUP BY clause after the FROM clause and group by Region. 
+
+Run the query. 
+
+Did it run successfully?
+
+Note: All attempts on this activity receive credit. Type your response and  compare your answer to the answer provided.  
+
+1点
+
+It run successfully.
+
+正解
+Yes. The data is not remerged when you use the GROUP BY clause.  
+proc sql noremerge;
+select Region, 
+       sum(PopEstimate1) as TotalRegion format=comma14.
+    from sq.statepopulation
+	group by region;
+quit;
+
+
