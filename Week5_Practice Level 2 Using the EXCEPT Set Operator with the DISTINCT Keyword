@@ -1,0 +1,33 @@
+
+1.If necessary, start SAS Studio before you begin. If you restarted your SAS session, submit your libname.sas program to access
+the practice data.
+
+Using the sq.statepopulation table, generate a list of state codes for states without any customers.  
+Note: In this data, DC an PR are values for State.
+
+Write a query to list the unique Name values in the sq.statepopulation table. This list represents all 
+available states. Note: In this data, DC an PR are valid values for State.
+
+Write a separate query to list the unique State values from the sq.customer table. This list represents all states where customers reside.
+
+Combine the queries using the EXCEPT set operator to display states with no customers. 
+
+Add an appropriate title and run the query.
+
+Which state has no customers?
+
+
+PR
+正解
+PR (Puerto Rico)
+
+title 'States with No Customers';
+proc sql;
+select Name
+    from sq.statepopulation
+    except
+select distinct State
+    from sq.customer;
+quit;
+title;
+https://github.com/YokoSSS/Coursera/issues/58#issue-1419418765
