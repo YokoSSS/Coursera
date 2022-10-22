@@ -1,0 +1,25 @@
+Table Relationships
+
+It's important to understand the different types of table relationships.
+異なるタイプのテーブル・リレーションシップを理解することは重要です。
+
+In a one-to-one relationship, a single observation in one table is related to exactly one observation in another 
+table based on the values of one or more selected variables.
+1 対 1 のリレーションでは、あるテーブルの 1 つのオブザベーションは、選択された 1 つ以上の変数の値に基づいて、
+別のテーブルのちょうど 1 つのオブザベーションに関連付けられます。
+
+In a one-to-many relationship, a single observation in one table is related to more than one observation in 
+another table based on the values of one or more selected variables.
+1対多の関係では、1つのテーブルの1つのオブザベーションは、1つまたは複数の選択された変数の値に基づいて、
+別のテーブルの2つ以上のオブザベーションに関連付けられます。
+
+A many-to-many relationship occurs when multiple records in a table are associated with multiple records in another table.
+多対多の関係では、あるテーブルの複数のレコードが、別のテーブルの複数のレコードと関連している場合に発生します。
+
+And in a nonmatching relationship, at least one observation in one table is unrelated to any observation 
+in another table based on the values of one or more selected variables.
+そして、非一致関係では、あるテーブルの少なくとも1つのオブザベーションは、1つ以上の選択された変数の値に基づいて、
+別のテーブルのどのオブザベーションにも関連していません。
+  
+
+
