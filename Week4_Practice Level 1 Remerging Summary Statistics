@@ -1,0 +1,58 @@
+Practice Level 1: Remerging Summary Statistics
+
+1.If necessary, start SAS Studio before you begin. If you restarted your SAS session, submit your libname.sas program to access the practice data.
+必要であれば、事前に SAS Studio を起動してください。SAS セッションを再起動した場合は、練習データにアクセスするために libname.sas プログラムを送信します。
+
+Use the sq.statepopulation table to determine which states have the most estimated births for next year. 
+Include a column showing each state's births as the percent of national births.  
+sq.statepopulation テーブルを使用して、来年の推定出生数が最も多い州を決定します。各州の出生数を国の出生数に対する割合で示した列を含めます。
+
+Write a query to remerge summary statistics in the sq.statepopulation table. Use the following requirements:
+sq.statepopulation テーブルの要約統計を再合成するクエリを作成します。以下の要件を使用します。
+
+Select the Name and Births1 columns.
+Name 列と Births1 列を選択します。
+
+Create a new column named PctBirth by dividing Births1 for each state by the sum of Births1 for all states. 
+Format the new column using the PERCENT format.
+各州の Births1 を全州の Births1 の合計で割って、PctBirth という名前の新しい列を作成します。
+PERCENT 形式を使用して、新しい列をフォーマットします。
+
+Order the results by descending PctBirth.
+PctBirth の降順で結果を並べます。
+Add an appropriate title to the report.
+レポートに適切なタイトルを付けます。
+Run the query and view the results.
+クエリを実行し、結果を表示します。
+
+Which state has the highest percentage of estimated births for next year?  
+来年の推定出生数の割合が最も高いのはどの州ですか?  
+
+1点
+
+My answer: CA
+正解
+CA has the highest percentage at 12.3%.  
+
+/*s104s09.sas*/
+
+title 'Estimate Percentage of Births by Each State';
+proc sql;
+select Name, Births1, 
+       Births1/sum(Births1) as PctBirth format=percent7.2
+    from sq.statepopulation
+    order by PctBirth desc;
+quit;
+title;
+
+
+/*Alternate Solution*/
+title 'Estimate Percentage of Births by Each State';
+proc sql;
+select Name, Births1, 
+       Births1/(select sum(Births1)  
+                    from sq.statepopulation) as PctBirth format=percent7.2
+    from sq.statepopulation
+    order by PctBirth desc;
+quit;
+title;
