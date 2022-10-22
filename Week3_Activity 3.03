@@ -1,0 +1,40 @@
+
+
+1.If necessary, start SAS Studio before you begin. If you restarted your SAS session, 
+submit your libname.sas program to access the practice data.
+
+Open s103a03.sas from the activities folder and perform the following tasks to find tables that contain BankID and MerchantID columns:
+
+Complete the first query by adding the BANKID column name in the WHERE clause. 
+
+Run the query.
+
+How many tables contain the BankID column? Note: Type a numeric value.
+
+1点
+こちらに回答を入力
+My answer:8
+correct
+
+proc sql;
+select memname, name
+	from dictionary.columns
+	where libname="SQ" and upcase(name)="BANKID";
+quit;
+
+2.Replace BANKID with MERCHANTID. 
+
+Run the query.
+
+How many tables contain the MerchantID column?  Note: Type a numeric value.
+
+1点
+My answer:5
+correct
+
+proc sql;
+select memname, name
+	from dictionary.columns
+	where libname="SQ" and upcase(name)="MERCHANTID";
+quit;
+ 
