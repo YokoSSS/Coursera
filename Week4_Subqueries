@@ -226,3 +226,230 @@ select Product,
     from inventory;
     
     
+**************************************************************************************************************************************************
+
+1.What will the output be of the following code?
+次のコードの出力はどうなりますか?
+
+select Lastname, Firstname,
+    from charity.donors
+    where Donation >1000 and;
+          Lastname not in 
+              select Lastname
+              from charity.current;
+
+0 / 1点
+
+The subquery will list donations from charity.donors.
+
+The subquery will list the last name and donation amounts from the charity.donors table.
+
+The query returns a syntax error.
+
+The subquery will list only the last name of those who donated from the charity.donors table.
+
+不正解
+You did not choose an option.
+オプションを選択しませんでした。
+
+2.The following query produces a table with the ID, Job_Title and Salary of employees who make more than the average of all employees.
+2.次のクエリは、全従業員の平均よりも多くの収入を得ている従業員の ID、Job_Title、および Salary を含むテーブルを生成します。
+
+select ID, Job_Title, Salary
+    from staff
+    where Salary > (select mean(Salary)
+    from staff);
+
+1 / 1点
+
+True
+正解
+A noncorrelated subquery must be a valid query inside parentheses in the WHERE or HAVING clause. 
+非相関サブクエリは、WHERE または HAVING 句の括弧内の有効なクエリである必要があります。 
+It must return a single column with one or more rows.
+1 つ以上の行を含む単一の列を返す必要があります。
+
+False
+
+
+
+3.Which statement is not true regarding a noncorrelated subquery?
+3.非相関サブクエリに関して正しくないのはどれですか?
+0 / 1点
+
+Joins and subqueries can be used together in the same query.
+
+A subquery is known as a virtual table.
+
+A noncorrelated subquery can be run independently of the outer query.
+Correct
+不正解
+A noncorrelated subquery can be extracted and run independently of the outer query. Review What is a Subquery?
+非相関サブクエリは、外側のクエリとは独立して抽出および実行できます。 サブクエリとはを確認してください。
+
+A subquery can be used in a WHERE or HAVING clause with a comparison operator.
+
+
+
+4.Find the syntax error in the following code.
+4.次のコードで構文エラーを見つけます。
+
+select ID, Job_Title, Salary
+    from staff
+    where ID = (select ID
+    from staff
+    where Department = "Engineering");
+
+0 / 1点
+
+
+There is no syntax error.
+Correct
+不正解
+The IN operator is required in the first WHERE clause because it can accept multiple values from the subquery. 
+サブクエリから複数の値を受け入れることができるため、最初の WHERE 句には IN 演算子が必要です。 
+The equals operator can only accept a single value. Review Subquery That Returns Multiple Values and Using a Subquery That Returns 
+Multiple Values.
+equals 演算子は、1 つの値のみを受け入れることができます。 複数の値を返すサブクエリと複数の値を返すサブクエリの使用を確認します。
+
+
+The equal sign in the first WHERE clause should be changed to the less than operator.
+
+The equal sign in the first WHERE clause should be changed to the IN operator.
+
+The second SELECT clause should change ID to an asterisk.
+
+
+5.An in-line view is nested in which clause?
+5.インラインビューはどの句にネストされていますか?
+
+0 / 1点
+
+GROUP BY clause
+
+FROM clause
+
+ORDER BY clause
+correct
+不正解
+An in-line view is specified in the FROM clause and acts as a virtual table and can return values from one column or 
+multiple columns. Review What is an In-Line View?
+インライン ビューは FROM 句で指定され、仮想テーブルとして機能し、1 つの列または複数の列から値を返すことができます。
+インライン ビューとは何ですか? を確認してください。
+
+
+WHERE clause
+
+
+
+6.Querying data using a view always returns the same results.
+ビューを使用してデータをクエリすると、常に同じ結果が返されます。
+0 / 1点
+
+True
+correct
+不正解
+When querying data using a view, it executes the code stored in the view at that moment in time. 
+ビューを使用してデータをクエリすると、その時点でビューに格納されているコードが実行されます。
+If the underlying data changes, a view surfaces the most current data.
+基になるデータが変更された場合、ビューには最新のデータが表示されます。
+
+False
+
+
+7.The following statement will create a new view named CustomerView from a query.
+7.次のステートメントは、クエリから CustomerView という名前の新しいビューを作成します。
+
+create view as CustomerView
+select ...
+
+0 / 1点
+
+True
+correct
+不正解
+To create a view from a query result, you use a CREATE VIEW statement with the new view name and the AS keyword, 
+followed by the query. Review Creating a View.
+クエリ結果からビューを作成するには、新しいビュー名と AS キーワードを指定した CREATE VIEW ステートメントを使用し、
+その後にクエリを続けます。 ビューの作成を確認してください。
+
+
+False
+
+
+8.You can embed a SAS LIBNAME statement in a view by using which clause?
+8.SAS LIBNAME ステートメントをビューに埋め込むには、どの句を使用しますか?
+0 / 1点
+
+TABLEREF
+
+LIBREF
+
+TABLE
+correct
+不正解
+Use the embedded LIBNAME statement in the USING clause to make the view definition portable. 
+USING 句に埋め込まれた LIBNAME ステートメントを使用して、ビュー定義を移植可能にします。 
+If you use a one-level name for the source table in a view definition, the view and the source table must 
+ビュー定義でソース テーブルに 1 レベルの名前を使用する場合、ビューとソース テーブルは同じ場所に存在する必要があります。 
+reside in the same location. Review Making a View Portable.
+ビューのポータブル化を確認してください。
+
+USING
+
+
+
+
+9.Which of the following changes prevents SAS from remerging and produces a report? 
+9.次の変更のうち、SAS の再マージを妨げ、レポートを生成するのはどれですか?
+
+select Order_Type, min(Quantity)
+       label="Min Qty"
+    from orion.order_fact; 
+
+0 / 1点
+
+
+Add an additional column to the SELECT list.
+correct
+不正解
+The SELECT list in this query specifies both a non-summarized column and a summarized column. 
+このクエリの SELECT リストは、非集計列と集計列の両方を指定しています。 
+By default, SAS remerges unless you either group by Order_Type or remove the non-summarized column. 
+デフォルトでは、Order_Type でグループ化するか、集計されていない列を削除しない限り、SAS は再結合します。
+Review Remerging Summary Statistics in PROC SQL.
+PROC SQL での要約統計の再マージを確認します。
+
+Add a GROUP BY clause to group by Order_Type.
+
+Specify the PROC SQL NOREMERGE option.
+
+Add an ORDER BY clause to sort the output rows by the values of Order_Type .
+
+
+10.This program produces a syntax error. Which modification will calculate Pct as each individual row of Quantity 
+divided by the sum of the Quantity column?
+10.このプログラムは構文エラーを生成します。 
+Quantity 列の合計で割った Quantity の個々の行として Pct を計算するのはどの修正ですか?
+
+select Product, 
+       Quantity/(select sum(Quantity)) as Pct 
+           format=percent5.2
+    from inventory;
+
+1 / 1点
+
+Add a GROUP BY clause using the Product and Quantity columns.
+
+There is no error in the SELECT clause.
+
+Add a GROUP BY clause and list the Product column.
+
+Remove the SELECT keyword prior to the SUM function.
+correct
+正解
+The SELECT keyword in front of the SUM summary function is not necessary. Without SELECT, the query first calculates 
+the sum of Quantity. That value is remerged with Product and divides Quantity by the sum of Quantity for each row to calculate Pct.
+SUM 集計関数の前にある SELECT キーワードは必要ありません。 SELECT がない場合、クエリは最初に Quantity の合計を計算します。 
+その値は Product と再結合され、Quantity を各行の Quantity の合計で割り、Pct を計算します。
+
