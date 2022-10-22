@@ -1,0 +1,86 @@
+
+1.If necessary, start SAS Studio before you begin. If you restarted your SAS session, submit your libname.sas program to access the practice data.
+
+Generate a report showing the count of customer marital status descriptions for each primary bank. 
+The sq.customer table contains a marital code (Married) and a primary bank ID. The final results should 
+contain BankID, MaritalStatus, Name (name of bank), and Count.  
+
+Write a PROC SQL step to join the sq.customer and sq.maritalcode tables. Use the following requirements:
+
+Select BankID from the sq.customer table and MaritalStatus value from the sq.maritalcode table. Create a new column named 
+Count to count the number of customers. Format the new column using commas.
+
+Use a left join to select all customers from the sq.customer table, with or without matches in the sq.maritalcode table.
+
+Use the Married column in the sq.customer table and the MaritalCode column in the sq.maritalcode table as the join criteria.
+
+Filter rows where the customer's bank ID is not missing.
+
+Group the data by BankID and MaritalStatus.
+
+Order the table by descending Count.
+
+As a checkpoint, run the query.
+
+In the same PROC SQL step, add the descriptive bank Name column to the results.
+
+After the MaritalStatus column in the SELECT clause, add Name from the sq.bank table based on matching BankID values, again using a left join.
+
+Add Name in the GROUP BY clause after the MaritalStatus column.
+
+Correctly reference the BankID columns in the query.
+
+Add an appropriate title.
+
+Run the program and view the results.
+
+Which combination of MaritalStatus and Name has the lowest count of customers?  
+
+1点
+
+Married and Biggest Bank, Inc.
+
+
+Widowed and Wheatberry Bank, Inc.
+Correct
+正解
+Widowed and Wheatberry Bank, Inc. had a total count of 362.  
+
+Divorced and Sailors Credit Union
+
+
+
+/*s103s05.sas*/
+
+/*part 1*/
+proc sql;
+select c.BankID,
+       m.MaritalStatus,
+       count(*) as Count format=comma10.
+    from sq.customer as c left join
+         sq.maritalcode as m
+    on c.Married=m.MaritalCode
+    where c.BankID is not null
+    group by c.BankID, m.MaritalStatus
+	order by Count desc;
+quit;
+
+/*part 2*/
+title 'Count of Marital Status by Bank';
+proc sql;
+select c.BankID,
+       m.MaritalStatus,
+       b.Name,
+       count(*) as Count format=comma10.
+    from sq.customer as c left join
+         sq.maritalcode as m
+    on c.Married=m.MaritalCode left join 
+         sq.bank as b
+    on c.BankID=b.BankID
+    where c.BankID is not null
+    group by c.BankID, m.MaritalStatus, b.Name
+    order by Count desc;
+quit;
+title;
+
+
