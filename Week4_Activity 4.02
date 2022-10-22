@@ -14,6 +14,17 @@ Run the query you just modified.
 
 How many divisions have a higher average PopEstimate1 value than the average PopEstimate1 value of all the states? Note: Type a numeric value.
 
+My Answer: 5
+正解
+5 divisions
+
+
+proc sql;
+select Division, avg(PopEstimate1) as avgDivisionPop
+    from sq.statepopulation
+    group by Division
+    having avgDivisionPop > 6278420;
+quit;
 
 
 2.Remove the static value and add a subquery in the HAVING clause.
@@ -25,6 +36,20 @@ Did you get the same result this time you ran the query?
 1点
 
 Yes
+correct
+正解
+The subquery should give the same result as the static value.
 
 
 No
+
+
+proc sql;
+select Division, avg(PopEstimate1) as avgDivisionPop
+    from sq.statepopulation
+    group by Division
+    having avgDivisionPop > (select avg(PopEstimate1)
+        from sq.statepopulation);
+quit;
+
+
