@@ -1,0 +1,25 @@
+
+1.If necessary, start SAS Studio before you begin. If you restarted your SAS session, submit your libname.sas program to access the practice data.
+
+Open s103a08.sas from the activities folder and perform the following tasks to join a numeric column with a character column:
+
+Run the queries in the Create a Table and Insert Values section of the program. View the newly created table.
+
+Run the query in the Join Different Column Types section of the program. 
+
+What syntax error was generated when you joined columns of different types?
+
+Note: All attempts on this activity receive credit. Type your response and  compare your answer to the answer provided.  
+
+1点
+
+
+Elements of different data types are specified in a conditional expression with equal (=).
+
+正解
+ERROR: Expression using equals (=) has components that are of different data types.  
+
+c.zipCode and z.zip have different types.  Z.zip column is numeric.  When we created the customerZip table, we made ZipCode a character column.    
+
+
+
