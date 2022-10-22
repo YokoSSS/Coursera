@@ -1,0 +1,73 @@
+Practice Level 1: Using Outer Joins to Find Nonmatches
+
+
+1.If necessary, start SAS Studio before you begin. If you restarted your SAS session, submit your libname.sas program to access the practice data.
+
+Join the sq.globalpop and sq.globalmetadata tables to create the work.meta table. Use the work.meta table to generate a report 
+showing the country codes for countries in the sq.globalpop table that do not have any country metadata in the sq.globalmetadata table.  
+
+Write a PROC SQL step to join the sq.globalpop and sq.globalmetadata tables and create a table named work.meta. Use the following requirements:
+
+Select the CountryCode, SeriesName, EstYear1, and EstYear3 columns from the sq.globalpop table and the ShortName and IncomeGroup 
+columns from the sq.globalmetadata table.
+
+Perform a left join on the sq.globalpop and sq.globalmetadata tables.
+
+Use the CountryCode column in both tables for the join criteria.
+
+Run the program and view the results.
+
+Create a report showing the unique country codes for which there is no global metadata using the work.meta table.
+
+Select the CountryCode column from the work.meta table and eliminate duplicate values.
+
+Filter for rows where the ShortName column is missing. The ShortName column contains values from the sq.globalmetadata table. If the results are missing, then the row did not retrieve information from sq.globalmetadata.
+
+Order the results by CountryCode.
+
+Run the program and view the results.
+
+What is the last CountryCode value in your results?  
+
+
+My Answer: WSM
+
+正解
+WSM is the last CountryCode value in the results.
+
+/*s103s04.sas*/
+
+************************************;
+*Solution with Temporary Table     *;
+************************************;
+proc sql;
+create table work.meta as 
+select p.CountryCode, p.SeriesName, p.EstYear1, p.EstYear3, 
+       m.ShortName, m.IncomeGroup
+    from sq.globalpop as p left join
+         sq.globalmetadata as m
+    on p.countrycode= m.countrycode;
+quit;
+
+title 'Countries with no Metadata';
+proc sql;
+select distinct CountryCode 
+    from work.meta
+    where ShortName is null
+	order by CountryCode;
+quit;
+title;
+
+************************************************;
+*Alternative Solution without Temporary Table  *;
+************************************************;
+title 'Countries with no Metadata';
+title2 'No Temporary Table';
+proc sql;
+select distinct p.CountryCode
+    from sq.globalpop as p left join
+         sq.globalmetadata as m
+     on p.CountryCode= m.CountryCode
+     where ShortName is null;
+quit;
+title;
