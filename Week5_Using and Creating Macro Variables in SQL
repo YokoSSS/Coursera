@@ -220,7 +220,7 @@ SELECT句のFORMAT=列修飾子を使用して、要約された値をフォー�
 ******************************************************************************************************************************************************
 
 1.What do all the following values have in common with regard to a macro variable?
-
+1.マクロ変数に関して、次の値に共通していることは何ですか？
 9.2
 10/18/2022
 1345020
@@ -230,16 +230,24 @@ Flower buds
 1点
 
 They are specialized keywords to get the system time from a macro.
+これらは、マクロからシステム時刻を取得するための特殊なキーワードである。
 
 Each one is a system option for a macro variable.
+それぞれ、マクロ変数のシステムオプションである。
 
 All can be stored as a text string in a macro variable.
+すべて、マクロ変数にテキスト文字列として格納できる。
 
 All can be stored as either a numeric macro variable, or text macro variable.
-
+すべて、数値マクロ変数、テキストマクロ変数のいずれかとして格納できる。
+uncorrect
+不正解
+All of these values can be stored as a text string in a macro variable. Macro variables are always text. Review Creating User-Defined Macro Variables.
+これらの値はすべて、マクロ変数にテキスト文字列として格納することができる。マクロ変数は常にテキストです。ユーザー定義のマクロ変数を作成する」を参照してください。
 
 
 2.The following line of code correctly references the Country macro variable.
+2.以下のコード行は、マクロ変数Countryを正しく参照しています。
 
 title 'The Sales of the &Country Offices';
 
@@ -248,16 +256,31 @@ title 'The Sales of the &Country Offices';
 True
 
 False
+correct
+正解
+When referencing a macro variable, precede the macro variable with an ampersand. 
+You can reference macro variables anywhere in SAS code. When referencing a macro variable within a text string, 
+the text string must be enclosed in double quotation marks. The macro processor will not resolve macro variable references that appear within single quotation marks.
+マクロ変数を参照する場合、マクロ変数の前にアンパサンドを付けます。マクロ変数は、SAS コード内の任意の場所で参照できます。
+テキスト文字列内でマクロ変数を参照する場合、そのテキスト文字列は二重引用符で囲む必要があります。
+マクロ プロセッサは、一重引用符で囲まれたマクロ変数の参照は解決しません。
+
 
 
 3.Which of the following options displays messages in the log regarding macro variable resolution?
-
+3.マクロ変数の解決に関するメッセージをログに表示するオプションはどれですか？
 1点
 
 
 SYMBOLGEN
 
 SYMBOLLOG
+correct
+不正解
+SYMBOLLOG is not a valid system option. The SYMBOLGEN system option displays the results of resolving macro variable in the 
+log and is useful for debugging. Review Demo: Using a PROC SQL Data-Driven Macro Variable.
+SYMBOLLOGは有効なシステムオプションではありません。システムオプションのSYMBOLGENは、マクロ変数の解決結果をログに表示し、デバッグに便利です。
+レビュー・デモ PROC SQLデータ駆動型マクロ変数の使用。
 
 FEEDBACK
 
@@ -266,7 +289,7 @@ MPRINT
 
 
 4.Which statement correctly creates the user-defined path macro variable with the value of s:/workshop/data? 
-
+4.ユーザー定義パスマクロ変数をs:/workshop/dataの値で正しく作成するのはどの文ですか？
 1点
 
 
@@ -277,11 +300,14 @@ MPRINT
 %user path=s:/workshop/data;
 
 %let path=s:/workshop/data;
-
+Correct
+正解
+To create a user-defined macro variable, you use the %LET statement and specify the name of the macro variable, 
+followed by an equal sign, and then the text string you want to store.
 
 
 5.What is the INTO clause doing in the following query?
-
+.次のクエリでINTO句は何をしているのでしょうか？
 select count(ID)
     into :CountID
     from store.employee;
@@ -289,22 +315,37 @@ select count(ID)
 1点
 
 The INTO clause counts the number of time ID exists in the table and stores it in a macro variable named CountID.
+INTO句は、テーブル内に存在するIDの回数をカウントし、CountIDというマクロ変数に格納します。
+correct
+不正解
+The INTO clause creates one macro variable and assigns the value from the first column of the first row of the query result. 
+Review Creating Data-Driven Macro Variables.
+INTO句は、1つのマクロ変数を作成し、クエリ結果の最初の行の最初の列から値を代入します。
+データ駆動型マクロ変数の作成」を参照してください。
 
 The INTO clause creates a range of macro variables, one for each unique value, and stores each unique value in one of the macro variables.
+INTO句は、一意な値ごとに1つのマクロ変数の範囲を作成し、各一意な値をマクロ変数の1つに格納します。
 
 The INTO clause trims leading blanks from the value of the macro variable.
+INTO句は、マクロ変数の値から先頭の空白を切り捨てる。
 
 The INTO clause creates a macro variable named MeanSalary.
+INTO句は、MeanSalaryという名前のマクロ変数を作成する。
 
 
 
 6.You created a macro variable named MeanSalary and want to display the macro variable value in the log. Which statement produces the value in the log? 
-
+6.あなたはMeanSalaryという名前のマクロ変数を作成し、ログにマクロ変数の値を表示したいと思います。どのステートメントがログに値を生成しますか。
 1点
 
 %PUT MeanSalary;
 
 %PUT &=MeanSalary;
+Correct
+When you want to view the resolved value of a macro variable without having to include it in a report, 
+you can use the %PUT statement to display the resolved macro variable value along with descriptive text in the SAS log.
+マクロ変数の解決値をレポートに含めずに表示したい場合、%PUT ステートメントを使用すると、
+SAS ログに説明テキストと共に解決したマクロ変数値を表示することができます。
 
 PUT &=MeanSalary;
 
@@ -313,6 +354,8 @@ PUT MeanSalary;
 
 7.When trying to store the descriptive statistics of the Price column from the inventory table into multiple macro variables, 
 you keep receiving an error. Why won’t the following query successfully store mean, median, min, and max?
+7.インベントリテーブルからPrice列の記述統計量を複数のマクロ変数に格納しようとすると、エラーが発生し続けます。
+次のクエリでは、なぜ平均値、中央値、最小値、および最大値が正常に格納されないのですか。
 
 select mean(Price), median(Price), min(msrp), 
        max(Price)
@@ -323,20 +366,34 @@ select mean(Price), median(Price), min(msrp),
 1点
 
 The INTO clause cannot create multiple macro variables.
+INTO句では、複数のマクロ変数を作成することはできません。
+uncorrect
+不正解
+The INTO clause creates multiple macro variables by specifying each macro variable name with a colon. 
+Each macro variable will be assigned the summarized value from the SELECT clause, but will error if the colon is missing 
+for each macro variable. Review Creating Multiple Macro Variables.
+INTO句は、各マクロ変数名をコロンで指定することにより、複数のマクロ変数を作成します。
+各マクロ変数には、SELECT 句から要約された値が割り当てられますが、各マクロ変数にコロンがない場合はエラーになります。
+複数のマクロ変数を作成するをレビューします。
+
 
 Remove the commas between each macro variable name in the INTO clause.
+INTO句の各マクロ変数名の間にあるカンマを削除してください。
 
 The INTO clause is missing a ‘separated by’ clause.
+INTO句に'separated by'句がありません。
 
 Specify each macro variable name with a preceding colon in the INTO clause.
-
+INTO句の各マクロ変数名の前にコロンを付けて指定してください。
 
 
 8.What is the value of the macro variable InventoryList?
-
+8.マクロ変数InventoryListの値は？
 select Product
     into :InventoryList separated by ","
     from inventory; 
+
+
 
 inventory
 
@@ -348,15 +405,24 @@ Pants     2
 "Shirt","Shoes","Pants"
 
 Three macro variables are created for Shirt, Shoes and Pants that contain the corresponding value.
+Shirt、Shoes、Pantsの3つのマクロ変数が作成され、対応する値が格納される。
 
 Shirt,Shoes,Pants
+correct
+正解
+You can concatenate the values of one column into one macro variable. This form is useful for building a list of variables 
+or constants. Use the SEPARATED BY keywords to specify a character to delimit the values in the macro variable.
+
 
 The query returns an error.
-
+クエリーはエラーを返します。
 
 
 9.Given the Revenue table below, you want to store the sum of Revenue in a macro variable named TotalRevenue. Which query will 
 store the exact value 400000 in a macro variable?
+以下のRevenueテーブルがある場合、Revenueの合計をTotalRevenueという名前のマクロ変数に格納したいとします。
+どのクエリがマクロ変数に正確な値400000を格納しますか？
+
 
 revenue
 Product   Revenue
@@ -374,6 +440,14 @@ select sum(Revenue)
 select sum(Revenue)
     into :TotalRevenue format=dollar16.
     from revenue;
+uncorrect
+不正解
+The format option causes an error in the INTO clause. By default, macro variables that contain large numeric values are 
+formatted using the BEST8. format. This format can cause the value to be displayed using scientific notation if the value is 
+greater than 8 digits. In this example the total sum is less than 8 digits so no formatting is required. Review Activity 6.02.
+format オプションは、INTO 句でエラーを発生させます。デフォルトでは、大きな数値を含むマクロ変数は、BEST8.形式を使用してフォーマットされます。
+このフォーマットは、値が8桁より大きい場合、科学的記数法で表示させることができます。この例では、合計が8桁未満なので、書式設定は必要ありません。
+アクティビティ6.02を復習してください。
 
 select sum(Revenue)
     into :TotalRevenue trimmed
@@ -382,11 +456,14 @@ select sum(Revenue)
 
 
 10.When storing a value in a single macro variable, PROC SQL preserves leading or trailing blanks. 
+PROC SQLは、単一のマクロ変数に値を格納するとき、先頭または末尾の空白を保持します。
 The ______________ option can be used to trim the leading and trailing blanks from values that are stored in a single macro variable.
+オプションは、単一のマクロ変数に格納された値の先頭と末尾の空白を切り捨てるために使用することができます。
 
 The SEPARATED BY option
 
 The TRIMMED option
+correct
 
 The FORMAT option
 
