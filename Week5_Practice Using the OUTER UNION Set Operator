@@ -1,0 +1,82 @@
+Practice: Using the OUTER UNION Set Operator
+
+1.If necessary, start SAS Studio before you begin. If you restarted your SAS session, submit your libname.sas program to 
+access the practice data.
+
+Create a report that shows the email and phone offer responses along with the sales representative if available.  
+電子メールと電話によるオファーの回答を、可能であれば営業担当者とともに表示するレポートを作成します。
+
+Using the sq.salesphone table as input, write a query to list the following columns:  
+sq.salesphone テーブルを入力として使用し、以下の列をリストするクエリを作成します。 
+
+CustomerID
+
+a new column named Response based on the existing PhoneResp column
+既存の PhoneResp 列に基づく Response という名前の新しい列。
+
+SalesRep labeled Sales Rep
+SalesRep というラベルの付いた販売担当者
+
+a new column named Channel with the constant text Phone
+Channel という名前の新しい列で、定数テキストは Phone です。
+
+Run the query and view the results.
+クエリを実行し、結果を表示します。
+
+Using the sq.salesemail table as input, write a query to list the following columns:
+sq.salesemail テーブルを入力として使用し、以下の列をリストするクエリを作成します。
+
+CustomerID
+
+
+a new column named Response based on the existing EmailResp column
+既存の EmailResp 列を基にした Response という名前の新しい列。
+
+a new column named Channel with the constant text Email
+定数テキストが Email である Channel という名前の新規カラム
+
+Run the query and view the results.
+クエリを実行し、結果を表示します。
+
+Combine the two query results using the OUTER UNION set operation. Use the following requirements:
+OUTER UNION セット操作を使用して、2 つのクエリ結果を結合します。以下の要件を使用してください。
+
+Be mindful of the column alignment. Use the SET operator modifiers as needed.
+列のアライメントに注意する。必要に応じて SET 演算子の修飾子を使用します。
+
+Order the results by CustomerID and Response.
+結果を CustomerID および Response で並べ替えます。
+
+Add an appropriate title.
+適切なタイトルを追加します。
+
+Run the query and view the final results.
+クエリを実行し、最終結果を表示します。
+
+How many identifiable sales representatives had an accepted offer?  Note: Type a numeric value.
+特定できる営業担当者のうち、オファーを受けたのは何人ですか？ 注：数値を入力してください。
+
+My answer: 2
+
+正解
+We can identify two sales reps that had accepted offers: 121137  and 120145.
+
+/*s105s05.sas*/
+
+title 'Offer Results with Sales Rep';
+proc sql;
+select CustomerID, 
+       PhoneResp as Response, 
+       SalesRep 'Sales Rep', 
+       'Phone' as Channel  
+    from sq.salesphone
+    outer union corr
+select CustomerID, 
+       EmailResp as Response, 
+      'Email' as Channel
+    from sq.salesemail
+    order by 1,2;
+quit;
+title;
+
+
