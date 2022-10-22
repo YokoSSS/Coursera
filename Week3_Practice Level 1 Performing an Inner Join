@@ -1,0 +1,67 @@
+Practice Level 1: Performing an Inner Join
+
+
+1.If necessary, start SAS Studio before you begin. If you restarted your SAS session, submit your libname.
+sas program to access the practice data.
+
+Open s103p01.sas from the practices folder. Modify the program to generate a report that shows the 
+breakdown of employment and marital status for customers in New York City.  
+
+Add a PROC SQL step to create a table named work.nyc that combines sq.customer and sq.maritalcode. 
+Use the following requirements:  
+
+This table should include only FirstName, LastName, Employed, and MaritalStatus.
+
+Perform an inner join on the Married column in the sq.customer table and MaritalCode column in the sq.maritalcode table.
+
+Filter the Zip column for customers in the 10001 Zip code.
+
+Run the query and view the results.
+
+Run the PROC FREQ step to generate the crosstabulation of MaritalStatus and Employed. 
+
+View the results.
+
+Overall, are NYC customers likely to be employed or unemployed? 
+
+1点
+
+Employed
+正解
+Overall, NYC customers are employed. Yes, NYC customers whose marital status is Single are more likely to be unemployed.  
+
+Unemployed
+
+/*s103s01.sas*/
+
+proc sql;
+create table work.NYC as 
+select c.FirstName, c.LastName, c.Employed, m.MaritalStatus  
+    from sq.customer as c inner join 
+         sq.maritalcode as m
+    on c.married=m.MaritalCode
+    where zip=10001;
+quit;
+
+/*Alternate Solution*/
+proc sql;
+create table work.NYC as 
+select c.FirstName, c.LastName, c.Employed, m.MaritalStatus  
+    from sq.customer as c, sq.maritalcode as m
+    where c.married=m.MaritalCode and
+          zip=10001;
+quit;
+
+
+
+2.Does this employment status vary across marital status?
+
+1点
+
+Yes
+正解
+NYC customers whose marital status is Single are more likely to be unemployed.  
+
+No
+
+
