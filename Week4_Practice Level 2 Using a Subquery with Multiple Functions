@@ -1,0 +1,27 @@
+
+1.If necessary, start SAS Studio before you begin. If you restarted your SAS session, submit your libname.sas program to access the practice data.
+
+Use the sq.customer table to determine which Texas customers have higher than average credit scores.  
+
+Using the sq.customer table, write a query to define the high-credit threshold as 2 standard deviations greater than the mean of CreditScore for TX customers.  
+
+Use the following expression to create the column HighScore. This will be your future subquery result:   sum(avg(CreditScore),(2*std(CreditScore)))                
+
+Run the query and view the results.
+
+Write a second query to create a report showing Texas customers whose CreditScore value is greater than the results from the previous query. Use the query you just wrote as a subquery. Use the following requirements:  
+
+Select CustomerID, FirstName, LastName, and CreditScore.
+
+Subset the table for customers who are from the state of Texas and who have a greater CreditScore value than the value from the query in step 1.
+
+Order the results by descending CreditScore.
+
+Add an appropriate title.
+
+Run the query and view the results.
+
+In your report, what is the greatest value for CreditScore?  Note: Type a numeric value.
+
+
+
