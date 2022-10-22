@@ -1,0 +1,46 @@
+Learning More (optional)
+Documentation
+For more information on material taught in SQL Joins, review the following documentation links:
+
+Selecting Data from More Than One Table By Using Joins
+https://go.documentation.sas.com/?cdcId=pgmsascdc&cdcVersion=9.4_3.4&docsetId=sqlproc&docsetTarget=p0o4a5ac71mcchn1kc1zhxdnm139.htm&locale=en
+
+SUBSTR (right of =) Function
+https://go.documentation.sas.com/?docsetId=lefunctionsref&docsetTarget=n0n08xougp40i5n1xw7njpcy0a2b.htm&docsetVersion=9.4&locale=en
+
+PUT Function
+https://go.documentation.sas.com/?docsetId=lefunctionsref&docsetTarget=n0mlfb88dkhbmun1x08qbh5xbs7e.htm&docsetVersion=9.4&locale=en
+
+INPUT Function
+https://go.documentation.sas.com/?docsetId=lefunctionsref&docsetTarget=p19en16vskd2vhn1vwmxpxnglxxs.htm&docsetVersion=3.1&locale=en
+
+One-to-One, One-to-Many, and Many-to-Many Joins
+ Using PROC SQL
+https://analytics.ncsu.edu/sesug/2017/SESUG2017_Paper-178_Final_PDF.pdf
+
+--Beyond SQL Joins--
+Want to go beyond the material? Check out the following resources:
+
+Want to learn more about SQL joins and Data Step merge?
+
+SQL Joins -- The Long and The Short of It
+https://support.sas.com/techsup/technote/ts553.html
+
+A Guide to Efficient PROC SQL Coding 
+http://support.sas.com/resources/papers/sgf09/336-2009.pdf
+
+Exploring PROC SQL® Joins and Join Algorithms 
+https://support.sas.com/resources/papers/proceedings09/035-2009.pdf
+
+Life saver tip for comparing PROC SQL join with SAS data step merge
+https://blogs.sas.com/content/sastraining/2015/05/27/life-saver-tip-for-comparing-proc-sql-join-with-sas-data-step-merge/
+
+Many-to-Many Merges in the DATA Step 
+https://support.sas.com/resources/papers/proceedings/pdfs/sgf2008/081-2008.pdf
+
+Merging Data Eight Different Ways
+https://support.sas.com/resources/papers/proceedings09/197-2009.pdf
+
+MERGING vs. JOINING: Comparing the DATA Step with SQL 
+https://support.sas.com/resources/papers/proceedings/proceedings/sugi30/249-30.pdf
+
