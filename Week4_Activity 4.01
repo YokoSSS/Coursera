@@ -12,6 +12,23 @@ What is the syntax error in the log?
 
 Note: All attempts on this activity receive credit. Type your response and  compare your answer to the answer provided.  
 
+My answer
+ERROR 22-322: 構文エラーです。次のいずれかを指定してください: 名前, 引用符で囲んだ文字列, 
+               数値定数, 日時定数, 欠損値, BTRIM, INPUT, PUT, SUBSTRING, USER.
+
+
+正解
+ERROR: A subquery cannot select more than one column.
+
+ERROR: A Composite expression (usually a subquery) is used incorrectly in an expression.
+This error occurs because we selected two columns in this subquery. The subquery can only return one column.  
 
 
 
+proc sql;
+select Name, PopEstimate1
+	from sq.statepopulation
+	where PopEstimate1 > (select avg(PopEstimate1), 
+        "Average Estimated Population"
+        from sq.statepopulation);
+quit;
