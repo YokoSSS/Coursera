@@ -1,0 +1,45 @@
+Activity 3.07
+
+
+1.If necessary, start SAS Studio before you begin. If you restarted your SAS session, submit your libname.sas program to access the practice data.
+
+Open s103a07.sas from the activities folder and perform the following tasks to join two tables using the SUBSTR functionr:
+
+Examine and run the query. 
+
+Did you receive a syntax error?
+
+1点
+
+Yes
+
+
+No
+correct
+正解
+No syntax error, but no rows were returned from the query.  
+
+
+
+2.In the ON clause, use the SUBSTR function on t.StateID to extract the first two characters. 
+
+Run the query. 
+
+Which StateName is Caberto, Glen Daniel from?  
+
+1点
+
+California
+correct
+正解
+
+New York
+
+
+proc sql inobs=100 number;
+select StateID, CustomerName, StateName
+    from sq.transactionfull as t inner join 
+         sq.statecode as s
+      on substr(t.StateID,1,2) = s.StateCode;
+quit;
+
