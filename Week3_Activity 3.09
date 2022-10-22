@@ -1,0 +1,26 @@
+
+1.If necessary, start SAS Studio before you begin. If you restarted your SAS session, submit your libname.sas program to access the practice data.
+
+Open s103a08.sas from the activities folder and perform the following tasks to join a numeric column with a character column by using the PUT function:
+
+If you have not run the Create a Table and Insert Values section of the program, run it now. 
+
+Use the PUT function to convert z.Zip in the ON clause to a character value using the z5 format. 
+
+Run the query.
+
+What city does the ZipCode value 14216 represent?  Note: Type the name of the city as it appears in the results.
+
+1点
+こちらに回答を入力
+
+Buffalo
+
+正解
+proc sql;
+select c.CustomerID, c.ZipCode, c.Gender, 
+       z.Zip, z.City, z.StateCode
+    from customerzip as c inner join 
+         sashelp.zipcode as z
+         on c.ZipCode = put(z.Zip,z5.);
+quit;
