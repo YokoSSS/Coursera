@@ -283,6 +283,11 @@ With a single argument in a summary function, the summarization occurs down a co
 The result will show two columns, one for each summary function, and a single row that contains the calculation.
 要約関数の引数が1つの場合、要約は列を下って行われ、1つの数値が返される。
 結果は、2 つの列、各集約関数、および計算を含む 1 つの行を表示します。
+With a single argument in a summary function, the summarization occurs down a column and returns a single number. 
+The result will show two columns, one for each summary function, and a single row that contains the calculation. 
+Review Summarizing Data.
+要約関数の引数が1つの場合、要約は列を下って行われ、1つの数値が返される。
+結果は、2つの列、各要約関数、および計算を含む単一の行が表示されます。データの要約を確認する。
 
 
 13.Which clause is required to filter the query results based on the calculated TotalEmployees?
