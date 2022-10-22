@@ -1,27 +1,64 @@
 
 1.If necessary, start SAS Studio before you begin. If you restarted your SAS session, submit your libname.sas program to access the practice data.
 
+1.必要であれば、事前にSAS Studioを起動しておきます。SAS セッションを再起動した場合は、練習データにアクセスするために libname.sas プログラムを提出します。
 Use the sq.customer table to determine which Texas customers have higher than average credit scores.  
 
-Using the sq.customer table, write a query to define the high-credit threshold as 2 standard deviations greater than the mean of CreditScore for TX customers.  
-
+Using the sq.customer table, write a query to define the high-credit threshold as 2 standard deviations greater than 
+the mean of CreditScore for TX customers.  
+sq.customer テーブルを使用して、平均より高いクレジットスコアを持つテキサスの顧客を決定します。 
 Use the following expression to create the column HighScore. This will be your future subquery result:   sum(avg(CreditScore),(2*std(CreditScore)))                
-
+sq.customer テーブルを使用して、TX の顧客の CreditScore の平均より 2 標準偏差が大きいことを高クレジット閾値と定義するクエリを作成し ます。
 Run the query and view the results.
+以下の式を使用して、列 HighScore を作成します。これは、将来のサブクエリの結果になります: sum(avg(CreditScore),(2*std(CreditScore)))       
+このクエリを実行し、結果を表示します。
 
-Write a second query to create a report showing Texas customers whose CreditScore value is greater than the results from the previous query. Use the query you just wrote as a subquery. Use the following requirements:  
+Write a second query to create a report showing Texas customers whose CreditScore value is greater than the results from the previous query. 
+Use the query you just wrote as a subquery. Use the following requirements:  
+2 番目のクエリを作成して、CreditScore 値が前のクエリの結果より大きい Texas の顧客を示すレポートを作成します。
+先ほど作成したクエリをサブクエリとして使用します。以下の要件を使用します。 
 
 Select CustomerID, FirstName, LastName, and CreditScore.
+CustomerID、FirstName、LastName、および CreditScore を選択します。
 
 Subset the table for customers who are from the state of Texas and who have a greater CreditScore value than the value from the query in step 1.
+テキサス州の出身で、ステップ 1 のクエリの値より大きい CreditScore 値を持つ顧客について、テーブルをサブセットします。
 
 Order the results by descending CreditScore.
+結果を CreditScore の降順で並べます。
 
 Add an appropriate title.
+適切なタイトルを追加します。
 
 Run the query and view the results.
+クエリを実行し、結果を表示します。
 
 In your report, what is the greatest value for CreditScore?  Note: Type a numeric value.
+レポートでは、CreditScore の最大値は何ですか？ 注：数値を入力してください。
 
+My Answer: 848
+
+/*part 1
+proc sql;
+select sum(avg(CreditScore),(2*std(CreditScore))) as HighScore
+    from sq.customer
+    where state='TX';
+quit;
+
+/*part 2*/
+title 'Texas Customers with Higher than Average Credit Scores';
+proc sql;
+select CustomerID, FirstName, LastName, CreditScore
+    from sq.customer 
+    where state="TX" and 
+          CreditScore > 
+            (select sum(avg(CreditScore),(2*std(CreditScore))) 
+                                         as HighScore
+                 from sq.customer
+                 where state='TX')
+    order by CreditScore desc;
+quit;
+title;
+*/
 
 
