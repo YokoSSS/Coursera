@@ -1,0 +1,27 @@
+
+
+1.If necessary, start SAS Studio before you begin. If you restarted your SAS session, submit your libname.sas program to access the practice data.
+
+Open s103a06.sas from the activities folder and perform the following tasks to find all transactions not associated with a documented customer:
+
+Run the query to create a left join between the sq.smalltransaction2 and sq.smallcustomer2 tables. 
+sq.smalltransaction2 と sq.smallcustomer2 テーブルの間に左結合を作成するクエリーを実行します。
+
+Examine the report. Notice that the rows with missing values in AccountID have been joined.
+レポートを調べます。AccountID に欠損値を持つ行が結合されていることに注意してください。
+
+In the ON clause, add the expression and t.AccountID is not null. 
+ON 節で、式と t.AccountID is not null を追加します。
+
+Run the query. Confirm that missing values were not joined.
+クエリを実行します。欠落した値が結合されていないことを確認します。
+Add a WHERE clause with the expression c.AccountID is null to filter for all transactions without a documented customer. 
+文書化された顧客のないすべてのトランザクションをフィルタリングするために、式 c.AccountID is null を持つ WHERE 節を追加します。
+
+Run the query and examine the report. 
+クエリを実行し、レポートを調べます。
+How many transactions do not have a customer associated with them? Note: Type a numeric value.
+顧客に関連付けられていないトランザクションはいくつありますか。注：数値を入力してください。
+
+
+
