@@ -1,0 +1,104 @@
+
+Structured-Query-Language-(SQL)-using-SASWeek4_Practice Level 2 Building a Complex Query Using In-Line Views
+
+
+1.
+質問 1
+If necessary, start SAS Studio before you begin. If you restarted your SAS session, submit your libname.sas program to access the practice data.
+必要であれば、事前に SAS Studio を起動してください。SAS セッションを再起動した場合は、練習データにアクセスするために libname.sas プログラムを提出します。
+In this practice, you determine which employees have the highest salary for their job title in every state.  
+この実習では、各州で職種別の給与が最も高い従業員を決定します。 
+Using the sq.employee table, write a query to calculate the maximum Salary value for each value of JobTitle within each State. 
+Use the following requirements:
+sq.employee テーブルを使用して、各州内の JobTitle の各値に対する Salary の最大値を計算するクエリを作成します。以下の要件を使用します。
+
+Convert the values of the State column to uppercase and name the column State to standardize the state code values.
+State 列の値を大文字に変換し、State 列に名前を付けて、州コードの値を標準化します。
+
+Select JobTitle and calculate the maximum salary. Name the column MaxJobSalary.
+JobTitle を選択し、最大給与を計算します。列を MaxJobSalary と命名します。
+
+Filter rows where State is not null.
+State が NULL ではない行をフィルタリングします。
+
+Group the results by the calculated State and JobTitle. (You must use the CALCULATED keyword. See Column Alias Extensions in the SAS Documentation)
+計算されたStateとJobTitleによって結果をグループ化します。(CALCULATEDキーワードを使用する必要があります。SAS ドキュメント の列エイリアス拡張を参照してください)。
+
+Order the results by State.
+結果をStateで並べ替えます。
+
+Add an appropriate title.
+適切なタイトルを追加します。
+
+Run the query and view the results.
+クエリを実行し、結果を表示します。
+
+What is the MaxJobSalary value for a Chief Executive Officer in FL?  Note: Enter a numeric value with no formatting (including commas).
+フロリダ州の最高経営責任者の MaxJobSalary 値はいくらですか？ 注：フォーマット（カンマを含む）を使用せずに数値を入力してください。
+My Answer: 433800
+correct
+正解
+Solution code:
+/*s104s07.sas*/
+
+/*a*/
+title 'Maximum Salary for Each Job in every State';
+proc sql;
+select upcase(State) as State, JobTitle, 
+       max(Salary) as MaxJobSalary
+    from sq.employee
+    where State is not null
+    group by calculated State, JobTitle
+    order by State;
+quit;
+title;
+
+
+2.Use the query you just ran as an in-line view to join with the sq.employee table. Use the following requirements:
+2.先ほど実行したクエリをインラインビューとして使用し、sq.employeeテーブルと結合します。以下の要件を使用します。
+
+Display EmployeeID, EmployeeName, State, JobTitle, and Salary for the highest paid employee for each value of JobTitle in every state.
+各州のJobTitleの値ごとに、最も給与の高い従業員のEmployeeID、EmployeeName、State、JobTitle、およびSalaryを表示します。
+
+Perform an inner join with the sq.employee table and the in-line view from step 1. Give the sq.employee table the alias 
+detail and the in-line view the alias summary. Hint: Remove the ORDER BY clause when using an in-line view.
+sq.employeeテーブルと手順1のインライン・ビューで内部結合を実行します。sq.employeeテーブルにはエイリアス インラインビューの
+エイリアスをsummaryとします。ヒント: インラインビューを使用する場合は、ORDER BY句を削除してください。
+
+Use JobTitle, State, and Salary equal to MaxJobSalary as the join criteria. HINT: Make sure State is upper cased when joining.
+結合基準として、JobTitle、State、およびSalary（MaxJobSalaryと等しい）を使用します。ヒント：結合するとき、State が大文字であることを確認します。
+
+Order the report by State and JobTitle.
+レポートを State（州）と JobTitle（職種名）で並べます。
+
+Add an appropriate title and format the Salary values with a dollar sign and comma.
+適切なタイトルを追加し、Salary 値をドル記号とコンマでフォーマットします。
+
+Run the query and view the results.
+クエリを実行し、結果を表示します。
+
+What is the last name of the highest paid Auditor I in CA?  
+CA で最も給与の高い監査役 I のラストネームは何ですか？ 
+EmployeeID	EmployeeName	  State	JobTitle	  Salary
+120764	    Worton, Steven  CA	  Auditor I	  $40,450
+
+Worton
+correct
+正解
+Solution code:
+title 'Employees with Highest Salary for their Job in every State';
+proc sql;
+select detail.EmployeeID, detail.EmployeeName, detail.State, 
+       detail.JobTitle, detail.Salary format=dollar12.
+    from sq.employee as detail inner join
+         (select upcase(State) as State, 
+                 JobTitle, max(Salary) as MaxJobSalary
+              from sq.employee
+              where State is not null
+              group by calculated State, JobTitle) as summary
+    on detail.Jobtitle=summary.JobTitle and
+       upcase(detail.State)=Summary.State and
+       detail.Salary=Summary.MaxJobSalary
+    order by detail.State, detail.JobTitle;
+quit;
+title;
