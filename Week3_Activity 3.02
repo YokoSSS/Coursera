@@ -1,0 +1,35 @@
+1.If necessary, start SAS Studio before you begin. If you restarted your SAS session, 
+submit your libname.sas program to access the practice data.
+
+Open s103a02.sas from the activities folder and perform the following tasks to perform 
+an inner join on tables with different columns names:
+
+Examine and run the two queries to explore the sq.statepopulation and sq.statecode tables. 
+
+What columns can you use to join the tables?
+
+1点
+
+Name and StateName
+
+
+Name and StateCode
+correct
+
+
+2.In the Complete the Inner Join section of the program, specify the tables in the FROM clause and perform an inner join.
+
+Add the alias p for the sq.statepopulation table, and the alias s for the sq.statecode table.  
+
+Complete the ON expression to match rows where p.Name = s.StateCode. 
+
+Highlight and run the query. 
+
+How many rows are in the new report?  
+
+1点
+
+My Answer:
+52
+
+
