@@ -14,33 +14,57 @@ Run the query and view the log.
 
 What note do you see?
 
+Solution code:
+proc sql number;
+    select *
+    from sq.smallcustomer, sq.smalltransaction;
+quit;
+
+
 1点
 
 The join ran successfully.
 
 
 Include a keyword when attempting to join tables.
-
+不正解
 
 The execution of this query involves performing one or more Cartesian product joins that can not be optimized.
+correct
+正解
+Note: The execution of this query involves performing one or more Cartesian product joins that can not be optimized.  
+proc sql number;
+    select *
+    from sq.smallcustomer, sq.smalltransaction;
+quit;
 
 2.View the results. What issues do you see with the report.  
 
 1点
 
 There is a syntax error.
-
+uncorrect
+これを選択しないでください
+There are redundant columns and nonmatching IDs.
+冗長な列や一致しないIDがある。
 
 Need to use a summary function on the Income column.
 
 
 There are redundant columns.
-
+correct
+正解
+There are redundant columns and nonmatching IDs.
 
 DateTime is formatted incorrectly.
 
 
 There are nonmatching IDs.
+correct
+正解
+There are redundant columns and nonmatching IDs.
 
-
-
+ERROR 22-322: 構文エラーです。次のいずれかを指定してください: ;, ',', ANSIMISS, CROSS, EXCEPT, FULL, GROUP, 
+               HAVING, INNER, INTERSECT, JOIN, LEFT, NATURAL, NOMISS, ORDER, OUTER, RIGHT, UNION, WHERE.  
+ 
+ ERROR 76-322: 構文エラーです。ステートメントを無視しました。
