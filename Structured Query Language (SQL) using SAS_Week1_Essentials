@@ -234,3 +234,261 @@ not use the GROUP BY or HAVING clauses. Review PROC SQL Syntax.
 しかし、すべての句が存在しなければならないわけではありません。例えば、WHERE句とORDER BY句を使用し、GROUP BY句やORDER BY句を使用しないことも可能です。
 GROUP BY 節または HAVING 節を使用しないこともできます。PROC SQL の構文を確認する。
 
+
+****************************************************************************************************************************************************
+Test Second time
+
+1.Which statement reads 10 rows from the input table?
+
+
+proc sql number=10;
+
+
+proc sql rownum=10;
+
+
+proc sql inobs=10;
+correct
+正解
+The INOBS= option restricts the number of rows that PROC SQL reads from all input tables specified in the FROM clause.
+
+proc sql outobs=10;
+
+
+2.Which of the following objects can you create by using only the SQL procedure?
+
+
+SAS tables
+
+SAS views
+
+DBMS tables
+
+
+all of the above
+correct
+正解
+A PROC SQL query can create reports, SAS tables and views, and DBMS tables and views.
+
+
+
+3.Which code displays the column information in the sq.customer table?
+
+/*proc sql;
+    select table sq.customer content;
+quit;
+
+ ERROR 22-322: 構文エラーです。次のいずれかを指定してください: !, !!, &, (, *, **, +, ',', -, /, <, <=, <>, 
+               =, >, >=, ?, AND, BETWEEN, CONTAINS, EQ, EQT, FROM, GE, GET, GT, GTT, LE, LET, LIKE, LT, LTT, NE, NET, OR, ^=, |, ||, 
+               ~=.  
+ 
+ ERROR 79-322: FROMを指定してください。
+*/
+/*proc sql;
+    describe table sq.customer;
+quit;
+
+ create table SQ.CUSTOMER( bufsize=131072 )
+   (
+    FirstName char(15) label='First Name',
+    MiddleName char(15) label='Middle Name',
+    LastName char(15) label='Last Name',
+    Gender char(1),
+    DOB num label='Date of Birth',
+    Employed char(1),
+    Race char(1),
+    Married char(1),
+    StreetNumber num,
+    StreetName char(30),
+    City char(25),
+    State char(2),
+    Zip num,
+    HomePhone char(12),
+    CellPhone char(12),
+    StateID char(10),
+    UserID char(200) label='User ID',
+    CustomerID num format=11. label='Customer ID',
+    BankID num format=9.,
+    Income num,
+    AccountID num format=11.,
+    CreditScore num
+   );
+*/
+正解
+The DESCRIBE TABLE statement displays column information.
+
+/*
+proc sql;
+    describe sq.customer;
+quit;
+ERROR 79-322: SELECTを指定してください。
+ 
+ ERROR 22-322: 構文エラーです。次のいずれかを指定してください: 引用符で囲んだ文字列, !, !!, &, *, 
+               **, +, ',', -, /, <, <=, <>, =, >, >=, ?, AND, AS, BETWEEN, CONTAINS, EQ, EQT, FORMAT, FROM, GE, GET, GT, GTT, IN, 
+               INFORMAT, INTO, IS, LABEL, LE, LEN, LENGTH, LET, LIKE, LT, LTT, NE, NET, NOT, NOTIN, OR, TRANSCODE, ^, ^=, |, ||, ~, 
+               ~=.  
+ 
+ ERROR 76-322: 構文エラーです。ステートメントを無視しました。
+*/
+/*
+proc sql;
+    contents table sq.customer;
+quit;
+
+ERROR 180-322: ステートメントが有効でないか、適切な順序で使用されていません。
+*/
+
+
+4.Which PROC SQL option adds the row number to a report?
+4. 行番号をレポートに追加する PROC SQL オプションはどれですか?
+1点
+
+
+ROWNUM
+
+OBS
+
+NUM
+
+NUMBER
+
+不正解
+You did not choose an option.
+
+
+5.What is required to modify this query to produce a report including only the columns Customer_ID, Last_Name, Purchase_Date, and Purchase?
+5.Customer_ID、Last_Name、Purchase_Date、および Purchase 列のみを含むレポートを作成するために、このクエリを変更するには何が必要ですか?
+proc sql;
+select *
+    from sq.orders;
+quit;
+
+1点
+
+Remove the asterisk (*) and add the names of the desired columns separated by a space.
+アスタリスク (*) を削除し、目的の列の名前をスペースで区切って追加します。
+
+Remove the asterisk (*) and add the names of the desired columns separated by a comma.
+アスタリスク (*) を削除し、必要な列の名前をコンマで区切って追加します。
+correct
+正解
+The asterisk (*) shows all columns from the table and should be removed. Then add the specific column names separated by a comma.
+
+After the asterisk (*), add the names of the desired columns separated by a comma.
+アスタリスク (*) の後に、目的の列の名前をカンマで区切って追加します。
+
+After the asterisk (*), add COLUMNS and the names of the desired columns.
+アスタリスク (*) の後に、COLUMNS と目的の列の名前を追加します。
+
+
+
+6.Which of the following statements are true? Select all that apply.
+6. 次の記述のうち、正しいものはどれですか? 該当するものをすべて選択。
+1点
+
+SAS SQL is fully ANSI-compliant
+SAS SQL は完全に ANSI に準拠しています
+correct
+This should not be selected
+Although PROC SQL incorportates many of the ANSI standards, it is not ANSI compliant. Review What is SQL?
+
+Database Management Systems (DBMS) offer different implemenations of SQL and many have unique keywords, features, and enhancements.
+データベース管理システム (DBMS) は SQL のさまざまな実装を提供し、その多くは独自のキーワード、機能、および拡張機能を備えています。
+
+PROC SQL can be used to query, manipulate, and manage data in various databases.
+PROC SQL を使用して、さまざまなデータベースのデータをクエリ、操作、および管理できます。
+correct
+Correct
+PROC SQL can read and update data from many different DBMS sources.
+
+
+PROC SQL queries in SAS have the same syntax as queries generated in other DBMS environments.
+SAS の PROC SQL クエリの構文は、他の DBMS 環境で生成されたクエリと同じです。
+correct
+This should not be selected
+SAS and DBMS environments offer different implementations of the standard SQL. 
+They follow ANSI standards, but keywords, functions, features, and enhancements may be slightly different. Review What Is SQL?
+
+
+7.Which query produces a report that selects the Make, Model and MPG_City columns from the sashelp.cars table?
+sashelp.carsテーブルからMake、Model、MPG_City列を選択するレポートを作成するクエリはどれですか？
+1点
+
+select Make, Model, MPG_City
+    from sashelp.cars;
+correct
+正解
+Specify the names of the columns separated by commas in the SELECT clause, and then specify the input table in the FROM clause.
+
+from sashelp.cars
+    select Make, Model, MPG_City;
+
+from sashelp.cars
+    select Make Model MPG_City;
+
+select Make Model MPG_City
+    from sashelp.cars;
+ 
+
+
+    
+8.Which clause controls the order of the columns displayed in a query result?
+8.クエリ結果に表示される列の順序を制御する句はどれですか?
+
+WHERE
+
+GROUP BY
+
+ORDER BY
+correct
+不正解
+In query output, the columns appear in the order they are listed in the SELECT clause. 
+The ORDER BY clause specifies the order or the rows returned by the query. Review PROC SQL Syntax.
+クエリ出力では、列はSELECT句にリストされた順番に表示されます。
+ORDER BY 句は、クエリによって返される行の順序を指定します。PROC SQL 構文を確認する。
+
+SELECT
+correct
+
+9.PROC SQL provides many SAS enhancements that are not available in other implementations of SQL.
+PROC SQL は、他の SQL の実装では利用できない多くの SAS の機能拡張を提供します。
+1点
+
+True
+correct
+正解
+PROC SQL follows most of the guidelines set by the American National Standards Institute (ANSI) in 
+its implementation of SQL. However, it is not fully compliant with the current ANSI standard for SQL. 
+You can include SAS enhancements that go beyond the ANSI standard.
+
+False
+
+
+
+10.Which two clauses are required to execute a query?
+クエリを実行するために必要な2つの句はどれですか？
+1点
+
+HAVING
+
+WHERE
+
+ORDER BY
+
+GROUP BY
+
+FROM
+correct
+Correct
+The SELECT and FROM clauses are required to execute a query in SAS. The SELECT clause specifies a list of 
+column names to retrieve, and the FROM clause specifies the data source.The SELECT and FROM clauses are 
+required to execute a query in SAS. The SELECT clause specifies a list of column names to retrieve, and the FROM clause specifies the data source.
+
+SELECT
+corrext
+Correct
+The SELECT and FROM clauses are required to execute a query in SAS. The SELECT clause specifies a list of column names to retrieve, 
+and the FROM clause specifies the data source.
+
+正解
+Great, you got all the right answers.
