@@ -1,0 +1,228 @@
+Subqueries
+
+1.What will the following query produce?
+
+select *
+    from sashelp.cars
+    where MSRP < (select avg(MSRP)
+                  from sashelp.cars
+                  where Make = 'Toyota');
+
+
+The query will list all cars from the cars table that are less than the average price of all Toyotas.
+correct
+正解
+The subquery calculates the average price of Toyota cars. That value is used in the WHERE expression of the 
+main query to return all cars with MSRP less than the average Toyota price.
+サブクエリでは、トヨタ車の平均価格を計算しています。この値は、メインクエリの WHERE 式で使用されます。
+式で使用され、希望小売価格がトヨタ車の平均価格より低い車をすべて返します。
+
+The query returns a syntax error.
+
+The query will list all cars from the cars table that are greater than the average price of all Toyotas.
+
+The query will list all cars from the cars table.
+
+
+
+2.The following query produces a table with the ID, Job_Title and Salary of employees who make more than the average of all employees.
+
+select ID, Job_Title, Salary
+    from staff
+    where Salary > (select mean(Salary)
+    from staff);
+
+1点
+
+True
+correct
+正解
+A noncorrelated subquery must be a valid query inside parentheses in the WHERE or HAVING clause. 
+It must return a single column with one or more rows.
+関連性のないサブクエリは、WHERE句またはHAVING句の括弧の中に有効なクエリを記述する必要があります。
+また、1つ以上の行を持つ1つの列を返さなければなりません。
+
+False
+
+
+
+3.Which statement is not true regarding a noncorrelated subquery?
+
+
+Joins and subqueries can be used together in the same query.
+
+A subquery is known as a virtual table.
+
+A subquery can be used in a WHERE or HAVING clause with a comparison operator.
+uncorrect
+不正解
+A noncorrelated subquery must be a valid query inside parentheses in the WHERE or HAVING clause. Review Using a Subquery in the WHERE Clause.
+関連性のないサブクエリは、WHERE句またはHAVING句の括弧の中に有効なクエリを記述する必要があります。WHERE 句でのサブクエリの使用について確認します。
+
+A noncorrelated subquery can be run independently of the outer query.
+
+
+
+4.Which query finds the ID, Job_Title and Salary of all employees in the Engineering department? 
+どのクエリがエンジニアリング部門の全従業員のID、Job_Title、Salaryを見つけるのですか？
+partial staff
+ID   Job_Title          Salary    Department
+001  Director           $163,040  Sales Management
+074  Office Assistant   $36,256   Administration
+085  Service Assistant  $29,147   Engineering
+
+
+select ID, Job_Title, Salary
+    from staff
+    where ID = (select ID
+    from staff
+    where Department ="Engineering");
+Correct
+不正解
+The IN operator is required in the WHERE clause because it can accept multiple values from the subquery. 
+The equals operator can only accept a single value. Review Subquery That Returns Multiple Values and Using a Subquery That Returns Multiple Values.
+IN演算子は、サブクエリから複数の値を受け取ることができるため、WHERE句で必要とされます。
+等号演算子は、1 つの値しか受け付けません。Review Subquery That Returns Multiple Values and Using a Subquery That Returns Multiple Values.
+
+select ID, Job_Title, Salary
+    from staff
+    where ID in (select ID
+    from staff
+    where Department ="Engineering");
+
+
+
+5.An in-line view can contain any of the clauses in a SELECT statement except:
+インラインビューは、SELECT文に含まれる以下の句を除くすべての句を含むことができます。
+
+FROM
+
+GROUP BY
+uncorrect
+不正解
+An in-line view can contain any of the clauses in a SELECT statement except the ORDER BY clause. Review What Is an In-Line View?
+インラインビューには、SELECT ステートメントの ORDER BY 節以外のすべての節を含めることができます。インラインビューとは？
+
+ORDER BY
+
+WHERE
+
+
+6.Suppose you need to use the most current data from a complex query and want multiple users to be able to access 
+the information. Which of the following solutions would be best?
+複雑なクエリから最新のデータを使用する必要があり、複数のユーザーが情報にアクセスできるようにしたい場合を考えてみましょう。
+次のうち、どのソリューションが最適でしょうか？
+1点
+
+Send users the query code to reuse in their queries as an in-line view.
+ユーザーにクエリコードを送信し、インラインビューとしてクエリで再利用できるようにする。
+Create a table with the complex query and allow users access to the table. Update the table frquently.
+複雑なクエリを含むテーブルを作成し、ユーザーにそのテーブルへのアクセスを許可する。テーブルを頻繁に更新する。
+Create a view with the complex query and allow users to access the view.
+複雑なクエリを含むビューを作成し、ユーザがそのビューにアクセスできるようにする。
+correct
+正解
+A view builds the data when the view is executed and retrieves the most up to date information every time the view is run.
+
+
+7.Which statement creates a view named RetailPrice?
+RetailPriceという名前のビューを作成するのはどのステートメントですか？
+1点
+
+create view as RetailPrice
+select ...
+correct
+不正解
+To create a view from a query result, use a CREATE VIEW statement with the new view name and the AS keyword, 
+followed by the query. Review Creating a View .
+
+create view RetailPrice
+select ...
+
+create view RetailPrice as
+select ...
+
+create view RetailPrice;
+select ...
+
+
+8.What is the advantage of including an embedded LIBNAME statement in the USING clause when creating a view?
+ビューを作成する際に、USING句にLIBNAME文を埋め込むと、どのような利点がありますか？
+1点
+
+
+It forces the view to always reside in the same location as the source table.
+これは、ビューが常にソーステーブルと同じ場所に存在することを強制します。
+
+It enables a view to be portable if the underlying tables in the view are stored in different locations than the view.
+これにより、ビューの基礎となるテーブルがビューと異なる場所に格納されている場合でも、ビューを移植することができます。
+
+It uses a one-level name for the source table in the FROM clause
+FROM句でソース・テーブルの1レベル名を使用します。
+correct
+不正解
+If you use a one-level name for the source table in a view definition, the view and the source table must 
+reside in the same location. Review Making a View Portable.
+ビュー定義でソース テーブルに 1 レベルの名前を使用する場合、ビューとソース テーブルは同じ場所に存在する必要があります。
+ビューをポータブルにするを参照してください。
+
+It uses a two-level name for the source table in the FROM clause, requiring you to store the view in the same location as the source table.
+FROM節でソース・テーブルの2レベルの名前を使用し、ソース・テーブルと同じ場所にビューを格納する必要があります。
+
+
+9.Which of the following queries remerges the data?
+9.次のクエリのうち、データを再マージするものはどれですか？
+1点
+
+select sum(MSRP)/count(*) as Average
+    from sashelp.cars;
+correct
+不正解
+Remerging occurs when the SELECT clause specifies both a non-summarized column and a summarized column. 
+By default, SAS remerges unless you either group by the column or columns in the SELECT clause or remove 
+the non-summarized column. Review Remerging Summary Statistics in PROC SQL.
+リマージは、SELECT句がサマライズされていない列とサマライズされた列の両方を指定したときに発生します。
+デフォルトでは、SELECT 句の列でグループ化するか、サマライズされていない列を削除しない限り、SAS は再マージします。
+PROC SQLにおける要約統計の再マージ」を参照してください。
+
+select Origin, mean(MSRP) as MeanMSRP
+    from sashelp.cars
+    group by Origin;
+
+select sum(MSRP), mean(MSRP) as MeanMSRP
+    from sashelp.cars;
+correct
+
+select Origin, mean(MSRP) as MeanMSRP
+    from sashelp.cars;
+
+
+10.Which SELECT clause calculates Pct as each individual row of Quantity divided by the sum of the Quantity column?
+
+1点
+
+select Product,
+       Quantity/sum(Quantity) as Pct
+          format=percent5.2
+    from inventory;
+Correct
+正解
+This query first calculates the sum of Quantity. That value is remerged with Product and divides Quantity by the sum of 
+Quantity for each row to calculate Pct.
+このクエリは、まず「数量」の合計を計算します。その値を Product と結合し、Quantity を各行の Quantity の合計で割って、Pct を計算します。
+
+select Product,
+       (select sum(Quantity)
+       from inventory) as Pct format=percent5.2
+    from inventory;
+
+select Product, Quantity,
+       sum(Quantity) as Pct format=percent5.2
+    from inventory;
+
+select Product,
+       Quantity/(select sum(Quantity)) as Pct
+          format=percent5.2
+    from inventory;
+    
+    
