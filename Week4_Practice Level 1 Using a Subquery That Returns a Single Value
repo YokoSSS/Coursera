@@ -2,31 +2,66 @@
 1.If necessary, start SAS Studio before you begin. If you restarted your SAS session, submit your libname.sas program to access the practice data.
 
 The sq.statepopulation table contains estimated population statistics for every state in the US and its territories. 
+sq.statepopulation テーブルには、米国内の各州とその領域の推定人口統計が含まれています。
+
 You want to determine which states have an estimated three-year population growth greater than the average for all states.
+あなたは、3年間の推定人口増加率が全州の平均よりも大きい州を決定したいのです。
 
 Using the sq.statepopulation table, write a query that displays the average three-year population growth for all states. 
+sq.statepopulation テーブルを使用して、すべての州の 3 年間の平均人口成長率を表示するクエリを作成します。
 
 Use the nPopChg3 column to calculate the average from the sq.statepopulation table. 
+nPopChg3 列を使用して、sq.statepopulation テーブルから平均値を計算します。
 
 Run the program and view the results.
+このプログラムを実行し、結果を表示します。
 
 Use the query you just wrote to display the states that have a projected three-year population growth greater than the 
-overall average. Use the following requirements:
+overall average. 
+先ほど作成したクエリを使用して、3 年間の予測人口増加率が全体の平均を上回っている州を表示します。
+
+Use the following requirements:
+以下の要件を使用します。
 
 Include Name and nPopChg3 in the results.
+結果に Name と nPopChg3 を含める。
 
 Label nPopChg3 as Estimated Growth and format the values with commas.
+nPopChg3 を Estimated Growth とラベル付けし、値をコンマで囲みます。
 
 Use the query from step 1 to subset the table.
+ステップ 1 のクエリを使用して、テーブルをサブセットします。
 
 Order the results by descending nPopChg3.
+結果を nPopChg3 の降順で並べます。
 
 Add an appropriate title.
+適切なタイトルを追加します。
 
 Run the query and view the results.
+クエリを実行し、結果を表示します
 
 Which state has the greatest estimated growth in your results?
+この結果、推定成長率が最も高いのはどの州ですか？
 
+My Answer:TX
+正解
+TX (Texas), with an Estimated Growth value of 379,128  
 
+/*part 1*/
+proc sql;
+select mean(nPopChg3)
+    from sq.statepopulation;
+quit;
 
-
+/*part 2*/
+title "States with an estimated 3-Year Population Growth";
+title2 "Greater than the Overall Average";
+proc sql;
+select Name, nPopChg3 label="Estimated Growth" format=comma16.
+    from sq.statepopulation
+    where nPopChg3 > (select mean(nPopChg3)
+                          from sq.statepopulation)
+    order by nPopChg3 desc;
+quit;
+title;
