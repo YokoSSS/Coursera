@@ -1242,3 +1242,370 @@ SELECT句とON句にリストされる列は、エイリアスで修飾する必
 
 
 
+1.
+質問 1
+The sq.orders table contains 10 rows and the sq.products table contains 5 rows. How many rows are returned by the following query?
+
+select *
+    from sq.order, sq.products;
+
+1 / 1点
+
+10
+
+50
+correct
+正解
+The default JOIN combines every row in each table. This is called the Cartesian product. 
+In this example, all 10 rows from the sq.orders table will be joined with each of the 5 rows in the sq.productstable. 
+The new report contains 50 rows. Review Joining Tables.
+
+5
+
+It depends on the number of matching and non-matching rows
+
+
+2.
+質問 2
+When joining two tables, the FROM clause specifies the first table, the keywords INNER JOIN, followed by the second table. Following the table names and join type, the syntax requires an ON clause. What does the ON clause do?
+
+select *
+    from orders inner join products
+    on ____________;
+
+1 / 1点
+
+The ON clause assigns a table alias and the columns to join.
+
+The ON clause names the library that contains the joined tables.
+
+The ON clause describes the join criteria for matching rows in the tables.
+correct
+正解
+The ON clause describes the join criteria for matching rows in tables. 
+If the matching columns have the same name in both tables, you must qualify the columns as table.column.
+
+The ON clause specifies the order by which the columns are displayed.
+
+
+
+3.
+質問 3
+In PROC SQL, a natural join automatically joins tables based on columns that have the same name and type in both tables.
+
+1 / 1点
+True
+
+False
+
+正解
+A natural join identifies columns in each table that have the same name and type, and uses those matching columns as the join criteria. The ON clause is implied and table aliases are not necessary to qualify column names that are common to both tables.
+
+
+4.
+質問 4
+Which result set does the following inner join produce? 
+
+select p.Prod_ID, Color, Price
+    from products as p inner join
+         saleitems as s
+    on p.Prod_ID=s.Prod_ID and Color='Blue';
+
+products
+Prod_ID Color
+1       Blue
+2       Red
+3       Red
+4       Yellow
+5       Blue
+6       Yellow
+
+saleitems
+Prod_ID Price
+1       12.99
+4       45.99
+
+1 / 1点
+
+An error is produced
+
+Prod_ID Color  Prod_ID  Price
+1       Blue   1        12.99
+5       Blue   5        . 
+
+Prod_ID  Color  Price
+1        Blue   12.99
+Correct
+正解
+The SELECT clause qualifies the Prod_ID column name, so the result set has only one Prod_ID column. This is an inner join, so the ON clause joins only the rows that have the matching values of Prod_ID and Color equal to Blue.
+
+
+Prod_ID  Color  Price
+1        Blue   12.99
+5        Blue   .
+
+
+5.
+質問 5
+Which result set does the following inner join produce? 
+
+select p.Prod_ID, Color, Price
+    from products as p inner join 
+         saleitems as s
+    on p.Prod_ID=s.Prod_ID; 
+
+products
+Prod_ID  Color
+1        Blue
+2        Red
+3        Red
+.        Green
+.        Blue
+
+
+saleitems
+Prod_ID  Price
+1        12.99
+4        45.99
+.        .99
+.        1.99
+
+
+1 / 1点
+Prod_ID  Color  Price
+1        Blue   12.99
+.        Green  .99
+.        Blue   1.99
+
+
+Prod_ID  Color  Price
+1        Blue   12.99
+
+Prod_ID  Color  Price
+1        Blue   12.99
+2        Red    .99
+3        Red    1.99
+.        Green  .99
+.        Blue   1.99
+
+Correct
+
+正解
+PROC SQL treats missing values as valid values and matches for joins. Any missing value from one table matches with each missing value of the same type (character or numeric) in the other table. Review Handling Missing Values.
+
+6.
+質問 6
+Which of the following queries produces the desired results?
+
+products
+
+Prod_ID  Price
+1        125.99
+2        90.99
+3        1.99
+
+producttiers
+
+Tiers    Low     High
+Tier 1   0       9.99
+Tier 2   10      99.99
+Tier 3   100     999.99
+
+desired results
+
+Prod_ID  Price   Tiers
+1        125.99  Tier 3
+2        90.99   Tier 2
+3        1.99    Tier 
+
+1 / 1点
+
+select p.Prod_ID, Price, Tiers
+    from products as p inner join
+       productTiers as t
+    on p.Price>=t.Low and p.Price<=t.High
+    order by p.Prod_ID;
+Correct
+正解
+The ON clause you can use comparison operators instead of equality for the JOIN criteria. The p.Price column must be greater than or equal to the t.Low value, and less than or equal to the t.High value for the row to join.
+
+select p.Prod_ID, Price, Tiers
+    from products as p inner join
+       productTiers as t
+    on p.Price<=t.High
+    order by p.Prod_ID;
+
+select p.Prod_ID, Price, Tiers
+    from products as p inner join
+       productTiers as t
+    on p.Price>=t.Low
+    order by p.Prod_ID;
+
+select p.Prod_ID, Price, Tiers
+    from products as p inner join
+       productTiers as t
+    on p.Price>=t.Low or p.Price<=t.High
+    order by p.Prod_ID;
+
+
+7.
+質問 7
+Which results does the following left join produce? 
+
+select p.Prod_ID, Color, Price
+    from products as p left join
+         saleitems as s
+    on p.Prod_ID=s.Prod_ID; 
+
+products
+
+Prod_ID  Color
+1        Blue
+2        Red
+3        Red
+4        Green
+5        Blue
+
+saleitems
+
+Prod_ID   Price
+1         12.99
+4         45.99
+6         99.99
+
+1 / 1点
+
+
+Prod_ID  Color   Price
+1        Blue    12.99
+2        Red     .
+3        Red     .
+4        Green   45.99 
+5        Blue    .
+
+
+Prod_ID  Color   Price
+1        Blue    12.99
+2        Red     .
+3        Red     .
+4        Green   45.99 
+5        Blue    .
+6                99.99
+Correct
+正解
+A left join lists every item in the left table (products) with or without a match in the right table (saleitems).
+
+
+Prod_ID  Color   Price
+1        Blue    12.99
+4        Green   45.99 
+6                99.99
+
+Prod_ID  Color   Price
+1        Blue    12.99
+4        Green   45.99 
+
+
+
+8.
+質問 8
+Which query joins the tables group1 and group2 and overlays the Tag columns to produce the result set shown below? 
+
+group1
+
+Tag   FName
+a     Fred
+d     Sek
+e     Lars
+
+group2
+
+Tag   LName
+b     Zhou
+c     Amos
+
+Results
+
+Tag
+a
+b
+c
+d
+e
+
+
+1 / 1点
+
+select coalesce(g1.Tag, g2.Tag) as Tag
+    from group1 as g1 full join group2 as g2
+    on g1.Tag=g2.Tag;
+Correct
+正解
+The full join with the COALESCE function creates this result set. To overlay two columns, you must specify the two columns as arguments in the COALESCE function.
+
+select coalesce(Tag) as Tag
+    from group1 as g1 full join group2 as g2
+    on g1.Tag=g2.Tag;
+
+select g1.Tag
+    from group1 as g1 group2 as g2
+    where g1.Tag=g2.Tag
+
+
+9.
+質問 9
+How many rows will the following query return?
+
+select coalesce(w.ID,I.ID) as ID, Type, Bin 
+    from widgets as w full join locations as I
+    on w.ID=I.ID;
+
+widgets
+ID   Type
+89   FL
+46   UI
+47   TA
+92   QY
+
+locations
+ID     Bin    
+1      B98
+46     B63
+74     B02
+85     B98
+99     B02
+
+0 / 1点
+
+4
+
+8
+
+1
+correct
+不正解
+The full outer join returns all matching and unmatching rows from the left and right tables and joins the rows with the ID value of 46 for a total of 8 rows. Review Joining Two Tables with a Full Join.
+
+5
+
+
+10.
+質問 10
+What is a join called if a table is joined with itself?
+
+1 / 1点
+
+
+A cross join
+
+A reflexive join
+correct
+正解
+A relexive (self) join joins a table with itself. The FROM clause lists the same table twice with different aliases. The columns listed in the SELECT and ON clauses must be qualified with an alias.
+
+
+A cartesian product
+
+A natural join
+
+
