@@ -1,0 +1,120 @@
+Practice Level 1: Creating a Macro Variable from an SQL Query
+
+
+1.
+質問 1
+If necessary, start SAS Studio before you begin. If you restarted your SAS session, submit your libname.sas program to access the practice data.
+
+Write a program that dynamically returns states in a specified region that have a three-year estimated population change greater than the median population change for the entire region.  
+
+Using the sq.statepopulation table, write a query to create the macro variable MedianEst to store the value of the median nPopChg3 of Region 1. Use the following requirements:
+
+Calculate the median of nPopChg3.
+
+Use the INTO clause to create a macro variable named MedianEst. Use the TRIMMED keyword.
+
+Filter the results for rows in the Region column with the value of 1, which is character.
+
+Add the NOPRINT option in the PROC SQL statement.
+
+Below the query, view the new macro variable in the log using %PUT:%put &=MedianEst;
+
+Run the query and view the log.
+
+What is the value of MedianEst?  Note: Type a numeric value.
+
+my Answer:3341
+正解
+Solution code:
+/*a*/
+proc sql noprint;
+select median(nPopChg3)
+    into :MedianEst trimmed
+    from sq.statepopulation
+    where Region="1";
+quit;
+%put &=MedianEst;
+
+
+2.Using the sq.statepopulation table, write another query to select states and their three-year population change in 
+Region 1 that have a higher estimate than the median of all states in that region. Use the following requirements:
+
+Select the Name and nPopChg3 columns. Format nPopChg3 so that values are displayed with commas.
+
+Filter rows for states in region 1 that have an nPopChg3 value greater than the macro variable &MedianEst created in step 1.
+
+Order by nPopChg3 descending.
+
+Add the following titles:
+
+title "States in Region 1 with a 3-Year Estimated Population Change Greater than the Median";
+ 
+
+title2 "Median Estimate: &MedianEst";
+
+Run the query and view the results.
+
+How many states are listed in the report?  Note: Type a numeric value.
+
+My answer: 4
+正解
+Four states are listed in the report.
+
+/*b*/
+title "States in Region 1 with a 3-Year Estimated Population Change Greater than the Median";
+title2 "Median Estimate: &MedianEst";
+proc sql;
+select Name,nPopChg3 format=comma14.
+    from sq.statepopulation
+	where Region="1" and 
+          nPopChg3 > &MedianEst
+    order by nPopChg3 desc;
+quit;
+title;
+
+
+3.At the beginning of your program, create a macro variable named RegionNum to specify the region to analyze. 
+Use the following requirements:
+
+Use the %LET statement to create the macro variable RegionNum and set the value equal to 1.
+
+In your program, replace every location of the character value 1 with &RegionNum. Make sure that the macro variable 
+is enclosed in double quotation marks. Hint: You need to do this replacement in the WHERE clause in each query and 
+in the TITLE statement.
+
+Run the program and view the final results. These results should be the same as the last query you ran (four states).
+
+In the %LET statement, replace the value 1 with 2. 
+
+Run the entire program.
+
+How many states in Region 2 have a higher three-year estimated population change than the median of 
+all states in that region? Note: Type a numeric value.
+
+My answer: 6
+
+正解
+6 states
+
+/*c*/
+%let RegionNum=2;
+
+proc sql noprint;
+select median(nPopChg3)
+    into :MedianEst trimmed
+	from sq.statepopulation
+    where Region="&RegionNum";
+quit;
+%put &=MedianEst;
+
+title "States in Region &RegionNum with a 3-Year Estimated Population Change Greater than the Median";
+title2 "Median Estimate: &MedianEst";
+proc sql;
+select Name,nPopChg3 format=comma14.
+    from sq.statepopulation
+	where Region="&RegionNum" and 
+          nPopChg3 > &MedianEst
+    order by nPopChg3 desc;
+quit;
+title;
+
