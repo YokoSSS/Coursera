@@ -1,0 +1,65 @@
+
+Week4_Practice Level 1 Using an In-Line View
+
+
+1.If necessary, start SAS Studio before you begin. If you restarted your SAS session, submit your libname.sas program to access the practice data.
+
+In this practice you determine which customers have an extremely high credit score relative to other customers in their ZIP code (Zip). 
+Similar to the practice in the previous lesson, an extremely high credit score is defined as greater than 2 standard deviations above 
+the mean of CreditScore. However, rather than use an overall high-credit threshold for all customers, we need to calculate the threshold 
+for each value of Zip. This can be accomplished using an in-line view.  
+
+Open s104p06.sas from the practices folder. 
+
+Run the query to summarize the HighZipCredit threshold for each Zip value for the first 1000 rows.
+
+Use the query you just ran as an in-line view to join with the sq.customer table. Use the following requirements:
+
+Select c.CustomerID, c.Zip, and c.CreditScore from the sq.customer table, and select s.HighZipCredit from the in-line view. 
+Format the c.Zip column using the Z5. format.
+
+Perform an inner join with the sq.customer table and the in-line view from step 1. Give the sq.customer table the alias c and 
+the in-line view the alias s.
+
+Remove the INOBS= option from the in-line view.
+
+Use c.Zip = s.Zip as the join criteria.
+
+Filter rows where the customer's c.CreditScore value is greater than the s.HighZipCredit value.
+
+Order the results by Zip and descending CreditScore.
+
+Add an appropriate title to the report.
+
+Run the query and view the results.
+
+What is the last Zip value and the corresponding CreditScore value in the final report?  
+
+1点
+
+
+Zip 99701, CreditScore 815
+correct
+正解
+The last Zip value is 99701 with a CreditScore value of 815.  
+
+Zip 76513, CreditScore 705
+
+/*s104s06.sas*/
+
+title 'Customers with Extremely High Credit for their Zipcode';
+proc sql;
+select c.CustomerID, c.Zip format=z5., c.CreditScore, 
+       s.HighZipCredit
+    from sq.customer as c inner join
+        (select Zip, 
+                sum(avg(CreditScore),(2*std(CreditScore))) 
+                                    as HighZipCredit
+             from sq.customer
+             where CreditScore is not null
+             group by Zip) as s
+    on c.Zip=s.Zip
+    where c.CreditScore>s.HighZipCredit
+    order by Zip, CreditScore desc;
+quit;
+title;
