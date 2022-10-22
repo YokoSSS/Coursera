@@ -453,3 +453,154 @@ the sum of Quantity. That value is remerged with Product and divides Quantity by
 SUM 集計関数の前にある SELECT キーワードは必要ありません。 SELECT がない場合、クエリは最初に Quantity の合計を計算します。 
 その値は Product と再結合され、Quantity を各行の Quantity の合計で割り、Pct を計算します。
 
+*************************************************************************************************************************************
+
+1.Which statement is true regarding the syntax of this query?
+
+select Lastname, Firstname
+    from charity.donors
+    where Donation > 1000 and;
+          Lastname not in
+              select Lastname
+              from charity.current; 
+
+
+The subquery requires a semicolon prior to the SELECT statement in the WHERE clause.
+
+The subquery has an extra semicolon after the AND operator.
+
+The subquery must be in a HAVING clause.
+
+The subquery must reference the same table as the outer query.
+
+
+
+2.The following query produces a table with the ID, Job_Title and Salary of employees who make more than the average of all employees.
+
+select ID, Job_Title, Salary
+    from staff
+    where Salary > (select mean(Salary)
+    from staff);
+
+1点
+
+True
+
+
+False
+
+
+3.A noncorrelated subquery can run as a stand-alone query.
+
+True
+
+
+False
+
+
+4.Which query finds the ID, Job_Title and Salary of all employees in the Engineering department? 
+
+partial staff
+
+ID    Job_Title         Salary    Department
+001   Director          $163,040  Sales Management
+074   Office Assistant  $36,256   Administration
+085   Service Assistant $29,147   Engineering
+
+
+
+select ID, Job_Title, Salary
+    from staff
+    where ID = (select ID
+    from staff
+    where Department ="Engineering");
+
+select ID, Job_Title, Salary
+    from staff
+    where ID in (select ID
+    from staff
+    where Department ="Engineering");
+
+
+
+5.An in-line view can return multiple rows and columns.
+
+True
+
+
+False
+
+
+6.Querying data using a view always returns the same results.
+
+True
+
+
+False
+
+
+
+7.Which of the following statements creates a new view named CustomerView from a query? 
+
+1点
+
+create view as CustomerView
+select...
+
+create view CustomerView;
+select...
+
+create view CustomerView
+select ...
+
+create view CustomerView as
+select...
+
+
+8.You can embed a SAS LIBNAME statement in a view by using which clause?
+
+
+LIBREF
+
+USING
+
+TABLE
+
+TABLEREF
+
+
+9.The following query finds the minimum value for each distinct Order_Type.
+
+select Order_Type, min(Quantity)
+       label="Min Qty" 
+    from orion.order_fact; 
+
+1点
+
+True
+
+
+False
+
+
+10.This program produces a syntax error. Which modification will calculate Pct as each individual row of 
+Quantity divided by the sum of the Quantity column?
+
+select Product, 
+       Quantity/(select sum(Quantity)) as Pct 
+           format=percent5.2
+    from inventory;
+
+1点
+
+
+Remove the SELECT keyword prior to the SUM function.
+
+Add a GROUP BY clause and list the Product column.
+
+There is no error in the SELECT clause.
+
+Add a GROUP BY clause using the Product and Quantity columns.
+
+
+
