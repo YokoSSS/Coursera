@@ -12,6 +12,25 @@ How many states have estimated populations lower than New York or Florida? Note:
 
 1点
 こちらに回答を入力
+49
 
+正解
+49 states
 
+proc sql number;
+select Name, PopEstimate1
+    from sq.statepopulation
+    where PopEstimate1 < any (select PopEstimate1
+                              from sq.statepopulation
+                              where Name in ("NY","FL"));
+quit;
 
+/*OR*/
+
+proc sql number;
+select Name, PopEstimate1
+    from sq.statepopulation
+    where PopEstimate1 < (select max(PopEstimate1)
+                          from sq.statepopulation
+                          where Name in ("NY","FL"));
+quit;
