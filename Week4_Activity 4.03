@@ -1,0 +1,17 @@
+
+1.If necessary, start SAS Studio before you begin. If you restarted your SAS session, submit your libname.sas program to access the practice data.
+
+Open s104a03.sas from the activities folder and perform the following tasks to find all states with a PopEstimate1 value that is 
+lower than the value for New York or Florida:
+
+Complete the query using the ANY keyword or MAX statistic. 
+
+Run the query.
+
+How many states have estimated populations lower than New York or Florida? Note: Type a numeric value.
+
+1点
+こちらに回答を入力
+
+
+
