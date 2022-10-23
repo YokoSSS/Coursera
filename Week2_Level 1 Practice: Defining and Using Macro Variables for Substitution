@@ -1,0 +1,88 @@
+Level 1 Practice: Defining and Using Macro Variables for Substitution
+
+
+1.Reminder: If you restarted your SAS session, you must submit the libname.sas program in the EMC1V2 folder to access your practice files
+1.注意事項 SASセッションを再起動した場合、練習用ファイルにアクセスするためには、EMC1V2フォルダー内のlibname.sasプログラムを提出する必要があります。
+
+Open the m102p01.sas program from the practices folder. Submit the program and review the log and output. 
+practices フォルダにある m102p01.sas プログラムを開いてください。プログラムをサブミットし、ログと出力を確認します。
+
+Verify that the title is US Customers Ages 18 to 24 and that 127 rows were read.
+
+Create a macro variable named Country and assign the value US. Replace all occurrences of US with references 
+to the macro variable Country. Submit the program and verify that the results are the same as step 1.
+国という名前のマクロ変数を作成し、USという値を代入します。USというマクロ変数の出現箇所をすべて 
+マクロ変数Countryへの参照に置き換える。プログラムを送信し、結果がステップ1と同じであることを確認する。
+
+Modify the value of the macro variable Country to FR. Resubmit the program.
+マクロ変数Countryの値をFRに変更する。プログラムを再送信します。
+
+How many rows were read? Enter a numeric value.
+46
+
+正解
+46 rows have Country = "FR"
+
+%let Country=FR;
+title "&Country Customers Ages 18 to 24";
+proc print data=mc1.customers;
+    var Name Age Type;
+    where Country = "&Country" 
+          and Age between 18 and 24;
+run;
+title;
+
+
+
+2.Modify the program as follows:
+
+Create additional macro variables, Age1 and Age2.
+
+Set Age1 to 25, Age2 to 34, and Country to AU.
+
+Replace all occurrences of 18 and 24 with references to Age1 and Age2.
+
+Submit the program.
+
+What is the report title?
+
+MyAnswer:
+US Customers Ages Age1 to Age2
+
+正解
+%let Country=AU;
+%let age1=25;
+%let age2=34;
+title "&Country Customers Ages &age1 to &age2";
+proc print data=mc1.customers;
+    var Name Age Type;
+    where Country = "&Country" 
+          and Age between &age1 and &age2;
+run;
+title;
+
+The title is AU Customers Ages 25 to 34.
+
+3.How many rows were read?
+
+Note: Enter a numeric value for  your answer.
+
+10
+正解
+Ten rows were read. 
+
+
+%let Country=AU;
+%let age1=25;
+%let age2=34;
+title "&Country Customers Ages &age1 to &age2";
+proc print data=mc1.customers;
+    var Name Age Type;
+    where Country = "&Country" 
+          and Age between &age1 and &age2;
+run;
+title;
+
+
+
+
