@@ -1,0 +1,236 @@
+Working with Macro Programs
+
+
+1.Which of the following is false?
+1.次のうち、誤っているものはどれですか？
+
+
+The MPRINT option includes the generated code in the log.
+MPRINT オプションは、生成されたコードをログに含めます。
+uncorrect
+不正解
+This statement is true. A %MACRO statement must always be paired with a %MEND statement. 
+The code in a macro program can include macro language statements or expressions, complete or partial
+SAS program steps, and complete or partial SAS program statements. The MPRINT option includes the generated 
+code in the log. Only macro language statements are checked for syntax errors when the macro is compiled. Review Using the MPRINT Option.
+この文は真です。MACRO 文は、常に %MEND 文と対になっていなければなりません。マクロ プログラム内のコードには、マクロ言語ステートメントまたは
+式、完全または部分的な SAS プログラム ステップ、および完全または部分的な SAS プログラム ステートメントを含めることができます。
+MPRINT オプションは、生成されたコードをログに含めます。マクロ言語ステートメントのみ、マクロのコンパイル時に構文エラーがチェックされます。
+MPRINTオプションの使用方法を確認する。
+
+
+A %MACRO statement must always be paired with a %MEND statement.
+MACRO 文は常に %MEND 文と対になっていなければなりません。
+All language statements are checked for syntax errors when the macro is compiled.
+マクロのコンパイル時に、すべての言語文の構文エラーがチェックされる。
+Enclosed macro-text can include macro language statements or expressions, complete or partial SAS program steps, and complete or partial SAS program statements.
+囲んだマクロ・テキストには、マクロ言語文または式、完全または一部の SAS プログラム・ステップ、および完全または一部の SAS プログラム文が含まれます。
+
+
+2.Which statement concerning macro parameters is false?
+2.マクロのパラメータに関する記述のうち、誤っているものはどれか。
+1点
+
+The order of positional parameter names in a macro definition must match the order of parameter values in a macro call.
+マクロ定義における位置パラメーター名の順序は、マクロ呼び出しにおけるパラメーター値の順序と一致しなければならない。
+
+Parameter names and values are listed inside parentheses and are comma delimited.
+パラメータ名と値は括弧内に記載され、カンマで区切られます。
+
+Keyword parameters must be listed before positional parameters in a mixed parameter list.
+キーワードパラメータは、混合パラメータリストにおいて位置決めパラメータの前にリストされなければなりません。
+
+Keyword parameters are assigned a default value after an equal sign.
+キーワードパラメータには、等号の後にデフォルト値が割り当てられます。
+uncorrect
+This statement is true. Review Macro Parameters and Demo: Defining a Macro with Parameters.
+不正解
+この文は真です。Macro ParametersとDemoを復習する。マクロをパラメータで定義する」を参照してください。
+
+
+3.If this program runs in a new SAS session, how many macro variable/value combinations are displayed in the log? 
+3.このプログラムを新しいSASセッションで実行した場合、ログに表示されるマクロ変数と値の組み合わせは何通りか？
+
+%macro test(y);
+    %let x=y;
+    %put _local_;
+%mend test;
+%test(5) 
+
+1点
+
+1
+
+2
+
+3
+
+cannot be determined
+uncorrect
+不正解
+Y is a parameter, so a local symbol table is created for the Test macro and y is stored there. 
+The %LET statement is inside the macro definition, and a local table exists, so x is created in 
+that local table. The %PUT statement displays the name and value of both x and y. Review Local Macro Variables.
+Yはパラメータなので、Testマクロのローカルシンボルテーブルが作成され、そこにyが格納されます。
+LET文はマクロ定義の中にあり、ローカルテーブルが存在するので、そのローカルテーブルにxが作成されます。
+PUT文は、xとyの両方の名前と値を表示します。 ローカルマクロ変数を確認する
+
+
+4.When this program ends execution, what is the value of X? 
+4.このプログラムの実行が終了したとき、Xの値はいくらか？
+
+%macro inner;
+    %let x=&y;
+%mend inner;
+
+%macro outer(y);
+    %inner
+%mend outer;
+%let x=0;
+%outer(5) 
+
+1点
+
+0
+
+5
+correct
+正解
+When the program is submitted, the Inner and Outer macros are compiled. 
+The %LET creates a macro variable named x with a value of 0 in the global symbol table.
+The Outer macro is called with the value 5, so a local symbol table is created for Outer, and Y is stored in it with the value 5.
+プログラムがサブミットされると、Inner と Outer マクロがコンパイルされます。LET は、グローバル・シンボル・テーブルに
+値 0 の x というマクロ変数を作成します。Outer マクロは値 5 で呼び出されるため、Outer 用にローカルシンボルテーブルが作成され、
+値 5 で Y が格納されます。
+Outer calls the Inner macro. When the %LET statement in Inner executes, the macro processor looks for x. Inner doesn't 
+have a local table, and there's no x in Outer's local table, so it assigns 5, the value of y, to the x in the global symbol table. 
+Inner ends, Outer ends, and x remains in the global symbol table with the value 5.
+OuterはInnerマクロを呼び出す。Innerの%LET文が実行されると、マクロ処理系はxを探す。Innerはローカルテーブルを持っておらず、
+Outerのローカルテーブルにもxはないので、グローバルシンボルテーブルのxにyの値である5を代入している。Inner は終了し、
+Outer も終了し、x は値 5 でグローバルシンボルテーブルに残ります...。
+
+cannot be determined
+
+
+
+5.Which of the following cannot be conditionally placed onto the input stack?
+
+5.入力スタックに条件付きで配置できないものはどれですか？
+1点
+
+partial SAS program steps
+部分的なSASプログラムステップ
+
+pieces of text within a statement
+ステートメント内のテキストの断片
+uncorrect
+不正解
+Any text not used by the macro processor is placed on the input stack. 
+This can include complete or partial SAS program steps, complete SAS statements, or pieces of text within statements.
+Review Conditionally Generating Complete and Partial Statements.
+マクロ プロセッサで使用されないテキストは、入力スタックに配置されます。
+これには、完全または部分的な SAS プログラム ステップ、完全な SAS ステートメント、またはステートメント内のテキストの
+一部が含まれる場合があります。完全なステートメントと部分的なステートメントを条件付きで生成するを参照してください。
+
+
+complete SAS program steps
+完全な SAS プログラムステップ
+
+any text used by the macro processor
+マクロ処理で使用されるすべてのテキスト
+
+
+6.Which system option can you use to monitor macro execution?
+6.マクロの実行を監視するために使用できるシステムオプションはどれですか？
+1点
+
+MCOMPILENOTE=ALL
+
+MLOGIC
+
+MPRINT
+
+SYMBOLGEN
+uncorrect
+不正解
+The SYMBOLGEN option displays the results of resolving macro variable references. Review Using the MLOGIC Option.
+SYMBOLGENオプションは、マクロ変数の参照を解決した結果を表示します。MLOGICオプションの使用方法を確認します。
+
+
+7.Which of the following conditional statements runs the %america macro if the value of the macro variable location is USA?
+7.次の条件文のうち、マクロ変数位置の値がUSAである場合に%americaマクロを実行するものはどれですか。
+1点
+
+%if &location=USA %then %do %america;
+
+%if &location=USA %then %america;
+
+%if &location='USA' %then %america;
+uncorrect
+不正解
+Text values aren't quoted in macro statements. Review Conditionally Generating Complete and Partial Statements.
+マクロステートメントでテキスト値が引用されない。完全なステートメントと部分的なステートメントを条件付きで生成するをレビューします。
+
+%if 'USA'=&location %then %america;
+
+
+8.Which statement correctly checks that the value of the macro variable Var is not in the following list: AU CA DE US? 
+8.マクロ変数Varの値が次のリストにないことを正しくチェックする文はどれですか。AU CA DE US? 
+
+
+%if &var is not in (AU CA DE US);
+
+%if &var not in AU CA DE US;
+
+%if not &var in AU CA DE US;
+uncorrect
+不正解
+When reversing the logic for the macro IN operator, parentheses must be used to isolate the IN expression, 
+and the keyword NOT precedes the expression. Review Conditionally Generating Program Steps.
+マクロ IN 演算子のロジックを反転させる場合、IN 式を分離するために括弧を使用し、キーワード NOT を式の前に置く必要があります。
+プログラムステップを条件付きで生成するを復習します。
+
+%if not (&var in AU CA DE US);
+
+
+9.Which of the following statements correctly executes a %DO loop while the macro variable count is less than 10?
+9.マクロ変数countが10未満の間、%DOループを正しく実行するステートメントはどれですか？
+1点
+
+
+%do %while(&count > 10);
+
+%do %while(&count < 10);
+correct
+正解
+In %DO %WHILE and %DO %UNTIL statements, the condition must be enclosed in parentheses.
+DO %WHILE、%DO %UNTILステートメントでは、条件を括弧で囲む必要があります。
+
+
+%do %while &count > 10;
+
+%do %while &count < 10;
+
+
+
+10.What is the correct syntax for indirect referencing within a %DO loop?
+10.DOループ内の間接参照の正しい構文は何ですか？
+1点
+
+&&index-variable&macro-variable
+uncorrect
+不正解
+When using a %DO loop index variable for indirect referencing, use &&macro-variable&index-variable 
+inside the loop. Review Using a %DO Loop with Indirect References.
+間接参照で %DO ループ・インデックス変数を使用する場合、ループ内で &&macro-variable&index-variable を
+使用します。間接参照で%DOループを使用するを確認します。
+
+
+&macro-variable&&index-variable
+
+&&macro-variable&index-variable
+
+&index-variable&macro-variable
+
+
+
