@@ -1,0 +1,204 @@
+Week2_SAS Macro Facility
+
+1.Which of the following is not a benefit of using the SAS macro facility?
+1.SASのマクロ機能を利用するメリットとして、以下のどれに当てはまらないか。
+1点
+
+The macro facility enables you to reduce the amount of development and maintenance time as a programmer.
+マクロ機能により、プログラマーとしての開発・保守時間を短縮することができる。
+
+The macro facility enables you to write programs that are easily modified and customized.
+マクロ機能は、修正やカスタマイズが容易なプログラムを書くことができる。
+
+The macro facility enables you to make your programs more flexible.
+マクロ機能により、プログラムをより柔軟にすることができる。
+
+The macro facility enables you to manually substitute values each time a program executes.
+マクロ機能により、プログラム実行のたびに手動で値を代入することができます。
+correct
+正解
+The macro facility enables you to automatically substitute values each time a program executes.
+マクロ機能により、プログラム実行のたびに自動的に値を代入することができます。
+
+2.Automatic and user-defined macro variables can store only text strings.
+2.自動マクロ変数とユーザー定義マクロ変数には、テキスト文字列のみを格納することができます。
+1点
+
+True
+correct
+SAS macro is a text processing facility, so all values are assumed to be text.
+SASマクロはテキスト処理機能なので、すべての値はテキストであることが前提です。
+
+
+False
+
+
+3.Which of the following TITLE statements correctly references the macro variable year?
+3.次のTITLE文のうち、マクロ変数yearを正しく参照しているものはどれですか？
+
+1点
+
+title "Total Expenses for :year";
+
+title "Total Expenses for %year";
+
+title "Total Expenses for &year";
+correct
+正解
+To substitute a macro variable's value into the code, use an ampersand followed by the name of 
+the macro variable. If the SAS syntax requires quotation marks, include the macro variable reference 
+in double quotation marks.
+正解
+マクロ変数の値をコードに代入するには、アンパサンドに続いてマクロ変数の名前を使用します。
+SAS 構文で引用符が必要な場合は、マクロ変数の参照を二重引用符で囲みます。
+
+title 'Total Expenses for &year';
+
+
+
+4.Which statement creates a macro variable named Location that has the value storage? 
+4.値storageを持つLocationというマクロ変数を作成する文はどれですか？
+%let location="storage";
+
+let &location=storage;
+
+&let location=storage;
+
+%let location=storage;
+correct
+The %LET statement creates and assigns values to macro variables. Macro variable names must begin with 
+a letter or an underscore. The value is assumed to be text, so no quotation marks are needed. 
+If quotation marks are used, they are included in the assigned value.
+正解
+LET文は、マクロ変数を作成し、値を代入します。マクロ変数名は、文字またはアンダースコアで始まる必要があります。
+値はテキストと見なされるため、引用符は必要ありません。引用符を使用した場合は、代入される値に含まれます。
+
+
+5.Which of the following statements correctly displays the value of the macro variable month in the SAS log?
+5.次の文のうち、SASログにマクロ変数monthの値を正しく表示するものはどれですか。
+
+&put(month);
+
+%put(month);
+
+&put %month;
+
+%put &month;
+correct
+正解
+To display the value of a macro variable in a %PUT statement, use &macro-variable-name or use &=macro-variable-name.
+PUT文の中でマクロ変数の値を表示するには、&macro-variable-nameまたは&=macro-variable-nameを使用します。
+
+
+6.How many tokens are in this statement?
+6.この文に含まれるトークンはいくつですか。
+
+totalBonus = score*1.05+2;
+
+2
+
+7
+
+10
+uncorrect
+不正解
+There are four types of tokens: name tokens, number tokens, literal tokens, and special tokens. To build a token, 
+the word scanner reads characters until it reaches a delimiter. Another way that a token ends is when a new token begins. 
+When the word scanner reaches a character that doesn't meet the rules for the current token, it ends the token that 
+it was building and begins building another. Review Tokens and Tokenization.
+不正解
+トークンには、名前トークン、数字トークン、リテラル・トークン、特殊トークンの4種類があります。
+トークンを構築するために、ワードスキャナは区切り文字に到達するまで文字を読み取ります。
+トークンが終了するもう一つの方法は、新しいトークンが始まるときです。ワードスキャナは、現在のトークンの規則に
+合わない文字に到達すると、構築中のトークンを終了し、別のトークンの構築を開始します。トークンとトークン化に
+ついて復習しましょう。
+
+8
+
+
+
+7.What is the function of the SYMBOLGEN option?
+7.SYMBOLGENオプションの機能は何ですか？
+
+
+The SYMBOLGEN option writes information to the output file when macro variable references resolve.
+SYMBOLGENオプションは、マクロ変数の参照が解決されたときに出力ファイルに情報を書き込みます。
+
+The SYMBOLGEN option writes information to the input file when macro variable references resolve.
+SYMBOLGENオプションは、マクロ変数の参照が解決されたときに、入力ファイルに情報を書き込みます。
+
+The SYMBOLGEN option writes information to the data table when macro variable references resolve.
+SYMBOLGENオプションは、マクロ変数の参照が解決されたときにデータ・テーブルに情報を書き込みます。
+
+The SYMBOLGEN option writes information to the log when macro variable references resolve.
+SYMBOLGENオプションは、マクロ変数の参照が解決されたときにログに情報を書き込みます。
+Correct
+正解
+The SYMBOLGEN option writes information to the log when macro variable references resolve.
+SYMBOLGENオプションは、マクロ変数の参照が解決されたときにログに情報を書き込みます。
+
+
+
+8.When does the macro processor modify SAS code?
+8.マクロプロセッサは、いつSASコードを変更しますか？
+
+The macro processor modifies SAS code before word scanning, prior to compilation.
+マクロプロセッサは、ワードスキャン前、コンパイル前のSASコードを変更します。
+
+The macro processor does not modify SAS code.
+マクロ処理系は、SASコードを変更しません。
+
+The macro processor modifies SAS code during word scanning, prior to compilation.
+コンパイル前のワードスキャン中に、マクロ処理系がSASコードを修正します。
+
+The macro processor modifies SAS code after compilation and before execution.
+マクロプロセッサは、コンパイル後、実行前にSASコードを変更します。
+uncorrect
+不正解
+The macro processor modifies SAS code during word scanning, prior to compilation. 
+Review Program Flow and Tokenizing Code with Macro Triggers.
+マクロ・プロセッサは、コンパイルの前に、ワード・スキャン中にSASコードを修正します。
+プログラムフローとマクロトリガーを使ったトークン化コードを確認する。
+
+
+9.Which of the following describes the last stage of program flow for a SAS program with no macro triggers?
+9.次のうち、マクロトリガーがないSASプログラムのプログラムフローの最終段階を説明するものはどれですか？
+
+Compiler　コンパイラ
+
+Macro Processor　マクロプロセッサ
+
+Word Scanner　ワードスキャナ
+uncorrect
+不正解
+Submitted SAS code is copied to the input stack. The word scanner tokenizes the code and sends it to the compiler. 
+Review Tokenization.
+不正解
+送信されたSASコードは入力スタックにコピーされる。ワードスキャナがコードをトークン化し、コンパイラに送信します。
+トークン化を見直す。
+
+Input Stack　入力スタック
+
+
+
+10.Which of these will not be sent to the macro processor?
+10.マクロプロセッサに送信されないものはどれですか？
+
+%name
+
+"%name"
+
+&name
+
+'&name'
+correct
+正解
+Macro variable references that are enclosed in single quotation marks are not resolved. 
+To resolve a macro variable reference that occurs within a literal string, enclose the string in double quotation marks.
+シングルクォーテーションで囲まれたマクロ変数参照は解決されません。リテラル文字列内で発生したマクロ変数参照を解決するには、
+その文字列をダブルクォーテーションで囲みます。
+
+****************************************************************************************************************************
+
+
+
