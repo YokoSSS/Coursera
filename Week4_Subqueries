@@ -466,16 +466,20 @@ select Lastname, Firstname
 
 
 The subquery requires a semicolon prior to the SELECT statement in the WHERE clause.
+サブクエリでは、WHERE 節の SELECT 文の前にセミコロンが必要です。
 
 The subquery has an extra semicolon after the AND operator.
+サブクエリには、AND 演算子の後に余分なセミコロンがあります。
 
 The subquery must be in a HAVING clause.
+サブクエリは HAVING 節の中になければなりません。
 
 The subquery must reference the same table as the outer query.
-correct
+サブクエリは、外部クエリと同じテーブルを参照する必要があります。
+uncorrect
 不正解
 The subquery does not have to reference the same table as the outer query. Review Using a Subquery in the WHERE Clause.
-
+サブクエリは、外部クエリと同じテーブルを参照する必要はありません。WHERE 句でサブクエリを使用する方法を確認します。
 
 2.The following query produces a table with the ID, Job_Title and Salary of employees who make more than the average of all employees.
 
