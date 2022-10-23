@@ -469,4 +469,270 @@ DOループインデックス変数を間接参照に使用する場合、ルー
 
 ***********************************************************************************************************************************
 
+1.Which of the following is true?
+1.次のうち、正しいものはどれですか？
+1 / 1点
 
+A macro program can include macro language statements or expressions, but not SAS program statements.
+マクロプログラムには、マクロ言語ステートメントまたは式を含めることができますが、SASプログラムステートメントは含めることができません。
+
+The MPRINT system option creates a report with the macro program and results.
+MPRINT システム オプションは、マクロ プログラムと結果を含むレポートを作成します。
+
+All language statements in a macro program are checked for syntax errors when it is compiled.
+マクロ プログラム内のすべての言語ステートメントは、コンパイル時にシンタックス エラーがチェックされます。
+
+A %MACRO statement must always be paired with a %MEND statement.
+MACRO 文は、常に %MEND 文と対になっていなければなりません。
+correct
+正解
+This statement is true. The code in a macro program can include macro language statements or expressions, 
+complete or partial SAS program steps, and complete or partial SAS program statements. 
+The MPRINT option includes the generated code in the log. Only macro language statements are checked 
+for syntax errors when the macro is compiled.
+このステートメントは真実です。マクロ プログラム内のコードには、マクロ言語ステートメントまたは式、
+完全または一部の SAS プログラム ステップ、および完全または一部の SAS プログラム ステートメントを
+含めることができます。MPRINT オプションは、生成されたコードをログに含めます。マクロがコンパイルされるとき、
+マクロ言語ステートメントだけが構文エラーをチェックされます。
+
+
+2.Which statement concerning macro parameters is true?
+2.マクロパラメータに関する記述のうち、正しいものはどれか。
+
+The order of positional parameter names in a macro definition must match the order of parameter values in a macro call.
+マクロ定義における位置パラメーター名の順序は、マクロ呼び出しにおけるパラメーター値の順序と一致しなければならない。
+correct
+正解
+This statement is true.
+
+Parameter names and values are listed inside parentheses and are space delimited.
+パラメータ名と値は、括弧の中にスペースで区切って記載します。
+
+Keyword parameters must be listed before positional parameters in a mixed parameter list.
+キーワード パラメータは、混合パラメータ リストで位置決めパラメータの前に記載する必要があります。
+
+Keyword parameters are assigned a default value after an ampersand sign.
+キーワード・パラメータには、アンパサンド記号の後にデフォルト値が割り当てられます。
+1 / 1点
+
+
+
+
+3.If this program runs in a new SAS session, how many macro variable/value combinations are displayed in the log? 
+3.このプログラムを新しいSASセッションで実行した場合、ログに表示されるマクロ変数と値の組み合わせはいくつになるか。
+
+%macro test(y);
+    %let x=y;
+    %put _local_;
+%mend test;
+%test(5) 
+
+0 / 1点
+
+1
+uncorrect
+不正解
+Y is a parameter, so a local symbol table is created for the Test macro and y is stored there. 
+The %LET statement is inside the macro definition, and a local table exists, so x is created in 
+that local table. The %PUT statement displays the name and value of both x and y. Review Local Macro Variables.
+Yはパラメータなので、Testマクロのローカルシンボルテーブルが作成され、そこにyが格納されます。
+LET文はマクロ定義の中にあり、ローカルテーブルが存在するので、そのローカルテーブルにxが作成されます。
+PUT文は、xとyの両方の名前と値を表示します。 ローカルマクロ変数を確認する
+
+2
+
+3
+
+cannot be determined
+
+
+
+4.When this program ends execution, what is the value of the macro variable X within the local table? 
+4.このプログラムの実行が終了したとき、ローカルテーブル内のマクロ変数Xの値はどうなっているか。
+
+%macro test;
+    %global x;
+    %let x=5;
+%mend test;
+%test 
+
+0 / 1点
+
+
+null
+
+x
+
+A local symbol table does not exist.
+
+5
+uncorrect
+不正解
+The Test macro has no parameters and does not create any local variables so it will not have a local symbol table. 
+Review Macro Variable Scope.
+テストマクロはパラメータを持たず、ローカル変数を作成しないので、ローカルシンボルテーブルを持ちません。
+マクロの変数スコープを確認します。
+
+5.Which of the following cannot be conditionally placed onto the input stack?
+5.次のうち、条件付きで入力スタックに配置できないものはどれですか。
+1 / 1点
+
+
+partial SAS program steps
+
+any text used by the macro processor
+correct
+正解
+Any text not used by the macro processor is placed on the input stack. This can include complete or partial SAS program steps, 
+complete SAS statements, or pieces of text within statements.
+マクロ プロセッサで使用されないテキストは、入力スタックに配置されます。これには、完全または部分的な SAS プログラム ステップ、
+完全な SAS ステートメント、またはステートメント内のテキスト片が含まれることがあります。
+
+pieces of text within a statement
+
+complete SAS program steps
+
+
+
+6.Examine the following program. Which log message is generated if the MLOGIC system option is enabled?
+6.次のプログラムを調べなさい。MLOGICシステムオプションが有効な場合、どのログメッセージが生成されるか。
+
+%macro cars(MPH);
+    %if &MPH>0 %then %do;
+        proc print data=sashelp.cars;
+            where MPG_Highway>&MPH;
+        run;
+    %end;
+%mend;
+%cars(15)
+
+1 / 1点
+
+
+NOTE: The macro CARS completed compilation without errors.
+
+%IF condition &MPH>0 is TRUE
+correct
+正解
+The MLOGIC system option writes detailed messages to the log regarding the flow of the macro logic.
+MLOGICシステム・オプションは、マクロ・ロジックの流れに関する詳細なメッセージをログに書き込みます。
+
+Macro variable MPH resolves to 15
+
+where MPG_Highway>15;
+
+
+
+7.Which of the following conditional statements calculates score and weightedScore within a macro step?
+7.次の条件文のうち、マクロステップ内でスコアとweightedScoreを計算するものはどれか。
+1 / 1点
+
+
+%if &test=exam1 %then %do;
+    score=correct/total;
+    weightedScore=score*1.1;
+%end;
+correct
+正解
+%DO is required after %THEN to execute multiple actions or if the action contains one or more semicolons.
+複数のアクションを実行する場合、またはアクションに1つ以上のセミコロンが含まれる場合は、%THENの後に%DOが必要です。
+
+
+if &test='exam1' then do;
+    score=correct/total;
+    weightedScore=score*1.1;
+end;
+
+%if &test='exam1' %then %do;
+    score=correct/total;
+    weightedScore=score*1.1;
+%end;
+
+%if &test=exam1 %then;
+    score=correct/total;
+    weightedScore=score*1.1;
+%end;
+
+
+
+8.Which system option enables the macro IN operator? 
+8.マクロINオペレータを有効にするシステムオプションはどれですか？
+0 / 1点
+
+MINOPERATOR
+
+MACROIN
+uncorrect
+不正解
+MACROIN is not a valid option. The MINOPERATOR option enables the use of the macro IN operator in an expression. 
+MINOPERATOR can be specified in a global OPTIONS statement or in the %MACRO statement after the macro name and a 
+forward slash. Review Conditionally Generating Program Steps.
+MACROIN は有効なオプションではありません。MINOPERATORオプションは、式中のマクロIN演算子を使用できるようにします。
+MINOPERATOR は、グローバル OPTIONS 文または %MACRO 文で、マクロ名とフォワード・スラッシュの後に指定できます。
+プログラム・ステップを条件付きで生成するを参照してください。
+
+
+NOMLOGIC
+
+MLOGIC
+
+
+9.Which %DO statement does not contain a syntax error?
+9.構文エラーが含まれていない%DO文はどれか。
+
+1 / 1点
+
+
+%do i=1 %to 25 by 5;
+
+%do i=1 to 5;
+
+%do until(&X > 5);
+
+%do %while(&X < 5);
+correct
+正解
+In %DO %WHILE and %DO %UNTIL statements, the condition must be enclosed in parentheses.
+
+
+
+10.Which statement in the PROC FREQ step will produce a separate report for each value of Origin?
+10.PROC FREQステップのどの文が、Originの値ごとに別々のレポートを作成するのでしょうか？
+
+
+%macro carsCount;
+    proc sql noprint;
+        select distinct Origin into :Origin1
+        from sashelp.cars;
+    quit;
+
+%do i=1 %to &sqlobs;
+    proc freq data=sashelp.cars;
+        <insert statement>
+        tables Type;
+    run;
+%end;
+%mend;
+
+%carsCount
+
+0 / 1点
+
+
+where Origin="&&Origin&i";
+
+where Origin=&Origin&i;
+
+where Origin=&&Origin&i;
+uncorrect
+不正解
+When using a %DO loop index variable for indirect referencing, use &&macro-variable&index-variable inside the loop. 
+The macro variable reference must be enclosed in double quotation marks. Review Using a %DO Loop with Indirect References.
+DOループインデックス変数を間接参照に使用する場合は、ループ内で&&macro-variable&index-variableを使用します。
+マクロ変数の参照は、ダブルクォーテーションで囲む必要があります。間接参照で %DO ループを使用するを参照してください。
+
+
+where Origin="Origin&i";
+
+
+***********************************************************************************************************************************
