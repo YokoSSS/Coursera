@@ -1,0 +1,38 @@
+Activity 7.03
+
+
+1.If necessary, start SAS Studio before you begin. If you restarted your SAS session, submit your libname.sas program to access the practice data.
+1.必要であれば、事前にSAS Studioを起動してください。SAS セッションを再起動した場合は、練習データにアクセスするために libname.sas プログラムを提出します。
+Open s107a03.sas from the activities folder and perform the following tasks to perform a PROC FEDSQL query:
+アクティビティフォルダからs107a03.sasを開き、以下の作業を行い、PROC FEDSQLクエリを実行します。
+
+Examine and run the query. 
+クエリを調べて実行します。
+Did it produce an error?
+エラーは発生しましたか？
+1点
+
+Yes
+correct
+正解
+ERROR: Column "NC" not found or cannot be accessed.
+
+No
+
+
+
+2.In the WHERE clause, replace the double quotation marks around NC with single quotation marks. 
+2.WHERE句の中で、NCを囲むダブルクォーテーションをシングルクォーテーションに置き換えます。
+Run the entire query. 
+クエリ全体を実行します。
+Did it run successfully?  
+正常に実行されましたか？ 
+
+1点
+
+Yes
+correct
+
+
+No
+
