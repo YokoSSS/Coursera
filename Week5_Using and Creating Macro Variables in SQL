@@ -476,3 +476,257 @@ The FORMAT option
 The NOTRIM option
 
 
+
+******************************************************************************************************************************************************
+
+
+1.What do all the following values have in common with regard to a macro variable?
+
+9.2
+10/18/2022
+1345020
+Baseballs
+Flower buds
+
+1 / 1点
+
+
+All can be stored as either a numeric macro variable, or text macro variable.
+
+Each one is a system option for a macro variable.
+
+They are specialized keywords to get the system time from a macro.
+
+All can be stored as a text string in a macro variable.
+correct
+正解
+All of these can be stored as a text string in a macro variable.
+
+2.
+質問 2
+Which of the following lines of code correctly references a macro variable?
+
+1 / 1点
+
+title "The Sales of the &Country Offices";
+correct
+正解
+When you reference a macro variable, you must precede the macro variable name with an ampersand. 
+You can reference macro variables anywhere in SAS code. When you reference a macro variable within a text string, 
+you must enclose the text string within double quotation marks. The macro processor will not resolve macro variable 
+references that appear within single quotation marks.
+
+
+where salary > '%avgSal';
+
+title 'The Sales of the &Country Offices';
+
+where salary > "%avgSal";
+
+
+
+
+3.
+質問 3
+Which system option is useful for debugging maro variable resolution?
+
+1 / 1点
+
+
+NOSYMBOLGEN
+
+SASMSTORE
+
+SYMBOLGEN
+correct
+正解
+The SYMBOLGEN system option displays the results of resolving macro variable in the log and is useful for debugging.
+
+SERROR
+
+
+
+
+4.What does the following statement do?
+
+%let path=s:/workshop/data;
+
+1 / 1点
+
+The statement calls a macro program named path from the location s:/workshop/data.
+
+The statement creates a macro program in s:/workshop/data.
+
+The statement creates a path macro variable with the value of s:/workshop/data.
+Correct
+正解
+A user-defined macro variable will use the %LET statement and specify the name of the macro variable followed by an equal 
+sign and then the text string you want to store.
+
+
+
+5.
+質問 5
+What is the INTO clause doing in the following query?
+
+select count(ID)
+    into :CountID
+    from store.employee;
+
+0 / 1点
+
+The INTO clause trims leading blanks from the value of the macro variable.
+
+The INTO clause creates a macro variable named MeanSalary.
+
+The INTO clause creates a range of macro variables, one for each unique value, and stores each unique value in one of the macro variables.
+correct
+不正解
+The INTO clause creates one macro variable and assigns the value from the first column of the first row of the query result. 
+Review Creating Data-Driven Macro Variables.
+
+The INTO clause counts the number of time ID exists in the table and stores it in a macro variable named CountID.
+
+
+
+
+
+6.
+質問 6
+Which statement is the correct way to use the macro variable maxtemp in a title?
+
+title 'The Highest Temperature in Canada %maxtemp';
+
+title "The Highest Temperature in Canada: &maxtemp";
+correct
+正解
+A useful feature of macro variables is that they enable you to display data values in SAS titles. You must use double quotation
+marks in the TITLE statement and an ampersand prior to the macro variable to return the value.
+
+
+title "The Highest Temperature in Canada %maxtemp";
+
+title 'The Highest Temperature in Canada:&maxtemp';
+
+1 / 1点
+
+
+
+7.
+質問 7
+You want to store the descriptive statistics of the Price column from the inventory table into multiple macro variables. 
+Which query successfully stores mean, median, min and max? 
+
+1 / 1点
+
+select mean(Price), median(Price), min(msrp),
+       max(Price)
+    into: MeanPrice, MedianPrice, MinPrice, MaxPrice
+    from inventory;
+
+select mean(Price), median(Price), min(msrp),
+       max(Price)
+    into MeanPrice, MedianPrice, MinPrice, MaxPrice
+       separated by ","
+    from inventory;
+
+select mean(Price), median(Price), min(msrp),
+       max(Price)
+    into :MeanPrice, :MedianPrice, :MinPrice,
+       :MaxPrice
+    from inventory;
+Correct
+正解
+The INTO clause creates multiple macro variables by specifying each macro variable name with a colon. Each macro variable will be 
+assigned the summarized value from the SELECT clause.
+
+
+
+8.
+質問 8
+What is the value of the macro variable InventoryList?
+
+select Product
+    into :InventoryList separated by ","
+    from inventory; 
+
+
+inventory
+Product   Quantity
+Shirt     5
+Shoes     3
+Pants     2
+
+1 / 1点
+
+Three macro variables are created for Shirt, Shoes and Pants that contain the corresponding value.
+
+"Shirt","Shoes","Pants"
+
+The query returns an error.
+
+Shirt,Shoes,Pants
+correct
+正解
+You can concatenate the values of one column into one macro variable. This form is useful for building a list of variables or constants. 
+Use the SEPARATED BY keywords to specify a character to delimit the values in the macro variable.
+
+9.
+質問 9
+Values assigned by the INTO clause use the BEST8. format by default. Large numeric values might be displayed using scientific notation. 
+How can large numeric values be displayed without scientific notation?
+
+1 / 1点
+Use another format, such as the w. format in the SELECT clause.
+correct
+正解
+When storing a number, SAS uses the BEST8. Format. If the number is larger than eight digits, scientific notation is often used. 
+To display larger numeric values without scientific notation, use another format, such as the w. format.
+
+Use SQLOBS to determine the number of digits that is produced by the query.
+
+Trim the leading zeros and trailing blanks from the values that are stored using the TRIMMED keyword.
+
+Use the INTO clause only in the outer query of a SELECT statement, not in a subquery.
+
+
+
+
+10.Given the table Revenue below, the sum of Revenue is to be stored in a macro variable named TotalRevenue. Will the query below produce and
+store the exact value of $900,000,000 in the macro variable? 
+
+select sum(Revenue)
+    into :TotalRevenue format=dollar16.
+    from revenue;
+
+revenue
+Product Revenue
+Shirt   $200,000,000
+Shoes   $300,000,000
+Pants   $400,000,000
+
+1 / 1点
+No
+correct
+正解
+Use the FORMAT= column modifier in the SELECT clause to format the summarized value.
+
+Yes
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
