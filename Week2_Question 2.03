@@ -1,0 +1,50 @@
+Question 2.03
+
+
+1.Name the possible stages involved in the SAS program flow.  
+1.SASのプログラムフローに含まれる可能性のあるステージを挙げよ。 
+
+Note: Each of the following questions are free response and all answers are marked correct. Type your responses and compare them to the answers provided.
+
+Code Generation, Code Processing
+不正解
+input stack, word scanner, compiler, and macro processor  
+
+1点
+
+
+2.What are the four types of tokens recognized by the word scanner?  
+2.ワードスキャナで認識される4種類のトークンとは何ですか？ 
+
+1点
+どのように思われますか？
+回答は1000文字以内でお願いします。
+
+name token, literal tokenT, special tokens 
+不正解
+name, number, literal, and special  
+
+
+3.How does the word scanner detect the end of a token?  
+3.スキャナはどのようにトークンの終わりを検出するのですか？ 
+1点
+The end is detected by receiving a semicolon included at the end of the code.
+不正解
+a whitespace character or the beginning of a new type of token  
+
+
+4.What token sequence triggers interaction with the macro processor during the tokenization process?
+4.トークン化処理中にマクロ処理系とのインタラクションを引き起こすトークン列は何ですか？
+
+A macro trigger
+不正解
+&name or %name 
+
+5.What macro statement writes a message to the log?
+5.ログにメッセージを書き込むマクロ文は何ですか？
+
+%PUT macro statement 
+
+正解
+%PUT
+
