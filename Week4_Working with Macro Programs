@@ -233,4 +233,178 @@ inside the loop. Review Using a %DO Loop with Indirect References.
 &index-variable&macro-variable
 
 
+***********************************************************************************************************************************
+
+1.Which of the following is true?
+1.次のうち、正しいものはどれですか？
+1点
+
+The MPRINT system option creates a report with the macro program and results.
+MPRINTシステム・オプションは、マクロ・プログラムと結果を含むレポートを作成する。
+
+All language statements in a macro program are checked for syntax errors when it is compiled.
+マクロプログラム内のすべての言語文は、コンパイル時に構文エラーがないかチェックされる。
+
+A %MACRO statement must always be paired with a %MEND statement.
+MACRO文は、常に%MEND文と対になっていなければならない。
+correct
+
+A macro program can include macro language statements or expressions, but not SAS program statements.
+マクロプログラムには、マクロ言語文や式を含めることができますが、SASプログラム文は含めることができません。
+2.マクロパラメータに関する記述のうち、誤っているものはどれか。
+
+
+2.Which statement concerning macro parameters is false?
+
+1点
+
+Parameter names and values are listed inside parentheses and are space delimited.
+パラメータ名と値は括弧の中に記載され、スペースで区切られます。
+
+Positional parameters must be listed before keyword parameters in a mixed parameter list.
+2点 パラメータ名と値は括弧内に記載され、スペースで区切られます。
+
+The order of positional parameter names in a macro definition must match the order of parameter values in a macro call.
+マクロ定義の位置パラメータ名の順序は、マクロ呼び出しのパラメータ値の順序と一致する必要があります
+
+Keyword parameters are assigned a default value after an equal sign.
+キーワードパラメータには、等号の後にデフォルト値が割り当てられます。
+
+
+3.If this program runs in a new SAS session, how many macro variable/value combinations are displayed in the log? 
+3.このプログラムを新しいSASセッションで実行した場合、ログに表示されるマクロ変数と値の組み合わせはいくつになるか。
+
+%macro test(y);
+    %let x = a;
+    %let z = b;
+    %put _local_;
+%mend test;
+%test(5)
+
+1点
+
+1
+
+2
+
+3
+
+5
+
+
+
+4.When this program ends execution, what is the value of X? 
+4.このプログラムの実行が終了したとき、Xの値はいくらか？
+
+%macro inner;
+    %let x=&y;
+%mend inner;
+
+%macro outer(y);
+    %inner
+%mend outer;
+%let x=0;
+%outer(5) 
+
+1点
+
+0
+
+5
+
+cannot be determined
+
+
+
+5.Which of the following can be conditionally placed onto the input stack?
+5.入力スタックに条件付きで配置できるものはどれですか？
+1点
+
+any text not used by the macro processor
+マクロ処理系で使用されないテキスト
+
+any text used by the compiler
+コンパイラが使用する任意のテキスト
+
+any text not used by the compiler
+コンパイラが使用しない任意のテキスト
+
+any text used by the macro processor
+マクロ処理系が使用する任意のテキスト
+
+
+6.Which system option can you use to monitor macro execution?
+6.マクロの実行を監視するために使用できるシステムオプションはどれですか？
+1点
+
+MCOMPILENOTE=ALL
+
+SYMBOLGEN
+
+MLOGIC
+
+MPRINT
+
+
+7.Which of the following %Reports macro definitions runs the %Weekly macro if the day of the week is Friday? 
+7.次の%Reportsマクロ定義のうち、曜日が金曜日の場合、%Weeklyマクロを実行するのはどれですか。
+1点
+
+
+%macro reports;
+    %daily %if &sysday=Friday %then %weekly;
+%mend reports;
+
+%macro reports;
+    %daily %if &sysday=Friday %then %do %weekly;
+%mend reports;
+
+%macro reports;
+    %daily %if &sysday="Friday" %then %weekly;
+%mend reports;
+
+
+
+
+8.Which statement correctly checks that the value of the macro variable Var is not in the following list: AU CA DE US? 
+8.マクロ変数Varの値が次のリストにないことを正しくチェックする文はどれですか。AU CA DE US? 
+1点
+
+%if &var is not in (AU CA DE US);
+
+%if not &var in AU CA DE US;
+
+%if &var not in AU CA DE US;
+
+
+%if not (&var in AU CA DE US);
+
+
+9.Which %DO statement does not contain a syntax error?
+9.構文エラーが含まれていない%DO文はどれですか？
+1点
+
+%do i=1 to 5;
+
+%do until(&X > 5);
+
+%do %while(&X < 5);
+
+%do i=1 %to 25 by 5;
+
+
+
+
+10.What is the correct syntax for indirect referencing within a %DO loop?
+10.DOループ内の間接参照の正しい構文は何ですか？
+1点
+
+&&index-variable&macro-variable
+
+&macro-variable&&index-variable
+
+&&macro-variable&index-variable
+
+&index-variable&macro-variable
+
 
