@@ -1,0 +1,11 @@
+Oracle Database is NOT PROVIDED: The examples shown in the videos about accessing a database reference an Oracle database. 
+They are examples only -- the course DOES NOT provide access to an Oracle database. 
+If you run the code shown in the videos to connect an Oracle database, you will receive an error because the database does not exist.
+
+In addition, SAS/ACCESS Engine to PC Files must be licensed to access database files. 
+SAS OnDemand for Academics does not include the software necessary to read database files such as Microsoft Access files. 
+
+You can learn about accessing database files by watching these videos. If you have access to your own SAS software and 
+have a license for SAS/ACCESS Engine to PC Files,  you can practice in your own environment.
+
+
