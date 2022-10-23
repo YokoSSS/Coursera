@@ -1,0 +1,24 @@
+1.In the following code, how many tokens are in this PROC statement? Enter a numeric value for your answer. 
+次のコードで、このPROC文の中にあるトークンはいくつあるか？答えを数値で入力してください。
+proc print data=sashelp.cars;
+
+
+8
+正解
+Each word is a name token, the equal sign, period, and semicolon are special tokens. 
+各単語は名前トークンであり、等号、ピリオド、セミコロンは特殊なトークンである。
+There are 8 tokens in the PROC statement.  Each word is a name token, the equal sign, period, and semicolon are special tokens. 
+PROC文の中には8つのトークンがあります。  それぞれの単語は名前トークンであり、等号、ピリオド、セミコロンは特殊なトークンです。
+
+
+2.How many tokens are in this WHERE statement? Enter a numeric value for your answer. 
+この WHERE ステートメントにはいくつのトークンがありますか?答えの数値を入力します。
+
+where Type="Truck" and Horsepower>250;
+
+9
+正解
+ Each word is a name token, the quoted string is a literal token, and the symbols are each special tokens.
+各単語は名前トークンであり、引用文字列はリテラルトークンであり、記号はそれぞれ特殊トークンである。
+There are 9 tokens. Each word is a name token, the quoted string is a literal token, and the symbols are each special tokens. 
+トークンは9個あります。それぞれの単語は名前トークンであり、引用された文字列はリテラルトークンであり、記号はそれぞれ特殊トークンである。
