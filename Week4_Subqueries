@@ -639,3 +639,214 @@ Add a GROUP BY clause using the Product and Quantity columns.
 
 
 
+*************************************************************************************************************************************
+
+
+
+1.Which statement is true regarding the syntax of this query?
+
+select Lastname, Firstname
+    from charity.donors
+    where Donation > 1000 and;
+          Lastname not in
+              select Lastname
+              from charity.current; 
+
+0 / 1点
+
+The subquery must reference the same table as the outer query.
+
+The subquery requires a semicolon prior to the SELECT statement in the WHERE clause.
+不正解
+The subquery does not require an extra semicolon prior to the SELECT statement in the WHERE clause. Review Using a Subquery in the WHERE Clause.
+
+The subquery must be in a HAVING clause.
+
+The subquery has an extra semicolon after the AND operator.
+
+
+
+
+2.Which query returns the ID, Job_Title and Salary of employees who make more than the average of all employees? 
+
+partial staff
+
+ID     Job_Title          Salary
+001    Director           $163,040
+046    Sales Manager      $108,255
+074    Office Assistant   $36,256
+085    Service Assistant  $29,147
+
+1 / 1点
+
+
+select ID, Job_Title, Salary
+    from staff
+    where Salary > (mean(Salary));
+
+select ID, Job_Title, Salary
+    from staff
+    where Salary > (select mean(Salary)
+    from staff);
+正解
+A noncorrelated subquery must be a valid query inside parentheses in the WHERE or HAVING clause. It must return a single column with one or more rows.
+
+
+select ID, Job_Title, Salary
+    from staff
+    where Salary > (select mean(Salary))
+
+
+
+3.Which statement is not true regarding a noncorrelated subquery?
+
+0 / 1点
+
+
+A subquery can be used in a WHERE or HAVING clause with a comparison operator.
+不正解
+A noncorrelated subquery must be a valid query inside parentheses in the WHERE or HAVING clause. Review Using a Subquery in the WHERE Clause.
+
+Joins and subqueries can be used together in the same query.
+
+A subquery is known as a virtual table.
+
+A noncorrelated subquery can be run independently of the outer query.
+
+
+
+
+
+4.The following query will find the ID, Job_Title and Salary of employees in the Engineering department and produce the table below.
+
+select ID, Job_Title, Salary
+    from staff
+    where ID = (select ID
+    from staff
+    where Department = "Engineering");
+
+partial staff
+
+ID    Job_Title         Salary   Department
+001   Director          $163,040 Sales Management
+074   Office Assistant  $36,256  Administration
+085   Service Assistant $29,147  Engineering
+
+1 / 1点
+True
+
+False
+正解
+The IN operator is required in the WHERE clause, rather than an equals operator, because it can accept multiple values from the subquery. 
+The equals operator can only accept a single value.
+
+
+
+5.An in-line view can contain any of the clauses in a SELECT statement except:
+
+1 / 1点
+GROUP BY
+
+WHERE
+
+FROM
+
+ORDER BY
+正解
+An in-line view can contain any of the clauses in a SELECT statement except the ORDER BY clause.
+
+
+
+6.Querying data using a view always returns the same results.
+
+1 / 1点
+
+True
+
+False
+正解
+When querying data using a view, it executes the code stored in the view at that moment in time. 
+If the underlying data changes, a view surfaces the most current data. Read Advantages/Disadvantage of Views.
+
+
+7.Which statement creates a view named RetailPrice?
+
+1 / 1点
+
+create view RetailPrice
+select ...
+
+create view RetailPrice;
+select ...
+
+create view as RetailPrice
+select ...
+
+create view RetailPrice as
+select ...
+正解
+To create a view from a query result, use a CREATE VIEW statement with the new view name and the AS keyword, followed by the query.
+
+
+8.You can embed a SAS LIBNAME statement in a view by using which clause?
+
+1 / 1点
+
+USING
+正解
+Use the embedded LIBNAME statement in the USING clause to make the view definition portable.
+If you use a one-level name for the source table in a view definition, the view and the source table must reside in the same location.
+
+TABLE
+
+LIBREF
+
+TABLEREF
+
+
+
+
+9.Which of the following changes prevents SAS from remerging and produces a report? 
+
+select Order_Type, min(Quantity)
+       label="Min Qty"
+    from orion.order_fact; 
+
+1 / 1点
+
+Specify the PROC SQL NOREMERGE option.
+
+Add an additional column to the SELECT list.
+
+Add an ORDER BY clause to sort the output rows by the values of Order_Type .
+
+Add a GROUP BY clause to group by Order_Type.
+正解
+The SELECT list in this query specifies both a non-summarized column and a summarized column. By default, 
+SAS remerges unless you either group by Order_Type or remove the non-summarized column. Specifying the NOREMERGE option prevents SAS from remerging, 
+but then PROC SQL will not produce a report.
+
+
+
+10.This program produces a syntax error. Which modification will calculate Pct as each individual row of Quantity divided by the sum of the Quantity column?
+
+select Product, 
+       Quantity/(select sum(Quantity)) as Pct 
+           format=percent5.2
+    from inventory;
+
+1 / 1点
+
+Add a GROUP BY clause and list the Product column.
+
+Add a GROUP BY clause using the Product and Quantity columns.
+
+Remove the SELECT keyword prior to the SUM function.
+正解
+The SELECT keyword in front of the SUM summary function is not necessary. Without SELECT, 
+the query first calculates the sum of Quantity. That value is remerged with Product and divides 
+Quantity by the sum of Quantity for each row to calculate Pct.
+
+
+There is no error in the SELECT clause.
+
