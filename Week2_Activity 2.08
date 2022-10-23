@@ -1,0 +1,40 @@
+Activity 2.08
+
+1.Open m102a07.sas from the activities folder and perform the following tasks:
+
+Review the program and notice that the DATA step creates a table named Avg_MPG. 
+
+Highlight the DATA step and the %PUT statement, and run the selected code. 
+
+Review the log to see all automatic macro variables stored in the global symbol table.
+
+Which macro variables store the date and the last table created?
+
+Note: All questions in this practice are free response and all answers are marked correct. 
+Type your responses and compare them to the answers provided.
+
+
+My answer:
+footnote "Created on <date>";
+
+SYSDATE9 stores the date that the SAS session started and SYSLAST stores the name of the last SAS table created.  
+SYSDATE9にはSASセッションの開始日、SYSLASTには最後に作成されたSASテーブルの名称が格納されます。 
+
+
+2.Use macro variable references in the TITLE2 and FOOTNOTE statements to insert the table name and date into the program.
+
+
+Run the program. 
+
+Is the table name is included in the second title and the date included in the footnote?
+
+1点
+
+
+My answer:
+Table names are included in the second title and dates are included in the footnotes
+正解
+Yes, the tale name is in the title and the date is in the footnote.
+
+title2 "Data Source: &syslast";
+footnote "Created on &sysdate9";
