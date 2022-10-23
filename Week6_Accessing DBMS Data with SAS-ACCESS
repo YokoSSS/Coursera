@@ -1,0 +1,65 @@
+Accessing DBMS Data with SAS-ACCESS
+
+
+1.Which statement(s) is/are true about SAS/ACCESS technology? (Select all that apply)
+
+
+SAS/ACCESS software provides dynamic access to DBMS data through the SAS/ACCESS LIBNAME statement and the PROC SQL pass-through facility.
+SAS/ACCESSソフトウェアは、SAS/ACCESS LIBNAMEステートメントとPROC SQLパススルー機能を通じて、DBMSデータへの動的アクセスを提供します。
+
+You need to know your DBMS's SQL language to access and manipulate your DBMS data.
+DBMSのデータにアクセスし操作するためには、DBMSのSQL言語を知っている必要があります。
+
+It is faster and more direct to use the SAS/ACCESS LIBNAME statement to access your DBMS data.
+SAS/ACCESS LIBNAMEステートメントを使用してDBMSデータにアクセスする方が、より速く、より直接的にアクセスすることができます。
+
+You do not need to know your DBMS's SQL implementation to access and manipulate your DBMS data.
+DBMSのデータにアクセスし、操作するためにDBMSのSQLの実装を知る必要はありません。
+
+
+2.What are some benefits of using the PROC SQL Pass-Through facility? (Select all that apply)
+2.PROC SQL Pass-Through機能を使用する利点は何ですか？(該当するものを全て選択してください)
+
+1点
+
+The PROC SQL Pass-Through facility enables you to send DBMS-specific SQL statements directly to a DBMS for execution like you are coding inside of the database.
+PROC SQL Pass-Through機能を使用すると、データベース内でコーディングするようにDBMS固有のSQL文を直接DBMSに送信して実行することができます。
+
+The PROC SQL Pass-Through facility accepts all extensions to ANSI SQL that your DBMS provides.
+PROC SQL Pass-Through機能は、DBMSが提供するANSI SQLの拡張をすべて受け入れることができます。
+
+The PROC SQL Pass-Through facility lets the DBMS optimize queries when queries have summary functions.
+PROC SQL Pass-Through機能は、クエリにサマリー関数がある場合、DBMSがクエリを最適化できるようにします。
+
+
+
+3.Which query executes correctly in PROC FEDSQL?
+3.PROC FEDSQLで正しく実行されるクエリはどれですか？
+1点
+
+proc fedsql;
+select EmployeeID, Name, Salary, Department
+    from orion.employee
+    where = "Management";
+quit;
+
+proc fedsql;
+select EmployeeID, Name, Salary, Department
+    from orion.employee
+    where = 'Management';
+quit;
+
+
+4.You are working with multiple databases to pull data into SAS. The goal is to push as much processing into 
+the database as possible and to keep the SQL queries vendor neutral. Which procedure would be better to use?
+4.あなたは、SASにデータを取り込むために複数のデータベースで作業しています。目標は、
+できるだけ多くの処理をデータベースに押し込み、SQLクエリをベンダーに依存しないようにすることです。どのプロシージャを使用するのが良いですか？
+
+
+1点
+
+PROC SQL
+
+PROC FEDSQL
+
+
