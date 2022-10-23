@@ -1,7 +1,7 @@
 Create the Case Study Input Tables
 
 In this case study, you use the following input tables:
-
+この事例では、以下の入力テーブルを使用します
 sq.claimsraw 
 
 sq.enplanement2017 
@@ -9,42 +9,61 @@ sq.enplanement2017
 sq.boarding2013_2016 
 
 Follow these steps to create the input tables:
+以下の手順に従って、入力テーブルを作成します。
 
 If necessary, sign in to SAS OnDemand for Academics and run libname.sas to redefine the SQ library. 
+必要に応じて、SAS OnDemand for Academics にサインインして libname.sas を実行し、SQ ライブラリを再定義します。
 
 Open the caseStudy folder and run the casestudy_createdata.sas program. 
+caseStudy フォルダを開き、casestudy_createdata.sas プログラムを実行します。
 
 The PDF linked below shows the data layout for each input table in the case study. The layout lists the column name, a description, 
 and any value requirements for that column. You will refer to this document as you prepare the data.
-
+以下のリンク先の PDF には、ケーススタディの各入力テーブルのデータレイアウトが示されています。
+レイアウトには、列名、説明、およびその列に対する値の要件が記載されています。データを準備する際に、このドキュメントを参照することになります。
 
 SQL CaseStudy Data Layout.pdf
 https://d3c33hcgiwev3.cloudfront.net/jh_J23AXSV6fydtwF6leyw_2c62189c402942ceba131089dea18ad3_SQL-CaseStudy-Data-Layout.pdf?Expires=1666656000&Signature=S2lhQPlFV-18hjIiG9tt4qo0fTxPgjKe1icdFKannniSlZP~Lwr6AobLI79vs~67wGPF3AYheXsvyP2DXx8X8PRuvPgIdV9orRvI1~Xc-T5t7R98vm2VLOTARnBOxuEQ3l8H389RhaXxW5MhSGcG5RO2Vi-F1QuG6rCrxmGz9j0_&Key-Pair-Id=APKAJLTNE6QMUY6HBC5A
 https://github.com/YokoSSS/Coursera/issues/66#issue-1419636571
 
-
-
 The input tables were created for this case study from the following:
+入力テーブルは、このケーススタディ用に、以下から作成しました。
 
 TSA Airport Claims data from https://www.dhs.gov/tsa-claims-data
 https://www.dhs.gov/tsa-claims-data
+TSA Airport Claims データ（https://www.dhs.gov/tsa-claims-data
+
 
 FAA Airport Facilities data from https://www.faa.gov/airports/airport_safety/airportdata_5010/
 https://www.faa.gov/airports/airport_safety/airportdata_5010/
+FAA Airport Facilities データ
 
 FAA Enplanements data from https://www.faa.gov/airports/planning_capacity/passenger_allcargo_stats/passenger/
 https://www.faa.gov/airports/planning_capacity/passenger_allcargo_stats/passenger/
+FAA Airport Facilities データ
 
 Here are a few notes regarding the data: 
+以下は、データに関するいくつかの注意点です。
 
 All data is public data, and accuracy is not guaranteed.
+すべてのデータは公開データであり、正確性を保証するものではありません。
 
 The claimsraw table was created by concatenating each individual TSA Airport Claims table. 
+Claimsraw テーブルは、個々の TSA Airport Claims テーブルを連結して作成されたものである。
 
-The concatenated results of the TSA Airport Claims tables were joined with the FAA Airport Facilities data. The column Airport_Codes from the TSA Airport Claims data was joined with Location_ID from the FAA Airports Facilities data to obtain airport information. Some Airport_Codes values do not correspond to Location_ID values.
+The concatenated results of the TSA Airport Claims tables were joined with the FAA Airport Facilities data. 
+The column Airport_Codes from the TSA Airport Claims data was joined with Location_ID from the FAA Airports Facilities 
+data to obtain airport information. Some Airport_Codes values do not correspond to Location_ID values.
+TSA Airport Claims テーブルを連結した結果を FAA Airport Facilities データと結合した。
+TSA Airport ClaimsデータのAirport_Codes列とFAA Airports FacilitiesデータのLocation_IDを結合し、空港情報を取得した。
+Airport_Codesの値の中には、Location_IDの値と一致しないものがあります。
 
-Columns in the TSA Airport Claims data have changed over the years. Because of this, some of the original columns were removed from the data for this case study.
+
+Columns in the TSA Airport Claims data have changed over the years. Because of this, some of the original columns were removed 
+from the data for this case study.
+TSA Airport Claimsデータのカラムは、長年にわたって変更されてきました。このため、このケーススタディでは、
+元の列の一部をデータから削除しています。
 
 Some column names and data types have been changed in the FAA Enplanement data for this case study.
-
+このケーススタディのFAA Enplanementデータでは、いくつかのカラム名とデータ型が変更されています。
 
