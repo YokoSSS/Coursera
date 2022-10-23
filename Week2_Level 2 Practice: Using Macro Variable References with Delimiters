@@ -1,0 +1,70 @@
+Level 2 Practice: Using Macro Variable References with Delimiters
+
+
+1.Reminder: If you restarted your SAS session, you must submit the libname.sas program in the EMC1V2 
+folder to access your data. 
+注意事項 SAS セッションを再起動した場合、データにアクセスするために EMC1V2 フォルダ内の 
+libname.sas プログラムを提出する必要があります。
+
+Open the m102p02.sas program from the practices folder. Submit the program and review the results. 
+Verify that the report contains 17 rows.
+practices フォルダから m102p02.sas プログラムを開いてください。プログラムを送信し、結果を確認します。
+レポートに 17 行が含まれていることを確認します。
+
+Create macro variables Lib, Dsn, and Var and assign the values mc1, newhires, and Employee respectively.
+マクロ変数 Lib、Dsn、および Var を作成し、それぞれ mc1、newhires、および Employee という値を割り当てます。
+
+Modify every occurrence of mc1, newhires, and Employee so that they are replaced by references to the 
+corresponding macro variable. Note: Be sure to include the 's' in Employees as part of the title text.
+mc1、newhires、Employee が、対応するマクロ変数への参照に置き換えられるように、mc1、newhires、Employee の
+すべての出現箇所を変更します。注：Employee の 's' はタイトルテキストの一部として必ず含めてください。
+
+
+Submit the program. 
+プログラムを提出します。
+
+What is the report title?
+レポートのタイトルは何ですか？
+
+Hint:  you can copy and paste the title from the report.
+ヒント：レポートからタイトルをコピーして貼り付けることができます。
+
+1点
+こちらに回答を入力
+Listing of All Employees From mc1.newhires
+
+正解
+The report title is Listing of All Employees from mc1.newhires.
+
+Solution code:
+
+%let lib=mc1;
+%let dsn=newhires;
+%let var=Employee;
+title "Listing of All &var.s From &lib..&dsn";
+proc print data=&lib..&dsn;
+    var &var._Name &var._ID;
+run;
+title;
+
+
+
+
+2.How many rows are in the report?
+レポートには何行ありますか？
+
+17
+
+正解
+There are 17 rows. Solution code:
+
+%let lib=mc1;
+%let dsn=newhires;
+%let var=Employee;
+title "Listing of All &var.s From &lib..&dsn";
+proc print data=&lib..&dsn;
+    var &var._Name &var._ID;
+run;
+title;
+
+
