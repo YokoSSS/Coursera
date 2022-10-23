@@ -207,3 +207,88 @@ correct
 PROC FEDSQL is a vendor neutral ANSI SQL that pushes as much of the processing as possible into the database.
 
 
+*******************************************************************************************************************************************************
+
+1.Which statement(s) is/are true about SAS/ACCESS technology? (Select all that apply)
+
+
+It is faster and more direct to use the SAS/ACCESS LIBNAME statement to access your DBMS data.
+Correct
+SAS/ACCESS software provides dynamic access to DBMS data through the SAS/ACCESS LIBNAME statement and the PROC SQL pass-through facility. You do need to know your DBMS's SQL language to access and manipulate your DBMS data. It is faster and more direct to use the SAS/ACCESS LIBNAME statement to access your DBMS data. The LIBNAME statement provides more control over DBMS operations.
+
+You need to know your DBMS's SQL language to access and manipulate your DBMS data.
+uncorrect
+This should not be selected
+SAS/ACCESS software provides dynamic access to DBMS data through the SAS/ACCESS LIBNAME statement and the PROC SQL pass-through facility. You do need to know your DBMS's SQL language to access and manipulate your DBMS data. It is faster and more direct to use the SAS/ACCESS LIBNAME statement to access your DBMS data. The LIBNAME statement provides more control over DBMS operations. Review Defining SAS/ACCESS Technology.
+
+SAS/ACCESS software provides dynamic access to DBMS data through the SAS/ACCESS LIBNAME statement and the PROC SQL pass-through facility.
+Correct
+SAS/ACCESS software provides dynamic access to DBMS data through the SAS/ACCESS LIBNAME statement and the PROC SQL pass-through facility. You do need to know your DBMS's SQL language to access and manipulate your DBMS data. It is faster and more direct to use the SAS/ACCESS LIBNAME statement to access your DBMS data. The LIBNAME statement provides more control over DBMS operations.
+
+You do not need to know your DBMS's SQL implementation to access and manipulate your DBMS data.
+
+
+不正解
+You didn't select all the correct answers
+
+
+
+2.What are some benefits of using the PROC SQL Pass-Through facility? (Select all that apply)
+
+
+The PROC SQL Pass-Through facility accepts all extensions to ANSI SQL that your DBMS provides.
+Correct
+The SQL Procedure pass-through facility is an extension of the SQL procedure that enables you to send DBMS-specific statements to a DBMS and to retrieve DBMS data. You specify DBMS SQL syntax instead of SAS SQL syntax when you use the pass-through facility. Review Overview of the SQL Pass-Through Facility .
+
+The PROC SQL Pass-Through facility lets the DBMS optimize queries when queries have summary functions.
+Correct
+The SQL Procedure pass-through facility is an extension of the SQL procedure that enables you to send DBMS-specific statements to a DBMS and to retrieve DBMS data. You specify DBMS SQL syntax instead of SAS SQL syntax when you use the pass-through facility. Review Overview of the SQL Pass-Through Facility .
+
+The PROC SQL Pass-Through facility enables you to send DBMS-specific SQL statements directly to a DBMS for execution like you are coding inside of the database.
+Correct
+The SQL Procedure pass-through facility is an extension of the SQL procedure that enables you to send DBMS-specific statements to a DBMS and to retrieve DBMS data. You specify DBMS SQL syntax instead of SAS SQL syntax when you use the pass-through facility. Review Overview of the SQL Pass-Through Facility .
+
+
+正解
+Great, you got all the right answers.
+
+
+
+3.Which query executes correctly in PROC FEDSQL?
+
+
+
+proc fedsql;
+select EmployeeID, Name, Salary, Department
+    from orion.employee
+    where = 'Management';
+quit;
+correct
+
+
+proc fedsql;
+select EmployeeID, Name, Salary, Department
+    from orion.employee
+    where = "Management";
+quit;
+
+
+正解
+When using FEDSQL, you must use single quotes around a text string in the WHERE clause. Double quotes are a SAS enhancement and will not run in FEDSQL.
+
+
+4.Which of the following is true regarding PROC FEDSQL?
+
+
+It is vendor-neutral ANSI SQL.
+
+It includes very few non-ANSI SAS enhancements.
+
+It processes 17 ANSI data types.
+
+All of the above are true.
+correct
+
+正解
+They are all true. PROC FEDSQL is vendor neutral ANSI SQL, is ANSI Standard 3 compliant, processes 17 ANSI data types, is fully multi-threaded on the SAS platform, includes very few non-ANSI SAS enhancements, and executes in CAS.
+
