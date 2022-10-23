@@ -3,10 +3,22 @@ The following table highlights some of the main differences between PROC SQL and
 
 PROC SQL                                                        PROC FEDSQL
 SAS SQL implementation                                          Vendor neutral ANSI SQL
+SAS SQLの実装　                                                 ベンダーニュートラルなANSI SQL
+
 Follows ANSI Standard 2                                         ANSI Standard 3 compliant
+ANSI標準2に準拠                                                 ANSI標準3に準拠
+
 Limited to SAS data types                                       Processes 17 ANSI data types
+SASデータ型に限定                                               17種類のANSIデータ型を処理
+
 Is multi-threaded for sorting and indexing on the SAS Platform  Is fully multi-threaded on the SAS Platform
+SASプラットフォームでのソートとインデックスのためのマルチスレッド化 SASプラットフォームでの完全なマルチスレッド化
+
 Includes many non-ANSI standard SAS enhancements                Includes very few non-ANSI SAS enhancements
+多くの非ANSI標準のSAS機能拡張を含む                             ANSI以外のSASの機能拡張をほとんど含まない
+
 Does not execute in CAS                                         Executes in CAS
+CASで実行されない                                               CASで実行される
 
 https://github.com/YokoSSS/Coursera/issues/65#issue-1419622310
+
