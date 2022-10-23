@@ -1,22 +1,23 @@
 Test Your Case Study Results
 
 1.How many total enplanements are in final report? Note: Type a numeric value.    
-
+1.最終報告書の総搭乗者数は何人ですか？注：数値を入力してください。 
 11点
 
 2.How many total claims have been filed? Note: Type a numeric value.
-
+2.総請求件数は何件ですか？注：数値を入力してください。
 11点
 こちらに回答を入力
 
 
 3.What is the percentage of claims filed by enplanements? Note: Your answer should have 4 decimal places.
-
+3.搭乗者数に対する保険金支払額の割合は？注：小数点以下4桁でお答えください。
 11点
 こちらに回答を入力
 
 
 4.What is the average time in days to file a claim?  Note: Type a numeric value with one decimal place.
+4.保険金請求にかかる平均日数（日）を教えてください。 注：小数点以下1桁の数字を入力してください。
 
 11点
 こちらに回答を入力
@@ -24,6 +25,7 @@ Test Your Case Study Results
 
 
 5.How many unknown airport codes are in the results?  Note: Type a numeric value.
+5.不明な空港コードはいくつありますか？ 注：数値を入力してください
 
 11点
 こちらに回答を入力
@@ -31,7 +33,7 @@ Test Your Case Study Results
 
 
 6.What type of claim is typically filed?    
-
+.どのようなタイプのクレームが多いですか？ 
 11点
 
 Passenger Property Loss
@@ -45,13 +47,13 @@ Complaint
 
 
 7.How many claims were resolved as Closed:Canceled? Note: Type a numeric value.
-
+Closed:Canceledとして解決されたクレームの数を教えてください。注：数値を入力してください。
 11点
 こちらに回答を入力
 
 
 8.What is the most frequent location identified for claims?
-
+8.最も頻繁にクレームが確認される場所はどこですか。
 11点
 
 Not Provided
@@ -65,7 +67,7 @@ Checked Baggage
 
 
 9.Which airport with over 10 million passengers had the highest percentage of claims filed? 
-
+9.搭乗者数が1,000万人を超える空港で、最もクレームが多かったのはどこですか？
 11点
 
 Orlando International
@@ -79,13 +81,14 @@ Washington Dulles International
 
 
 10.After you submit this quiz, do you want to see the solution to the case study?
+10.このクイズを提出した後、ケーススタディの解答を見ますか？
 
 Note: This question is only worth 1 out of 100 points so your answer will not affect the outcome of your quiz. 
 
 1点
 
 Yes - give me the case study solution and the solution code.
-
+はい - ケーススタディの解答と解答コードを教えてください。
 
 No - I don't want to see the answers yet.
 
