@@ -248,6 +248,14 @@ All language statements in a macro program are checked for syntax errors when it
 A %MACRO statement must always be paired with a %MEND statement.
 MACRO文は、常に%MEND文と対になっていなければならない。
 correct
+正解
+This statement is true. The code in a macro program can include macro language statements or expressions, 
+complete or partial SAS program steps, and complete or partial SAS program statements. The MPRINT option 
+includes the generated code in the log. Only macro language statements are checked for syntax errors when 
+the macro is compiled.
+この文は真である。マクロ プログラム内のコードには、マクロ言語ステートメントまたは式、完全または一部の SAS プログラム 
+ステップ、および完全または一部の SAS プログラム ステートメントを含めることができます。MPRINT オプションは、
+生成されたコードをログに含めます。マクロがコンパイルされるとき、マクロ言語ステートメントだけが構文エラーをチェックします。
 
 A macro program can include macro language statements or expressions, but not SAS program statements.
 マクロプログラムには、マクロ言語文や式を含めることができますが、SASプログラム文は含めることができません。
@@ -269,6 +277,10 @@ The order of positional parameter names in a macro definition must match the ord
 
 Keyword parameters are assigned a default value after an equal sign.
 キーワードパラメータには、等号の後にデフォルト値が割り当てられます。
+uncorrect
+不正解
+Error while evaluating `gradeAnswer`: Cannot read property 'correctAnswer' of undefined
+gradeAnswer` の評価中にエラーが発生しました。未定義のプロパティ 'correctAnswer' を読み取ることができません。
 
 
 3.If this program runs in a new SAS session, how many macro variable/value combinations are displayed in the log? 
@@ -290,7 +302,12 @@ Keyword parameters are assigned a default value after an equal sign.
 3
 
 5
-
+uncorrect
+Y is a parameter, so a local symbol table is created for the Test macro and y is stored there. 
+The %LET statement is inside the macro definition, and a local table exists, so x and z are created 
+in that local table. The %PUT statement displays the name and value of x, y and z. Review Local Macro Variables.
+Yはパラメータなので、Testマクロのローカルシンボルテーブルが作成され、そこにyが格納されます。LET文はマクロ定義の中にあり、
+ローカルテーブルが存在するので、そのローカルテーブルにxとzが作成されます。PUT文は、x、y、zの名前と値を表示します。
 
 
 4.When this program ends execution, what is the value of X? 
@@ -311,6 +328,21 @@ Keyword parameters are assigned a default value after an equal sign.
 0
 
 5
+correct
+正解
+When the program is submitted, the Inner and Outer macros are compiled. The %LET creates a macro variable named 
+x with a value of 0 in the global symbol table. The Outer macro is called with the value 5, so a local symbol table 
+is created for Outer, and Y is stored in it with the value 5.
+プログラムがサブミットされると、Inner と Outer マクロがコンパイルされます。LET は、グローバル・シンボル・テーブルに
+値 0 の x というマクロ変数を作成します。Outer マクロは値 5 で呼び出されるため、Outer 用にローカルシンボルテーブルが
+作成され、値 5 で Y が格納されます。
+Outer calls the Inner macro. When the %LET statement in Inner executes, the macro processor looks for x. Inner doesn't 
+have a local table, and there's no x in Outer's local table, so it assigns 5, the value of y, to the x in the global 
+symbol table. Inner ends, Outer ends, and x remains in the global symbol table with the value 5.
+OuterはInnerマクロを呼び出す。Innerの%LET文が実行されると、マクロ処理系はxを探す。Innerはローカルテーブルを持っておらず、
+Outerのローカルテーブルにもxはないので、グローバルシンボルテーブルのxにyの値である5を代入している。Inner は終了し、
+Outer も終了し、x は値 5 でグローバルシンボルテーブルに残ります。
+
 
 cannot be determined
 
@@ -322,6 +354,11 @@ cannot be determined
 
 any text not used by the macro processor
 マクロ処理系で使用されないテキスト
+正解
+Any text not used by the macro processor is placed on the input stack. 
+This can include complete or partial SAS program steps, complete SAS statements, or pieces of text within statements.
+マクロ処理で使用されないテキストは、入力スタックに配置されます。これには、完全または部分的な SAS プログラム ステップ、
+完全な SAS ステートメント、またはステートメント内のテキストの一部が含まれる場合があります。
 
 any text used by the compiler
 コンパイラが使用する任意のテキスト
@@ -342,6 +379,10 @@ MCOMPILENOTE=ALL
 SYMBOLGEN
 
 MLOGIC
+correct
+正解
+The MLOGIC system option writes detailed messages to the log regarding the flow of the macro logic.
+MLOGICシステム・オプションは、マクロ・ロジックの流れに関する詳細なメッセージをログに書き込みます。
 
 MPRINT
 
@@ -362,8 +403,10 @@ MPRINT
 %macro reports;
     %daily %if &sysday="Friday" %then %weekly;
 %mend reports;
-
-
+uncorrect
+不正解
+Text values aren't quoted in macro statements. Review Conditionally Generating Complete and Partial Statements.
+マクロステートメントでテキスト値が引用されない。条件付きで完全なステートメントと部分的なステートメントを生成するを復習する。
 
 
 8.Which statement correctly checks that the value of the macro variable Var is not in the following list: AU CA DE US? 
@@ -376,8 +419,14 @@ MPRINT
 
 %if &var not in AU CA DE US;
 
-
 %if not (&var in AU CA DE US);
+correct
+正解
+When reversing the logic for the macro IN operator, parentheses must be used to isolate the IN expression, and the keyword NOT precedes the expression.
+マクロの IN 演算子の論理を反転させる場合、IN 式を分離するために括弧を使用し、キーワード NOT を式の前に置く必要があります。
+
+
+9.Which %DO statement does not contain a syntax error?
 
 
 9.Which %DO statement does not contain a syntax error?
@@ -389,6 +438,11 @@ MPRINT
 %do until(&X > 5);
 
 %do %while(&X < 5);
+correct
+正解
+In %DO %WHILE and %DO %UNTIL statements, the condition must be enclosed in parentheses.
+DO %WHILE、%DO %UNTILステートメントでは、条件を括弧で囲む必要があります。
+
 
 %do i=1 %to 25 by 5;
 
@@ -404,6 +458,11 @@ MPRINT
 &macro-variable&&index-variable
 
 &&macro-variable&index-variable
+correct
+正解
+When using a %DO loop index variable for indirect referencing, use &&macro-variable&index-variable inside the loop.
+DOループインデックス変数を間接参照に使用する場合、ループ内で&&macro-variable&index-variableを使用します。
+
 
 &index-variable&macro-variable
 
