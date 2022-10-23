@@ -468,3 +468,197 @@ and &cat resolves to 1. The result, &wind1 is scanned again, resolving to 74.
 最初のスキャンで、ダブルアンパサンドはシングルアンパサンドに解決され、テキストwindは名前トークンとして持ち越される。
 その結果、&wind1が再びスキャンされ、74に解決される。
 
+***********************************************************************************************************************************************
+
+1.Which of the following components is NOT required to return a text string representing today’s date displayed as a 2-digit day, 3-letter month, and 4-digit year?
+
+0 / 1点
+
+
+%TODAY macro function
+
+DATE9. format
+
+%SYSFUNC() macro function
+不正解
+You must use the %SYSFUNC macro function to ask the macro processor to call the regular TODAY function to return the current SAS date value. Review Executing SAS DATA Step Functions During Tokenization.
+
+TODAY function
+
+
+
+2.Which of the following correctly subsets data to the value of the macro variable City in proper case? 
+
+0 / 1点
+
+
+where City="%sysfunc(propcase(&city))";
+
+where City=%sysfunc(propcase(&city));
+不正解
+The syntax is correct, however there should be double quotation marks around the %SYSFUNC function. Review SAS Functions and Macro Functions.
+
+where City="%sysfunc(propcase&city)";
+
+where City="%sysfunc(%propcase(&city))";
+
+
+
+
+3.Which of the following %LET statements correctly assigns the valueDirector’s Report to the macro variable Text?
+
+1 / 1点
+
+%let text=Director's Report;
+
+%let text=%str(Director's Report);
+
+%let text=%str(Director%'s Report);
+正解
+The %STR function is required to mask the single quotation mark so that is is treated as plain text rather than the beginning of a quoted string. When using the %STR function, precede an apostrophe or single quotation mark with a percent sign.
+
+%let text=%nrstr(Director's Report);
+
+
+
+4.Which of the following statements are true?
+
+1 / 1点
+
+CALL SYMPUTX is processed during the execution phase.
+正解
+Because CALL SYMPUTX is a DATA step CALL routine and not a macro statement, it is processed during the execution phase.
+
+%LET statements are processed during the execution phase.
+
+CALL SYMPUTX is processed by the macro processor before compilation.
+
+%LET statements are processed by the macro processor after compilation.
+
+
+
+5.Which of the following correctly creates a macro variable in a PROC SQL step?
+
+1 / 1点
+
+
+select mean(sales)
+    into avgSales
+    from sasuser.all;
+
+select mean(sales)
+    into :avgSales
+    from sasuser.all;
+正解
+You use the INTO clause in a PROC SQL SELECT statement to create a macro variable and assign values returned from the query. The macro variable name listed in the INTO clause must be preceded by a colon.
+
+
+select *
+    from sasuser.all;
+
+
+
+6.Which SQL query stores the count of ID in the macro variable CustCount and the average of Age in the macro variable AvgAge?
+
+1 / 1点
+select count(ID), mean(Age)
+    into :CustCount, :AvgAge
+    from customers;
+正解
+You use the INTO clause to create a series of macro variables based on the results of the query. You list the columns on the SELECT clause and name the macro variables on the INTO clause. The macro variable names must be preceded by a colon. Review Creating Macro Variables in PROC SQL.
+
+select count(ID), mean(Age)
+    into: CustCount AvgAge
+    from customers;
+
+select count(ID), mean(Age)
+    into CustCount, AvgAge
+    from customers;
+
+
+
+
+7.Which set of statements creates a series of macro variables with the names derived from the CountryCode column and values derived from the CountryName column?
+
+CountryCode  CountryName
+CA           Canada
+UK           United Kingdom
+AU           Australia
+
+1 / 1点
+
+
+call symputx(CountryCode, 'CountryName');
+
+call symputx('CountryCode', 'CountryName');
+
+call symputx(CountryCode, CountryName);
+正解
+You use CALL SYMPUTX to create a macro variable and assign a value during DATA step execution. In this call, the first argument specifies the macro variable using the names derived from the CountryCode column. The second argument specifies the value to assign, in this case the value of the CountryName column. Review Creating Macro Variables in a DATA Step.
+
+
+call symputx('CountryCode', CountryName);
+
+
+
+
+8.Which CALL statement correctly creates a macro variable from the result of the numeric expression numCorrect/totalQs so that the macro variable shows the value as a percent with no decimal places? 
+
+1 / 1点
+
+
+call symputx('score', numCorrect/totalQs, percent10.);
+
+call symputx('score',put(numCorrect/totalQs, percent10.));
+正解
+You can use expressions to specify the CALL SYMPUTX arguments. You must use the PUT function in the second argument to apply a format before assigning the value to the score macro variable.
+
+call symputx('score', numCorrect/totalQs(percent10.));
+
+call symputx('score', numCorrect/totalQs, format=percent10.);
+
+
+
+
+9.Which of the following statements about macro variable resolution is false?
+
+1 / 1点
+
+
+If more than two consecutive ampersands precede a name token, the macro processor generates an error message.
+正解
+When multiple ampersands are included in a macro variable reference, the Forward Rescan Rule is applied. Two ampersands resolve to one ampersand, and a single ampersand followed by a name token resolves to the macro variable's value. The macro processor rescans the text and resolves macro triggers until they are all resolved.
+
+Two consecutive ampersands resolve to one ampersand.
+
+The macro processor always rescans a reference that is preceded by multiple ampersands.
+
+Rescanning continues until there are no remaining macro triggers that the macro processor can resolve.
+
+
+
+
+10.Given the global symbol table shown here, what value does &&teach&crs resolve to? 
+
+Name    Value
+TEACH1  Hallis, George 
+TEACH2  Wickham, Alice 
+TEACH3  Forest, Debra 
+CRS     3 
+
+1 / 1点
+
+
+&teach3
+
+teach3
+
+Forest, Debra
+正解
+On the first scan, the double ampersands resolve to a single ampersand, the text teach is carried over as a name token, and &crs resolves to 3. The result, &teach3 is scanned again, resolving to Forest, Debra.
+
+none of the above
+
+
+
+
