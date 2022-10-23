@@ -2,19 +2,46 @@ Accessing DBMS Data with SAS-ACCESS
 
 
 1.Which statement(s) is/are true about SAS/ACCESS technology? (Select all that apply)
-
+1.SAS/ACCESSの技術について、正しいものはどれですか/正しいものはどれですか？(該当するものをすべて選択してください)
 
 SAS/ACCESS software provides dynamic access to DBMS data through the SAS/ACCESS LIBNAME statement and the PROC SQL pass-through facility.
 SAS/ACCESSソフトウェアは、SAS/ACCESS LIBNAMEステートメントとPROC SQLパススルー機能を通じて、DBMSデータへの動的アクセスを提供します。
+Correct
+SAS/ACCESS software provides dynamic access to DBMS data through the SAS/ACCESS LIBNAME statement and the PROC SQL pass-through facility. 
+You do need to know your DBMS's SQL language to access and manipulate your DBMS data. It is faster and more direct to use the SAS/ACCESS 
+LIBNAME statement to access your DBMS data. The LIBNAME statement provides more control over DBMS operations.
+SAS/ACCESS ソフトウェアは、SAS/ACCESS LIBNAME ステートメントと PROC SQL パススルー機能を通じて DBMS データへの動的アクセスを提供します。
+DBMSのデータにアクセスし、操作するためには、DBMSのSQL言語を知っている必要があります。SAS/ACCESS LIBNAME ステートメントを使用して、
+DBMS データにアクセスする方が、より速く、より直接的です。LIBNAME ステートメントを使用すると、DBMS の操作をより詳細に制御することができます。
 
 You need to know your DBMS's SQL language to access and manipulate your DBMS data.
 DBMSのデータにアクセスし操作するためには、DBMSのSQL言語を知っている必要があります。
+uncorrect
+This should not be selected
+SAS/ACCESS software provides dynamic access to DBMS data through the SAS/ACCESS LIBNAME statement and the PROC SQL pass-through facility. 
+You do need to know your DBMS's SQL language to access and manipulate your DBMS data. It is faster and more direct to use the SAS/ACCESS 
+LIBNAME statement to access your DBMS data. The LIBNAME statement provides more control over DBMS operations. Review Defining SAS/ACCESS Technology.
+これは選択されるべきではありません
+SAS/ACCESS ソフトウェアは、SAS/ACCESS LIBNAME ステートメントと PROC SQL パススルー機能を通じて DBMS データへの動的アクセスを提供します。
+DBMS のデータにアクセスし、操作するには、DBMS の SQL 言語を知っている必要があります。SAS/ACCESS LIBNAME ステートメントを使用して、
+DBMS データにアクセスする方が、より速く、より直接的です。LIBNAME文は、DBMSの操作をよりコントロールすることができます。SAS/ACCESSテクノロジーの定義を確認する。
 
 It is faster and more direct to use the SAS/ACCESS LIBNAME statement to access your DBMS data.
 SAS/ACCESS LIBNAMEステートメントを使用してDBMSデータにアクセスする方が、より速く、より直接的にアクセスすることができます。
+Correct
+SAS/ACCESS software provides dynamic access to DBMS data through the SAS/ACCESS LIBNAME statement and the PROC SQL pass-through facility. 
+You do need to know your DBMS's SQL language to access and manipulate your DBMS data. It is faster and more direct to use the SAS/ACCESS 
+LIBNAME statement to access your DBMS data. The LIBNAME statement provides more control over DBMS operations.
+SAS/ACCESS ソフトウェアは、SAS/ACCESS LIBNAME ステートメントと PROC SQL パススルー機能を通じて DBMS データへの動的アクセスを提供します。
+DBMSのデータにアクセスし、操作するためには、DBMSのSQL言語を知っている必要があります。SAS/ACCESS LIBNAME ステートメントを使用して、
+DBMS データにアクセスする方が、より速く、より直接的です。LIBNAME ステートメントを使用すると、DBMS の操作をより詳細に制御することができます。
+
 
 You do not need to know your DBMS's SQL implementation to access and manipulate your DBMS data.
 DBMSのデータにアクセスし、操作するためにDBMSのSQLの実装を知る必要はありません。
+
+不正解
+You didn't select all the correct answers
 
 
 2.What are some benefits of using the PROC SQL Pass-Through facility? (Select all that apply)
@@ -24,14 +51,28 @@ DBMSのデータにアクセスし、操作するためにDBMSのSQLの実装を
 
 The PROC SQL Pass-Through facility enables you to send DBMS-specific SQL statements directly to a DBMS for execution like you are coding inside of the database.
 PROC SQL Pass-Through機能を使用すると、データベース内でコーディングするようにDBMS固有のSQL文を直接DBMSに送信して実行することができます。
+Correct
+The SQL Procedure pass-through facility is an extension of the SQL procedure that enables you to send DBMS-specific statements to a DBMS and 
+to retrieve DBMS data. You specify DBMS SQL syntax instead of SAS SQL syntax when you use the pass-through facility. Review Overview of the 
+SQL Pass-Through Facility .
+SQLプロシージャのパススルー機能は、SQLプロシージャの拡張機能で、DBMS固有のステートメントをDBMSに送信し、DBMSのデータを取得することを可能にします。
+パススルー機能を使用する場合、SAS SQL構文ではなく、DBMS SQL構文を指定します。SQL パススルー機能の概要を確認する .
 
 The PROC SQL Pass-Through facility accepts all extensions to ANSI SQL that your DBMS provides.
 PROC SQL Pass-Through機能は、DBMSが提供するANSI SQLの拡張をすべて受け入れることができます。
+これも選択する
 
 The PROC SQL Pass-Through facility lets the DBMS optimize queries when queries have summary functions.
 PROC SQL Pass-Through機能は、クエリにサマリー関数がある場合、DBMSがクエリを最適化できるようにします。
+Correct
+The SQL Procedure pass-through facility is an extension of the SQL procedure that enables you to send DBMS-specific statements 
+to a DBMS and to retrieve DBMS data. You specify DBMS SQL syntax instead of SAS SQL syntax when you use the pass-through facility. 
+Review Overview of the SQL Pass-Through Facility .
+SQLプロシージャのパススルー機能は、SQLプロシージャの拡張機能で、DBMS固有のステートメントをDBMSに送信し、DBMSのデータを取得することを可能にします。
+パススルー機能を使用する場合、SAS SQL構文ではなく、DBMS SQL構文を指定します。SQL パススルー機能の概要を確認する .
 
-
+不正解
+You didn't select all the correct answers
 
 3.Which query executes correctly in PROC FEDSQL?
 3.PROC FEDSQLで正しく実行されるクエリはどれですか？
@@ -48,6 +89,10 @@ select EmployeeID, Name, Salary, Department
     from orion.employee
     where = 'Management';
 quit;
+correct
+正解
+When using FEDSQL, you must use single quotes around a text string in the WHERE clause. Double quotes are a SAS enhancement and will not run in FEDSQL.
+FEDSQL を使用する場合、WHERE 句のテキスト文字列の周囲には単一引用符を使用する必要があります。二重引用符はSASの機能拡張であり、FEDSQLでは実行されません。
 
 
 4.You are working with multiple databases to pull data into SAS. The goal is to push as much processing into 
@@ -59,8 +104,15 @@ the database as possible and to keep the SQL queries vendor neutral. Which proce
 1点
 
 PROC SQL
+correct
+不正解
+PROC FEDSQL is a vendor neutral ANSI SQL that pushes as much of the processing as possible into the database. Review What Is PROC FEDSQL?
+PROC FEDSQLはベンダーに依存しないANSI SQLであり、可能な限り多くの処理をデータベースにプッシュすることができます。レビュー PROC FEDSQLとは何か？
 
 PROC FEDSQL
+
+
+
 
 
 *******************************************************************************************************************************************************
