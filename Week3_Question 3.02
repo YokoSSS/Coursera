@@ -1,0 +1,22 @@
+
+1.What value will be returned by the following call to %SUBSTR?
+
+%substr("CA123", 1, 2)  
+
+
+CA123  
+
+C
+
+CA
+uncorrect
+不正解
+Quotation marks are treated as part of the value, and the characters in positions 1 and 2 are returned.  
+引用符は値の一部として扱われ、1位と2位の文字が返される。  
+
+
+"C
+correct
+正解
+Quotation marks are treated as part of the value, and the characters in positions 1 and 2 are returned.  
+
