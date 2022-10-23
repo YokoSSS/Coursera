@@ -1,0 +1,85 @@
+Evaluating Arithmetic Expressions
+
+Global Symbol Table
+Name        Value
+SEASON      2019
+NEXTSEASON  2019+1
+
+
+%let season=2019;
+%let nextseason=&season+1;
+
+%let season=2019;
+%let nextseason=&sysevalf(&season+1);
+
+
+%SYSVALF(expression<,conversion-type>)
+
+For example:
+
+Expression<                 Value
+%sysevalf(10/3.5)           2.85714285714285
+%sysevalf(10/3.5, ceil)     3
+%sysevalf(10/3.5, floor)    2
+%sysevalf(10/3.5, integer)  2
+%sysevalf(1.2<3 , boolean)  1
+%sysevalf(10/3.5, boolean)  1
+
+
+Using Special Characters
+特殊文字の使用
+
+
+Activity 3.04
+
+1.Open m103a03.sas from the activities folder and view the program.
+
+The intent of the %SCAN function is to return the city from the Location macro variable using only the comma as a delimiter. Run the program and examine the log. 
+
+What is the value of the City macro variable?
+
+1点
+
+null (blank)
+
+
+Buenos
+
+
+Buenos Aires
+
+
+Buenos Aires, Argentina
+
+
+
+2.Use %STR to mask the comma in the value assigned to Location. 
+
+Run the program. 
+
+What is the result?
+
+1点
+
+Buenos Aires
+
+
+Buenos Aires, Argentina
+
+
+
+3.Use %STR to mask the comma delimiter in the call to %SCAN so that the value
+ of the City macro variable is Buenos Aires.
+
+Run the program.
+
+Did the program successfully return Buenos Aires as the value for the City macro variable? 
+ 
+
+1点
+
+Yes
+
+
+No
+
