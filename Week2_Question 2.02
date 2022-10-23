@@ -1,0 +1,24 @@
+Question 2.02
+
+1.Why do unbalanced quotation marks cause problems when they are submitted in a SAS program?
+
+1 title "Listing Report of SUVs;
+2 proc print data-sashelp.cars;
+3    where type="SUV";
+4 run;
+5
+
+Note: This is a free response question and all attempts are marked correct. Type your response and compare your answer to the answer provided.
+
+1点
+
+My Answer:
+Unable to recognize a specific string of characters.
+
+正解
+When the word scanner sees a quotation mark, it holds all subsequent text in an attempt to build a literal token. 
+The literal token ends when the word scanner sees a matching quotation mark. If the user forgot to end the literal with 
+a matching quotation mark, the next quotation mark might be the start of another literal token, further down in the code. 
+In this case, the resulting literal token might contain SAS statements, and this will likely result in a syntax error when compiled.  
+
+
