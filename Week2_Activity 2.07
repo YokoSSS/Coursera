@@ -36,4 +36,3 @@ correct
 正解
 Using a hyphen after the keywords NOTE, ERROR, or WARNING changes the color of the message but does not print the keyword as a prefix.
 Ex)ERROR 180-322: ステートメントが有効でないか、適切な順序で使用されていません。
-
