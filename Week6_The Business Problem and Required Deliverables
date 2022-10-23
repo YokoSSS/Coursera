@@ -1,27 +1,43 @@
 The Business Problem and Required Deliverables
 
-The Business Problem and Required Deliverables
 In this case study, you solve a real-world business problem by applying concepts that you learned in this course. 
 Be aware that there are numerous solutions to this problem, and some can include concepts that are outside the scope of the course.
+このケーススタディでは、このコースで学んだ概念を適用して、実際のビジネス上の問題を解決します。
+この問題には数多くの解決策があり、中には本コースの範囲外の概念が含まれる可能性があることに留意してください。
 
-Business Problem
+Business Problem ビジネス上の問題
 The Transportation Security Administration (TSA) is an agency of the United States Department of Homeland Security that has authority 
 over the security of the traveling public. A claim is filed if you are injured or your property is lost or damaged during the screening process at an airport. 
+運輸保安庁（TSA）は、アメリカ合衆国国土安全保障省の機関であり、旅行者の安全確保に関する権限を有している。
+空港での審査中に怪我をしたり、持ち物を紛失したり、損害を受けたりした場合にクレームが発生します。
 
 Your first project is to prepare TSA Airport Claims and Enplanement data from 2013 through 2017 for analysis. You want  to determine 
 how many claims occur at each airport every year, how many passengers fly at each airport every year, and the percentage of claims per airport.
+最初のプロジェクトは、2013年から2017年までのTSA空港クレームと搭乗者数のデータを分析用に準備することです。
+あなたは、各空港で毎年何件のクレームが発生し、各空港で毎年何人の乗客が飛行機で移動し、空港ごとのクレームの割合がどの程度かを調べたいのです。
 
 The analysis program has already been completed, but it is your job to follow the requirements and prepare the tables correctly. 
 After the tables are prepared, you can run the analysis program provided to answer the business questions.
+分析プログラムはすでに完成していますが、要件に従い、正しく表を作成することがあなたの仕事です。
+表が準備できたら、提供された分析プログラムを実行し、ビジネス上の質問に答えることができます。
 
-Deliverables
+Deliverables 成果物
 There are three deliverables that need to be completed by the end of the case study. The final deliverable tables must be placed in the Sq library:
+ケーススタディ終了までに完成させる必要がある成果物は3つあります。最終成果物であるテーブルは、Sqライブラリに配置する必要があります。
 
 sq.Claims_Cleaned - a new table that is a clean and prepared version of the sq.claimsraw table
+sq.Claims_Cleaned - sq.climesrawテーブルのクリーンで準備されたバージョンの新しいテーブルです。
 
 sq.ClaimsByAirport - a new table that is created by summarizing claims for each airport and year from the sq.Claims_Cleaned table and 
 then joining the summarized data with the enplanement information (sq.enplanement2017 and sq.boarding2013_2016 tables)
+sq.ClaimsByAirport - sq.Claims_Cleaned テーブルから空港ごと、年ごとにクレームを要約し、要約データを搭乗者情報（sq.enplanement2017 および 
+sq.boarding2013_2016 テーブル）と結合して作成する新しいテーブル
 
 FinalReport.html -the final HTML report produced by running the AnalysisProgram.sas on the prepared tables.
+FinalReport.html -用意したテーブルに対してAnalysisProgram.sasを実行して作成した最終的なHTMLレポートです。
 
 In the process of creating these three deliverables, you might need to create additional tables or views.
+これら3つの成果物を作成する過程で、追加のテーブルやビューの作成が必要になる場合があります。
+
+
+
