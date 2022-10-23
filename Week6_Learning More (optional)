@@ -1,0 +1,95 @@
+Learning More (optional)
+
+Documentation
+For more information on material taught in Accessing DBMS Data with SAS/ACCESS, review the following documentation links:
+
+SAS/ACCESS® 9.4 for Relational Databases: Reference, Ninth Edition Online Documentation (You can find DBMS-specific reference documentation here)
+https://go.documentation.sas.com/?docsetId=acreldb&docsetTarget=titlepage.htm&docsetVersion=9.4&locale=en
+
+SAS® 9.4 FedSQL Language Reference, Fifth Edition Online Documentation
+https://go.documentation.sas.com/?docsetId=fedsqlref&docsetTarget=titlepage.htm&docsetVersion=9.4&locale=en
+
+FEDSQL Procedure
+https://go.documentation.sas.com/?docsetId=proc&docsetTarget=n06w5kqwkurgk2n1irjo6h94fkcq.htm&docsetVersion=9.4&locale=en
+
+FedSQL and the ANSI Standard
+https://go.documentation.sas.com/?docsetId=fedsqlref&docsetTarget=p00dvpduqcxom7n1nzbu3tk7rdx1.htm&docsetVersion=9.4&locale=en
+
+FedSQL Dictionary Tables
+https://go.documentation.sas.com/?docsetId=fedsqlref&docsetTarget=n07w9194pvnhsdn1uk5thvdii7u1.htm&docsetVersion=9.4&locale=en
+
+PRODUCT_STATUS Procedure
+https://go.documentation.sas.com/?docsetId=proc&docsetTarget=n1x7dbhg6dlo7pn1jq24oa25k17z.htm&docsetVersion=9.4&locale=en
+
+
+Beyond Accessing DBMS Data with SAS/ACCESS
+Want to go beyond the material? Check out the following resources:
+
+Want to learn more about working with DBMSs?
+
+Jedi @ SASGF: Working with Big Data in SAS (recommended tutorial)
+https://blogs.sas.com/content/sastraining/2018/04/09/jedi-sasgf-working-with-big-data-in-sas/
+
+Explicit SQL Pass-Through: Is It Still Useful? 
+https://support.sas.com/resources/papers/proceedings11/105-2011.pdf
+
+Potential Result Set Differences between Relational DBMSs and the SAS System
+http://support.sas.com/resources/papers/resultsets.pdf
+
+Accessing a Microsoft SQL Server
+https://support.sas.com/techsup/technote/accessing-microsoft-sql-server-from-sas.pdf
+
+Database from SAS® under
+https://support.sas.com/techsup/technote/accessing-microsoft-sql-server-from-sas.pdf
+ 
+Microsoft Windows
+https://support.sas.com/techsup/technote/accessing-microsoft-sql-server-from-sas.pdf
+
+SASTRACE: Your Key to RDBMS Empowerment 
+https://support.sas.com/resources/papers/proceedings15/3269-2015.pdf
+
+Tactics for Pushing SQL to the Relational Databases
+http://support.sas.com/resources/papers/TacticsForPushingSQLtoRelationalDatabases.pdf
+
+Implicit SQL Pass-through to Hive in SAS Viya
+https://blogs.sas.com/content/sgf/2018/03/29/implicit-sql-pass-through-to-hive-in-sas-viya/
+
+
+Want to learn about more SAS and DBMS data types?
+
+Data Types for SAS Data Sets
+https://go.documentation.sas.com/?docsetId=fedsqlref&docsetTarget=n19bf2z7e9p646n0z224cokuj567.htm&docsetVersion=9.4&locale=en
+
+Data Type Reference
+https://go.documentation.sas.com/?docsetId=fedsqlref&docsetTarget=p006s0ukzim6brn16wfjdmg89x7r.htm&docsetVersion=9.4&locale=en
+
+Numerical Accuracy in SAS Software
+https://go.documentation.sas.com/?docsetId=lrcon&docsetTarget=p0ji1unv6thm0dn1gp4t01a1u0g6.htm&docsetVersion=9.4&locale=en#p0ji1unv6thm0dn1gp4t01a1u0g6
+
+
+
+Want to learn more about working with FedSQL:
+
+
+Working with PROC FEDSQL in SAS® 9.4  
+https://support.sas.com/resources/papers/proceedings15/3390-2015.pdf
+
+Anything You Can Do I Can Do Better: PROC FEDSQL VS PROC SQL 
+https://www.sas.com/content/dam/SAS/support/en/sas-global-forum-proceedings/2019/3734-2019.pdf
+
+Jedi SAS Tricks - FedSQL Dictionary Tables
+https://blogs.sas.com/content/sastraining/2017/06/23/jedi-sas-tricks-fedsql-dictionary-tables/
+
+High-Performance Data Access with FedSQL and DS2 
+https://support.sas.com/resources/papers/proceedings16/4342-2016.pdf
+
+
+Want to learn about removing passwords from your programs:
+
+
+One deadly sin SAS programmers should stop committing
+https://blogs.sas.com/content/sgf/2017/04/13/one-deadly-sin-sas-programmers-should-stop-committing/
+
+Five strategies to eliminate passwords from your SAS programs
+https://blogs.sas.com/content/sasdummy/2010/11/23/five-strategies-to-eliminate-passwords-from-your-sas-programs/
+
