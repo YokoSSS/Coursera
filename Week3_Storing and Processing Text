@@ -241,5 +241,230 @@ The macro processor generates an error.
 
 english
 
+*****************************************************************************************************************************************************
 
+
+1.Which of the following components is NOT required to return a text string representing today’s date displayed as a 2-digit day, 
+3-letter month, and 4-digit year?
+1.2桁の日、3文字の月、4桁の年で表示される今日の日付を表すテキスト文字列を返すために、次のコンポーネントのうち必要でないものはどれでしょう。
+0 / 1点
+
+
+DATE9. format
+
+TODAY function
+
+%SYSFUNC() macro function
+uncorrect
+不正解
+You must use the %SYSFUNC macro function to ask the macro processor to call the regular TODAY function to 
+return the current SAS date value. Review Executing SAS DATA Step Functions During Tokenization.
+SYSFUNC マクロ関数を使用して、現在の SAS 日付値を返すために通常の TODAY 関数を呼び出すようにマクロ プロセッサに
+依頼する必要があります。トークン化中の SAS DATA Step 関数の実行を確認します。
+
+
+%TODAY macro function
+
+
+
+
+
+2.Which of the following correctly converts the value of the macro variable Last_Name to proper case? 
+2.マクロ変数Last_Nameの値を正しく大文字・小文字に変換しているのはどれか。
+1 / 1点
+
+%let last_name=%propcase(last_name);
+
+%let last_name=%sysfunc(propcase(&last_name));
+
+%let last_name=%propcase(&last_name);
+
+%let last_name=%sysfunc(propcase(last_name));
+
+正解
+There is no %PROPCASE macro function, so you must use %SYSFUNC to call the PROPCASE function in a %LET statement. 
+PROPCASE expects a character argument, so you must resolve the macro variable Last_Name to insert its value.
+PROPCASE マクロ関数はありませんので、%SYSFUNC を使用して %LET 文で PROPCASE 関数を呼び出す必要があります。
+PROPCASE は文字引数を必要とするので、マクロ変数 Last_Name を解決して、その値を挿入する必要があります。
+
+
+
+
+3.Which of the following %LET statements correctly assigns the valueDirector’s Report to the macro variable Text?
+3.次の%LETステートメントのうち、マクロ変数Textに値Director's Reportを正しく代入しているものはどれですか。
+0 / 1点
+
+
+%let text=%str(Director%'s Report);
+
+%let text=Director's Report;
+
+%let text=%nrstr(Director's Report);
+
+%let text=%str(Director's Report);
+uncorrect
+不正解
+The %STR function is required to mask the single quotation mark so that is is treated as plain text rather 
+than the beginning of a quoted string. When using the %STR function, precede an apostrophe or single quotation mark with a percent sign.
+STR関数は、シングルクォーテーションを引用符で囲まれた文字列の先頭ではなく、プレーンテキストとして扱えるように
+するために必要なものです。STR関数を使うときは、アポストロフィやシングルクォーテーションの前にパーセント記号を付けてください。
+
+
+4.Which technique creates macro variables at execution time?
+
+1 / 1点
+
+%LET statement
+
+SQL INTO clause
+
+Both SYMPUTX routine and SQL INTO clause
+correct
+正解
+%LET statements are executed by the macro processor before compilation. CALL SYMPUTX and the SQL INTO clause are processed during the execution phase.
+LET 文は、コンパイル前にマクロプロセッサによって実行されます。CALL SYMPUTX と SQL INTO 句は、実行段階で処理されます。
+
+SYMPUTX routine
+
+
+
+
+5.Which of the following correctly creates a macro variable in a PROC SQL step?
+PROC SQLのステップでマクロ変数を作成する場合、正しいものはどれか。
+1 / 1点
+
+
+select mean(sales)
+    into avgSales
+    from sasuser.all;
+
+select mean(sales)
+    into :avgSales
+    from sasuser.all;
+correct
+正解
+You use the INTO clause in a PROC SQL SELECT statement to create a macro variable and assign values returned from the query. 
+The macro variable name listed in the INTO clause must be preceded by a colon.
+PROC SQL SELECT ステートメントで INTO 句を使用して、マクロ変数を作成し、クエリから返された値を割り当てます。
+INTO句に記載するマクロ変数名の前には、コロンが必要です。
+
+select *
+    from sasuser.all;
+
+
+
+6.Which SQL query assigns the values of the variable itemCode to the macro variables item1 through item3 and the values of the 
+data set variable salePrice to the macro variables price1 through price3?
+変数itemCodeの値をマクロ変数item1〜item3に、データセット変数salePriceの値をマクロ変数price1〜price3に割り当てるSQLクエリはどれか。
+1 / 1点
+
+select itemCode, salePrice
+    into :item1-:item3, :price1-:price3
+    from salesInfo;
+correct
+正解
+You use the INTO clause to create a numbered series of macro variables based on the results of the query. 
+You list the columns on the SELECT clause and name the macro variables on the INTO clause. When creating a 
+series of macro variables, you specify a lower bound and optionally specify an upper bound. The macro variable names must be preceded by a colon.
+INTO句を使用して、クエリの結果に基づいてマクロ変数の番号付けされたシリーズを作成します。
+SELECT句で列をリストアップし、INTO句でマクロ変数に名前を付けます。マクロ変数のシリーズを作成するとき、
+下限を指定し、オプションで上限を指定します。マクロ変数名の前には、コロンを付けなければなりません。
+
+select itemCode, salePricefrom salesInfo
+    where itemCode=item1-item3,
+       salePrice=price1-price3;
+
+select itemCode
+    into: item1-item3salePrice
+    into: price1-price3
+    from salesIn
+
+
+
+
+7.Which statement creates a macro variable named AvgMPG and assigns the value of the column Mean_MPG during DATA step execution?
+7.DATAステップの実行中にAvgMPGというマクロ変数を作成し、Mean_MPGという列の値を代入する文はどれか。
+
+1 / 1点
+
+
+call symputx(AvgMPG, 'Mean_MPG');
+
+call symputx('AvgMPG', Mean_MPG);
+正解
+You use CALL SYMPUTX to create a macro variable and assign a value during DATA step execution.
+The first argument specifies the macro variable name(s) and the second argument assigns the value(s). 
+Quotation marks around the arguments are used to distinguish literal strings from column names. In this call, 
+the first argument specifies the literal macro variable name, AvgMPG. The second argument specifies the value to assign,
+in this case the column Mean_MPG.
+DATA ステップ実行中に CALL SYMPUTX を使用して、マクロ変数を作成し、値を代入します。
+第1引数でマクロ変数名を指定し、第2引数で値を代入します。引数を囲む引用符は、リテラル文字列と列名を区別するために使用されます。
+この呼び出しでは、最初の引数はリテラルマクロ変数名AvgMPGを指定します。第2引数は代入する値、この場合は列Mean_MPGを指定します。
+
+
+call symputx('AvgMPG', 'Mean_MPG');
+
+call symputx(carType, Type);
+
+
+
+8.Which CALL statement correctly creates a macro variable from the result of the numeric expression numCorrect/totalQs 
+so that the macro variable shows the value as a percent with no decimal places? 
+8.数値式numCorrect/totalQsの結果からマクロ変数を作成し、マクロ変数が小数点以下の値を示すようにするCALL文のうち、正しいものはどれか。
+
+1 / 1点
+
+
+call symputx('score', numCorrect/totalQs(percent10.));
+
+call symputx('score', numCorrect/totalQs, percent10.);
+
+call symputx('score', numCorrect/totalQs, format=percent10.);
+
+call symputx('score',put(numCorrect/totalQs, percent10.));
+correct
+正解
+You can use expressions to specify the CALL SYMPUTX arguments. You must use the PUT function in the second argument to apply a format before assigning the value to the score macro variable.
+CALL SYMPUTXの引数には式を指定することができます。第2引数でPUT関数を使用して書式を適用してから、scoreマクロ変数に値を代入する必要があります。
+
+
+
+9.Which of the following statements about macro variable resolution is false?
+
+0 / 1点
+
+Two consecutive ampersands resolve to one ampersand.
+uncorrect
+不正解
+When multiple ampersands are included in a macro variable reference, the Forward Rescan Rule is applied. 
+Two ampersands resolve to one ampersand, and a single ampersand followed by a name token resolves to the 
+macro variable's value. The macro processor rescans the text and resolves macro triggers until they are all resolved.
+複数のアンパサンドがマクロ変数参照に含まれる場合、前方再スキャン規則が適用されます。
+2 つのアンパサンドは 1 つのアンパサンドに解決され、1 つのアンパサンドの後に名前トークンが続くとマクロ変数の値に解決されます。
+マクロ プロセッサはテキストを再スキャンし、マクロ トリガがすべて解決されるまで解決します。
+
+The macro processor always rescans a reference that is preceded by multiple ampersands.
+
+Rescanning continues until there are no remaining macro triggers that the macro processor can resolve.
+
+If more than two consecutive ampersands precede a name token, the macro processor generates an error message.
+
+
+10.Given the global symbol table shown here, what value does &&wind&cat resolve to?
+
+Name    Value
+wind1   74
+wind2   96
+wind3   111
+wind4   130
+wind5   157  
+cat   1
+
+1 / 1点
+
+正解
+On the first scan, the double ampersands resolve to a single ampersand, the text wind is carried over as a name token,
+and &cat resolves to 1. The result, &wind1 is scanned again, resolving to 74.
+最初のスキャンで、ダブルアンパサンドはシングルアンパサンドに解決され、テキストwindは名前トークンとして持ち越される。
+その結果、&wind1が再びスキャンされ、74に解決される。
 
