@@ -304,7 +304,7 @@ Correct
 正解
 To create a user-defined macro variable, you use the %LET statement and specify the name of the macro variable, 
 followed by an equal sign, and then the text string you want to store.
-
+ユーザー定義マクロ変数を作るには、%LET文を使い、マクロ変数名、イコール記号、そして格納したい文字列を指定します。
 
 5.What is the INTO clause doing in the following query?
 .次のクエリでINTO句は何をしているのでしょうか？
@@ -412,7 +412,8 @@ correct
 正解
 You can concatenate the values of one column into one macro variable. This form is useful for building a list of variables 
 or constants. Use the SEPARATED BY keywords to specify a character to delimit the values in the macro variable.
-
+1列の値を1つのマクロ変数に連結することができる。この形式は、変数や定数のリストを構築するのに便利である。
+SEPARATED BY キーワードを使用して、マクロ変数内の値を区切る文字を指定します。
 
 The query returns an error.
 クエリーはエラーを返します。
@@ -464,11 +465,14 @@ The SEPARATED BY option
 
 The TRIMMED option
 correct
+正解
+When storing a value in a single macro variable, PROC SQL preserves leading or trailing blanks. 
+The TRIMMED option can be used to trim the leading and trailing blanks from values that are stored in a single macro variable.
+PROC SQLは、単一のマクロ変数に値を格納する場合、先頭または末尾の空白を保持します。TRIMMEDオプションを使用すると、
+単一のマクロ変数に格納される値から先頭と末尾の空白を切り詰めることができます。
 
 The FORMAT option
 
 The NOTRIM option
-
-
 
 
