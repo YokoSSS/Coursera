@@ -200,5 +200,183 @@ To resolve a macro variable reference that occurs within a literal string, enclo
 
 ****************************************************************************************************************************
 
+1.
+質問 1
+Which of the following is not a benefit of using the SAS macro facility?
+
+1 / 1点
+The macro facility enables you to make your programs more flexible.
+マクロ機能により、プログラムをより柔軟にすることができる。
+
+The macro facility enables you to manually substitute values each time a program executes.
+マクロ機能により、プログラム実行のたびに手動で値を代入することができます。
+correct
+正解
+The macro facility enables you to automatically substitute values each time a program executes.
+マクロ機能により、プログラム実行のたびに自動的に値を代入することができます。
+
+The macro facility enables you to reduce the amount of development and maintenance time as a programmer.
+マクロ機能により、プログラマーとしての開発・保守時間を短縮することができる。
+
+The macro facility enables you to write programs that are easily modified and customized.
+マクロ機能は、修正やカスタマイズが容易なプログラムを書くことができる。
+
+
+2.Automatic and user-defined macro variables can store only text strings.
+2.自動マクロ変数とユーザー定義マクロ変数には、テキスト文字列のみを格納することができます。
+1点
+
+True
+correct
+SAS macro is a text processing facility, so all values are assumed to be text.
+SASマクロはテキスト処理機能なので、すべての値はテキストであることが前提です。
+
+False
+
+
+3.Which of the following TITLE statements correctly references the macro variable year?
+3.次のTITLE文のうち、マクロ変数yearを正しく参照しているものはどれですか？
+
+1点
+
+title "Total Expenses for %year";
+
+title 'Total Expenses for &year';
+
+title "Total Expenses for &year";
+correct
+正解
+To substitute a macro variable's value into the code, use an ampersand followed by the name of 
+the macro variable. If the SAS syntax requires quotation marks, include the macro variable reference 
+in double quotation marks.
+マクロ変数の値をコードに代入するには、アンパサンドに続いてマクロ変数の名前を使用します。
+SAS 構文で引用符が必要な場合は、マクロ変数の参照を二重引用符で囲みます。
+
+title "Total Expenses for !year";
+
+
+4.
+質問 4
+Which statement creates a macro variable named city that has the value London? 
+
+1 / 1点
+%let city="London";
+
+&let %city="London";
+
+%let city=London;
+correct
+正解
+The %LET statement creates and assigns values to macro variables. Macro variable names must begin with a 
+letter or an underscore. The value is assumed to be text, so no quotation marks are needed. If quotation marks are 
+used, they are included in the assigned value. Review Creating Macro Variables With %LET.
+
+let %city=London;
+
+
+
+5.Which of the following statements correctly displays the value of the macro variable month in the SAS log?
+
+1 / 1点
+
+
+%put(month);
+
+%put &month;
+correct
+正解
+To display the value of a macro variable in a %PUT statement, use &macro-variable-name or use &=macro-variable-name.
+
+
+&put %month;
+
+&put(month);
+
+
+
+6.How many tokens are in this statement?
+
+totalBonus = score*1.05+2;
+
+1 / 1点
+
+2
+
+8
+correct
+正解
+There are four types of tokens: name tokens, number tokens, literal tokens, and special tokens. 
+To build a token, the word scanner reads characters until it reaches a delimiter. Another way that a 
+token ends is when a new token begins. When the word scanner reaches a character that doesn't meet the rules 
+for the current token, it ends the token that it was building and begins building another.
+
+10
+
+7
+
+
+7.Which option displays the resolved values of macro variables in the log as they are resolved?
+
+1 / 1点
+
+SYMBOLGEN
+correct
+正解
+When SYMBOLGEN is enabled, a message is written to the log each time a macro variable is resolved.
+
+
+MACVAR
+
+%LET
+
+MPRINT
+
+
+8.The macro processor modifies SAS code after it is compiled.
+
+1 / 1点
+
+True
+
+False
+correct
+正解
+The macro processor modifies SAS code during word scanning, prior to compilation.
+
+
+
+9.Which of the following describes the first stage of program flow for a SAS program with no macro triggers?
+
+1 / 1点
+
+Input Stack
+correct
+正解
+Submitted SAS code is first copied to the input stack. The word scanner tokenizes the code and sends it to the compiler.
+
+Compiler
+
+Word Scanner
+
+Macro Processor
+
+
+
+10.Which of these will be sent to the macro processor?
+
+1 / 1点
+
+"%totalSales"
+correct
+正解
+A percent sign followed by a name token is a macro program reference. The macro program reference is 
+enclosed in double quotation marks, so it is sent to the macro processor.
+
+
+'&totalSales'
+
+totalSales
+
+'%totalSales'
 
 
