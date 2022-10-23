@@ -1,0 +1,39 @@
+Week2_Activity 2.07
+
+1.In SAS Studio, open a new program and submit a %PUT statement to list all user-defined macro variables.
+1.SAS Studioで、新しいプログラムを開き、すべてのユーザー定義マクロ変数をリストするために%PUT文を提出します。
+
+Find the Path macro variable in the log. Path was created with a %LET statement in the libname.sas program, 
+and it stores the location of the course files. 
+ログで Path マクロ変数を見つけます。Pathは、libname.sasプログラム内の%LET文で作成され、コースファイルの場所を格納しています。
+
+Submit the following statements to view the value of Path. How are the messages in the log different?
+以下のステートメントを送信して、Pathの値を表示します。ログのメッセージはどのように違うのでしょうか？
+
+
+1  %put NOTE: &=path;
+2  %put ERROR- Course files are in &path;
+
+
+Which statement is false?
+どのステートメントが間違っていますか?
+
+1点
+
+The NOTE message is the same color as the other standard notes.
+NOTE メッセージは他の標準的なノートと同じ色です。
+
+The NOTE message includes NOTE: as a prefix.
+NOTEメッセージは接頭辞としてNOTE:を含んでいます。
+
+The ERROR message is the same color as other standard errors.
+ ERRORメッセージは他の標準エラーと同じ色である
+
+
+The ERROR message includes ERROR- as a prefix. 
+ERRORメッセージは、接頭辞としてERROR-を含む。
+correct
+正解
+Using a hyphen after the keywords NOTE, ERROR, or WARNING changes the color of the message but does not print the keyword as a prefix.
+Ex)ERROR 180-322: ステートメントが有効でないか、適切な順序で使用されていません。
+
