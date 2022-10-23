@@ -3,7 +3,7 @@ The following table highlights some of the main differences between PROC SQL and
 
 PROC SQL                                                        PROC FEDSQL
 SAS SQL implementation                                          Vendor neutral ANSI SQL
-SAS SQLの実装　                                                 ベンダーニュートラルなANSI SQL
+SAS SQLの実装　                                                 ベンダーに依存しないANSI SQL
 
 Follows ANSI Standard 2                                         ANSI Standard 3 compliant
 ANSI標準2に準拠                                                 ANSI標準3に準拠
