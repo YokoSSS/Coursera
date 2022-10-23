@@ -1,0 +1,20 @@
+Question 2.04
+
+1.This %LET statement assigns a complete LIBNAME statement to a macro variable named mylib.
+.この %LET 文は、完全な LIBNAME 文を mylib というマクロ変数に割り当てます。
+
+%let mylib=libname mc1 "s:/workshop";  
+
+1点
+
+True
+
+
+False
+correct
+正解
+The semicolon is treated as the conclusion of the %LET statement and is not stored in 
+the macro variable value. Without the semicolon, the LIBNAME statement is incomplete.  
+セミコロンは%LET文の結論として扱われ、マクロ変数値には格納されない。
+セミコロンがないと、LIBNAME文が不完全になります。
+
