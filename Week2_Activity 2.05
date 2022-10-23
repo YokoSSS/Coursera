@@ -1,0 +1,76 @@
+Activity 2.05
+
+1.Open m102a04.sas from the activities folder and perform the following tasks:
+1.アクティビティフォルダからm102a04.sasを開き、以下の作業を行います。
+Notice that the program includes two TITLE statements, each referencing a macro variable. 
+このプログラムには、2つのTITLE文があり、それぞれがマクロ変数を参照していることに注意してください。
+
+At the top of the program, turn on the SYMBOLGEN option. At the bottom of the program, turn off SYMBOLGEN.
+プログラムの上部で、SYMBOLGENオプションをオンにします。プログラムの下部で、SYMBOLGENをオフにします。
+
+Run the program and review the log and results. 
+プログラムを実行し、ログと結果を確認する。
+
+Does the HP macro variable resolve to 250 in the TITLE2 statement? Why?
+TITLE2ステートメントでHPマクロ変数は250に解決しますか？なぜですか？
+
+
+Note: All questions in this activity are free response and all answers are marked correct. Type your responses and compare them to the answers provided.  
+注：この活動のすべての質問は自由回答であり、すべての回答は正解とマークされます。あなたの答えをタイプし、提供された答えと比較してください。 
+1点
+どのように思われますか？
+回答は1000文字以内でお願いします。
+
+ %let hp=250; because it states
+
+uncorrect
+No, it does not resolve.
+いいえ、解決されません。
+
+The macro variable hp didn't resolve because it was enclosed in single quotation marks. 
+There is a SYMBOLGEN note in the log for type but there's no note for hp because it didn't resolve.
+マクロ変数hpはシングルクォーテーションで囲まれていたため、解決されませんでした。
+ログにtypeのSYMBOLGENメモがありますが、解決しなかったのでhpのメモがありません。
+
+When single quotation marks are used, the word scanner ignores macro triggers and ampersands and percent signs are treated as plain text.  
+シングルクォーテーションが使用されている場合、ワードスキャナはマクロトリガーを無視し、アンパサンドとパーセント記号はプレーンテキストとして扱われます。 
+
+
+options symbolgen;
+%let type=Truck;
+%let hp=250;
+title1 "Car Type: &type";
+title2 'Horsepower > &hp';
+proc print data=sashelp.cars;
+    var Make Model MSRP Horsepower;
+    where Type="&type" and Horsepower>&hp;
+run;
+title;
+options nosymbolgen;
+ 
+ 
+2.In the TITLE2 statement, change the single quotation marks to double quotation marks and run the program again. 
+2.TITLE2文のシングルクォーテーションをダブルクォーテーションに変更し、再度プログラムを実行します。
+
+How do the results and the log differ?  
+結果とログはどのように違いますか？ 
+1点
+
+The one that changed the single quotation marks to double quotation marks in the TITLE2 statement outputs the conditional formula, 
+but the the original one outputs the code.
+TITLE2文のシングルクォーテーションをダブルクォーテーションに変更した方のタイトルは条件数式が出力されているが
+元のものはコードが出力されている。
+
+
+Uncorrect
+The title is correct. The macro variable hp resolved to 250 because it is enclosed in double quotation marks. 
+There are SYMBOLGEN notes for both type and hp.
+タイトルは正しい。マクロ変数hpはダブルクォーテーションで囲まれているため250に解決しました。typeとhpの両方にSYMBOLGENの注記があります。
+
+When a literal token begins with a double quotation mark, the word scanner converts subsequent text into tokens 
+and resolves macro triggers until it encounters the closing double quotation mark. It then tags the accumulated text 
+as a single literal token and passes it to the compiler.  
+リテラル トークンが二重引用符で始まると、ワード スキャナは後続のテキストをトークンに変換し、閉じる二重引用符に遭遇するまでマクロ トリガを解決します。
+そして、蓄積されたテキストを1つのリテラル・トークンとしてタグ付けし、コンパイラに渡します。 
+
+
