@@ -1,0 +1,52 @@
+Activity 3.03
+
+1.Open m103a02.sas from the activities folder and perform the following tasks:
+
+Run the program and examine the output and the log. SAS does not have a %PROPCASE macro function, 
+so it does not successfully resolve and the title is incorrect.
+
+%let dt=front;
+data cars_subset;
+    set sashelp.cars;
+    where upcase(DriveTrain)="%upcase(&dt)";
+run;
+
+title "%propcase(&dt) Wheel Drive Cars";
+footnote "Listing from %scan(&syslast,2) Table";
+proc print data=&syslast;
+run;
+
+
+Modify the TITLE statement to use the %SYSFUNC macro function in combination with the PROPCASE function.
+PROPCASE関数と組み合わせて、%SYSFUNCマクロ関数を使用するようにTITLE文を修正します。
+%SYSFUNC(function(argument(s))<,format>)
+
+%let dt=front;
+data cars_subset;
+    set sashelp.cars;
+    where upcase(DriveTrain)="%upcase(&dt)";
+run;
+
+title "%sysfunc(propcase(&dt)) Wheel Drive Cars";
+footnote "Listing from %scan(&syslast,2) Table";
+proc print data=&syslast;
+run;
+title "%upcase(&text)";
+
+Run the program.
+
+What is the case of the DT macro variable value in the title?
+タイトルの DT マクロ変数値のケースは何ですか?
+1点
+
+Front (proper case)
+correct
+正解
+The %SYSFUNC macro function uses the regular PROPCASE function to change the case of front to Front in 
+the TITLE statement. 
+
+front (all lowercase)
+
+
+FRONT (all uppercase)
+
