@@ -1,0 +1,27 @@
+The Business Problem and Required Deliverables
+
+The Business Problem and Required Deliverables
+In this case study, you solve a real-world business problem by applying concepts that you learned in this course. 
+Be aware that there are numerous solutions to this problem, and some can include concepts that are outside the scope of the course.
+
+Business Problem
+The Transportation Security Administration (TSA) is an agency of the United States Department of Homeland Security that has authority 
+over the security of the traveling public. A claim is filed if you are injured or your property is lost or damaged during the screening process at an airport. 
+
+Your first project is to prepare TSA Airport Claims and Enplanement data from 2013 through 2017 for analysis. You want  to determine 
+how many claims occur at each airport every year, how many passengers fly at each airport every year, and the percentage of claims per airport.
+
+The analysis program has already been completed, but it is your job to follow the requirements and prepare the tables correctly. 
+After the tables are prepared, you can run the analysis program provided to answer the business questions.
+
+Deliverables
+There are three deliverables that need to be completed by the end of the case study. The final deliverable tables must be placed in the Sq library:
+
+sq.Claims_Cleaned - a new table that is a clean and prepared version of the sq.claimsraw table
+
+sq.ClaimsByAirport - a new table that is created by summarizing claims for each airport and year from the sq.Claims_Cleaned table and 
+then joining the summarized data with the enplanement information (sq.enplanement2017 and sq.boarding2013_2016 tables)
+
+FinalReport.html -the final HTML report produced by running the AnalysisProgram.sas on the prepared tables.
+
+In the process of creating these three deliverables, you might need to create additional tables or views.
