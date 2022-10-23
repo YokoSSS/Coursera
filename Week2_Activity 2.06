@@ -1,0 +1,38 @@
+Activity 2.06
+
+1.Open m102a05.sas from the activities folder and perform the following tasks:
+
+Modify the TITLE statement reference to &type by adding a period before the 's'.
+
+Replace the hardcoded text sashelp in the FOOTNOTE and PROC statements with a reference to the Lib macro variable (&lib).
+
+Run the program and examine the log and the error statements. 
+
+What is the name of the table that SAS attempts to read?
+
+1点
+
+SASHELP.CARS
+uncorect
+
+WORK.SASHELPCARS
+corect
+The period is not included between SASHELP and CARS because the period after &lib is treated as a macro variable delimiter rather than text. 
+
+&lib.CARS
+
+
+
+options symbolgen;
+%let type=Truck;
+%let hp=250;
+%let lib=SASHELP;
+
+title "&type.s with Horsepower > &hp";
+footnote "Data Source: &lib.CARS";
+proc print data=&lib.cars;
+    var Make Model MSRP Horsepower;
+    where Type="&type" and Horsepower>&hp;
+run;
+title;footnote;
+options nosymbolgen;
