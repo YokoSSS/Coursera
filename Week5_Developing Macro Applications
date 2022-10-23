@@ -1,0 +1,115 @@
+Developing Macro Applications
+
+
+1.When a macro is compiled, it is stored in which location by default?
+1.マクロがコンパイルされたとき、デフォルトでどの場所に保存されますか？
+1点
+
+
+MAUTOSTORE
+
+
+a catalog in the SASUSER library
+SASUSERライブラリのカタログ
+
+a catalog in the WORK library
+WORK ライブラリのカタログ
+correct
+正解
+Compiled macro definitions are stored in a catalog in the Work library. 
+The default catalog is work.sasmacr, but it might differ in your environment.
+コンパイルされたマクロの定義は、Workライブラリのカタログに保存されます。
+デフォルトのカタログは work.sasmacr ですが、環境によっては異なる場合があります。
+
+SASAUTOS
+
+
+2.You must first open and run a macro program before it can be called from an autocall library.
+オートコールライブラリからマクロを呼び出すには、まずマクロを開いて実行する必要があります。
+
+
+True
+
+
+False
+correct
+To call an autocall macro, you must enable the MAUTOSOURCE and SASAUTOS= system options. 
+MAUTOSOURCE enables the autocall facility, and SASAUTOS= specifies the autocall libraries. 
+Review Adding Personal Macros to anAutocall Library.
+オートコールマクロを呼び出すには、MAUTOSOURCEとSASAUTOS=システムオプションを有効にする必要があります。
+MAUTOSOURCEはオートコール機能を有効にし、SASAUTOS=はオートコール・ライブラリを指定します。
+パーソナル・マクロをオートコール・ライブラリに追加するを参照してください。
+
+
+3.When an autocall macro is called, it is stored permanently as a compiled macro in a macro catalog until you delete it.
+オートコールマクロが呼び出されると、それを削除するまで、コンパイルされたマクロとしてマクロカタログに永久に保存されます。
+1点
+
+True
+correct
+不正解
+The first time an autocall macro is called in a SAS session, the macro is located, 
+copied to the input stack, compiled, stored in the work.sasmacr catalog. The work library is temporary, 
+so work.sasmacr and its contents are deleted when the SAS session ends. Review Calling Autocall Macros.
+SAS セッションで初めて自動呼び出しマクロが呼び出されると、マクロの位置が特定され、入力スタックにコピーされ、
+コンパイルされて work.sasmacr カタログに保存されます。作業ライブラリは一時的なものなので、SAS セッションが終了すると
+work.sasmacr とそのコンテンツは削除されます。オートコールマクロの呼び出しを確認します。
+
+
+False
+
+
+
+4.Which expression verifies that the Code parameter is 2 characters? 
+Codeパラメータが2文字であることを検証する式はどれか。
+
+%if <insert condition> %then %do;
+    %put ERROR: The code must be 2 letters.;
+%return;
+%end;
+
+1点
+
+
+length(&Code) ne 2
+
+%length(&Code) ne 2
+correct
+正解
+The expression must use a macro function, and the input must be the resolved parameter value.
+式はマクロ関数を使用し、入力は解決されたパラメータ値でなければならない。
+
+%length(Code) ne 2
+
+length(Code) ne 2
+
+
+
+5.Which %IF expression is true if the Input parameter value is A? 
+5.入力パラメータの値がAの場合、どの%IF式が真になりますか？
+
+%macro report(input);
+    ...    
+%mend report;
+%report(A) 
+
+1点
+
+%if &input=A or B %then %do;
+
+%if &input in A B %then %do;
+
+%if &input in('A', 'B') %then %do;
+
+none of the above
+上記のどれでもない
+correct
+正解
+The second option has the correct syntax, but will result in a syntax error because the MINOPERATOR 
+option is not specified on the %MACRO statement.
+2 番目のオプションは正しい構文ですが、%MACRO 文で MINOPERATOR オプションが指定されていないため、
+構文エラーになります。
+
+
+
+
