@@ -1,0 +1,44 @@
+Activity 3.01
+
+
+1.Open m103a01.sas from the activities folder and perform the following tasks:
+
+Examine the TITLE statement. Run the program and view the results.
+
+
+%let text=class list;
+title "upcase(&text)";
+proc print data=sashelp.class;
+run;
+title;
+
+
+Add % before the UPCASE function in the TITLE statement. Run the program. 
+
+%let text=class list;
+title "%upcase(&text)";
+proc print data=sashelp.class;
+run;
+title;
+
+
+What text appears as the title?
+
+Note: Type the title exactly as it appears.
+
+My Answer: CLASS LIST
+
+正解
+The title is CLASS LIST. The macro %UPCASE function converts the value of the Text macro 
+variable to uppercase before the TITLE statement executes. 
+
+%let text=class list;
+title "%upcase(&text)";
+proc print data=sashelp.class;
+run;
+
+
+
+
+
+
