@@ -63,3 +63,95 @@ PROC SQL
 PROC FEDSQL
 
 
+*******************************************************************************************************************************************************
+
+1.Which statement(s) is/are true about SAS/ACCESS technology? (Select all that apply)
+
+0 / 1点
+
+
+You need to know your DBMS's SQL language to access and manipulate your DBMS data.
+
+It is faster and more direct to use the SAS/ACCESS LIBNAME statement to access your DBMS data.
+Correct
+SAS/ACCESS software provides dynamic access to DBMS data through the SAS/ACCESS LIBNAME statement and the PROC SQL pass-through facility. 
+You do need to know your DBMS's SQL language to access and manipulate your DBMS data. It is faster and more direct to use the SAS/ACCESS 
+LIBNAME statement to access your DBMS data. The LIBNAME statement provides more control over DBMS operations.
+SAS/ACCESS ソフトウェアは、SAS/ACCESS LIBNAME ステートメントと PROC SQL パススルー機能を通じて 
+DBMS データへの動的アクセスを提供します。DBMSのデータにアクセスし、操作するためには、DBMSのSQL言語を知っている必要があります。
+SAS/ACCESS LIBNAME ステートメントを使用して、DBMS データにアクセスする方が、より速く、より直接的です。LIBNAME ステートメントは、
+DBMS の操作をよりコントロールすることができます。
+
+SAS/ACCESS software provides dynamic access to DBMS data through the SAS/ACCESS LIBNAME statement and the PROC SQL pass-through facility.
+Correct
+SAS/ACCESS software provides dynamic access to DBMS data through the SAS/ACCESS LIBNAME statement and the PROC SQL pass-through facility. 
+You do need to know your DBMS's SQL language to access and manipulate your DBMS data. It is faster and more direct to use the SAS/ACCESS 
+LIBNAME statement to access your DBMS data. The LIBNAME statement provides more control over DBMS operations.
+SAS/ACCESSソフトウェアは、SAS/ACCESS LIBNAMEステートメントとPROC SQLパススルー機能を通じて、DBMSデータへの動的なアクセスを提供します。
+DBMSのデータにアクセスし、操作するためには、DBMSのSQL言語を知っている必要があります。SAS/ACCESS LIBNAME ステートメントを使用して、
+DBMS データにアクセスする方が、より速く、より直接的です。LIBNAME ステートメントを使用すると、DBMS の操作をより詳細に制御することができます。
+
+You do not need to know your DBMS's SQL implementation to access and manipulate your DBMS data.
+
+不正解
+You didn't select all the correct answers
+
+
+
+2.You are attempting to pass Native Oracle SQL from SAS to the database for processing. 
+To accomplish this task, the best option is to use the _________________ because it enables you to send database specific SQL 
+statements directly to the database for execution.
+
+
+1 / 1点
+
+SQL Pass-Through Facility
+
+INFILE statement
+
+DBLOAD procedure
+
+LIBNAME statement
+
+正解
+The SQL Procedure pass-through facility is an extension of the SQL procedure that enables you to send DBMS-specific statements to 
+a DBMS and to retrieve DBMS data. You specify DBMS SQL syntax instead of SAS SQL syntax when you use the pass-through facility.
+SQLプロシージャのパススルー機能は、SQLプロシージャの拡張機能で、DBMS固有のステートメントをDBMSに送信し、DBMSデータを取得することができます。
+パススルー機能を使用する場合、SAS SQL 構文ではなく DBMS SQL 構文を指定します。
+
+
+3.Which statement about FEDSQL is not true.
+
+1 / 1点
+
+FEDSQL supports all PROC SQL SAS enhancements.
+
+FEDSQL supports many more data types than previous SAS SQL implementations.
+
+FEDSQL conforms to the SQL 1999 ANSI standard.
+
+FEDSQL is vendor neutral SAS SQL implementation
+
+
+正解
+FEDSQL conforms to the SQL 1999 ANSI standard. FEDSQL supports many more data types than previous SAS SQL implementations. 
+FEDSQL is vendor neutral and handles federated queries, which access data from multiple data sources and returns a single 
+result set. FEDSQL supports implicit SQL pass-through.
+FEDSQL は、SQL 1999 ANSI 標準に準拠しています。FEDSQL は、以前の SAS SQL 実装よりも多くのデータ型をサポートしています。
+FEDSQL はベンダーに依存せず、複数のデータ・ソースからデータにアクセスし、単一の結果セットを返すフェデレート・クエリーを処理します。
+FEDSQL は、暗黙の SQL パススルーをサポートしています。
+
+
+4.You are working with multiple databases to pull data into SAS. The goal is to push as much processing into the database as 
+possible and to keep the SQL queries vendor neutral. Which procedure would be better to use?
+
+1 / 1点
+
+PROC SQL
+
+PROC FEDSQL
+correct
+正解
+PROC FEDSQL is a vendor neutral ANSI SQL that pushes as much of the processing as possible into the database.
+
+
