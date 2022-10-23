@@ -1,0 +1,245 @@
+
+1.Which of the following components is NOT required to return a text string representing today’s date displayed as a 2-digit day, 3-letter month, and 4-digit year?
+1.2桁の日、3文字の月、4桁の年で表示される今日の日付を表すテキスト文字列を返すために、次のコンポーネントのうち必要でないものはどれでしょう。
+1点
+
+%SYSFUNC() macro function
+
+DATE9. format
+
+TODAY function
+uncorrect
+不正解
+You must use the %SYSFUNC macro function to ask the macro processor to call the regular TODAY 
+function to return the current SAS date value. Review Executing SAS DATA Step Functions During Tokenization.
+SYSFUNC マクロ関数を使用して、現在の SAS 日付値を返すために通常の TODAY 関数を呼び出すようマクロ プロセッサに依頼する必要があります。
+トークン化中の SAS DATA Step 関数の実行を確認します。
+
+%TODAY macro function
+
+
+
+2.Which of the following correctly converts the value of the macro variable Last_Name to proper case? 
+2.マクロ変数Last_Nameの値を正しく大文字・小文字に変換しているのはどれか。
+1点
+
+%let last_name=%sysfunc(propcase(last_name));
+
+%let last_name=%sysfunc(propcase(&last_name));
+correct
+正解
+There is no %PROPCASE macro function, so you must use %SYSFUNC to call the PROPCASE function in a %LET statement. 
+PROPCASE expects a character argument, so you must resolve the macro variable Last_Name to insert its value.
+PROPCASE マクロ関数はありませんので、%SYSFUNC を使用して %LET 文で PROPCASE 関数を呼び出す必要があります。
+PROPCASE は文字引数を必要とするので、マクロ変数 Last_Name を解決して、その値を挿入する必要があります。
+
+%let last_name=%propcase(&last_name);
+
+%let last_name=%propcase(last_name);
+
+
+
+3.Which of the following %LET statements correctly assigns the value title;footnote; to the macro variable clear? 
+3.次の%LET文のうち、マクロ変数clearに値title;footnote;を正しく代入しているものはどれですか。
+
+1点
+
+%let clear = "title;footnote;";
+
+%let clear = %str(title;footnote;);
+correct
+正解
+%STR is a macro quoting function that masks all special characters in its argument, except for % and &. %STR is required to mask
+the semicolons in the TITLE and FOOTNOTE statements.
+STRは、引数中の特殊文字（%と&を除く）をマスクするマクロ引用関数です。
+STRは、TITLEとFOOTNOTE文のセミコロンをマスクするために必要です。
+
+
+%let clear = str(title;footnote;);
+
+%let clear = title;footnote;;
+
+
+
+4.Which technique creates macro variables at execution time?
+4.実行時にマクロ変数を作成する技法はどれか。
+1点
+
+Both SYMPUTX routine and SQL INTO clause
+
+SQL INTO clause
+
+SYMPUTX routine
+
+%LET statement
+uncorrect
+不正解
+%LET statements are executed by the macro processor before compilation. 
+CALL SYMPUTX and the SQL INTO clause are processed during the execution phase. Review Creating Macro Variables in a DATA Step.
+LET 文は、コンパイル前にマクロプロセッサによって実行されます。CALL SYMPUTX と SQL INTO 節は、実行フェーズで処理されます。
+DATA ステップでマクロ変数を作成するを参照してください。
+
+
+5.Which of the following correctly creates a macro variable in a PROC SQL step?
+5.PROC SQLのステップでマクロ変数を作成する場合、正しいものはどれですか。
+1点
+
+select mean(sales)
+    into avgSales
+    from sasuser.all;
+
+select *
+    from sasuser.all;
+
+select mean(sales)
+    into :avgSales
+    from sasuser.all;
+correct
+正解
+You use the INTO clause in a PROC SQL SELECT statement to create a macro variable and assign values returned from the query. 
+The macro variable name listed in the INTO clause must be preceded by a colon.
+PROC SQL SELECT ステートメントで INTO 句を使用して、マクロ変数を作成し、クエリから返された値を割り当てます。
+INTO句に記載するマクロ変数名の前には、コロンが必要です。
+
+
+6.Which SQL query assigns the values of the variable Course_Code to the macro variables Code1 through Code3 and the values of 
+the data set variable Location to the macro variables Loc1 through Loc3? 
+6.変数Course_Codeの値をマクロ変数Code1～Code3に、データセット変数Locationの値をマクロ変数Loc1～Loc3に割り当てるSQLクエリはどれか。
+1点
+
+select course_code, location
+    into :code1-:code3, :loc1-:loc3
+    from schedule;
+
+select course_code, location
+    into: code1-code3, loc1-loc3
+    from schedule;
+
+select course_code
+    into :code1-:code3, location
+    into :loc1-:loc3
+    from schedule;
+uncorrect
+不正解
+You use the INTO clause to create a numbered series of macro variables based on the results of the query. 
+You list the columns on the SELECT clause and name the macro variables on the INTO clause. When creating a series of 
+macro variables, you specify a lower bound and optionally specify an upper bound. The macro variable names must be preceded by a colon.
+INTO句を使用して、クエリの結果に基づいて、番号付きの一連のマクロ変数を作成します。SELECT 節で列をリストアップし、
+INTO 節でマクロ変数に名前を付けます。マクロ変数のシリーズを作成するとき、下限を指定し、オプションで上限を指定します。
+マクロ変数名の前には、コロンを付けなければなりません。
+
+
+7.Which set of statements creates a series of macro variables with the names derived from the CountryCode column and 
+values derived from the CountryName column?
+7.CountryCode列から派生した名前とCountryName列から派生した値を持つ一連のマクロ変数を作成するステートメントのセットはどれですか。
+
+CountryCode　 CountryName
+CA            Canada
+UK            United Kingdom
+AU            Australia
+
+1点
+
+
+call symputx(CountryCode, CountryName);
+
+call symputx('CountryCode', CountryName);
+
+call symputx('CountryCode', 'CountryName');
+
+call symputx(CountryCode, 'CountryName');
+uncorrect
+不正解
+You use CALL SYMPUTX to create a macro variable and assign a value during DATA step execution. 
+The first argument specifies the macro variable name(s) and the second argument assigns the value(s). 
+Quotation marks around the arguments are used to distinguish literal strings from column names. 
+The arguments in this example should not be quoted because the macro variable names and values are derived from the columns 
+CountryCode and CountryName. Review Creating Macro Variables in a DATA Step.
+DATAステップ実行中にCALL SYMPUTXを使用して、マクロ変数を作成し、値を代入します。第1引数でマクロ変数名を指定し、
+第2引数で値を代入します。引数を囲む引用符は、リテラル文字列と列名を区別するために使用されます。この例では、マクロ変数名と
+値が列CountryCodeとCountryNameから派生しているため、引数を引用符で囲む必要はありません。DATAステップでマクロ変数を作成するを参照してください。
+
+
+8.Which CALL statement correctly creates a macro variable from the result of the numeric expression numCorrect/totalQs 
+so that the macro variable shows the value as a percent with no decimal places? 
+8.数値式numCorrect/totalQsの結果からマクロ変数を作成し、マクロ変数が小数点以下の値を示すようにするCALL文のうち、正しいものはどれか。
+
+1点
+
+
+call symputx('score', numCorrect/totalQs, percent10.);
+
+call symputx('score', numCorrect/totalQs(percent10.));
+uncorrect
+不正解
+You can use expressions to specify the CALL SYMPUTX arguments. You must use the PUT function in the second argument to 
+apply a format before assigning the value to the score macro variable. Review Demo: Creating Macro Variables in a DATA Step.
+CALL SYMPUTXの引数には式を指定することができます。第2引数でPUT関数を使用し、書式を適用してからscoreマクロ変数に値を
+代入する必要があります。復習デモ DATAステップでマクロ変数を作成する。
+
+
+call symputx('score', numCorrect/totalQs, format=percent10.);
+
+call symputx('score',put(numCorrect/totalQs, percent10.));
+
+
+
+9.Which of the following statements about macro variable resolution is true?
+9.マクロ変数の分解能に関する次の記述のうち、正しいものはどれか。
+
+1点
+
+Two ampersands resolve to one ampersand.
+2つのアンパサンドは1つのアンパサンドに解決されます。
+
+The macro processor never rescans a reference that is preceded by multiple ampersands.
+マクロプロセッサは、複数のアンパサンドが先行する参照を再走査することはない。
+
+If more than two consecutive ampersands precede a name token, the macro processor generates an error message.
+2つ以上の連続したアンパサンドが名前トークンの前にある場合、マクロプロセッサはエラーメッセージを生成する。
+
+A single percent sign followed by a name token resolves to the macro variable's value.
+パーセント記号 1 つと名前トークンが続くと、マクロ変数の値に解決されます。
+uncorrect
+不正解
+% name is a macro program reference, not a macro variable reference. When multiple ampersands are included 
+in a macro variable reference, the Forward Rescan Rule is applied. Two ampersands resolve to one ampersand, 
+and a single ampersand followed by a name token resolves to the macro variable's value. The macro processor 
+rescans the text and resolves macro triggers until they are all resolved. Review Forward Rescan Rule.
+name はマクロ変数参照ではなく、マクロプログラム参照です。複数のアンパサンドがマクロ変数参照に含まれる場合、
+前方再スキャン規則が適用されます。2 つのアンパサンドは 1 つのアンパサンドに解決され、1 つのアンパサンドに続く
+名前トークンはマクロ変数の値に解決されます。マクロ プロセッサはテキストを再スキャンし、マクロ トリガがすべて
+解決されるまで解決します。フォワード再スキャンルールを確認する。
+1点
+
+
+10.Given the global symbol table shown here, what value does &&course&crn resolve to?
+10.ここに示すグローバルシンボル表があるとき、&&course&crnはどのような値に解決されるか？
+
+Name       Value  
+course1    mathematics
+course2    english
+course3    biology
+course4    history
+crn        3
+
+1点
+
+
+&course2
+
+biology
+correct
+正解
+On the first scan, the double ampersands resolve to a single ampersand, the text course is 
+carried over as a name token, and &crn resolves to 3. The result, &course3 is scanned again, resolving to biology.
+最初のスキャンで、ダブルアンパサンドはシングルアンパサンドに解決され、テキストcourseは名前トークンとして引き継がれ、
+&crnは3に解決されます。
+
+
+The macro processor generates an error.
+
+english
+
+
+
