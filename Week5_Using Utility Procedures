@@ -1,0 +1,289 @@
+
+1.Which of the following statements is true regarding PICTURE statement directives?
+PICTURE文のディレクティブに関する次の記述のうち、正しいものはどれか。
+
+Directives are special characters used to format date, time, or date time values.
+ディレクティブは、日付、時間、日付時刻の値をフォーマットするために使用される特殊文字である。
+uncorrect
+不正解
+Both statements regarding PICTURE statement directives are true. Review Custom Date and Datetime Formats.
+PICTUREステートメントディレクティブに関する記述は、どちらも正しいです。カスタム日付と日付時間の形式を見直す。
+
+Directives can only be used when the DATATYPE= option enclosed in parentheses has been specified in the PICTURE statement.
+指令は、PICTURE文の中で括弧で囲まれたDATATYPE=オプションが指定されているときだけ使用できる。
+
+Neither statement is true.
+どちらの記述も正しくない。
+
+The first two statements regarding the PICTURE statement directives are true.
+PICTURE文のディレクティブに関する最初の2つの記述は、真である。
+
+
+
+2.Which PICTURE statement generates the following results when the custom format is used with the Number column? 
+2.カスタムフォーマットをNumber列で使用する場合、どのPICTURE文が次の結果を生成するか。
+
+Number
+
+76.54
+
+0.32
+
+1.82
+
+
+picture FmtC low-high='009.99';
+
+picture FmtB low-high='000.00';
+
+all of the above
+uncorrect
+不正解
+A nonzero digit selector must precede the decimal point. Using a zero digit selector before the decimal point 
+suppresses the decimal point. Also, using a non-zero digit selector in the tens and hundreds position requires 
+that a number be printed in that place. Review Custom Numeric Formats.
+小数点以下はゼロ以外の数字で指定する必要があります。小数点の前に0桁のセレクタを使用すると、小数点が抑制されます。
+また、十の位と百の位にゼロ以外の数字セレクタを使用すると、その位置に数字を印刷する必要があります。
+カスタム数値フォーマットを確認する。
+
+
+picture FmtA low-high='999.99';
+
+3.Which PICTURE statement displays a ten-digit number with a hyphen (dash) between the third and 
+fourth digit and between the sixth and seventh digit, such as 555-555-5555?
+555-555-5555のように、3桁目と4桁目、6桁目と7桁目の間にハイフン（ダッシュ）を入れた10桁の数字を表示するPICTURE文はどれでしょうか。
+
+1点
+picture phonefmt
+   low-high='999' (prefix='-');
+
+picture phonefmt
+   low-high='999999999' (prefix='-');
+
+picture phonefmt
+   low-high = '999-999-9999';
+
+picture phonefmt
+   low-high (prefix='999-999–9999');
+uncorrect
+不正解
+The pattern in quotation marks must include digit selectors for all numbers along with the displayed symbols. 
+No prefix is necessary for this format. Review Custom Large Number Format.
+引用符で囲まれたパターンは、表示される記号とともに、すべての数値の桁選択記号を含まなければならない。
+このフォーマットでは、接頭辞は必要ありません。カスタムラージナンバーフォーマットを確認する。
+
+
+4.Which of the following is a format option that is specified after the format name?
+形式名の後に指定する形式オプションは次のうちどれですか? 
+
+DEFAULT=
+
+DATATYPE=
+
+MULTIPLIER=
+uncorrect
+不正解
+MULTIPLIER= is not placed after the format name. It is a template option that is placed after the 
+template value. MULTIPLIER= specifies a number by which to multiply the value. Review Custom Numeric Formats.
+MULTIPLIER=は、フォーマット名の後には置かれません。これはテンプレートオプションであり、テンプレート値の後に置かれる。
+MULTIPLIER=は、値を乗算する数値を指定します。カスタム数値書式を見直す
+
+PREFIX=
+
+
+5.Which PICTURE statement generates a date format that produces the following results when used with the Date column? 
+どのPICTURE文が、Date列と一緒に使用すると、次のような結果をもたらす日付フォーマットを生成するか。
+
+Date
+
+Monday - March 9, 2020
+
+Wednesday - November 3, 2021
+
+
+proc format;
+    picture longDate (default=30) low-high =
+       '%A - %B %d, %Y';
+
+proc format;
+    picture longDate
+       (default=30) low-high = '%A - %B %d, %Y'
+       (datatype=date);
+correct
+正解
+Without the DEFAULT= option, the length for the format is 8 characters, so a longer default is necessary. 
+The DEFAULT= option goes after the format name. The DATATYPE= value must match the data, which is DATE in 
+this example. %A displays the full weekday name, %B displays the full month name, %d displays the one or 
+two digit day of the month, and %Y displays a four-digit year.
+DEFAULT=オプションがない場合、フォーマットの長さは8文字ですので、より長いデフォルトが必要です。
+DEFAULT=オプションは書式名の後に付けます。DATATYPE=値はデータと一致しなければならず、この例ではDATEになっています。
+Aは完全な曜日名、%Bは完全な月名、%dは1桁または2桁の月日、%Yは4桁の年号を表示します。
+
+proc format;
+    picture longDate
+       low-high = '%A - %B %m, %Y' (datatype=date);
+
+proc format;
+    picture longDate (default=30) low-high
+       (datatype=date);
+
+
+
+6.Which option is necessary in the following PROC FCMP step to complete the ToCelsius function? 
+ToCelsius関数を完成させるために、次のPROC FCMPステップで必要なオプションはどれですか？
+
+
+proc fcmp __________ lib3.func.weather;
+    function ToCelsius(Fah);
+        Cel=round((Fah-32)*5/9,.01);
+        return(Cel);
+    endsub;
+run;
+
+CMPLIB=
+
+LIBFUNC=
+uncorrect
+不正解
+The OUTLIB= option in the PROC FCMP statement specifies the three-level name of the package where 
+the compiled function will be stored. Review Creating and Using a Custom Function.
+PROC FCMP ステートメントの OUTLIB= オプションは、コンパイルされた関数が格納されるパッケージの 
+3 階層名を指定します。カスタム関数の作成と使用について復習します。
+
+LIB=
+
+OUTLIB=
+
+
+
+7.Complete the FUNCTION statement to create a function named CnvTemp that consists of a numeric argument followed by a character argument. 
+FUNCTIONステートメントを完成させて、CnvTempという名前の、数値引数と文字引数の組み合わせからなる関数を作成します。
+
+function CnvTemp _______________;
+    if uppercase(Unit)= 'F'
+        then NewTemp=round((Temp-32)*5/9,.01);
+    else if upcase(Unit)= 'C'
+        then NewTemp=round(Temp*9/5+32,.01);
+    return(NewTemp);
+endsub;
+
+1点
+
+('Temp', 'Unit' )
+
+(Temp $, Unit $)
+
+(Temp $, 'Unit')
+uncorrect
+不正解
+Temp is a numeric argument, while Unit is a character argument. Character arguments must be followed 
+by a dollar sign and separated with a comma. No quotation marks are needed. Review Passing and Returning Values.
+Temp は数値引数、Unit は文字引数です。文字引数は、ドル記号の後にカンマで区切る必要があります。
+引用符は必要ありません。値の受け渡しと戻り値について復習しましょう。
+
+(Temp, Unit $)
+
+
+8.Which of the following statements is true?
+8.次の記述のうち、正しいものはどれか。
+
+Neither functions nor CALL routines accept arguments.
+関数と CALL ルーチンはどちらも引数を受け取りません。
+
+Only functions return a value.
+関数のみが値を返します。
+
+Only CALL routines perform operations.
+CALL ルーチンのみが操作を実行します。
+
+Both functions and CALL routines accept arguments and return values.
+関数とCALLルーチンの両方が、引数と戻り値を受け取ります。
+不正解
+Both functions and CALL routines can accept arguments and perform operations. 
+However, only functions can return a value. Review Creating and Using a Custom Function.
+関数とCALLルーチンはどちらも引数を受け取り、操作を実行することができます。
+しかし、値を返すことができるのは関数だけです。カスタム関数の作成と使用について復習します。
+
+
+9.Which statement specifies that SAS search the mylib.funcs table for a package that contains a custom function?
+9.SASがカスタム関数を含むパッケージのmylib.funcテーブルを検索することを指定するステートメントはどれですか？
+
+options cmplib=mylib.funcs;
+
+proc fcmp lib=mylib.funcs;
+
+proc fcmp cmplib=mylib.funcs;
+uncorrect
+不正解
+The CMPLIB= option specifies the table (or tables) that SAS searches for a package that contains 
+the desired function. Review Creating and Using a Custom Function.
+CMPLIB= オプションは、SAS が目的の関数を含むパッケージを検索するテーブル（複数可）を指定します。
+カスタム関数の作成と使用について復習します。
+
+options functions=mylib.funcs;
+
+
+
+10.Which statement is true concerning the following PROC FCMP statement? 
+10.PROC FCMPの次の文について、正しいものはどれか。
+
+proc fcmp outlib=pg3.funcs.misc; 
+
+
+The custom function will be stored in the SAS table pg3.misc.
+カスタム関数は、SAS テーブル pg3.misc に格納されます。
+
+The custom function will be stored in the misc package within the SAS table pg3.funcs.
+カスタム関数は、SAS テーブル pg3.funcs 内の misc パッケージに格納されます。
+correct
+正解
+Custom functions are stored in a package within a SAS table. The OUTLIB= option consists of a 
+three-level name. The first two levels refer to the SAS table ( libref.tablename ), and the third level refers to the package.
+カスタム関数は、SASテーブル内のパッケージに格納されます。OUTLIB=オプションは、3レベルの名前から構成されます。
+最初の2レベルはSASテーブル（libref.tablename）を参照し、3レベル目はパッケージを参照します。
+
+
+The custom function will be stored in the pg3 package within the SAS table funcs.misc.
+カスタム関数は、pg3パッケージのSASテーブルfunc.miscに格納されます。
+
+The custom function will be stored in the misc folder within the SAS package pg3.funcs.
+カスタム関数は、SAS パッケージ pg3.funcs 内の misc フォルダに格納されます。
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
