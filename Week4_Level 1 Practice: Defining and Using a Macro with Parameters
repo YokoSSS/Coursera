@@ -32,3 +32,54 @@ Call %Customers without passing a parameter value. Verify that title is INACTIVE
 How many rows are in the final report?
 
 Note: Type a numeric value for your answer.
+
+My answer:209
+正解
+The report contains 209 rows. Solution code:
+
+/*Solution code:
+/* Part b. */
+%macro customers(type); 
+title "&type Customers"; 
+proc sql number;
+select Name, Age_Group, Type 
+    from mc1.customers 
+    where Type contains "&type"; 
+quit; 
+title;
+%mend customers;
+
+%customers(Gold)
+%customers(High Activity)
+ 
+ /* Part c. */
+%macro customers(type); 
+%let type=%upcase(&type);
+title "&type Customers"; 
+proc sql number;
+select Name, Age_Group, Type 
+    from mc1.customers 
+    where upcase(Type) contains "&type";
+; 
+quit; 
+title;
+%mend customers;
+
+%customers(High Activity)
+
+ /* Part d. */
+%macro customers(type=inactive); 
+%let type=%upcase(&type);
+title "&type Customers"; 
+proc sql number;
+select Name, Age_Group, Type 
+    from mc1.customers 
+    where upcase(Type) contains "&type"; 
+quit; 
+title;
+%mend customers;
+
+%customers(type=High Activity)
+%customers()
+*/
+
