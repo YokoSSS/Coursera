@@ -1,0 +1,32 @@
+Activity 4.07
+
+
+1.Open m104a07.sas from the activities folder and perform the following tasks:
+
+Notice that there is a missing semicolon after the DATA statement, which causes a syntax error. 
+If there is a syntax error in the first DATA step, then the %PUT statement should execute and write 
+a custom error message to the log, and the remaining PROC steps should not execute.
+DATA ステートメントの後にセミコロンがないため、構文エラーが発生することに注意してください。
+最初の DATA ステップに構文エラーがある場合、%PUT 文が実行され、ログにカスタムエラーメッセージが書き込まれ、
+残りの PROC ステップが実行されないようにする必要があります。
+
+Run the program and look at the log. Notice that although there was an error in the DATA step, 
+SAS still attempted to execute PROC PRINT and PROC SGPLOT.
+プログラムを実行し、ログを見ます。DATA ステップでエラーが発生したにもかかわらず、
+SAS は PROC PRINT と PROC SGPLOT を実行しようとしたことに注意してください。
+
+Identify the syntax error in the macro %IF statement. Fix the error and run the program again to confirm that the %PUT statement is executed.
+マクロ %IF 文の構文エラーを特定します。エラーを修正し、プログラムを再実行して、%PUT 文が実行されることを確認します。
+
+What error did you fix?
+どのようなエラーを修正しましたか。
+
+Note: This is a free response question and all attempts are marked correct. Type your response and compare your answer to the answer provided.
+注：これは自由回答問題であり、すべての試行が正解とされます。あなたの回答を入力し、提供された回答と比較してください。
+1点
+
+正解
+Be sure to always include the percent sign in front of the macro keywords %IF, %THEN, %ELSE, and %DO.  
+
+
+
