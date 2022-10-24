@@ -1,0 +1,313 @@
+Defining and Processing Arrays
+
+1.What is a temporary grouping of SAS columns known as?
+1.SASのカラムを一時的にグループ化することを何と言いますか？
+1点
+
+attribute
+属性
+
+SAS table
+SASテーブル
+
+SAS library
+SASライブラリ
+
+array
+配列
+correct
+正解
+An array is a temporary grouping of SAS columns that are arranged in a particular order and identified by an array name.
+配列とは、SAS のカラムを一時的にグループ化し、特定の順序で並べたもので、配列名で識別されます。
+
+
+2.Which statement is false regarding an ARRAY statement?
+2.ARRAY文について、誤っている文はどれか。
+
+1点
+
+It must be used to define an array before the array name can be referenced.
+配列名を参照する前に、配列を定義するために使用する必要があります。
+
+It is an executable statement.
+実行文です
+correct
+正解
+An ARRAY statement is not an executable statement. It is a compile time statement that defines the temporary grouping of columns.
+ARRAYステートメントは実行可能なステートメントではありません。これは、列の一時的なグループ化を定義するコンパイル時のステートメントである。
+
+It can be used to create columns.
+それは列を作成するために使用することができます。
+correct
+
+It must contain either all numeric or all character elements.
+すべての数値要素またはすべての文字要素を含む必要があります。
+
+
+3.What is the result of the following code?
+3.次のコードの結果はどうなりますか？
+
+array test[4] Test1-Test3 Final; 
+
+1点
+
+The code fails to execute because not all column names start with *Test*.
+すべての列名が *Test* で始まっていないため、このコードは実行に失敗します。
+
+The code creates the TEST array that references the columns Test1, Test2, Test3, and Final.
+このコードでは、列 Test1、Test2、Test3、および Final を参照する配列 TEST が作成されます。
+correct
+正解
+The ARRAY keyword is followed by the array name, the number of elements in braces or brackets, 
+and the columns included in the array. A hyphen can be used to reference a numbered range list.
+ARRAYキーワードの後には、配列名、中括弧または大括弧内の要素数が続きます。
+と配列に含まれる列を指定します。ハイフンを使用すると、番号付きの範囲リストを参照することができます。
+
+The code fails to execute because array elements cannot be referenced as a range with a hyphen.
+配列の要素をハイフンを含む範囲として参照することができないため、コードの実行に失敗します。
+
+The code creates the TEST array that references the difference between Test1 and Test3 along with the Final column.
+このコードでは、Test1 と Test3 の差分と Final 列を参照する TEST 配列が作成されます。
+
+
+4.Which DATA step multiplies the values of Quiz1 through Quiz5 by 10? 
+4.Quiz1〜Quiz5の値を10倍するDATAステップはどれか？
+
+ /* DATA Step 1 */
+data work.Step1;
+    set work.class_quiz;
+    array q[*] Quiz:;
+    do i=1 to dim(Quiz);
+        q[i]=q[i]*10;
+    end;
+run;
+
+/* DATA Step 2 */
+data work.Step2;
+    set work.class_quiz;
+    array q[*] Quiz1-Quiz5;
+    do i=1 to dim(q);
+        q[i]=q[i]*10;
+    end;
+run; 
+
+
+work.class_quiz
+
+Name    Quiz1   Quiz2   Quiz3   Quiz4   Quiz5
+Ellen   90      70      60      90      80
+Mike    70      60      40      90      80
+
+1点
+
+DATA Step 1
+
+
+DATA Step 2
+correct
+正解
+The DIM function is used to return the number of elements in the Q array.
+DIM関数は、Q配列の要素数を返すために使用されます。
+
+both
+
+
+neither
+
+
+
+5.The following ARRAY statement contains valid syntax for creating 50 numeric columns for temp_arrray.
+5.次のARRAY文は、temp_arrrayに50の数値列を作成するための有効な構文を含んでいます。
+
+ array temp_array{*} temp1-temp50;
+
+No, the syntax is incorrect because there must be a valid number inside of the braces.
+いいえ、中括弧の中に有効な数字がなければならないので、構文は正しくありません。
+
+No, the syntax is incorrect because the number of elements must be included in only brackets [ ].
+いいえ、構文は正しくありません。要素の数は括弧 [ ] のみに含める必要があります。
+
+Yes, the syntax is correct.
+はい、構文は正しいです。
+correct
+正解
+The ARRAY keyword is followed by the array name, the number of elements in braces or brackets, 
+and the columns included in the array. An asterisk indicates to include all of the elements that make up an array. 
+A hyphen can be used to reference a numbered range list.
+ARRAYキーワードの後には、配列名、中括弧または大括弧で囲まれた要素数が続きます。と配列に含まれる列を指定します。
+アスタリスクは、配列を構成するすべての要素を含むことを示します。ハイフンを使用すると、番号付きの範囲リストを参照することができます。
+
+No, the syntax is incorrect because the array name must match the prefix for the column names.
+いいえ、配列名は列名の接頭辞と一致する必要があるため、構文が正しくありません。
+
+1点
+
+6.Which statement creates a height array with temporary elements that have initial values of 63, 72, 68, 65, and 74?
+6.初期値63、72、68、65、74の一時的な要素を持つ高さ配列を作成する文はどれか。
+1点
+
+
+array height[5] [temporary] 63 72 68 65 74;
+
+temporary array height[5] (63 72 68 65 74);
+
+array height[5] _temporary_ (63 72 68 65 74);
+correct
+正解
+Use _TEMPORARY_ to create temporary array elements. The list of initial values must be enclosed in 
+parentheses and separated by commas or blanks.
+一時的な配列要素を作成するには、_TEMPORARY_を使用します。初期値のリストは、括弧で囲み、カンマまたは空白で区切らなければなりません。
+
+
+array height[5] _temporary_ 63 72 68 65 74;
+
+
+7.Given the table below, what is the output of the following code?
+7.以下の表が与えられたとき、次のコードの出力は何ですか？
+
+data work.rotate(drop=Quiz:);
+    set work.class_quiz;
+    array q[5] Quiz:;
+    do Test=1 to 5;
+        Score=q[Test];
+        output;
+    end;
+run;
+
+Name    Quiz1   Quiz2   Quiz3   Quiz4   Quiz5
+Ellen   90      70      60      90      80
+Mike    70      60      40      90      80
+
+1点
+
+
+
+Name	Test	Score
+Ellen	1	    90
+Ellen	2	    70
+Ellen	3	    60
+Ellen	4   	90
+Ellen	5   	80
+Mike	1   	70
+Mike	2   	60
+Mike	3   	40
+Mike	4	    90
+Mike	5	    80
+
+
+A syntax error is generated.
+correct
+不正解
+The syntax is correct. For each row read from the input table, the DO loop writes five rows to the output table, 
+one row for each Quiz value. Review Rotating Data.
+構文は正しいです。入力テーブルから読み込まれた各行に対して、DOループは出力テーブルに5つの行を書き込みます。
+各クイズ値に対して1行ずつ。データを回転させるを復習します。
+
+Name	Test1	Test2	Test3	Test4	Test5
+Ellen	90  	70  	60  	90  	80
+Mike	70  	60  	40  	90  	80
+
+Name	Test	Score
+Ellen	1	    90
+Mike	1   	70
+Ellen	2   	70
+Mike	2   	60
+Ellen	3   	60
+Mike	3   	40
+Ellen	4   	80
+Mike	4   	90
+Ellen	5   	90
+Mike	5   	80
+
+
+
+8.Which ARRAY statement correctly loads the following values into the array survey? 
+8.次の値を配列surveyに正しくロードするARRAY文はどれですか？
+4   5   3   2　 4
+5   5   2   4   3
+
+1点
+
+array survey[2:5] (4, 5, 3, 2, 4, 5, 5, 2, 4, 3);
+
+array survey[2,5] (4, 5, 3, 2, 4, 5, 5, 2, 4, 3);
+correct
+正解
+In a two-dimensional array, elements are referenced using two numbers. 
+The first number corresponds to the row and the second number corresponds to the column. 
+The dimension values are separated with a comma. Initial values are loaded into a two-dimensional 
+array by specifying the values one row at a time, left to right.
+2次元配列では、要素は2つの番号で参照されます。
+最初の番号は行に対応し、2番目の番号は列に対応する。
+次元の値はカンマで区切られる。初期値を2次元配列に読み込むには 
+初期値は、左から右へ1行ずつ値を指定することで、2次元配列に読み込まれます。
+
+
+array survey[5:2] (4, 5, 3, 2, 4, 5, 5, 2, 4, 3);
+
+array survey[5,2] (4, 5, 3, 2, 4, 5, 5, 2, 4, 3);
+
+
+
+9.What is the value of TwoD6 after the first iteration of the DATA step? 
+9.DATAステップの最初の反復の後のTwoD6の値は？
+
+array_data
+
+  Name1    Name2   Name3
+1  Jack     Mary    Sally
+2  Christy  John    Marty
+
+data new_data(drop=Row Column);
+    array TwoD[2,3] $;
+    retain TwoD1-TwoD6;
+    if _N_=1 then do Row=1 to 2;
+        set array_data;
+        array OneD[3] Name1-Name3;
+        do Column=1 to 3;
+            TwoD[Row,Column]=OneD[Column];
+        end;
+    end;
+run;
+
+1点
+
+Mary
+
+Marty
+correct
+正解
+TwoD1=Jack, TwoD2=Mary, TwoD3=Sally, TwoD4=Christy, TwoD5=John, TwoD6=Marty
+
+Christy
+
+John
+
+
+
+10.Which statement is true concerning the following ARRAY statement? 
+10.次のARRAY文に関する記述のうち、正しいものはどれか。
+
+array twoDim[5,3] $ _temporary_; 
+
+1点
+
+Eight array elements are created.
+8つの配列要素が作成されます。
+
+The array elements are not automatically retained.
+配列要素は自動的に保持されません。
+
+The array elements must be referenced using two numbers, a row number and a column number.
+配列要素は、行番号と列番号の 2 つの番号で参照する必要があります。
+
+The array elements will be in the final output table.
+配列要素は、最終的な出力テーブルに含まれることになります。
+correct
+不正解
+The array elements are retained in the PDV and dropped from the output table. Review Loading a Two-Dimensional Array from a Table.
+配列の要素はPDVに保持され、出力テーブルから削除されます。テーブルから2次元配列を読み込むをレビューします。
+
+
+
+
