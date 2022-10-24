@@ -1,0 +1,29 @@
+Activity 4.03
+
+1.Open m104a03.sas from the activities folder and perform the following tasks:
+
+Modify the %MACRO statement to use keyword parameters. Assign default values of NA to Basin, 2016 to Season,
+and 20 to MaxWind. Run the program and verify that the macro compiles successfully.
+キーワードパラメータを使用するように %MACRO 文を変更します。デフォルト値として、BasinにNA、Seasonに2016、
+MaxWindに20を代入します。プログラムを実行し、マクロが正常にコンパイルされることを確認します。
+
+Call the %StormChart macro with no parameter values provided. Confirm in the log that the default parameter values are used.
+パラメータ値が指定されていない %StormChart マクロを呼び出します。デフォルトのパラメータ値が使用されることをログで確認します。
+
+Call the %StormChart macro with Season as 2015 and Basin as EP. View the log. 
+Seasonを2015、BasinをEPとして%StormChartマクロを呼び出します。ログを表示します。
+
+Is the table subset by MaxWind even though it is not included as a parameter in the macro call?
+マクロ呼び出しのパラメータとして含まれていないにもかかわらず、テーブルが MaxWind によってサブセットされていますか?
+
+Note: Type Yes or No.  
+
+1点
+
+Yes
+正解
+Yes. The default value for the MaxWind parameter is used in the WHERE statement to subset the data.
+
+No
+
+
