@@ -1,0 +1,55 @@
+Level 1 Practice: Understanding Symbol Tables
+
+1.Without submitting the programs in each question, identify in which symbol table the 
+macro variable Zip is located. Assume that each example is submitted in its own SAS session.  
+各問題のプログラムを提出することなく、マクロ変数Zipがどのシンボルテーブルにあるかを特定しなさい。
+各例がそれ自身のSASセッションで提出されると仮定します。 
+
+Note: Type either Local or Global for each answer.
+注：各解答には、ローカルまたはグローバルのいずれかを入力します。
+
+
+Program 1:
+%let Zip=27513; 
+%macro whereis; 
+    %let state=%sysfunc(zipnamel(&Zip));
+    %put The Zip Code &Zip is in &state;
+%mend whereis;
+
+%whereis
+
+My answer
+Global
+正解
+The %LET statement is outside the macro definition, so Zip is stored in the global symbol table.  
+
+2.Program 2:
+
+%macro whereis;
+    %let Zip=10312; 
+    %let state=%sysfunc(zipnamel(&Zip));
+    %put The Zip Code &Zip is in &state;
+%mend whereis;
+
+%whereis
+
+My answer
+Local
+正解
+The %LET statement is inside the macro definition, so Zip is stored in the local symbol table.  
+
+
+3.Program 3:
+
+%macro whereis(Zip); 
+    %let state=%sysfunc(zipnamel(&Zip));
+    %put The Zip Code &Zip is in &state;
+%mend whereis;
+
+%whereis(91219)
+
+
+My answer
+Local
+正解
+The %whereis macro is defined with a parameter, so a local symbol table is created, and Zip is stored in this local table.  
