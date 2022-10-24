@@ -1,0 +1,22 @@
+Week4_Activity 4.04
+
+
+1.When the Test macro executes, will it have a local symbol table?  
+1.テストマクロ実行時に、ローカルシンボルテーブルを持つか？ 
+
+1 %macro test;
+2 %global x;
+3 %let x=InsideMacro;
+4 %mend test;
+5 %test
+
+1点
+
+Yes
+
+
+No
+正解
+The Test macro has no parameters and does not create any local variables so it will not have a local symbol table.  
+Testマクロは、パラメータを持たず、ローカル変数を作成しないので、ローカルシンボルテーブルを持ちません。 
+
