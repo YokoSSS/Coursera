@@ -295,3 +295,98 @@ correct
 正解
 They are all true. PROC FEDSQL is vendor neutral ANSI SQL, is ANSI Standard 3 compliant, processes 17 ANSI data types, is fully multi-threaded on the SAS platform, includes very few non-ANSI SAS enhancements, and executes in CAS.
 
+
+************************************************************************************************************************************************
+Accessing DBMS Data with SAS/ACCESS
+
+1.Which statement(s) is/are true about SAS/ACCESS technology? (Select all that apply)
+
+1 / 1点
+
+
+
+You do not need to know your DBMS's SQL implementation to access and manipulate your DBMS data.
+Correct
+SAS/ACCESS software provides dynamic access to DBMS data through the SAS/ACCESS LIBNAME statement 
+and the PROC SQL pass-through facility. You do need to know your DBMS's SQL language to access and 
+manipulate your DBMS data. It is faster and more direct to use the SAS/ACCESS LIBNAME statement to
+access your DBMS data. The LIBNAME statement provides more control over DBMS operations.
+
+
+It is faster and more direct to use the SAS/ACCESS LIBNAME statement to access your DBMS data.
+Correct
+SAS/ACCESS software provides dynamic access to DBMS data through the SAS/ACCESS LIBNAME statement 
+and the PROC SQL pass-through facility. You do need to know your DBMS's SQL language to access and 
+manipulate your DBMS data. It is faster and more direct to use the SAS/ACCESS LIBNAME statement to 
+access your DBMS data. The LIBNAME statement provides more control over DBMS operations.
+
+
+You need to know your DBMS's SQL language to access and manipulate your DBMS data.
+
+SAS/ACCESS software provides dynamic access to DBMS data through the SAS/ACCESS LIBNAME 
+statement and the PROC SQL pass-through facility.
+Correct
+
+SAS/ACCESS software provides dynamic access to DBMS data through the SAS/ACCESS LIBNAME statement 
+and the PROC SQL pass-through facility. You do need to know your DBMS's SQL language to access and 
+manipulate your DBMS data. It is faster and more direct to use the SAS/ACCESS LIBNAME statement to 
+access your DBMS data. The LIBNAME statement provides more control over DBMS operations.
+
+
+正解
+Great, you got all the right answers.
+
+
+
+2.You are attempting to pass Native Oracle SQL from SAS to the database for processing. 
+To accomplish this task, the best option is to use the _________________ because it enables you to 
+send database specific SQL statements directly to the database for execution.
+
+1 / 1点
+
+SQL Pass-Through Facility
+correct
+正解
+The SQL Procedure pass-through facility is an extension of the SQL procedure that enables you to send 
+DBMS-specific statements to a DBMS and to retrieve DBMS data. You specify DBMS SQL syntax instead of 
+SAS SQL syntax when you use the pass-through facility.
+
+
+INFILE statement
+
+LIBNAME statement
+
+DBLOAD procedure
+
+
+3.PROC FEDSQL provides the same SAS enhancements as PROC SQL.
+
+1 / 1点
+
+True
+
+False
+correct
+正解
+PROC FEDSQL is a SAS vendor neutral SQL implementation and does not contain all PROC SQL SAS enhancements.
+
+
+
+4.You are working with multiple databases to pull data into SAS. The goal is to push as much processing 
+into the database as possible and to keep the SQL queries vendor neutral. Which procedure would be better to use?
+
+
+1 / 1点
+
+PROC SQL
+
+PROC FEDSQL
+correct
+正解
+PROC FEDSQL is a vendor neutral ANSI SQL that pushes as much of the processing as possible into the database.
+
+
+
+
+
+
