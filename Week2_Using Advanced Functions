@@ -528,8 +528,207 @@ Search and replace one time from the beginning of the source.
 
 
 **************************************************************************************************************************************************
+1.Which of the following does the LAG function allow as its argument?
+
+1 / 1点
 
 
+A numeric or character constant
+
+A column
+
+An expression
+
+All of the above
+正解
+The LAG function allows a numeric or character constant, column, or expression as its argument.
+
+
+
+2.Which DATA step includes correct syntax when using the LAG function? Select all that apply.  
+
+weather_au
+
+City     Date        TavgC
+Sydney   01/01/2022  22.3
+Sydney   01/02/2022  22.1
+Sydney   01/03/2022  23.5
+
+1 / 1点
+
+
+data test;
+    set weather_au;
+    TavgCPrev=lag(TavgC);
+    if _n_>1 then do;
+       if TavgC-TavgCPrev<0 then Change="Down";
+       else if TavgC-TavgCPrev>0 then Change="Up";
+       else Change="Even";
+    end;
+run;
+Correct
+The LAG function stores previous values in a queue when the LAG function is executed. If you use LAG or LAG1, you are looking for that column's value from the previous row. It can be used to compute new columns or in conditional expressions. There is only one argument allowed in the function.
+
+
+data au_temps;
+    set weather_au;
+    TavgCPrevDay=lag(TavgC, 1);
+    TempIncrease=TavgC-TavgCPrevDay;
+run;
+uncorrect
+
+data au_temps;
+    set weather_au;
+    TavgCPrevDay=lag1(TavgC);
+    TempIncrease=TavgC-TavgCPrevDay;
+run;
+Correct
+The LAG function stores previous values in a queue when the LAG function is executed. If you use LAG or LAG1, you are looking for that column's value from the previous row. It can be used to compute new columns or in conditional expressions. There is only one argument allowed in the function.
+
+
+data au_temps;
+    set weather_au;
+    TempIncrease=TavgC-lag(TavgC);
+run;
+Correct
+The LAG function stores previous values in a queue when the LAG function is executed. If you use LAG or LAG1, you are looking for that column's value from the previous row. It can be used to compute new columns or in conditional expressions. There is only one argument allowed in the function.
+
+正解
+Great, you got all the right answers.
+
+
+
+
+3.Given the following DATA step, what is the value of USNum and WordNum? 
+
+data TextCount;
+    Text='AUSTRALIA, ITALY, AUSTRIA, US';
+    USNum=count(Text,'US');
+    WordNum=countw(Text);
+run; 
+
+1 / 1点
+
+
+USNum =3, WordNum =3
+
+USNum =1, WordNum =4
+
+USNum =2, WordNum =4
+
+USNum =3, WordNum =4
+correct
+正解
+The COUNT function counts the number of times that a specified substring appears within a character string. The COUNTW function counts the number of words in a character string. A default list of delimiters is used.
+
+4.What is the value of x? 
+
+x = findw('The quick brown fox jumps over the 
+lazy dog.', 'fox');
+
+1 / 1点
+
+9
+
+4
+
+0
+
+17
+correct
+正解
+The FINDW function returns the initial character position of a word in a string.
+
+5.Which of the following is not a benefit of Perl regular expressions?
+
+1 / 1点
+
+正解
+Perl regular expressions are often cryptic. Perl regular expressions consist of characters and special characters that are called metacharacters.
+
+6.The PRXMATCH function compiles a Perl regular expression and returns a pattern identifier number that is used by other Perl functions and CALL routines to match patterns.
+
+1 / 1点
+
+True
+
+False
+correct
+正解
+The PRXPARSE function compiles a Perl regular expression and returns a pattern identifier number that is used by other Perl functions and CALL routines to match patterns.
+
+7.
+質問 7
+Given the following statement, what value will be assigned to the Position column? 
+
+Position = prxmatch('/Dutch/','Sawyer Dutch Kenai'); 
+
+1 / 1点
+
+7
+
+missing
+
+12
+
+8
+correct
+正解
+PRXMATCH searches for a pattern match and returns the position at which the pattern is found. The string Dutch is found starting in the 8th position.
+
+8.The PRXPARSE function returns a _______________ that is used by other PRX functions and call routines.
+
+1 / 1点
+
+
+pattern
+
+position at which a pattern is found
+
+pattern identifier number
+correct
+正解
+The PRXPARSE function returns a pattern identifier number that is used by other PRX functions and call routines.
+
+
+character string
+
+
+
+9.Which of the following Perl regular expressions replaces the stringPG3 with the string PG3M6 ? 
+
+1 / 1点
+
+
+'r/PG3/PG3M6/'
+
+'s/PG3/PG3M6/'
+correct
+正解
+A replacement pattern starts with the letter s followed by a delimiter, the pattern to match, a delimiter, the replacement string, and a closing delimiter.
+
+
+'r/PG3M6/PG3/'
+
+'s/PG3M6/PG3/'
+
+
+
+
+10.Which statement is true if 100 is provided as the second argument in the PRXCHANGE function?
+
+1 / 1点
+
+Search and replace until the end of the source is reached.
+
+Search and replace the value 100 with the value specified in the first argument.
+
+Search and replace the 100th word within the source.
+
+Search and replace up to one hundred times.
+correct
+正解
+The second argument of the PRXCHANGE function is the number of times to search and replace. The value of -1 will search and replace until the end of source is reached.
 
 
 
