@@ -1,0 +1,25 @@
+Activity 4.02
+
+
+1.Open m104a02.sas from the activities folder and perform the following tasks:
+
+Run the program and verify in the log that the PrintTable macro compiled successfully.
+プログラムを実行し、PrintTableマクロが正常にコンパイルされたことをログで確認する。
+
+Add a line of code at the bottom of the program to call the PrintTable macro.
+プログラムの末尾にPrintTableマクロを呼び出すコード行を追加する。
+
+Submit the macro call. 
+マクロの呼び出しを送信する。
+
+Based on only what you see in the log, can you see the original program and the syntax error?
+ログに表示されている内容だけで、元のプログラムと構文エラーを確認できますか？
+
+Note: Type Yes or No.
+
+No
+正解
+No. The macro call and the error message are displayed in the log, but the generated code is not displayed.  
+いいえ、ログにマクロ呼び出しとエラーメッセージは表示されますが、生成されたコードは表示されません。  
+
+
