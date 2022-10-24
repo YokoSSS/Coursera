@@ -505,3 +505,249 @@ The custom function will be stored in the SAS table pg3.
 カスタム関数は、SAS テーブル pg3 に格納されます。
 
 
+*******************************************************************************************************************************
+
+1.Which statement is true regarding the PICTURE statement?
+
+1点
+
+It is best to set the DEFAULT option within the PICTURE statement equal to the smallest possible formatted value.
+
+Numeric values may be formatted using a PICTURE statement within the DATA step.
+
+The PICTURE statement creates a format that specifies a template for displaying character values.
+不正解
+The PICTURE statement creates a format that specifies a template for displaying numeric values.
+Review Creating Custom Formats and Custom Date and Datetime Formats.
+PICTURE文は、数値を表示するためのテンプレートを指定する書式を作成します。カスタム書式の作成とカスタム日付・日時書式を確認する。
+
+The PICTURE statement is valid only in the FORMAT procedure.
+
+
+
+2.Which PICTURE statement generates the following results when the custom format is used with the Number column? 
+
+Number
+
+76.54
+
+0.32
+
+1.82
+
+1点
+
+
+all of the above
+
+picture FmtC low-high='009.99';
+正解
+A nonzero digit selector must precede the decimal point. Using a zero digit selector before the decimal 
+point suppresses the decimal point.
+小数点以下はゼロ以外の数字で指定する必要があります。小数点の前に0桁のセレクタを使用すると、小数点が抑制されます。
+
+picture FmtB low-high='000.00';
+
+picture FmtA low-high='999.99';
+
+
+
+3.Which PICTURE statement displays a nine-digit account number with five leading asterisks 
+followed by the last four digits, such as *****6789? 
+3.どのPICTURE文が、*****6789のように、先頭の5つのアスタリスクと最後の4桁で9桁の口座番号を表示するか。
+1点
+
+
+
+picture maskfmt
+    (prefix='*****') low-high='9999';
+
+picture maskfmt
+    (prefix='*****') low-high='999999999';
+
+picture maskfmt
+    low-high='999999999' (prefix='*****');
+
+picture maskfmt
+    low-high='9999' (prefix='*****');
+correct
+正解
+The four-digit digit selector truncates the leading digits, and the PREFIX= option specifies 
+a character string to place in front of the formatted value. The PREFIX= option must be after
+the template. Review Custom Large Number Format.
+4桁の数字セレクタは先頭の数字を切り捨て、PREFIX=オプションはフォーマットされた値の前に置く文字列を指定します。
+PREFIX=オプションはテンプレートの後に付ける必要があります。Custom Large Number Formatを見直す。    
+
+
+
+4.Which of the following format options enables the use of directives to customize date, time, or datetime values?
+4.次の書式オプションのうち、ディレクティブを使用して日付、時刻、またはdatetimeの値をカスタマイズできるものはどれですか？
+1点
+
+DATATYPE=
+
+DATETYPE=
+uncorrect
+不正解
+DATETYPE= is not a valid option. DATATYPE= enables the use of directives to format date, 
+time, or datetime values. Review Custom Date and Datetime Formats.
+DATETYPE= は有効なオプションではありません。DATATYPE= は、日付、時刻、または datetime 値を
+フォーマットするためのディレクティブを使用できるようにします。カスタム日付・時刻形式を確認する。
+
+None of the choices are correct.
+
+DEFAULT=
+
+
+5.Which PICTURE statement generates a date format that produces the following results when used with the Date column? 
+5.どのPICTURE文が、Date列と一緒に使用すると、次の結果を生成する日付書式を生成しますか。
+
+Date
+
+9/8/2019
+
+10/24/2019
+
+1点
+
+
+picture NoZero
+    low-high='%m/%d/%Y' (datatype=date);
+
+picture NoZero
+    (default=10 )low-high='%m/%d/%Y'
+    (datatype=date);
+correct
+正解
+Without the DEFAULT= option, the length for the format is 8 characters, but a 10-character 
+length is needed. The DEFAULT= option goes after the format name. The DATATYPE= value must
+match the data, which is DATE in this example. %m displays a one- or two-digit month, %d displays 
+a one- or two-digit day, and %Y displays a four-digit year.
+DEFAULT= オプションがない場合、フォーマットの長さは 8 文字ですが、10 文字の長さが必要です。
+DEFAULT=オプションは書式名の後に付けます。DATATYPE=値はデータと一致しなければならず、
+この例ではDATEである。mは1桁または2桁の月、%dは1桁または2桁の日、%Yは4桁の年を表示します。
+
+
+picture NoZero
+    (default=10) low-high='%m/%d/%Y'
+    (datatype=datetime);
+
+picture NoZero
+    low-high='%m/%d/%Y' (datatype=date default=10);
+    
+
+6.Which statement is needed in the following PROC FCMP step to end the syntax for the ToCelsius function? 
+6.ToCelsius 関数の構文を終了するために、次の PROC FCMP ステップでどのステートメントが必要ですか。
+
+proc fcmp outlib=pg3.funcs.tempconvert;  
+    function ToCelsius(Fah);
+        Cel=round((Fah-32)*5/9,.01);
+        return(Cel);
+        _____________________
+run; 
+
+1点
+
+END;
+
+ENDFUNC;
+
+ENDSUB;
+correct
+正解
+The ENDSUB statement ends the syntax for a custom function.
+
+
+ENDFUNCTION;
+
+
+
+7.Complete the FUNCTION statement to create a function named sumfunc that consists of two numeric arguments. 
+
+function sumfunc _______________;
+    sum = addend1+addend2;
+    return(sum);
+endsub;
+
+1点
+
+(addend1 addend2)
+
+(addend1, addend2)
+正解
+Arguments must be separated with a comma. Numeric arguments are not followed by a dollar sign.
+引数はカンマで区切らなければならない。数値引数の後にはドル記号を付けない。
+
+
+(addend1 $ addend2 $)
+
+(addend1 $, addend2 $)
+
+
+
+8.Which of the following statements is true?
+8.次の記述のうち、正しいものはどれですか？
+1点
+
+Both functions and CALL routines accept arguments and return values.
+
+Only CALL routines perform operations.
+
+Only functions return a value.
+正解
+Both functions and CALL routines can accept arguments and perform operations. However, only functions can return a value.
+関数とCALLルーチンは、どちらも引数を受け取り、演算を行うことができます。しかし、関数のみが値を返すことができます。
+
+Neither functions nor CALL routines accept arguments.
+
+
+
+
+9.What is the function of the CMPLIB= option?
+9.CMPLIB=オプションの機能は何ですか？
+1点
+
+The CMPLIB= option specifies the column (or columns) that SAS searches for a package that contains the desired function.
+CMPLIB= オプションは、目的の関数を含むパッケージを SAS が検索する列（1 つまたは複数の列）を指定します。
+
+The CMPLIB= option specifies the table (or tables) that SAS searches for a package that contains the desired function.
+CMPLIB= オプションは、SAS が希望する関数を含むパッケージを検索するテーブルを指定します。
+The CMPLIB= option specifies the table (or tables) that SAS searches for a package that contains the desired function.
+CMPLIB= オプションは、目的の関数が含まれるパッケージを SAS が検索するテーブル（1 つまたは複数）を指定します。
+正解
+
+The CMPLIB= option specifies the two-level name of the package where the compiled function will be stored.
+CMPLIB= オプションは、コンパイルされた関数が格納されるパッケージの 2 階層名を指定します。
+
+The CMPLIB= option specifies the three-level name of the package where the compiled function will be stored.
+CMPLIB= オプションは、コンパイルされた関数が格納されるパッケージの 3 階層名を指定します。
+
+
+
+10.Which statement is true concerning the following PROC FCMP statement? 
+10.次のPROC FCMP文に関する記述のうち、正しいものはどれか。
+
+proc fcmp outlib=pg3.funcs.misc; 
+
+1点
+
+The custom function will be stored in the pg3.funcs table.
+カスタム関数は、pg3.funcテーブルに格納されます。
+
+The custom function will be stored in the SAS table pg3.
+カスタム関数は、SAS テーブル pg3 に格納されます。
+
+The custom function will be stored in the pg3.funcs package.
+カスタム関数は、pg3.func パッケージに格納されます。
+
+The custom function will be stored in the misc library.
+カスタム関数は、misc ライブラリに格納されます。
+不正解
+Custom functions are stored in a package within a SAS table. The OUTLIB= option consists 
+of a three-level name. The first two levels refer to the SAS table ( libref.tablename ),
+and the third level refers to the package. Review Creating and Using a Custom Function.
+カスタム関数は、SASテーブル内のパッケージに格納されます。OUTLIB=オプションは、
+3レベルの名前から構成されます。最初の 2 レベルは SAS テーブル ( libref.tablename ) を参照し、
+3 レベルはパッケージを参照します。カスタム関数の作成と使用について復習します。
+
+
