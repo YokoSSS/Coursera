@@ -1,0 +1,218 @@
+
+This practice exam is intended to help you prepare for the SAS 9.4 Advanced Programming Performance-Based Exam. 
+この模擬試験は、SAS 9.4 Advanced Programming Performance-Based Exam の準備に役立つことを目的としています。
+
+The practice exam is constructed to test the same knowledge and skills as the certification exam, and all topics
+are similarly weighted between the two exams. 
+この模擬試験は、認定試験と同じ知識とスキルをテストするように構成されており、すべてのトピックは、2つの試験間で同様の重み付けがされています。
+
+You must have access to SAS software and be able to load, create, open, and analyze data in SAS while taking the practice exam.
+To access SAS, you can use the SAS Virtual Lab, your own software, or SAS OnDemand for Academics. In the SAS Virtual Lab, 
+the practice files you need are already set up for you. If you have not started the virtual lab or set up access to SAS and 
+the files you need for this practice exam, you must exit the exam and do this before you continue.
+模擬試験受験中は、SASソフトウェアにアクセスし、SASでデータのロード、作成、オープン、および分析が可能である必要があります。
+SASにアクセスするには、SAS Virtual Lab、自分のソフトウェア、またはSAS OnDemand for Academicsを使用することができます。
+SAS Virtual Labでは、必要な練習用ファイルがすでにセットアップされています。バーチャルラボを開始していない場合、
+または SAS とこの模擬試験に必要なファイルへのアクセスを設定していない場合は、試験を終了し、続行する前にこの操作を行う必要があります。
+
+-----------------
+Information
+
+
+Differences between this Practice Exam and the actual Certification Exam
+本模擬試験と実際の認定試験との相違点
+
+You should be aware of the following differences between the practice exam and the certification exam:
+本模擬試験と認定試験との間には、以下のような違いがあることをご承知おきください。
+
+For the practice exam, you can use the SAS virtual lab, SAS OnDemand for Academics, 
+or your own SAS software. For the certification exam, SAS software is provided as part of the exam and 
+you can choose to use Base SAS, SAS Studio, or SAS Enterprise Guide.
+模擬試験では、SAS バーチャル・ラボ、SAS OnDemand for Academics、またはご自身の 
+SAS ソフトウェアを使用することができます。認定試験では、試験の一部として SAS ソフトウェアが提供され、
+Base SAS、SAS Studio、または SAS Enterprise Guide のいずれかを選択して使用することができます。
+
+
+For the practice exam the location of the exam files will depend on the SAS software you use.
+模擬試験の場合、試験ファイルの保存場所は、使用するSASソフトウェアによって異なります。
+For the certification exam, the files will be located on the C: drive in the cert folder.
+認定試験の場合、ファイルは C: ドライブの cert フォルダに置かれます。
+For the practice exam, the exam and SAS Software will be accessed separately.
+模擬試験の場合、試験ファイルの保存場所は、使用するSASソフトウェアによって異なります。
+
+The practice exam will be in a browser window separate from SAS. For the certification exam, 
+SAS is accessed side-by-side with the exam questions. The windows can be resized to allow more space 
+for SAS or the exam questions. There is a video on the SAS Certification website that explains the 
+certification exam's environment.
+模擬試験は、SASとは別のブラウザウィンドウに表示されます。
+認定試験では、SAS は試験問題と並行してアクセスします。ウィンドウのサイズを変更して、
+SAS または試験問題のためのスペースを確保することができます。SAS Certificationのウェブサイトには、
+認定試験の環境について説明したビデオがあります。
+
+https://www.sas.com/en_us/certification/credentials/foundation-tools/advanced-programming-professional.html.
+
+This practice exam uses SAS-provided data sets for your programs. Not all questions in the practice exam require you to write SAS code; some of the questions can be answered without using SAS.
+この模擬試験では、SASが提供するデータセットを使用してプログラムを作成します。模擬試験のすべての問題でSASのコードを書く必要があるわけではなく、SASを使わなくても解答できる問題もあります。
+
+There are 11 programming projects with 13 questions to start the exam, each worth 1.5 to 3 points. Then there are 16 regular exam questions that do not require the lab, each worth 1 point. 
+試験の始めに11のプログラミングプロジェクトがあり、それぞれ1.5点から3点の価値がある13問が出題されます。そして、ラボを必要としない通常の試験問題が16問あり、それぞれ1点満点です。
+
+Successful performance on the practice exam does not guarantee your performance on the certification exam. Best of luck. 
+模擬試験での合格は、認定試験での成績を保証するものではありません。幸運を祈ります。
+
+
+Create the cert library reference for the projects in this exam:
+本試験のプロジェクトのcertライブラリのリファレンスを作成する。
+All input data sets are stored in cert/input folder. Create a library reference named cert to refer to this directory.
+Output data sets can be stored in the work library.
+すべての入力データセットは、cert/input フォルダに格納されます。このディレクトリを参照するために、cert という名前のライブラリ参照を作成します。
+出力データセットは、ワークライブラリに格納することができます。
+
+If you are using the SAS Virtual lab, the data is uploaded for you.
+The cert library should reference 's:/workshop/cert/input'.
+SAS Virtual lab を使用している場合、データはアップロードされます。
+cert ライブラリは 's:/workshop/cert/input' を参照する必要があります。
+
+If you are using SAS On Demand for Academics and you created the cert folder in the Files(Home) location:
+The cert library should reference '~/cert/input'.
+
+SAS On Demand for Academics を使用していて、Files(Home) の場所に cert フォルダを作成した場合。
+cert ライブラリは、'~/cert/input' を参照する必要があります。
+
+If you are using your own SAS software and you extracted the cert folder to your C:\ drive:
+The cert library should reference 'c:\cert\input'.
+自分の SAS ソフトウェアを使用していて、cert フォルダを C:\ ドライブに解凍した場合。
+certライブラリは、'c:⇄cert⇄input'を参照する必要があります。
+
+
+
+Open a new programming window to create SQL02.sas in cert\programs. 
+新しいプログラミングウィンドウを開き、certificateprogramsにSQL02.sasを作成します。
+Write a SAS program that will:
+以下のようなSASプログラムを作成しなさい。
+
+Perform an SQL query to create a table named work.SQL02 by concatenating cert.prdsal2 and cert.prdsal3. 
+These data sets contain the same variables.
+SQLクエリを実行して、cert.prdsal2 と cert.prdsal3 を連結して work.SQL02 という名前のテーブルを作成します。
+これらのデータセットには、同じ変数が含まれています。
+
+Work.SQL02 must contain:
+One row for all the unique combinations of PRODUCT and PRODTYPE when combining cert.prdsal2 and cert.prdsal3.
+Only the two columns PRODTYPE and PRODUCT.
+Work.SQL02は以下を含む必要がある。
+cert.prdsal2とcert.prdsal3を結合したときのPRODUCTとPRODTYPEのユニークな組み合わせすべてについて、1つの行が含まれていること。
+Order the data in descending order by PRODTYPE.
+Run your program and troubleshoot as necessary. When you are finished with the project, answer the next four questions.
+PRODTYPEとPRODUCTの2つの列のみ。
+データを PRODTYPE の降順で並べます。
+プログラムを実行し、必要に応じてトラブルシューティングを行います。プロジェクトが終了したら、次の 4 つの質問に回答してください。
+
+
+**************************************************************************************************************************************************
+
+
+
+Question 1
+How many rows are in the output data set? Enter your numeric answer in the space below:
+出力データセットに含まれる行数は何行ですか？以下のスペースに数値を入力してください。
+
+How many columns are in the output data set? Enter your numeric answer in the space below:
+出力データセットに含まれる列数はいくつですか？以下のスペースに答えを入力してください。
+
+
+Question 2
+
+What is the value of the variable PRODTYPE in the first row of the output data set? Enter your answer in the box below.
+
+Answer
+
+
+What is the value of variable PRODUCT in the first row of the output data set? Enter your answer in the box below.
+Answer
+
+
+Information
+
+Open a new programming window to create SQL10.sas in cert\programs.
+新しいプログラミングウィンドウを開き、certificateprogramsにSQL10.sasを作成します。
+Write a SAS program that will:
+次のような SAS プログラムを作成します。
+Use SAS dictionary tables, run a PROC SQL query to create a macro variable named COL_LIST which contains a 
+comma separated list of the columns contained in the CERT.AIR10 data set. If needed, use the DESCRIBE TABLE 
+statement to display the column attributes of the dictionary.columns table.
+SAS 辞書テーブルを使用して、PROC SQL クエリを実行し、CERT.AIR10 データセットに含まれる列のカンマ区切りリストを含む
+COL_LIST という名前のマクロ変数を作成します。必要であれば、DESCRIBE TABLE ステートメントを使用して、
+dictionary.columns テーブルの列属性を表示します。
+Run your program and troubleshoot as necessary. When you are finished with the project, answer the next question.
+プログラムを実行し、必要に応じてトラブルシューティングを行う。プロジェクトが終了したら、次の質問に答えてください。
+
+
+
+Question 3
+What is the value of the col_list macro variable? Type your answer in the box below:
+マクロ変数col_listの値は何ですか？あなたの答えを下のボックスに入力してください。
+
+Answer: 
+
+
+Information
+
+Open a new programming window to create SQL13.sas in cert\programs. You will need to use a subquery to 
+meet the requirements of this project. Write a SAS program that will:
+新しいプログラミング・ウィンドウを開き、certificateprogramsにSQL13.sasを作成します。
+このプロジェクトの要件を満たすために、サブクエリを使用する必要があります。する SAS プログラムを作成しなさい。
+
+Perform an SQL query to create an output table work.BigFish13 that contains only these columns:SQL Species
+クエリを実行して、以下の列のみを含む出力テーブル work.BigFish13 を作成します。
+
+AvgWeight. Calculate this variable as the aggregate average (mean) of Weight for each Species of fish.
+AvgWeight。この変数は、各魚種の Weight の集計平均（平均）として計算される。
+Filter the results to include only species with an AvgWeight that is greater than the median Weight of all fish in the cert.fish13 table.
+AvgWeight が cert.fish13 テーブルのすべての魚の Weight の中央値より大きい種だけが含まれるように、結果をフィルタリングします。
+Your program must produce the table work.BigFish13 in a single step without creating any additional intermediate tables.
+あなたのプログラムは、追加の中間テーブルを作成することなく、単一のステップでテーブルwork.BigFish13を生成する必要があります。
+The log must not show a remerge of summary statistics.
+ログは、要約統計の再マージを示してはなりません。
+Run your program and troubleshoot as necessary. When you are finished with the project, answer the next two questions.
+プログラムを実行し、必要に応じてトラブルシューティングを行います。このプロジェクトが終了したら、次の 2 つの質問に答えてください。
+
+
+Question 4
+How many rows of data are in the output data set? Enter your numeric answer in the space below:
+
+Answer
+
+
+What is the grand total of the AvgWeight variable in the output data set? Round your answer to the nearest integer and enter your numeric answer in the box below:
+
+Answer
+
+
+Information
+
+Open a new programming window to create SQL19.sas in cert\programs. 
+
+Write a SAS program that will:
+
+Perform an SQL query to create an output table named work.SQL19 from table cert.class19.
+Calculate the average Height for each combination of values of Gender and Age.
+Store the average Height in a column named AvgHeight.
+Order the results first by Gender and then by Age.
+Include only the columns Gender, Age, and AvgHeight.
+Include only rows in which the AvgHeight is greater than 60.
+Display the AvgHeight with only 2 decimal places.
+Run your program and troubleshoot as necessary. When you are finished with the project, answer the next two questions.
+新しいプログラミングウィンドウを開き、certificateprogramsにSQL19.sasを作成します。
+
+というSASプログラムを書きなさい。
+
+SQL クエリを実行して、テーブル cert.class19 から work.SQL19 という名前の出力テーブルを作成します。
+GenderとAgeの値の組み合わせごとに、平均身長を計算する。
+平均身長を AvgHeight という名前の列に格納します。
+結果を最初に Gender、次に Age の順に並べます。
+Gender、Age、および AvgHeight 列のみを含めます。
+AvgHeight が 60 より大きい行だけを含めます。
+AvgHeight を小数点以下 2 桁で表示する。
+プログラムを実行し、必要に応じてトラブルシューティングを行います。このプロジェクトが終了したら、次の 2 つの質問に答えてください。
+
+
