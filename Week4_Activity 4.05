@@ -1,0 +1,29 @@
+Activity 4.05
+
+1.
+質問 1
+Open m104a04.sas from the activities folder and perform the following tasks:
+
+Notice that the %LET statement outside the Test macro definition sets the value of X to OutsideMacro. 
+Then the %LET statement inside the macro definition sets the value of X to InsideMacro.
+Testマクロ定義外の%LET文が、Xの値をOutsideMacroに設定することに注意してください。
+次に、マクロ定義内の%LETステートメントがXの値をInsideMacroに設定します。
+
+Submit the program and examine the log.
+プログラムを送信し、ログを確認してください。
+
+What is the value of X before, during, and after the Test macro execution?
+Testマクロの実行前、実行中、実行後のXの値はどうなっているか？
+
+Note: This is a free response question and all attempts are marked correct. 
+Type your response and compare your answer to the answer provided.
+注：これは自由回答問題であり、すべての試行が正解とされます。あなたの答えを入力し、提供された答えと比較してください。
+
+X during TEST macro execution.
+正解
+The value of X before Test macro execution began: OutsideMacro
+
+The value of X during Test macro execution: InsideMacro
+
+The value of X after Test macro execution ended: InsideMacro
+
