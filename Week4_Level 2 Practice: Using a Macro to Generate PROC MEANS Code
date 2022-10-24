@@ -1,0 +1,55 @@
+Level 2 Practice: Using a Macro to Generate PROC MEANS Code
+
+1.Reminder: If you restarted your SAS session, you must  submit the libname.sas program in the EMC1V2 folder to access your practice files. 
+
+Open m104p02.sas from the practices folder. Submit the program and review the results. Verify that the mean value of Total_Retail_Price for orders submitted by customer 51 is 314.74.
+
+Convert the code to a macro named Orderstats that accepts the keyword parameters listed below: 
+
+var for the VAR statement variable list
+
+class for the CLASS statement variable list
+
+stats for the statistics to be calculated
+
+decimals for the MAXDEC= value
+
+Set default values for all parameters so that the code reproduces the original report when called without parameter values. Modify the PROC MEANS code to reference the parameters.
+
+Call the Orderstats macro without passing parameter values. Verify that the mean value of Total_Retail_Price for Customer 51 is 314.74 (the same as the first time you submitted the code).  
+
+Call the macro again, with the parameter values listed below.  
+
+var=CostPrice_Per_Unit
+
+decimals=0
+
+stats=mean median
+
+class=order_type
+
+ What is the median value for Order_type 3?  
+
+Note: Type a numeric value for your answer.
+
+My answer:26
+
+正解
+The median value for Internet orders is 26.
+
+%macro orderstats(var=Total_Retail_Price, class=Customer_ID,
+				 stats=mean, decimals=2); 
+options nolabel; 
+title 'Order Stats'; 
+proc means data=mc1.orders maxdec=&decimals &stats; 
+    var &var;
+    class &class; 
+run; 
+title;
+options label;
+%mend orderstats;
+
+%orderstats(var=CostPrice_Per_Unit, decimals=0,
+            stats=mean median, class=order_type)
+
+
