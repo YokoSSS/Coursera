@@ -1,0 +1,34 @@
+Level 1 Practice: Defining and Using a Macro with Parameters
+
+
+1.Reminder: If you restarted your SAS session, you must submit the libname.sas program in the EMC1V2 folder to access your practice files. 
+
+Open m104p01.sas from the practices folder. Review and submit the program. Verify that it generates a report for Gold customers that contains 680 rows.
+
+Convert the code to a macro named Customers that accepts a positional parameter named Type.  
+
+Submit the macro definition and review the log to verify that the macro compiled successfully.
+
+Call the Customers macro with the parameter value Gold. Verify that the title is Gold Customers and that there are 680 rows in the report.
+
+Call %Customers again with the parameter value High Activity. Verify that no rows were selected due to a case difference.
+
+Modify the macro definition:
+
+Convert the value of the parameter Type to uppercase.
+
+Modify the WHERE clause to make the string comparison case insensitive.
+
+Submit the macro definition and verify that it compiled correctly.
+
+Call the macro with the parameter value High Activity. Verify that the title is HIGH ACTIVITY Customers and that the report contains 461 rows.
+
+Change the positional parameter to a keyword parameter with a default value of inactive.  
+
+Call %Customers with the value high activity for the keyword parameter. Verify that the title is HIGH ACTIVITY Customers and that the report contains 461 rows.
+
+Call %Customers without passing a parameter value. Verify that title is INACTIVE Customers.
+
+How many rows are in the final report?
+
+Note: Type a numeric value for your answer.
