@@ -1,0 +1,43 @@
+Activity 4.06
+
+
+1.Open m104a06.sas from the activities folder and perform the following tasks:
+
+Review the program. Notice that the Test macro includes a parameter named X. X is assigned different values before and during the macro call.
+プログラムを確認します。Testマクロには、Xという名前のパラメータが含まれていることに注意してください。
+
+Submit the program and examine the log to view the value of X before, during, and after macro execution.
+プログラムを送信し、ログを調べて、マクロの実行前、実行中、実行後のXの値を確認します。
+
+What is the scope of the X parameter in the Test macro?
+TestマクロのXパラメータのスコープは何ですか？
+
+1点
+
+Global
+
+
+Local
+correct
+正解
+Macro parameters create and update macro variables in the local symbol table. 
+
+
+
+
+2.Add a %GLOBAL statement before the %PUT statement in the Test macro definition to explicitly declare X as global scope. 
+Testマクロ定義の%PUT文の前に%GLOBAL文を追加し、Xをグローバルスコープとして明示的に宣言します。
+
+Does the program run successfully?  
+プログラムは正常に実行されますか？ 
+
+1点
+
+Yes
+
+
+No
+correct
+正解
+Parameters cannot be global.
+
