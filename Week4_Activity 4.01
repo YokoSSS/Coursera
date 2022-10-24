@@ -1,0 +1,46 @@
+Activity 4.01
+
+
+1.Open m104a01.sas from the activities folder and perform the following tasks:
+
+Notice that there is a missing semicolon after the PROC PRINT statement. 
+Run the program and confirm that an error is generated in the log. Do not correct the error.
+PROC PRINT文の後にセミコロンが抜けていることに注意してください。
+プログラムを実行し、ログにエラーが発生することを確認します。エラーは修正しないでください。
+
+
+Modify the code to create a macro program named PrintTable. 
+コードを修正して、PrintTableという名前のマクロプログラムを作成します。
+
+Add an OPTIONS statement at the start of the program to set the MCOMPILENOTE=ALL option.
+プログラムの最初にOPTIONS文を追加し、MCOMPILENOTE=ALLオプションを設定する。
+
+Submit the program. 
+プログラムを送信する。
+
+Does the macro program compile successfully with the syntax error in the PROC PRINT step?
+
+1点
+
+Yes
+correct
+正解
+Compiling a macro only verifies the syntax for the macro statements. 
+
+No
+
+
+/*
+options mcompilenote=all;
+
+%let dsn=sashelp.cars;
+%let obs=5;
+
+%macro printtable;
+proc print data=&dsn(obs=&obs)
+run;
+%mend printtable;
+*/
+
+
+
