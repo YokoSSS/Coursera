@@ -153,7 +153,9 @@ You didn't select all the correct answers
 2.You are attempting to pass Native Oracle SQL from SAS to the database for processing. 
 To accomplish this task, the best option is to use the _________________ because it enables you to send database specific SQL 
 statements directly to the database for execution.
-
+2.あなたは、処理のためにSASからデータベースへネイティブのOracle SQLを渡そうとしています。
+このタスクを達成するために、最良の選択肢は、______________を使用することです。
+文を直接データベースに送信し、実行することができるからです。
 
 1 / 1点
 
@@ -196,7 +198,8 @@ FEDSQL は、暗黙の SQL パススルーをサポートしています。
 
 4.You are working with multiple databases to pull data into SAS. The goal is to push as much processing into the database as 
 possible and to keep the SQL queries vendor neutral. Which procedure would be better to use?
-
+4.あなたは、SASにデータを取り込むために、複数のデータベースを操作しています。目標は、できるだけ多くの処理をデータベースで行うことです。
+SQLクエリをベンダーに依存しないようにすることです。どのプロシージャを使用するのが良いでしょうか？
 1 / 1点
 
 PROC SQL
