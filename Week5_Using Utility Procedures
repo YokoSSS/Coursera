@@ -251,39 +251,203 @@ The custom function will be stored in the misc folder within the SAS package pg3
 
 
 
+************************************************************************************************************************************
+
+
+
+1.Which statement is true regarding the PICTURE statement?
+PICTUREステートメントについて、正しい記述はどれか。
+
+It is best to set the DEFAULT option within the PICTURE statement equal to the smallest possible formatted value.
+PICTURE文のDEFAULTオプションは、可能な限り小さな書式値と等しく設定するのが最良である。
+
+The PICTURE statement creates a format that specifies a template for displaying character values.
+PICTURE文は、文字値を表示するための雛形を指定する書式を作成する。
+
+The PICTURE statement is valid only in the FORMAT procedure.
+PICTURE文は、FORMAT手続き内だけで有効である。
+
+Numeric values may be formatted using a PICTURE statement within the DATA step.
+数値は、DATAステップの中でPICTURE文を用いて書式設定することができる。
+
+
+2.Which PICTURE statement generates the following results when the custom format is used with the Number column? 
+2.カスタムフォーマットをNumber列で使用する場合、どのPICTURE文が次の結果を生成するか。
+
+Number
+
+76.54
+
+0.32
+
+1.82
+
+
+picture FmtC low-high='009.99';
+
+picture FmtA low-high='999.99';
+
+picture FmtB low-high='000.00';
+
+all of the above
+
+
+
+
+3.Which PICTURE statement displays a nine-digit account number with five leading asterisks followed by 
+the last four digits, such as *****6789? 
+PICTURE文の中で、*****6789のように、先頭のアスタリスク5桁と下4桁で9桁の口座番号を表示するものはどれでしょう？
+
+
+
+picture maskfmt
+    low-high='999999999' (prefix='*****');
+
+picture maskfmt
+    low-high='9999' (prefix='*****');
+
+picture maskfmt
+    (prefix='*****') low-high='999999999';
+
+picture maskfmt
+    (prefix='*****') low-high='9999';
 
 
 
 
 
+4.Which of the following is a format option that specifies a number by which to multiply the value? Select all that apply.
+値を乗じる数値を指定する書式オプションは、次のうちどれでしょうか。該当するものをすべて選んでください。
+
+
+
+picture maskfmt
+    low-high='999999999' (prefix='*****');
+
+picture maskfmt
+    low-high='9999' (prefix='*****');
+
+picture maskfmt
+    (prefix='*****') low-high='999999999';
+
+picture maskfmt
+    (prefix='*****') low-high='9999';
+    
+    
+    
+
+5.Which PICTURE statement generates a date format that produces the following results when used with the Date column? 
+どのPICTURE文が、Date列と一緒に使用すると次のような結果を生む日付書式を生成するか。
+
+Date
+
+Monday - March 9, 2020
+
+Wednesday - November 3, 2021
 
 
 
 
+proc format;
+    picture longDate
+       (default=30) low-high = '%A - %B %d, %Y'
+       (datatype=date);
+
+proc format;
+    picture longDate
+       low-high = '%A - %B %m, %Y' (datatype=date);
+
+proc format;
+    picture longDate (default=30) low-high =
+       '%A - %B %d, %Y';
+
+proc format;
+    picture longDate (default=30) low-high
+       (datatype=date);
+
+
+
+6.Which statement is necessary in the following PROC FCMP step to begin the ToCelsius function definition? 
+次の PROC FCMP ステップで、ToCelsius 関数定義を開始するために必要なステートメントはどれですか。
+
+
+proc fcmp outlib=lib3.func.weather;
+    __________ ToCelsius(Fah);
+        Cel=round((Fah-32)*5/9,.01);
+        return(Cel);
+    endsub;
+run;
+
+
+DEF
+
+FUNCTION
+
+STARTFUNC
+
+FUNCDEF
+
+
+
+7.Complete the FUNCTION statement to create a function named sumfunc that consists of two numeric arguments. 
+7.FUNCTIONステートメントを完成させ、2つの数値引数からなるsumfuncという名前の関数を作成します。
+
+function sumfunc _______________;
+    sum = addend1+addend2;
+    return(sum);
+endsub;
+
+1点
+
+(addend1 $ addend2 $)
+
+(addend1 addend2)
+
+(addend1, addend2)
+
+(addend1 $, addend2 $)
 
 
 
 
+8.The RETURN statement can have the custom function return multiple values.
+8.RETURN文は、カスタム関数に複数の値を返させることができます。
+
+True
+
+
+False
 
 
 
+9.Which statement specifies that SAS search the mylib.funcs table for a package that contains a custom function?
+9.SASがカスタム関数を含むパッケージのmylib.funcテーブルを検索することを指定するステートメントはどれですか？
+
+options cmplib=mylib.funcs;
+
+options functions=mylib.funcs;
+
+proc fcmp cmplib=mylib.funcs;
+
+proc fcmp lib=mylib.funcs;
 
 
 
+10.Which statement is true concerning the following PROC FCMP statement? 
+
+proc fcmp outlib=pg3.funcs.misc; 
 
 
+The custom function will be stored in the pg3.funcs table.
+カスタム関数は pg3.funcs テーブルに格納されます。
 
+The custom function will be stored in the pg3.funcs package.
+カスタム関数は、pg3.func パッケージに格納されます。
 
+The custom function will be stored in the misc library.
+カスタム関数は、miscライブラリに格納されます。
 
-
-
-
-
-
-
-
-
-
-
+The custom function will be stored in the SAS table pg3.
+カスタム関数は、SAS テーブル pg3 に格納されます。
 
 
