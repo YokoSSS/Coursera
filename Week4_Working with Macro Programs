@@ -736,3 +736,234 @@ where Origin="Origin&i";
 
 
 ***********************************************************************************************************************************
+
+1.Which of the following is true?
+
+0 / 1点
+
+
+The MPRINT system option writes a message to the log indicating whether a macro compiles successfully.
+
+Only macro language statements are checked for syntax errors when the macro is compiled.
+
+A macro definition can include macro variable references, but it cannot include SAS language statements.
+
+A %MACRO statement must always be paired with a %END statement.
+correct
+不正解
+A %MACRO statement must be paired with a %MEND statement. The enclosed macro text can include 
+macro language statements or expressions, complete or partial SAS program steps, and complete 
+or partial SAS program statements. The MPRINT option includes the generated code in the log. Review Defining a Macro.
+
+2.Which statement concerning macro parameters is true?
+
+1 / 1点
+
+Keyword parameters must be listed before positional parameters in a mixed parameter list.
+
+The order of positional parameter names in a macro definition must match the order of parameter values in a macro call.
+correct
+正解
+This statement is true.
+
+Keyword parameters are assigned a default value after an ampersand sign.
+
+Parameter names and values are listed inside parentheses and are space delimited.
+
+
+
+
+3.If this program runs in a new SAS session, how many macro variable/value combinations are displayed in the log? 
+
+%macro test(y);
+    %let x = a;
+    %let z = b;
+    %put _local_;
+%mend test;
+%test(5)
+
+1 / 1点
+
+3
+correct
+正解
+Y is a parameter, so a local symbol table is created for the Test macro and y is stored there. 
+The %LET statement is inside the macro definition, and a local table exists, so x and z are 
+created in that local table. The %PUT statement displays the name and value of x, y and z.
+
+5
+
+2
+
+1
+
+
+4.When this program ends execution, what is the value of a? 
+
+%macro inside;
+    %let a=&b;
+%mend inside;
+
+%macro outside(b);
+    %inside;
+%mend outside;
+%let a=5;
+%outside(3)
+
+1 / 1点
+null
+
+5
+
+3
+correct
+正解
+When the program is submitted, the Inside and Outside macros are compiled. The %LET creates a macro variable named a with a value of 5 in the global symbol table. The Outside macro is called with the value 3, so a local symbol table is created for Outside, and b is stored in it with the value 3.
+Outside calls the Inside macro. When the %LET statement in Inside executes, the macro processor looks for a. Inside doesn't have a local table, and there's no b in Outside's local table, so it assigns 3, the value of b, to the a in the global symbol table. Inside ends, Outside ends, and a remains in the global symbol table with the value 3.
+
+5.Which of the following can be conditionally placed onto the input stack?
+
+1 / 1点
+
+
+any text not used by the macro processor
+correct
+正解
+Any text not used by the macro processor is placed on the input stack. This can include complete or partial 
+SAS program steps, complete SAS statements, or pieces of text within statements.
+
+
+
+any text not used by the compiler
+
+any text used by the compiler
+
+any text used by the macro processor
+
+
+
+
+6.Examine the following program. Which log message is generated if the MLOGIC system option is enabled?
+
+%macro cars(MPH);
+    %if &MPH>0 %then %do;
+        proc print data=sashelp.cars;
+            where MPG_Highway>&MPH;
+        run;
+    %end;
+%mend;
+%cars(15)
+
+1 / 1点
+
+
+Macro variable MPH resolves to 15
+
+where MPG_Highway>15;
+
+%IF condition &MPH>0 is TRUE
+correct
+正解
+The MLOGIC system option writes detailed messages to the log regarding the flow of the macro logic.
+
+NOTE: The macro CARS completed compilation without errors.
+
+
+
+7.Which of the following %Reports macro definitions runs the %Weekly macro if the day of the week is Friday? 
+
+1 / 1点
+
+%macro reports;
+    %daily %if &sysday=Friday %then %weekly;
+%mend reports;
+correct
+正解
+Text values aren't quoted in macro statements, and %DO is only required after %THEN to execute 
+multiple actions or if the action contains one or more semicolons.
+
+%macro reports;
+    %daily %if &sysday=Friday %then %do %weekly;
+%mend reports;
+
+
+%macro reports;
+    %daily %if &sysday="Friday" %then %weekly;
+%mend reports;
+
+
+
+
+8.Which system option enables the macro IN operator? 
+
+1 / 1点
+
+MIINOPERATOR
+correct
+正解
+The MINOPERATOR option enables the use of the macro IN operator in an expression. MINOPERATOR can be 
+specified in a global OPTIONS statement or in the %MACRO statement after the macro name and a forward slash.
+
+NOMLOGIC
+
+MLOGIC
+
+MACROIN
+
+
+
+
+
+9.Which of the following statements correctly executes a %DO loop while the macro variable count is less than 10?
+
+1 / 1点
+
+%do %while &count > 10;
+
+%do %while(&count > 10);
+
+%do %while &count < 10;
+
+%do %while(&count < 10);
+correct
+正解
+In %DO %WHILE and %DO %UNTIL statements, the condition must be enclosed in parentheses.
+
+
+
+10.Which expression in a macro %DO loop writes the following messages to the log? 
+
+City1 is London
+City2 is Tokyo
+City3 is Buenos Aires
+City4 is Toronto
+
+Local Symbol Table
+
+Name    Value   
+CITY1   London
+CITY2   Tokyo
+CITY3   Buenos Aires
+CITY4   Toronto
+SQLOBS  4
+
+1 / 1点
+
+
+%put City&i is &City&&i;
+
+%put City&i is &&City&i;
+correct
+正解
+When using a %DO loop index variable for indirect referencing, use &&macro-variable&index-variable inside the loop.
+
+
+%put City&i is &City&i;
+
+%put City&i is &Cityi;
+
+
+
+
+
+
