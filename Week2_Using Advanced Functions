@@ -1,0 +1,295 @@
+Using Advanced Functions
+
+1.Which of the following does the LAG function allow as its argument?
+1.LAG関数の引数として許可されているのは次のうちどれですか？
+
+A numeric or character constant
+
+A column
+
+An expression
+
+All of the above
+corerct
+正解
+The LAG function allows a numeric or character constant, column, or expression as its argument.
+LAG関数は、数値または文字の定数、列、式を引数に取ることができます。
+
+2.Which DATA step includes correct syntax when using the LAG function? Select all that apply.  
+2.LAG関数を使用する際に、正しい構文を含むDATAステップはどれですか？該当するものをすべて選択してください。 
+weather_au
+City    Date          TavgC
+Sydney  01/01/2022    22.3
+Sydney  01/02/2022    22.1
+Sydney  01/03/2022    23.5
+
+
+data au_temps;
+    set weather_au;
+    TavgCPrevDay=lag(TavgC, 1);
+    TempIncrease=TavgC-TavgCPrevDay;
+run;
+uncorerct
+This should not be selected
+The LAG function stores previous values in a queue when the LAG function is executed. If you use LAG or LAG1,
+you are looking for that column's value from the previous row. It can be used to compute new columns or 
+in conditional expressions. There is only one argument allowed in the function. Review Using the LAG Function.
+これは選択されるべきではない
+LAG関数は、LAG関数が実行されると、前の値をキューに保存します。LAG または LAG1 を使用する場合、
+前の行からその列の値を探していることになります。これは、新しい列の計算や条件式の中で使用することができます。
+この関数で使用できる引数は1つだけです。LAG関数を使うを復習する。
+
+
+data au_temps;
+    set weather_au;
+    TempIncrease=TavgC-lag(TavgC);
+run;
+corerct
+Correct
+The LAG function stores previous values in a queue when the LAG function is executed. 
+If you use LAG or LAG1, you are looking for that column's value from the previous row. 
+It can be used to compute new columns or in conditional expressions. There is only one argument allowed in the function.
+正しい
+LAG関数は、LAG関数が実行されると、前の値をキューに格納します。LAGやLAG1を使用する場合、
+前の行からその列の値を探していることになります。これは、新しい列の計算や条件式の中で使用することができます。
+この関数で許される引数は1つだけです。
+
+data au_temps;
+    set weather_au;
+    TavgCPrevDay=lag1(TavgC);
+    TempIncrease=TavgC-TavgCPrevDay;
+run;
+corerct
+The LAG function stores previous values in a queue when the LAG function is executed. 
+If you use LAG or LAG1, you are looking for that column's value from the previous row. 
+It can be used to compute new columns or in conditional expressions. There is only one argument allowed in the function.
+正しい
+LAG関数は、LAG関数が実行されると前の値をキューに格納します。LAGやLAG1を使用する場合、
+前の行からその列の値を探していることになります。これは、新しい列の計算や条件式の中で使用することができます。
+この関数で許される引数は1つだけです。
+
+
+data test;
+    set weather_au;
+    TavgCPrev=lag(TavgC);
+    if _n_>1 then do;
+       if TavgC-TavgCPrev<0 then Change="Down";
+       else if TavgC-TavgCPrev>0 then Change="Up";
+       else Change="Even";
+    end;
+run;
+corerct
+Correct
+The LAG function stores previous values in a queue when the LAG function is executed. 
+If you use LAG or LAG1, you are looking for that column's value from the previous row. 
+It can be used to compute new columns or in conditional expressions. There is only one argument allowed in the function.
+LAG関数は、LAG関数が実行されると、前の値をキューに格納します。LAGやLAG1を使用する場合、
+前の行からその列の値を探していることになります。これは、新しい列の計算や条件式の中で使用することができます。
+この関数で許される引数は1つだけです。
+
+
+不正解
+You chose the extra incorrect answers.
+3.Which DATA step will return a USNum value of 3 and a WordNum value of 4?
+3.USNum値3、WordNum値4を返すDATAステップはどれでしょうか？
+
+
+data TextCount;
+    Text= 'AUSTRALIA ITALY AUSTRIA US';
+    USNum=countw(Text, 'US');
+    WordNum=count(Text);
+run;
+
+data TextCount;
+    Text= 'AUSTRALIA-ITALY-AUSTRIA-US';
+    USNum=count(Text, 'US');
+    WordNum=countw(Text,'-');
+run;
+correct
+正解
+The COUNT function counts the number of times that a specified substring appears within a 
+character string. The first argument specifies the string to search, and the second argument specifies 
+the substring to count. The COUNTW function counts the number of words in a character string. The optional 
+second argument specifies a delimiter.
+COUNT関数は、文字列の中で指定した部分文字列が出現する回数を数えます。第1引数で検索する文字列を指定し、
+第2引数でカウントする部分文字列を指定します。COUNTW関数は、文字列の中の単語の数を数えます。
+オプションの第2引数には、区切り文字を指定します。
+
+
+data TextCount;
+    Text= 'AUSTRALIA ITALY AUSTRIA US';
+    USNum=count(Text, 'US');
+    WordNum=countw(Text, '-');
+run;
+
+data TextCount;
+    Text= 'AUSTRALIA-ITALY-AUSTRIA-US';
+    USNum=countw(Text, 'US');
+    WordNum=count(Text);
+run;
+
+
+
+4.Which statement returns the number of words scanned in string until the word orange is found?
+4.オレンジという単語が見つかるまで、stringをスキャンした語数を返す文はどれか。
+
+wordLoc=find(string, 'orange', ' ');
+
+wordLoc=findw(string, 'orange', ' ', 'E');
+
+wordLoc=findw(string, 'orange', ' ');
+correct
+不正解
+The FINDW function with the E modifier counts the words that are scanned until the specified word is found,
+instead of determining the character position of the specified word in the string. Review Using FIND Functions.
+FINDW関数にE修飾子を付けると、文字列中の指定した単語の文字位置を決定する代わりに、指定した単語が見つかるまで
+スキャンした単語をカウントするようになります。FIND関数を使った復習。
+
+wordLoc=find(string, 'orange', ' ', 'E');
+
+
+
+5.Which of the following is not a benefit of Perl regular expressions?
+5.次のうち、Perl正規表現の利点でないものはどれですか。
+1点
+
+here is no SAS imposed byte size limitation to Perl regular expressions.
+Perl の正規表現には、SAS によるバイトサイズの制限がありません。
+
+A single perl regular expression can often accomplish what a combination of traditional SAS functions would do.
+従来のSAS関数の組み合わせでできることを、1つのPerl正規表現で実現できることが多い。
+correct
+不正解
+This is a benefit of Perl regular expressions. Review What are Perl Regular Expressions?
+Perlの正規表現のメリットです。復習 Perlの正規表現とは？
+
+Perl regular expressions can be used to validate data.
+Perl正規表現は、データの検証に使用することができます。
+
+Perl regular expressions look like values in the data
+Perl正規表現は、データ中の値のように見えます。
+
+
+6.The PRXMATCH function compiles a Perl regular expression and returns a pattern identifier number 
+that is used by other Perl functions and CALL routines to match patterns.
+6.PRXMATCH関数はPerl正規表現をコンパイルし、パターン識別番号を返します。
+他のPerl関数やCALLルーチンがパターンにマッチするために使用します。
+1点
+
+
+True
+correct
+不正解
+The PRXPARSE function compiles a Perl regular expression and returns a pattern identifier number 
+that is used by other Perl functions and CALL routines to match patterns. Review PRXPARSE and PRXMATCH Function.
+PRXPARSE 関数は Perl 正規表現をコンパイルして、他の Perl 関数や CALL ルーチンがパターンに一致させるために
+使用するパターン識別番号を返します。PRXPARSE関数とPRXMATCH関数を復習する。
+
+
+False
+
+
+7.Given the following statement, what value will be assigned to the Position column? 
+7.次の文が与えられたとき、位置の列にはどのような値が割り当てられますか？
+
+
+position = prxmatch('/aloha/', 'Hello aloha hola!');
+
+
+7
+correct
+正解
+PRXMATCH searches for a pattern match and returns the position at which the pattern is found. The string aloha is 
+found starting in the 7th position.
+PRXMATCHは、パターンマッチを検索し、パターンが見つかった位置を返します。文字列alohaは7番目の位置から見つかりました。
+
+missing
+
+2
+
+true
+
+
+8.The PRXPARSE function returns a character string that is used by other PRX functions and call routines.
+8.PRXPARSE関数は、他のPRX関数やコールルーチンで使用される文字列を返します。
+
+True
+correct
+不正解
+The PRXPARSE function returns a pattern identifier number that is used by other PRX functions and 
+call routines. Review PRXPARSE and PRXMATCH.
+PRXPARSE 関数は、他の PRX 関数やコール ルーチンで使用されるパターン識別子の番号を返します。
+PRXPARSE と PRXMATCH を確認します。
+
+
+False
+
+
+
+9.Which of the following statements will find and redact all phone numbers from the custInfo column?
+9.次のステートメントのどれが、custInfo列からすべての電話番号を検索して再編集しますか。
+
+
+PRXCHANGE('s/([2-9]\d\d\) ?[2-9]\d\d-\d\d\d\d/*PHONE NUMBER REMOVED*/', custInfo);
+
+PRXCHANGE('s/([2-9]\d\d\) ?[2-9]\d\d-\d\d\d\d/*PHONE NUMBER REMOVED*/', -1, custInfo);
+
+PRXCHANGE('s/([2-9]\d\d\) ?[2-9]\d\d-\d\d\d\d/);
+
+PRXCHANGE('s/([2-9]\d\d\) ?[2-9]\d\d-\d\d\d\d/, 1, custInfo);
+correct
+不正解
+The PRXCHANGE function locates a pattern to match and performs a substitution. 
+The first argument is a Perl regular expression. The second argument is a numeric value 
+that specifies the number of times to search for and replace the matching pattern. 
+If the value is -1, SAS replaces every occurrence of the pattern in the source string. 
+The third argument is the source string to be searched. Review PRXCHANGE Function.
+PRXCHANGE関数は、マッチするパターンを探し、置換を実行します。最初の引数はPerlの正規表現です。
+2番目の引数は、マッチするパターンを検索して置換する回数を指定する数値です。この値が-1である場合、
+SASはソース文字列内のパターンのすべての出現箇所を置き換えます。3 番目の引数は、
+検索対象のソース文字列です。PRXCHANGE関数を見直す。
+
+
+
+10.Which statement is true if 100 is provided as the second argument in the PRXCHANGE function?
+10.PRXCHANGE関数の第2引数に100が指定されている場合、どのステートメントが正しいですか？
+
+1点
+
+
+Search and replace until the end of the source is reached.
+ソースの末尾に達するまで検索と置換を行う。
+
+Search and replace the 100th word within the source.
+ソース内の100番目の単語を検索して置き換える。
+
+Search and replace up to one hundred times.
+100回まで検索と置換を行います。
+correct
+正解
+The second argument of the PRXCHANGE function is the number of times to search and replace.
+The value of -1 will search and replace until the end of source is reached.
+PRXCHANGE関数の第2引数には、検索と置換を行う回数を指定します。1を指定すると、
+ソースの終端に達するまで検索と置換を行います。
+
+
+Search and replace the value 100 with the value specified in the first argument.
+100を第1引数で指定された値で検索・置換する。
+
+
+
+
+**************************************************************************************************************************************************
+
+
+
+
+
+
+**************************************************************************************************************************************************
+
+
+
+
+
+**************************************************************************************************************************************************
