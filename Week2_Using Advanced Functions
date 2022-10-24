@@ -285,9 +285,14 @@ Search and replace the value 100 with the value specified in the first argument.
 LAG関数は列間の差を計算したり、平均を計算するのに便利である。
 0 / 1点
 
+True
+correct
 不正解
 The LAG function is useful for computing differences between rows and computing moving averages. Review Using the LAG Function.
 LAG関数は、行間の差分を計算したり、移動平均を計算したりするのに便利です。LAG関数の使い方を確認する。
+
+False
+
 
 
 
@@ -302,6 +307,15 @@ ABC Company   01APR2021  103.87
 
 0 / 1点
 
+data abcInfo;
+    set stock.abc;
+    Mnth1=lag1(Open);
+    Mnth2=lag2(Open);
+    Mnth3=lag3(Open);
+    if _N_ ge 3 then
+       Mnth3Avg=mean(Mnth1, Mnth2, Mnth3);
+run;
+Correct
 不正解
 In this example, the MEAN function calculates the average of the previous 3 months and excludes the current month. 
 The LAG function stores previous values in a queue when the LAG function is executed. Lag1 includes information 
@@ -311,6 +325,32 @@ Best Practice for Calculating a Moving Average.
 この例では、MEAN関数は過去3ヶ月の平均を計算し、当月は除外しています。LAG関数は、LAG関数が実行されると、
 以前の値をキューに格納します。Lag1 には前月の始値の情報が、Lag2 には 2 ヶ月前の始値の情報が格納されます。
 ラグ値は、条件付きIF文の前に計算しておく必要があります。移動平均の計算と移動平均の計算のベストプラクティスを復習してください。
+
+
+
+data abcInfo;
+    set stock.abc;
+    Mnth1=lag1(Open);
+    Mnth2=lag2(Open);
+    if _N_ ge 3 then
+       Mnth3Avg=mean(Open, Mnth1, Mnth2);
+run;
+
+data abcInfo;
+    set stock.abc;
+    Mnth1=lag1(Open);
+    Mnth2=lag2(Open);
+    Mnth3=lag3(Open);
+    if _N_ ge 3 then
+       Mnth3Avg=mean(Open, Mnth1, Mnth2, Mnth3);
+run;
+
+data abcInfo;
+    set stock.abc;
+    if _N_ ge 3 then Mnth3Avg=mean(Open, lag1(Open), lag2(Open));
+run;
+
+
 
 
 3.Given the following DATA step, what is the value of USNum and WordNum? 
@@ -325,6 +365,13 @@ run;
 
 1 / 1点
 
+
+USNum =1, WordNum =4
+
+USNum =3, WordNum =3
+
+USNum =3, WordNum =4
+correct
 正解
 The COUNT function counts the number of times that a specified substring appears within a character string. 
 The COUNTW function counts the number of words in a character string. A default list of delimiters is used.
@@ -332,21 +379,44 @@ COUNT関数は、文字列の中で指定した部分文字列が出現する回
 区切り記号のデフォルトリストが使用されます。
 
 
+USNum =2, WordNum =4
+
+
 4.Which statement returns the number of words scanned in string until the word orange is found?
 orangeという単語が見つかるまでに文字列を走査した語数を返す文はどれか。
 1 / 1点
 
+
+wordLoc=findw(string, 'orange', ' ', 'E');
+correct
 正解
 The FINDW function with the E modifier counts the words that are scanned until the specified word is found, 
 instead of determining the character position of the specified word in the string.
 FINDW関数にE修飾子を付けると、文字列中の指定された単語の文字位置を判断する代わりに、
 指定された単語が見つかるまでスキャンした単語数を数えます。
 
+
+wordLoc=findw(string, 'orange', ' ');
+
+wordLoc=find(string, 'orange', ' ');
+
+wordLoc=find(string, 'orange', ' ', 'E');
+
+
 5.Which of the following is not a benefit of Perl regular expressions?
 次のうち、Perlの正規表現の利点でないものはどれですか。
 
 1 / 1点
 
+
+There is no SAS imposed byte size limitation to Perl regular expressions.
+
+Perl regular expressions can be used to validate data.
+
+A single perl regular expression can often accomplish what a combination of traditional SAS functions would do.
+
+Perl regular expressions look like values in the data
+correct
 正解
 Perl regular expressions are often cryptic. Perl regular expressions consist of characters and special characters 
 that are called metacharacters.
@@ -357,9 +427,14 @@ Perl の正規表現は暗号化されていることが多い。Perl の正規�
 PRXMATCH関数のPerl正規表現は、区切り文字で始まり、区切り文字で終わる必要があります。
 1 / 1点
 
+True
+correct
 正解
 A Perl regular expression within the PRXMATCH function must start and end with a delimiter such as the forward slash.
 PRXMATCH 関数内の Perl 正規表現は、フォワードスラッシュなどのデリミタで始まり、デリミタで終わ る必要があります。
+
+False
+
 
 
 7.Which of the following PRX statements will search for a pattern match and return the position at which the pattern is found?
@@ -367,6 +442,13 @@ PRXMATCH 関数内の Perl 正規表現は、フォワードスラッシュな�
 
 0 / 1点
 
+
+Position=prxmatch('/The quick brown fox/', 'brown');
+
+Position=prxparse('/The quick brown fox/', 'brown');
+
+Position=prxmatch('The quick brown fox', 'brown');
+correct
 不正解
 The PRXMATCH function searches for a pattern match and returns the position at which the pattern is found.The first argument 
 is a Perl regular expression that must be enclosed with forward slashes. The second argument is the value to search. 
@@ -374,12 +456,24 @@ Review What are Metacharacters? and PRXPARSE and PRXMATCH Function.
 PRXMATCH関数は、パターンマッチを検索し、パターンが見つかった位置を返します。最初の引数はPerlの正規表現で、スラッシュで囲む必要があります。
 第2引数には、検索する値を指定します。メタキャラクタとは何か、PRXPARSE関数とPRXMATCH関数について復習してください。
 
+Position=prxparse('The quick brown fox', 'brown');
+
+
 
 
 8.The PRXPARSE function returns a _______________ that is used by other PRX functions and call routines.
 PRXPARSE 関数は、他の PRX 関数やコールルーチンで使用される _______________ を返します。
 1 / 1点
 
+
+position at which a pattern is found
+
+character string
+
+pattern
+
+pattern identifier number
+correct
 正解
 The PRXPARSE function returns a pattern identifier number that is used by other PRX functions and call routines.
 PRXPARSE 関数は、他の PRX 関数やコールルーチンで使用されるパターン識別子の番号を返します。
@@ -390,6 +484,8 @@ PRXPARSE 関数は、他の PRX 関数やコールルーチンで使用される
 
 1 / 1点
 
+PRXCHANGE ('s/ St / Street /', -1, address);
+correct
 正解
 The PRXCHANGE function locates a pattern to match and performs a substitution. 
 The first argument is a Perl regular expression. The second argument is a numeric value that specifies 
@@ -400,16 +496,34 @@ PRXCHANGE関数は、マッチするパターンを見つけて置換を実行�
 SAS はソース文字列内のパターンのすべての出現箇所を置き換えます。3番目の引数は、検索するソース文字列です。
 
 
+PRXREPLACE ('s/ St / Street /', -1, address);
+
+PRXREPLACE ('s/ St / Street /', 1, address);
+
+PRXCHANGE ('s/ St / Street /', 1, address);
+
+
+
 10.What does the value -1 for the times argument specify in the PRXCHANGE function?
 PRXCHANGE関数において、引数timesの値-1は何を指定するのですか？
 
 1 / 1点
 
+
+Search and replace the middle occurrence.
+
+Search and replace one time from the end of the source.
+
+Search and replace until the end of the source is reached.
+correct
 正解
 The second argument of the PRXCHANGE function is the number of times to search and replace. 
 The value of -1 will search and replace until the end of source is reached.
 PRXCHANGE関数の第2引数には、検索と置換を行う回数を指定します。1を指定すると、
 ソースの終端に到達するまで検索と置換を行います。
+
+Search and replace one time from the beginning of the source.
+
 
 
 
