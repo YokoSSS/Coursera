@@ -260,6 +260,11 @@ PICTUREステートメントについて、正しい記述はどれか。
 
 It is best to set the DEFAULT option within the PICTURE statement equal to the smallest possible formatted value.
 PICTURE文のDEFAULTオプションは、可能な限り小さな書式値と等しく設定するのが最良である。
+不正解
+The DEFAULT option should be set to accommodate the largest possible formatted value. 
+Review Creating Custom Formats and Custom Date and Datetime Formats.
+DEFAULTオプションは、可能な限り大きなフォーマット値に対応するように設定する必要があります。
+カスタム書式の作成とカスタム日付・日時書式を確認する。
 
 The PICTURE statement creates a format that specifies a template for displaying character values.
 PICTURE文は、文字値を表示するための雛形を指定する書式を作成する。
@@ -269,6 +274,7 @@ PICTURE文は、FORMAT手続き内だけで有効である。
 
 Numeric values may be formatted using a PICTURE statement within the DATA step.
 数値は、DATAステップの中でPICTURE文を用いて書式設定することができる。
+
 
 
 2.Which PICTURE statement generates the following results when the custom format is used with the Number column? 
@@ -286,6 +292,12 @@ Number
 picture FmtC low-high='009.99';
 
 picture FmtA low-high='999.99';
+uncorrect
+不正解
+Using a non-zero digit selector in the tens and hundreds position requires that a 
+number be printed in that place. Review Custom Numeric Formats.
+十の位と百の位に0でない数字セレクタを使用すると、その場所に数字を印刷する必要があります。
+カスタム数値フォーマットを確認する。
 
 picture FmtB low-high='000.00';
 
@@ -308,6 +320,15 @@ picture maskfmt
 
 picture maskfmt
     (prefix='*****') low-high='999999999';
+uncorrect
+不正解
+Only four digit selectors should be used in quotation marks display the last 4 numbers. 
+The PREFIX= option specifies a character string to place in front of the formatted value. 
+The PREFIX= option must be after the template. Review Custom Large Number Format.
+4桁のセレクタのみ引用符で囲んで使用し、最後の4桁の数字を表示させる必要があります。
+PREFIX=オプションは、フォーマットされた値の前に置く文字列を指定します。PREFIX=オプションは、
+テンプレートの後に付ける必要があります。Custom Large Number Formatをレビューします。
+
 
 picture maskfmt
     (prefix='*****') low-high='9999';
@@ -321,19 +342,24 @@ picture maskfmt
 
 
 
-picture maskfmt
-    low-high='999999999' (prefix='*****');
+MULTIPLIER=
+Correct
+MULTIPLIER= is a format option that specifies a number by which to multiply the value. MULT= is an alias for MULTIPLIER=.
+MULTIPLIER=は、値を乗算する数値を指定するフォーマットオプションです。MULT=はMULTIPLIER=の別名である。
 
-picture maskfmt
-    low-high='9999' (prefix='*****');
+MULT=
+Correct
+MULT= is an alias for MULTIPLIER=.
+MULT=は、MULTIPLIER=の別名です。
 
-picture maskfmt
-    (prefix='*****') low-high='999999999';
+MULTIPLY=
 
-picture maskfmt
-    (prefix='*****') low-high='9999';
-    
-    
+*=
+
+正解
+Great, you got all the right answers.
+
+
     
 
 5.Which PICTURE statement generates a date format that produces the following results when used with the Date column? 
@@ -360,6 +386,11 @@ proc format;
 proc format;
     picture longDate (default=30) low-high =
        '%A - %B %d, %Y';
+不正解
+The DATATYPE= option must be specified to use custom date directives. 
+The DATATYPE= value must match the data, which is DATE in this example. Review Custom Date and Datetime Formats.
+カスタム日付ディレクティブを使用するには、DATATYPE= オプションを指定する必要があります。
+DATATYPE= 値は、データ (この例では DATE) と一致しなければなりません。カスタム日付と日付時間の形式を確認する。
 
 proc format;
     picture longDate (default=30) low-high
@@ -382,6 +413,10 @@ run;
 DEF
 
 FUNCTION
+correct
+正解
+The FUNCTION statement begins the function definition. It names the function and defines the arguments and a return value.
+FUNCTION文は、関数定義を開始します。これは、関数に名前を付け、引数と戻り値を定義します。
 
 STARTFUNC
 
@@ -404,6 +439,10 @@ endsub;
 (addend1 addend2)
 
 (addend1, addend2)
+正解
+Arguments must be separated with a comma. Numeric arguments are not followed by a dollar sign.
+引数はカンマで区切らなければなりません。数値引数の後にはドル記号を付けない。
+
 
 (addend1 $, addend2 $)
 
@@ -414,6 +453,9 @@ endsub;
 8.RETURN文は、カスタム関数に複数の値を返させることができます。
 
 True
+不正解
+The RETURN statement can return only a single value. Review Creating and Using a Custom Function.
+RETURN文は、単一の値のみを返すことができます。カスタム関数の作成と使用について復習してください。
 
 
 False
@@ -424,6 +466,10 @@ False
 9.SASがカスタム関数を含むパッケージのmylib.funcテーブルを検索することを指定するステートメントはどれですか？
 
 options cmplib=mylib.funcs;
+correct
+正解
+The CMPLIB= option specifies the table (or tables) that SAS searches for a package that contains the desired function.
+CMPLIB=オプションは、SASが目的の関数を含むパッケージを検索するテーブル（複数可）を指定します。
 
 options functions=mylib.funcs;
 
@@ -443,6 +489,14 @@ The custom function will be stored in the pg3.funcs table.
 
 The custom function will be stored in the pg3.funcs package.
 カスタム関数は、pg3.func パッケージに格納されます。
+uncorrect
+不正解
+Custom functions are stored in a package within a SAS table. The OUTLIB= option consists of a three-level name. 
+The first two levels refer to the SAS table ( libref.tablename ), and the third level refers to the package. 
+Review Creating and Using a Custom Function.
+カスタム関数は、SASテーブル内のパッケージに格納されます。OUTLIB=オプションは、3レベルの名前から構成されます。
+最初の 2 レベルは SAS テーブル ( libref.tablename ) を参照し、3 レベルはパッケージを参照します。
+カスタム関数の作成と使用について復習します。
 
 The custom function will be stored in the misc library.
 カスタム関数は、miscライブラリに格納されます。
