@@ -1,0 +1,107 @@
+Level 2 Practice: Controlling Macro Variable Scope
+
+
+1.Reminder: If you restarted your SAS session, you must submit the libname.sas program in the EMC1V2 folder. 
+1.注意事項 SASセッションを再起動した場合は、EMC1V2フォルダのlibname.sasを提出する必要があります。
+
+Open m104p05.sas from the practices folder. Notice that macro variables are created inside the Scope macro using %LET statements. 
+プラクティスフォルダから m104p05.sas を開いてください。マクロ変数が%LET文を使ってScopeマクロの内部に作成されていることに注意してください。
+
+Highlight the code in Section 1, run the selection, and review the log. Note: The log labels global macro variables as GLOBAL and local macro variables with the name of the macro.  
+セクション1のコードを強調表示し、選択項目を実行し、ログを確認してください。注：ログでは、グローバルマクロ変数をGLOBAL、ローカルマクロ変数をマクロ名でラベル付けしています。 
+
+In which symbol table were the macro variables created?  
+マクロ変数はどのシンボルテーブルで作成されましたか。 
+
+Note: For each question in this practice, type either Local or Global for your answer.
+注：この練習の各質問について、あなたの答えのためにローカルまたはグローバルのどちらかをタイプしてください。
+
+My answer:
+LOCAL
+
+
+2.Find Section 2 in the program. Notice that macro variables are created inside the Scope macro using the SQL INTO clause. 
+2.プログラムのセクション2を見つけてください。マクロ変数は、SQLのINTO句を使用して、Scopeマクロの内部で作成されることに注意してください。
+
+Highlight the code in Section 2, run the selection, and review the log.
+セクション2のコードを強調表示し、選択範囲を実行し、ログを確認してください。
+
+In which symbol table were the macro variables created?
+マクロ変数はどのシンボルテーブルで作成されましたか。
+
+My answer: Local symbol table  
+
+
+mc1.storm_cat
+
+
+不正解
+Scope's local symbol table  
+
+
+3.Find Section 3 in the program. Notice that macro variables are created inside the Scope macro using the CALL SYMPUTX routine in a DATA step. 
+3.プログラム中のセクション3を見つけてください。マクロ変数は、DATAステップのCALL SYMPUTXルーチンを使って、スコープマクロの内部で作成されていることに注意してください。
+
+Highlight the code in Section 3, being sure to include the %SYMDEL statement. Run the selection and review the log.
+セクション3のコードをハイライト表示し、%SYMDEL文が含まれていることを確認してください。選択部分を実行し、ログを確認してください。
+
+In which symbol table were the macro variables created?
+マクロ変数はどのシンボルテーブルで作成されましたか？
+
+
+
+My answer: Global
+
+
+不正解
+Global symbol table. The Scope macro doesn't accept parameters or include any %LET statements, so no local symbol table is created. 
+Because there is no local symbol table, CALL SYMPUTX creates the macro variables in the global symbol table.  
+
+
+4.Add a %LOCAL statement before the DATA step to define a macro variable named x. 
+4.DATAステップの前に%LOCAL文を追加して、xという名前のマクロ変数を定義してください。
+
+Highlight the code in Section 3, run the selection, and review the log.
+セクション3のコードを強調表示し、選択範囲を実行し、ログを確認してください。
+
+In which symbol table were the macro variables created?
+マクロ変数はどのシンボルテーブルで作成されましたか？
+
+
+My answer: Local
+
+/*
+Scope's local symbol table
+
+%macro scope;
+%local x;
+data _null_;
+	set mc1.storm_cat end=last;
+	call symputx(cat('stormtype',_n_),Damage);
+	if last=1 then
+		call symputx('num',_n_);
+run;
+%put _user_;
+%mend scope;
+
+%scope
+
+%symdel stormtype1 stormtype2 stormtype3 stormtype4 stormtype5 num;
+*/
+
+5.Delete the %LOCAL statement and modify the CALL SYMPUTX statement to specify macro variables should be created in the local symbol table. 
+5.マクロ変数がローカルシンボルテーブルに作成されるように、%LOCAL文を削除して、CALL SYMPUTX文を修正します。
+
+Highlight the code in Section 3, run the selection, and review the log.
+セクション3のコードを強調表示し、選択項目を実行し、ログを確認してください。
+
+Note: The %SYMDEL statement generates warnings because the macro variables listed are not currently in the global symbol table.  
+注: リストされたマクロ変数が現在グローバル・シンボル・テーブルにないため、%SYMDEL ステートメントは警告を発生します。 
+
+In which symbol table were the macro variables created?
+マクロ変数はどのシンボル・テーブルで作成されましたか？
+
+My answer:Local
+
+不正解
+Scope's local symbol table  
