@@ -1,0 +1,32 @@
+Code Challenge 4.10
+
+
+1.Complete the query to generate a macro variable named List that includes a space-delimited list of the distinct values of Cylinders.
+
+/*
+proc sql noprint;
+select distinct Cylinders
+    < ADD CODE HERE >
+    from sashelp.cars
+    where Cylinders ne .;
+quit;
+
+%put &=list;
+
+%cyllist(&list)
+*/
+
+
+into :list separated by ' '
+正解
+
+proc sql noprint;
+select distinct Cylinders
+    into :list separated by ' '
+    from sashelp.cars
+    where Cylinders ne .;
+quit;
+
+%put &=list;
+
+%cyllist(&list)
