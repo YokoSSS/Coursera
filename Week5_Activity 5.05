@@ -1,0 +1,49 @@
+Activity 5.05
+
+1.Open m105a05.sas from the activities folder and perform the following tasks:
+activities フォルダから m105a05.sas を開き、以下の作業を行います。
+
+Open sashelp.cars to view the table and columns.
+sashelp.carsを開いて、テーブルとカラムを表示します。
+
+In the m105a05.sas program, select the SplitTable macro definition and submit the selected code.
+m105a05.sas プログラムで、SplitTable マクロ定義を選択し、選択したコードを送信します。
+
+Highlight each %SplitTable macro call, one at a time, and submit it. 
+各 %SplitTable マクロ呼び出しを 1 つずつハイライト表示し、サブミットします。
+
+Which macro calls fail and why?
+どのマクロ呼び出しが失敗し、その理由は何ですか？
+
+Note: This is a free response question and all attempts are marked correct. Type your response and compare your answer to the answer provided.
+注：これは自由回答問題であり、すべての試行が正解とされます。あなたの回答を入力し、提供された回答と比較してください。
+
+My answer:syntax error
+正解
+The second macro call fails because sashelp.crs does not exist.  %splittable(sashelp.crs,Origin)  
+2番目のマクロ呼び出しは、sashelp.crsが存在しないので失敗します。  %splittable(sashelp.crs,Origin)。
+
+The third macro call fails becaues Price is not in sashelp.cars.  %splittable(sashelp.cars,Price)
+3番目のマクロ呼び出しは、価格がsashelp.carsに存在しないため失敗します。  %splittable(sashelp.cars,価格)
+
+The fifth macro call fails because Make includes values that are not valid table names.  %splittable(sashelp.cars,Make) 
+Make が有効なテーブル名でない値を含むため、5 番目のマクロ呼び出しは失敗します。  %splittable(sashelp.cars,Make)。
+
+The sixth macro call fails because Cylinders is numeric and includes missing values. %splittable(sashelp.cars,Cylinders) 
+6 番目のマクロ呼び出しは、Cylinders が数値であり、欠損値を含むため、失敗します。%splittable(sashelp.cars,Cylinders)。
+
+------------------------
+
+Origin and DriveTrain both work because the column values are valid table names.  
+OriginとDriveTrainは、列の値が有効なテーブル名であるため、両方とも動作します。  
+
+ %splittable(sashelp.cars,Origin)
+
+%splittable(sashelp.cars,DriveTrain)
+
+
+------------------------
+
+  
+
+
