@@ -1,0 +1,99 @@
+Level 1 Practice: Using Iterative Processing and Indirect Referencing
+
+1.Reminder: If you restarted your SAS session, you must submit the libname.sas program in the EMC1V2 folder to access your practice files. 
+
+Open m104p10.sas from the practices folder. Review and submit the program. Verify that it generates a PROC MEANS report for Type 1 orders.
+
+Convert the code to a macro named Orders that uses a %DO loop to generate a separate PROC MEANS step for order types 1, 2, and 3. 
+コードをOrdersという名前のマクロに変換し、%DOループを使用して注文タイプ1、2、および3に対して個別のPROC MEANSステップを生成するようにします。
+Add a call to the %Orders macro. 
+%Orders マクロへの呼び出しを追加します。
+Submit the program and verify that it generates three PROC MEANS reports, one for each order type. 
+プログラムを送信して、注文の種類ごとに 3 つの PROC MEANS レポートが生成されることを確認します。
+
+Confirm that the mean of Total_Retail_Price for type 2 orders is 162.43.
+タイプ 2 の注文の Total_Retail_Price の平均が 162.43 であることを確認します。
+
+Modify the macro program to create a series of macro variables that stores the descriptive value for each numeric order type.  
+マクロプログラムを修正し、数値命令の種類ごとに記述値を格納する一連のマクロ変数を作成する。 
+
+Open the mc1.order_type_codes table to view the numeric order type values and associated labels.
+mc1.order_type_codes テーブルを開き、オーダータイプの数値と関連するラベルを表示します。
+
+Insert a DATA _NULL_ step after the %MACRO statement. In the step, create a series of macro variables, type1 to typen, where n is the number of order types found in the mc1.order_type_codes table.
+MACRO 文の後に DATA _NULL_ ステップを挿入します。このステップでは、一連のマクロ変数 type1 ～ typen を作成します。ここで、n は mc1.order_type_codes テーブルで見つかった注文タイプの数です。
+
+For each macro variable name, concatenate the prefix type with the value of order_type_code.
+各マクロ変数名について、order_type_codeの値に接頭辞typeを連結する。
+
+Assign the corresponding value of Order_Type to the macro variable.
+Order_Type の対応する値をマクロ変数に代入する。
+
+Create a macro variable named numTypes and assign it the number of type macro variables created. Hint: Use the END= option in the SET statement.  
+numTypesという名前のマクロ変数を作成し、作成したタイプマクロ変数の数を代入する。ヒント：SET文のEND=オプションを使用します。  
+
+Modify the Orders macro to display the order type labels rather than the numeric values. 
+数値ではなく、注文タイプのラベルを表示するようにOrdersマクロを修正します。
+
+Use numTypes as the stop value for the %DO loop.
+numTypes を %DO ループの停止値として使用します。
+
+Use an indirect reference to include the order type in the title as shown here:  Order Type: Retail Store
+以下のように、タイトルに注文タイプを含めるために間接参照を使用します。  注文タイプ。小売店
+
+Submit the program. What is the title of the last report?
+プログラムを提出します。最後のレポートのタイトルは何ですか？
+
+Note: Copy and paste or type the title exactly as shown.
+注：タイトルをコピー＆ペーストするか、表示されているとおりに正確に入力してください。
+
+My answer:Order Type: Internet
+
+正解
+The title is Order Type: Internet
+タイトルは「Order Type」です。インターネット
+
+The DATA step reads the mc1.order_type_codes lookup table and creates a macro variables 
+type1-type3 that store the corresponding descriptive values from the Order_Type column.
+DATAステップは、mc1.order_type_codesルックアップテーブルを読み込み、Order_Type列から対応する記述値を格納するマクロ変数 type1-type3 を作成します。
+
+The IF statement creates the numTypes macro variable with a value of 3, equal to the number of rows read from the input table.
+IF文は、入力テーブルから読み込まれた行の数に等しい3という値で、numTypesマクロ変数を作成します。
+
+The %DO loop executes 3 times.  
+DOループは3回実行されます。
+
+In the first loop, the value of the macro variable i is 1.
+TITLE文は間接的なマクロ変数の参照を含んでおり、&&type&iはまず&type1に解決されます。
+
+The TITLE statement includes an indirect macro variable reference. &&type&i first resolves to &type1.
+次に&type1がRetail Storeに解決される。このループはiが2と3のときに繰り返され、CatalogとInternetのタイトルとレポートが生成されます。
+
+Then &type1 then resolves to Retail Store. 
+その後、&type1 は Retail Store に解決される。
+
+The loop repeats for i equal to 2 and 3, generating titles and reports for Catalog and Internet. 
+このループはiが2および3の場合に繰り返され、CatalogとInternetのタイトルとレポートが生成されます。
+
+Solution code:
+ソリューションコード
+
+/*
+%macro orders;
+data _null_;
+    set mc1.order_type_codes end=last;
+    call symputx(cats("type",Order_type_code),Order_type);         
+    if last=1 then call symputx("numTypes", _n_);
+run;
+%do i=1 %to &numTypes;
+    title "Order Type: &&type&i";
+    proc means data=mc1.orders sum mean maxdec=2;
+        where Order_Type=&i;
+        var Total_Retail_Price CostPrice_Per_Unit;
+    run;
+%end;
+%mend orders;
+
+%orders
+*/
+
