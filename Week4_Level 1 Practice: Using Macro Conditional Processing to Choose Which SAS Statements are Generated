@@ -35,6 +35,12 @@ Note: Type a numeric value for your answer.
 
 
 My answer:
+90
+
+https://github.com/YokoSSS/Coursera/issues/90#issue-1422147682
+
+正解
+There are 90 customers in the Customers from Country: AU report.
 
 /*
 %macro customerlist(country);
