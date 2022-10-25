@@ -1,0 +1,33 @@
+
+Activity 4.09
+
+1.Open m104a09.sas from the activities folder and perform the following tasks:
+
+Run the program and examine the log. Identify and correct the syntax error and rerun the program. Verify that the macro compiled successfully.
+プログラムを実行し、ログを確認する。構文エラーを特定・修正し、プログラムを再実行する。マクロが正常にコンパイルされたことを確認する。
+
+Call the %AllCylinders macro with a start value of 3 and stop value of 12.
+
+Examine the reports and log. 
+レポートとログを調べます。
+
+Are reports created for all values between 3 and 12?
+3から12までのすべての値に対してレポートが作成されますか?
+
+1点
+
+Yes
+
+
+No
+
+No
+correct
+正解
+There are no cars with 7, 9, or 11 cylinders.
+
+To fix the error, you had to add %END; to close the %DO statements. 
+
+To call the macro: %allcylinders(3,12)
+
+
