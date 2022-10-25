@@ -1,0 +1,69 @@
+Level 1 Practice: Generating Data-Dependent Listing Reports
+
+1.Reminder: If you restarted your SAS session, you must submit the libname.sas program in the EMC1V2 folder. 
+注意事項 SASセッションを再起動した場合は、EMC1V2フォルダのlibname.sasを提出する必要があります。
+Open m105p01.sas from the practices folder. 
+
+The program submits a PROC PRINT step to generate a report for the requested customer type in the mc1.customers table. 
+このプログラムは、mc1.customers テーブルで要求された顧客タイプのレポートを生成する PROC PRINT ステップを送信します。
+
+Submit the program and verify that a report listing Gold high activity customers is produced.
+プログラムを送信し、アクティビティの高いゴールド顧客をリストしたレポートが作成されることを確認します。
+
+Include the code in a macro named GroupList with two parameters, 
+Tab for the input table and Col for the selected column. This macro generalizes the starter program so that 
+a PROC PRINT report is generated for each unique value of the specified column.
+入力テーブルを表すTabと選択された列を表すColの2つのパラメータを持つGroupListという名前のマクロにコードを含めます。
+このマクロは、指定された列の一意の値ごとに PROC PRINT レポートが生成されるように、スターター・プログラムを一般化します。
+
+Use a PROC SQL step to select the distinct uppercase values of the Col parameter. Load the values into 
+a numbered series of macro variables starting with Val1. Read the column from the table specified by the Tab parameter.
+PROC SQLのステップを使用して、Colパラメータの異なる大文字の値を選択します。その値をVal1から始まる一連のマクロ変数にロードします。
+Tabパラメータで指定されたテーブルから列を読み込む。
+
+Add a macro %DO loop to repeat the TITLE statement and PROC PRINT step once for each Valn macro variable created. 
+Note: Use the Sqlobs macro variable created automatically by the PROC SQL step to provide the stop value for the loop.
+マクロ%DOループを追加して、作成したValnマクロ変数ごとにTITLE文とPROC PRINTステップを1回ずつ繰り返す。
+注：PROC SQLステップで自動的に作成されるSqlobsマクロ変数を使用して、ループの停止値を提供する。
+
+Use an indirect macro variable reference to replace GOLD HIGH ACTIVITY with Val1 for 
+the first %DO loop iteration, Val2 for the second iteration, and so on.
+間接的なマクロ変数の参照を使用して、GOLD HIGH ACTIVITYを最初の%DOループ反復のVal1、2回目の反復のVal2、に置き換えます。
+
+Call the GroupList macro with mc1.customers and Type as the parameter values. Confirm that a separate 
+PROC PRINT step is executed for each distinct value of Type.
+パラメータ値としてmc1.customersとTypeを指定してGroupListマクロを呼び出す。
+Typeの値が異なるごとに、別々のPROC PRINTステップが実行されることを確認します。
+
+Call the GroupList macro with sashelp.cars and DriveTrain as the parameter values.
+sashelp.carsとDriveTrainをパラメータ値としてGroupListマクロを呼び出してください。
+
+What is the value of DriveTrain for the first report generated?  
+最初に作成されるレポートのDriveTrainの値は何ですか？ 
+
+My answer:Rear
+
+不正解
+Solution code:
+%macro grouplist(tab,col);
+proc sql noprint;
+select distinct upcase(&col)
+    into :val1-
+    from &tab;
+quit;
+
+%do i=1 %to &sqlobs;
+title "Group: &&val&i";
+proc print data=&tab;
+    where upcase(&col)="&&val&i";
+run;
+%end;
+%mend grouplist;
+
+%grouplist(sashelp.cars, DriveTrain)
+
+
+
+My answer:All
+正解
+
