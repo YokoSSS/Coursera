@@ -1,0 +1,37 @@
+Activity 5.02
+
+
+1.Open m105a02.sas from the activities folder and perform the following tasks:
+activities フォルダから m105a02.sas を開き、以下の作業を行います。
+
+Review the PROC CATALOG step. If necessary, update the CATALOG= option to reference the default 
+macro catalog in your environment. In SAS OnDemand for Academics, the default catalog is work.sasmac1.
+PROC CATALOG "ステップを確認します。必要に応じて、CATALOG= オプションを更新して、お使いの環境のデフォルト マクロ カタログを参照します。
+SAS OnDemand for Academics の場合、デフォルトのカタログは work.sasmac1 です。
+
+Highlight the PROC CATALOG step and run the selected code. Notice in the report that the %Datatyp macro is not listed.
+PROC CATALOG ステップをハイライト表示し、選択したコードを実行します。レポートでは、%Datatyp マクロがリストされていないことに注意してください。
+
+Run the %LET and %PUT statements that call the %Datatyp macro. View the log and confirm the macro runs successfully.
+Datatyp マクロを呼び出す %LET 文と %PUT 文を実行します。ログを表示し、マクロが正常に実行されることを確認します。
+
+Highlight the PROC CATALOG step again and run the selected code. 
+PROC CATALOG ステップを再度ハイライト表示し、選択したコードを実行します。
+
+Is %Datatyp included in the report?
+レポートに %Datatyp が含まれていますか?
+
+https://github.com/YokoSSS/Coursera/issues/96#issue-1422430286
+1点
+
+Yes
+正解
+The first time the %Datatyp macro is called in a SAS session, it is compiled and added to the default catalog. 
+%Datatyp calls other autocall macros, which are also added to the default catalog.  
+
+No
+uncorrect
+The first time the %Datatyp macro is called in a SAS session, it is compiled and added to the default catalog. 
+%Datatyp calls other autocall macros, which are also added to the default catalog.  
+SAS セッションで %Datatyp マクロが初めて呼び出されると、それがコンパイルされて既定カタログに追加されます。
+Datatyp は、他の自動呼び出しマクロを呼び出し、それらも既定カタログに追加されます。 
