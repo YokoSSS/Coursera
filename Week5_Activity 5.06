@@ -1,0 +1,42 @@
+Activity 5.06
+
+1.Open m105a06.sas from the activities folder and perform the following tasks:
+アクティビティフォルダ内のm105a06.sasを開き、以下の作業を行います。
+
+Review the program and notice that the query is reading all columns from the dictionary.
+columns table for sashelp.cars. Run the program and observe the information available in the generated report.
+プログラムを確認し、クエリがsashelp.carsのdictionary.columnsテーブルからすべての列を読み取っていることに気がつきます。
+プログラムを実行し、生成されたレポートで利用可能な情報を確認します。
+
+Modify the query to select only the Name column and to store the returned values as a comma-delimited list in a macro variable named VarList.
+Name 列のみを選択し、返された値を VarList という名前のマクロ変数にカンマ区切りリストとして格納するように、クエリを修正します。
+
+Add &VarList after the colon in the %PUT statement. Run the program and verify that the log lists 15 column names.
+PUT 文のコロンの後に &VarList を追加します。プログラムを実行し、ログに 15 の列名がリストされることを確認します。
+
+Modify the program to examine the columns in sashelp.class. Run the program. 
+sashelp.class の列を検査するようにプログラムを修正します。プログラムを実行します。
+
+How many columns are listed in the log?
+ログに表示される列の数はいくつですか？
+
+Note: Type a numeric value for your answer.
+注：答えには数値を入力してください。
+
+My answer: 5
+
+正解
+Five columns are listed in the log: Name, Sex, Age, Height, and Weight.  
+
+/*
+proc sql;
+select name
+	into :varlist separated by ','
+	from dictionary.columns
+	where libname="SASHELP" and 
+		  memname="CLASS";
+quit;
+
+%put NOTE: Columns in SASHELP.CLASS include: &varlist;
+*/
+
