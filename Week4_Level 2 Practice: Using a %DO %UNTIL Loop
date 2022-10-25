@@ -1,0 +1,47 @@
+Level 2 Practice: Using a %DO %UNTIL Loop
+
+1.Reminder: If you restarted your SAS session, you must submit the libname.sas program in the EMC1V2 folder to access your practice files.
+注意事項SASセッションを再起動した場合は、EMC1V2フォルダのlibname.sasプログラムを提出して、練習用ファイルにアクセスする必要があります。
+
+Open m104p11.sas from the practices folder. Review and submit the program. Verify that the maximum wind speed for the 2015 season was 213 MPH.
+practice フォルダにある m104p11.sas を開いてください。プログラムを確認し、提出します。2015年シーズンの最大風速が213MPHであることを確認します。
+
+https://github.com/YokoSSS/Coursera/issues/94#issue-1422390250
+
+Modify the Storms macro to accept a space-separated list of years. Use a %DO %UNTIL loop and the %SCAN macro function to 
+generate a report for each year in the list. Submit the macro definition and verify that it completed compilation without errors.
+Storms マクロを修正して、スペースで区切られた年号のリストを受け取れるようにします。
+DO %UNTIL ループと %SCAN マクロ関数を使用して、リストの各年についてレポートを生成します。マクロ定義を送信し、
+エラーなしでコンパイルが完了したことを確認します。
+
+Call %Storms to generate a report for the 2011 and 2014 seasons as shown here:  %storms(2011 2014)
+以下に示すように、%Storms を呼び出して、2011 年と 2014 年のシーズンのレポートを生成します。  %storms(2011 2014)
+
+Which year had the highest maximum wind speed? 
+最大風速が最も高かったのはどの年ですか?
+
+My answer:
+2014
+正解
+2014 had the highest maximum wind speed. The maximum wind speed was 155 MPH in 2011 and 161 MPH in 2014.  
+
+/*
+%macro storms(years);
+%let i=1;
+%let yr=%scan(&years,&i);
+%do %until(&yr eq );
+    title "&yr Storms";
+    proc means data=mc1.storm_final n min mean max
+               maxdec=0;
+        var MaxWindMPH MinPressure;
+        where season=&yr;
+    run;
+    %let i=%eval(&i+1);
+    %let yr=%scan(&years,&i);
+%end;
+title;
+%mend storms;
+
+%storms(2011 2014)
+*/
+
