@@ -1,2 +1,51 @@
 Activity 4.08
 
+
+1.Open m104a08.sas from the activities folder and perform the following tasks:
+アクティビティフォルダからm104a08.sasを開き、以下の作業を行います。
+
+Review the program and notice that different DATA steps run, depending on the value of the Loc parameter. 
+The avgfuel macro call at the end of the program assigns Europe to the Loc parameter.
+プログラムを見て、Locパラメータの値によって、異なるDATAステップが実行されることに注意してください。
+プログラムの最後にあるavgfuelマクロコールは、LocパラメータにEuropeを代入しています。
+
+Run the program and view the log. Notice the MPRINT messages displaying the final program that was compiled and executed.
+プログラムを実行し、ログを表示します。コンパイルされ、実行された最終的なプログラムを表示するMPRINTメッセージに注意してください。
+
+Call the avgfuel macro with usa as the parameter value, by submitting only the macro call. 
+View the log. ログを見る。
+Notice that it is hard to tell which DATA step executed because the log only shows the macro call. We can see that no rows were read from sashelp.cars, so the new table is empty.  
+パラメータ値として usa を持つ avgfuel マクロを、マクロ呼び出しのみを送信することにより、呼び出してください。
+ログにはマクロ呼び出しだけが表示されているので、どの DATA ステップが実行されたかを知ることは困難であることに注意してください。
+sashelp.cars から行が読み込まれなかったので、新しいテーブルは空であることがわかります。
+
+Submit the macro call again, but this time include the OPTIONS statements to enable and disable MPRINT and MLOGIC. View the log. 
+マクロコールを再度送信します。今回は、MPRINTとMLOGICを有効または無効にするOPTIONSステートメントを含めます。ログを表示します。
+
+Which DATA step was compiled and executed?
+どのDATAステップがコンパイルされ、実行されましたか？
+
+Note: This is a free response question and all attempts are marked correct. Type your response and compare your answer to the answer provided.
+注：これは自由回答問題で、すべての試行が正しくマークされます。あなたの答えを入力し、提供された答えと比較してください。
+
+second DATA step
+正解
+The generated code shows that the second DATA step executed to create the table fuel_usa. 
+The step calculates AvgKmL even though we asked for cars manufactured in the United States. 
+This is because the %IF condition was false due to case sensitivity, so the code in the %ELSE %DO block was generated and executed.
+生成されたコードを見ると、2番目のDATAステップが実行されてfuel_usaテーブルが作成されていることがわかります。
+このステップでは、米国で製造された車を要求したにもかかわらず、AvgKmLを算出しています。
+これは、%IF 条件が大文字小文字を区別するために偽であったため、%ELSE %DO ブロックのコードが生成され実行されたからです。
+
+This macro can be improved by using both UPCASE and %UPCASE to make the comparisons case insensitive. 
+Instead of using %ELSE %DO, it would be safer to use %ELSE %IF to check for specific values. 
+For multiple values, this would require the use of a compound condition using the OR operator or using the macro IN operator.  
+このマクロは、UPCASE と %UPCASE の両方を使用して比較の大文字と小文字を区別しないようにすることで改善されます。
+ELSE %DO を使用する代わりに、特定の値をチェックするために %ELSE %IF を使用すると安全でしょう。
+複数の値の場合、OR 演算子を使用した複合条件またはマクロの IN 演算子を使用する必要があります。 
+
+
+
+
+
+
