@@ -1,0 +1,106 @@
+Level 1 Practice: Validating a Macro Parameter
+
+1.Reminder: If you restarted your SAS session, you must submit the libname.sas program in the EMC1V2 folder. 
+注意事項 SASセッションを再起動した場合は、EMC1V2フォルダのlibname.sasを提出する必要があります。
+
+Open m105p04.sas from the practices folder. Review and submit the program.
+practices フォルダにある m105p04.sas を開いてください。プログラムを確認し、提出する。
+
+Modify the macro:
+マクロを修正する。
+
+Convert the Type parameter value to uppercase.
+Typeパラメータ値を大文字に変換する。
+
+
+Add %IF-%THEN and %ELSE statements to validate the Type parameter. 
+Typeパラメータを検証するために、%IF-%THENおよび%ELSE文を追加します。
+
+The macro should submit the TITLE statement and PROC FREQ step only if the Type parameter is LOW, MEDIUM, or HIGH. 
+TypeパラメータがLOW、MEDIUM、またはHIGHの場合にのみ、マクロはTITLE文とPROC FREQステップをサブミットする必要があります。
+
+If the Type parameter is not correct, the macro should write the follwoing message to the log, where xxxx is the Type parameter:
+Typeパラメータが正しくない場合、マクロは以下のメッセージをログに書き込む必要があります（xxxxはTypeパラメータ）。
+
+1 ERROR: Invalid TYPE: xxxx
+2 ERROR: Valid TYPE values are HIGH, MEDIUM, LOW
+2 エラーです。有効なTYPE値は、HIGH、MEDIUM、LOWです。
+Resubmit the macro definition and call the macro using a valid parameter value and verify that a 
+report is produced. Then call the macro with an invalid parameter value. Verify that the error message is displayed in the log.
+マクロ定義を再送信し、有効なパラメータ値を使用してマクロを呼び出し、レポートが作成されることを確認します。
+レポートが作成されることを確認します。次に、無効なパラメータ値でマクロを呼び出します。ログにエラーメッセージが表示されることを確認します。
+
+
+Modify the macro to first test whether Type is null. If so, do not execute the TITLE statement or 
+PROC FREQ step. Instead, the macro should write this message to the log:
+最初にTypeがNULLであるかどうかをテストするようにマクロを修正します。もしそうなら、TITLE文またはPROC FREQステップを実行しません。
+PROC FREQステップを実行しません。代わりに、マクロはログにこのメッセージを書き込む必要があります。
+ 
+
+1 ERROR: Missing TYPE
+2 ERROR: Valid TYPE values are HIGH, MEDIUM, LOW
+
+Resubmit the macro definition and call the macro using a valid parameter value and 
+verify that a report is produced. Then call the macro with an invalid parameter value. 
+マクロ定義を再送信し、有効なパラメータ値を使用してマクロを呼び出し、レポートが作成されることを確認します。
+レポートが作成されることを確認します。次に、無効なパラメータ値でマクロを呼び出します。
+
+Verify that the error message is displayed in the log.
+ログにエラーメッセージが表示されることを確認します。
+
+
+Modify the macro to first test whether Type is null.  
+最初にTypeがNULLかどうかをテストするようにマクロを修正します。
+If so, do not execute the TITLE statement or PROC FREQ step. Instead, the macro should write this message to the log:
+もしそうなら、TITLE文やPROC FREQステップを実行しないでください。代わりに、マクロはログにこのメッセージを書き込む必要があります。
+
+
+Resubmit the macro definition and call the macro with a null parameter value, 
+valid values in uppercase and lowercase, and an invalid value.  
+マクロ定義を再送信し、NULLパラメータ値、大文字と小文字の有効値、および無効値でマクロを呼び出します。 
+
+How many low-activity customers are Italian (IT)? 
+イタリア人（IT）の低活性顧客は何人ですか？
+
+Note: Type a numeric value for your answer.
+注：回答には数値を入力してください。
+
+My answer:
+60
+正解
+
+
+/*
+%macro custtype(type) / minoperator;
+%if &type= %then %do;
+    %put ERROR: Missing TYPE;
+    %put ERROR: Valid TYPE values are HIGH, MEDIUM, LOW;
+%end;
+%else %do;
+    %let type=%upcase(&type);
+    %if &type in HIGH MEDIUM LOW %then %do;
+        title "&Type Activity Customers by Country";
+        proc freq data=mc1.customers order=freq;
+            where upcase(Type) contains "&type";
+            tables Country;
+        run;
+        title;
+    %end;
+    %else %do;
+        %put ERROR: Invalid TYPE: &type;
+        %put ERROR: Valid TYPE values are HIGH, MEDIUM, LOW;
+    %end;
+%end;
+%mend custtype;
+
+%custtype(HIGH)
+%custtype(low)
+%custtype(med)
+%custtype()
+*/
+
+
+
+Solution code:
+
+
