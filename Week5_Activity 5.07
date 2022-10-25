@@ -1,0 +1,47 @@
+Activity 5.07
+
+1.Open m105a07.sas from the activities folder and perform the following tasks:
+1.アクティビティ フォルダーから m105a07.sas を開き、次のタスクを実行します。
+
+Submit the SplitTable macro definition and verify that it compiles without error.
+SplitTable マクロ定義を送信し、エラーなしでコンパイルされることを確認します。
+
+Call the SplitTable macro with help as the parameter value. View the log. Notice that error messages appear in the comment. 
+The %PUT statement that displays the syntax contains the string %splittable. This is recognized as a macro trigger, and 
+the macro processor attempts to execute %splitTable(tab,col).  
+パラメータ値として help を指定して SplitTable マクロを呼び出します。 ログを表示します。 コメントにエラー メッセージが表示されることに注意してください。
+構文を表示する %PUT ステートメントには、文字列 %splittable が含まれています。 これはマクロトリガーとして認識され、
+マクロ プロセッサは %splitTable(tab,col) を実行しようとします。
+
+Use a macro quoting function to prevent macro triggers from resolving in the %PUT statements. 
+マクロ クォーティング関数を使用して、マクロ トリガーが %PUT ステートメントで解決されないようにします。
+Submit the macro definition and verify that it compiles without error.
+マクロ定義を送信し、エラーなしでコンパイルされることを確認します。
+
+Call the SplitTable macro with help as the parameter value. 
+パラメータ値として help を指定して SplitTable マクロを呼び出します。
+
+Is the macro documentation printed in the log?
+マクロのドキュメントはログに出力されていますか?
+
+1点
+
+Yes
+correct
+
+No
+
+
+正解
+Use %NRSTR to mask the macro trigger.  
+/*
+%put WARNING-************************************;
+%put WARNING-* SplitTable Macro                 *;
+%put %nrstr(WARNING-*   Syntax: %splittable(tab,col)   *);
+...
+
+*/
+
+
+
+
