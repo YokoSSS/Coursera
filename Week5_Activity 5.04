@@ -1,0 +1,39 @@
+Activity 5.04
+
+
+1.Open m105a04.sas from the activities folder. This program includes two SELECT statements.
+アクティビティフォルダから m105a04.sas を開いてください。このプログラムには、2つのSELECT文が含まれています。
+
+Run the program. The first report includes the distinct values of Origin. 
+このプログラムを実行します。最初のレポートには、Originの異なる値が含まれています。
+
+The second report includes a separate WHEN statement for each value of Origin.
+2つ目のレポートには、Originの各値に対応する別々のWHEN文が含まれています。
+
+Change the value of the Col macro variable to Type. Run the program again and observe the two reports.
+マクロ変数Colの値をTypeに変更します。もう一度プログラムを実行し、2つのレポートを観察してください。
+
+What syntax do we need to add to this PROC SQL step?
+このPROC SQLのステップには、どのような構文を追加する必要があるでしょうか？
+
+Note: This is a free response question and all attempts are marked correct. Type your response and compare your answer to the answer provided.
+注：これは自由回答問題で、すべての試行が正しくマークされます。あなたの答えを入力し、提供された答えと比較してください。
+
+正解
+Write an INTO clause in the first query to create a macro variable named tablist that 
+is a space-delimited list of the distinct values returned by the query:
+最初のクエリにINTO句を記述し、クエリから返される異なる値のスペース区切りリストであるtablistというマクロ変数を作成します。
+
+into :tablist separated by " "  
+
+Write an INTO clause in the second query to create a macro variable named whenlist that is a 
+semicolon-delimited list of the distinct values returned by the query:
+
+into :whenlist separated by ";"
+
+
+
+
+
+
+
