@@ -1,0 +1,70 @@
+Activity 5.01
+
+1.Open m105a01.sas from the activities folder. 
+1.アクティビティフォルダからm105a01.sasを開く。
+This program creates a macro named PrintTable in the default 
+macro catalog and uses PROC CATALOG to list the contents of the catalog.
+このプログラムは、デフォルトのマクロカタログにPrintTableという名前のマクロを作成し、PROC CATALOGを使用してカタログの内容を一覧表示します。
+Run the PRINTTABLE macro definition and verify that it compiles without errors. 
+マクロカタログにPrintTableという名前のマクロを作成し、PROC CATALOGを使用してカタログの内容を一覧表示します。
+
+Copy the following SQL step and paste it after the %PRINTTABLE macro definition.
+次の SQL ステップをコピーし、%PRINTTABLE マクロ定義の後に貼り付けます。
+
+
+/*
+1 proc sql;
+2 select *
+3    from dictionary.catalogs
+4     where objname='PRINTTABLE';
+5 quit;
+*/
+
+
+Run the step and view the report. Note the value of Library Name and Member Name. This is the default macro 
+catalog in your environment.
+ステップを実行し、レポートを表示します。Library NameとMember Nameの値に注意してください。これは、お使いの環境のデフォルトのマクロ 
+カタログです。
+
+Review the PROC CATALOG step. If necessary, change work.sasmacr in the CATALOG= option to reference the default 
+macro catalog you identified in the previous step.  Run the PROC CATALOG step. 
+PROC CATALOG ステップを確認します。必要に応じて、CATALOG=オプションのwork.sasmacrを変更して、前の手順で特定したデフォルト マクロ カタログを参照するようにします。
+
+This report includes all macros in the default macro catalog, including PRINTTABLE and its description.  
+このレポートには、PRINTTABLEとその説明を含む、デフォルト マクロ カタログのすべてのマクロが含まれています。 
+
+Run the program and examine the output table. 
+プログラムを実行し、出力テーブルを調べます。
+This report includes all macros in the default macro catalog, 
+このレポートには、デフォルトマクロカタログにあるすべてのマクロが含まれています。
+including PRINTTABLE and its description.
+PRINTTABLEとその説明を含む、デフォルトマクロカタログのすべてのマクロが含まれています。
+
+Uncomment the second CONTENTS statement. This statement creates a table named work.macrolist. The table includes 
+the macros in the catalog specified in the CATALOG= option. The WHERE= data set option filters the results, 
+including only macros with the string TABLE in their name.  Note: The single quotation marks prevent macro resolution, 
+so the % is treated as a wildcard for the LIKE operator rather than a macro trigger.  
+2番目のCONTENTS文のコメントを解除します。このステートメントにより、work.macrolist という名前のテーブルが作成されます。
+このテーブルには CATALOG= オプションで指定されたカタログ内のマクロが含まれます。WHERE= データセット・オプションは、
+結果をフィルタリングする。文字列 TABLE を名前に含むマクロのみが含まれます。 注：一重引用符は、マクロの解決を妨げます。
+マクロトリガではなく、LIKE 演算子のワイルドカードとして扱われます。 
+
+
+How many macros are included in the output table?  
+出力テーブルに含まれるマクロの数は？ 
+
+Note: Type a numeric value for your answer. Your answer may differ if you are not using SAS OnDemand for Academics for your practice environment. 
+注：回答には数値を入力してください。SAS OnDemand for Academicsを実務環境に使用していない場合、回答が異なる場合があります。
+
+6
+不正解
+Four macros include TABLE in the name, so the output table contains four rows.  
+4つのマクロは名前にTABLEを含むので、出力テーブルは4行を含む。 
+
+4
+正解
+Four macros include TABLE in the name, so the output table contains four rows.  
+
+
+
+
