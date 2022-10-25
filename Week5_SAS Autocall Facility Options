@@ -1,0 +1,16 @@
+SAS Autocall Facility Options
+Here are other options related to the SAS autocall facility:  
+
+
+Option                        Description
+
+MAUTOSOURCE|NOMAUTOSOURCE     Specifies whether the autocall feature is available  
+                              オートコール機能が利用可能かどうかを指定する。 
+                              
+MRECALL                       Specifies whether autocall libraries are searched for a member that was not found during an earlier search  
+                              以前の検索で見つからなかったメンバを自動呼び出しライブラリで検索するかどうかを指定します。 
+
+MAUTOCOMPLOC                  Displays the source location in the SAS log of an autocall macro when the autocall macro is compiled  
+                              MAUTOCOMPLOC オートコールマクロがコンパイルされたときに、オートコールマクロの SAS ログ内のソースの場所を表示します。 
+
+
