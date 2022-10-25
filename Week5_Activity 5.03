@@ -1,0 +1,43 @@
+Activity 5.03
+
+
+1.Open m105a03.sas from the activities folder.
+
+Review the PROC CATALOG step. If necessary, update the CATALOG= option to reference the default macro catalog in your environment.   
+
+Run the PROC CATALOG step and confirm that PROPCASE does not exist in work.sasmacr.
+
+Create a new program and enter the following code:
+
+1 %macro propcase(text);
+2    %sysfunc(propcase(&text))
+3 %mend propcase;
+4
+
+
+This PropCase macro applies the PROPCASE function to the text parameter. Do not run the program, but save it as propcase.sas in the autocall folder.
+
+Open the libname.sas program. Add an OPTIONS statement to set the SASAUTOS= option to include our &path/autocall folder as an additional autocall library. 
+
+1 options sasautos=("&path/autocall", sasautos); 
+2 
+
+Run the modified libname.sas program and save it.
+
+Return to the m105a03.sas program and uncomment the %PUT statement.
+
+Run the program. 
+
+Did %PropCase execute successfully, and has it been added to the default catalog?
+
+Note: Type Yes or No for your answer.
+
+My answer:Yes
+正解
+The user-defined PROPCASE macro executed, successfully converting the text string to proper case. 
+The PROC CATALOG output shows that PROPCASE was compiled and stored in the default macro catalog.
+ユーザー定義の PROPCASE マクロが実行され、テキスト文字列を適切なケースに変換することに成功しました。
+PROC CATALOG の出力は、PROPCASE がコンパイルされ、デフォルトのマクロカタログに保存されたことを示しています。
+
+
+
