@@ -1,0 +1,57 @@
+Level 1 Practice: Using Macro Conditional Processing to Choose Which SAS Statements are Generated
+
+1.Reminder: If you restarted your SAS session, you must submit the libname.sas program in the EMC1V2 folder to access your practice files. 
+
+Open m104p07.sas from the practices folder.
+
+Modify the CustomerList macro to test the country parameter. If the value is null, insert the following statements into the PROC PRINT step:
+CustomerList マクロを修正して、country パラメータをテストしてください。値がNULLの場合、PROC PRINTステップに次のステートメントを挿入してください。
+
+1 title "All Customers";
+2 var ID Name Country Type Age_Group;
+
+
+If the value is not null, insert the following statements into the PROC PRINT step:  
+値がNULLでない場合、PROC PRINTステップに次のステートメントを挿入します。
+
+1 title "Customers from Country: &country";
+2 where Country="&country";
+3 var ID Name Type Age_Group;
+
+
+Submit the macro definition and call the macro using a null value. 
+Verify that the title is All Customers and that 1800 rows were included in the report.
+マクロ定義を送信し、NULL値を使用してマクロを呼び出します。
+タイトルが「すべての顧客」となり、1800行がレポートに含まれることを確認します。
+
+Submit the macro call again with a value of AU for the country parameter.
+国パラメータにAUを指定して、再度マクロを呼び出します。
+
+How many customers are included in the report?  
+レポートに含まれる顧客数は何人ですか？ 
+
+Note: Type a numeric value for your answer.
+注：回答には数値を入力してください。
+
+
+My answer:
+
+/*
+%macro customerlist(country);
+proc print data=mc1.customers noobs;
+    %if &country= %then %do;
+        title "All Customers";
+        var ID Name Country Type Age_Group;
+    %end;
+    %else %do;
+        title "Customers from Country: &country";
+        where Country="&country";
+        var ID Name Type Age_Group;
+    %end;
+run;
+%mend customerlist;
+
+%customerlist(AU)
+*/
+
+
