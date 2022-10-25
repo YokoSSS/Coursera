@@ -1,0 +1,53 @@
+
+1.If necessary, start SAS Studio before you begin. If you restarted your SAS session, submit your libname.sas program to access the practice data.
+
+Open p301a03.sas from the activities folder and perform the following tasks:
+
+View the DATA step syntax.
+
+ Run the DATA step. 
+
+How many rows are in the output table?
+
+1点
+
+My answer:
+25
+https://github.com/YokoSSS/Coursera/issues/89#issue-1422057351
+
+2.What is the value of Year?
+
+1点
+My answer:
+2023
+
+
+3.Uncomment the OUTPUT statement. 
+
+Run the DATA step.
+
+How many rows are in the output table?
+
+1点
+My answer:
+125
+
+https://github.com/YokoSSS/Coursera/issues/89#issuecomment-1290184619
+
+4.How many times did SAS iterate through the DATA step based on the PUTLOG statement?
+
+1点
+My answer:
+25
+
+
+5.Run the PROC SGPLOT step. 
+
+In what year will the predicted population of India exceed China?  
+
+1点
+My answer:
+2021
+
+https://github.com/YokoSSS/Coursera/issues/89#issuecomment-1290191959
+
