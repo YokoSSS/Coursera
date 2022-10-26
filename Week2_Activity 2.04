@@ -1,0 +1,25 @@
+Activity 2.04
+
+
+1.Go to the Programming: SAS 9.4 and SAS Viya documentation.
+
+Under DATA Step, select Functions and CALL Routines.
+
+Under Dictionary of Functions and CALL Routines, select FINDW Function.
+
+Find and review the modifiers for the FIND and FINDW functions.
+
+Does the FINDW function contain more modifiers that the FIND function, or fewer?
+
+1点
+
+Fewer
+
+
+More
+correct
+
+正解
+The FINDW function contains more modifiers (20+) than the FIND function.  
+
+
