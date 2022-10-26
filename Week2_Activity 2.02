@@ -1,0 +1,21 @@
+Activity 2.02
+
+1.If necessary, start SAS Studio before you begin. If you restarted your SAS session, submit your libname.sas program to access the practice data.
+
+Open p302a02.sas from the activities folder and perform the following tasks:
+
+Complete the assignment statement for Open1MnthBack, 
+which is equal to the Open value from one previous month.
+Open1MnthBack の代入文を完成させます。これは、1 つ前の月の Open 値と同じです。
+Complete the assignment statement for Open2MnthBack, 
+which is equal to the Open value from two previous months.
+Open2MnthBack の代入文を完成させる。これは、2 つ前の月の Open 値に等しい。
+
+Run the program and view the results.
+プログラムを実行し、結果を表示します。
+What is the three-month average (Open3MnthAvg) for 02MAR2010?  
+Note: Type your answer as it appears in the results.
+2010 年 3 月 2 日の 3 か月平均 (Open3MnthAvg) はいくらか。 注：結果に表示されるように答えを入力してください。
+
+
+
