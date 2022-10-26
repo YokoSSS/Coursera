@@ -1,0 +1,82 @@
+Activity 2.01
+
+1.Go to the Programming: SAS 9.4 and SAS Viya documentation.
+
+Under DATA Step, select Function and CALL Routines.
+DATA Step] の下で、[Function and CALL Routines] を選択します。
+
+Under Dictionary of Functions and CALL Routines, select FIND Function.
+関数と CALL ルーチンの辞書]で、[FIND 関数]を選択します。
+
+Read about what the FIND function returns.
+FIND 関数が何を返すかについて読んでください。
+
+-----
+Categories:	Character
+カテゴリー: キャラクター
+
+CAS
+制限事項：本関数は、I18N レベル 0 を割り当てられ、SBCS データ用に設計されている。
+ただし、第1引数のstringがvarcharで指定され、マルチバイト文字がある場合、
+FIND関数はマルチバイトデータを処理します。
+詳細については、SAS National Language Support (NLS) の SAS String Functions の 
+Internationalization Compatibility を参照してください。リファレンス・ガイド』を
+参照してください。
+ヒント：『SAS National Language Support (NLS)』の KINDEX 関数を使用します。
+エンコーディングに依存しないコードを記述するには、代わりに
+『SAS National Language Support (NLS): Reference Guide』の
+KINDEX 関数を使用します。
+
+Syntax
+FIND(string, substring <, modifier(s)> <, start-position>)
+FIND(string, substring <, start-position> <, modifier(s)>)
+Required Arguments
+string
+specifies a character constant, variable, or expression that is searched for substrings.
+Tip	Enclose a literal string of characters in quotation marks.
+substring
+is a character constant, variable, or expression that specifies the substring of characters to search for in string.
+Tip	Enclose a literal string of characters in quotation marks.
+
+Optional Arguments
+modifier
+is a character constant, variable, or expression that specifies one or more modifiers. The following modifiers are valid:
+i or I
+ignores character case during the search. If this modifier is not specified, FIND searches only for character substrings with the same case as the characters in substring.
+t or T
+trims trailing blanks from string and substring.
+
+
+How many arguments are required for the FIND function? Note: 
+Type a numeric value.
+FIND 関数にはいくつの引数が必要ですか？注 
+数値を入力してください。
+
+my answer: 4
+The FIND function requires 2 arguments: string and substring. 
+不正解
+The FIND function returns a number that represents the first character 
+position where substring is found in string. If substring is not found,
+FIND returns a value of 0.  
+
+FIND関数は、文字列と部分文字列の2つの引数を必要とします。
+FIND関数は、stringの中でsubstringが見つかった最初の文字位置を表す数値を返します。
+もしsubstringが見つからなければ、FINDは値0を返します。
+
+2.How many modifiers are available for the FIND function?  
+Note: Type a numeric value.
+FIND関数で使用できる修飾子はいくつですか？ 注：数値を入力してください。
+
+
+my answer: 2
+
+正解
+Two modifiers, i and t, are available. The i modifier ignores case during the search,
+and the t modifier trims trailing blanks from string and substring. 
+The modifiers can be specified in upper or lower case.  
+i と t の 2 つの修飾子を使用できます。 
+i 修飾子は、検索時に大文字と小文字を区別しません。 
+75 t 修飾子は、文字列と部分文字列から末尾の空白を削除します。
+76 修飾子は、大文字または小文字で指定できます。
+
+
