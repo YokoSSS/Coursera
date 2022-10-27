@@ -1,0 +1,36 @@
+Activity 2.06
+
+
+1.If necessary, start SAS Studio before you begin. If you restarted your SAS session, submit your libname.sas program to access the practice data.
+1.必要であれば、事前に SAS Studio を起動してください。SAS セッションを再起動した場合は、練習データにアクセスするために libname.sas プログラムを提出します。
+
+Open p302a06.sas from the activities folder and perform the following tasks:
+アクティビティフォルダからp302a06.sasを開き、以下の作業を実行します。
+
+Run the PROC PRINT step and view the results.
+PROC PRINT ステップを実行し、結果を表示します。
+
+Modify the WHERE statement in the PROC PRINT step to find all the values of Narrative that contain EF3, EF-3, EF4, or EF-4.
+PROC PRINT ステップの WHERE 文を変更して、EF3、EF-3、EF4、または EF-4 を含む Narrative のすべての 値を検索します。
+
+Run the PROC PRINT step. View the results and the SAS log. 
+PROC PRINT ステップを実行します。結果と SAS ログを表示します。
+
+How many rows were read based on the WHERE statement?
+WHERE 文に基づき、何行が読み込まれましたか？
+
+My answer: 21
+
+正解
+There were 21 rows read based on the WHERE statement.  
+
+You can use any of the following WHERE statements:
+
+/*
+where prxmatch('/(EF3|EF-3|EF4|EF-4)/',Narrative)>0;
+where prxmatch('/(EF-?3|EF-?4)/',Narrative)>0;
+where prxmatch('/EF-?(3|4)/',Narrative)>0;
+where prxmatch('/EF-?[34]/',Narrative)>0;
+*/
+
+
