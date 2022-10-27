@@ -16,16 +16,27 @@ Which Perl regular expression will find tornados with a value of EF3, EF-3, EF4,
 
 
 '/(EF-?3|EF-?4)/'
+correct
+正解
+This is correct and specifies that the hyphen might be included in the matching text.  
 
 
 '/EF.[34]/'
+uncorrect
 
+これを選択しないでください
+This expression includes the period metacharacter instead of a literal hyphen. 
+A period requires any single character in that position, and we want to allow for only a dash or no character between EF and the number.  
 
 '/(EF3|EF-3|EF4|EF-4)/'  
-
+correct
+正解
+This is correct and specifies that the hyphen might be included in the matching text.  
 
 '/EF-?[34]/'
-
+correct
+正解
+This is correct and specifies that the hyphen might be included in the matching text.  
 
 
 
