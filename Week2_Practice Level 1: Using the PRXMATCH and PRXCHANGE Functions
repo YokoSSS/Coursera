@@ -1,0 +1,102 @@
+Practice Level 1: Using the PRXMATCH and PRXCHANGE Functions
+
+1.If necessary, start SAS Studio before you begin. If you restarted your SAS session, submit your libname.sas program to access the practice data.
+1.必要であれば、事前にSAS Studioを起動してください。SAS セッションを再起動した場合は、練習データにアクセスするために libname.sas プログラムを提出します。
+
+The pg3.np_acres table contains acreage amounts for national parks. The ParkName column contains the descriptive name for each park. 
+Find the national preserves by locating all rows with a ParkName value that contains the string N PRES, N PRESERVE, NPRES, or
+NPRE followed by a space. Within the ParkName values, modify the national preserve string to be displayed with the string of NPRES.  
+pg3.np_acres テーブルは、国立公園の地積量を含んでいます。ParkName 列には、各公園の説明的な名前が含まれています。
+文字列N PRES、N PRESERVE、NPRES、またはNPREを含むParkNameの値を持つすべての行を検索して、国立保護区を見つけます。
+NPRE のいずれかの文字列と空白を含む ParkName 値を持つすべての行を検索します。ParkName 値の中で、国立保護区の文字列を NPRES という文字列で表示するように変更します。 
+
+Open the p302p04.sas program in the practices folder. 
+practices フォルダーにある p302p04.sas プログラムを開きます。
+
+Run the program to view the ParkName values. 
+プログラムを実行し、ParkName 値を表示します。
+
+What is the value of ParkName in row 12?  Note: Copy and paste from the results or type the answer exactly as shown in the results.
+12 行目の ParkName の値は何ですか？ 注： 結果からコピー＆ペーストするか、結果に示されたとおりに答えを入力してください。
+
+1点
+12	Alaska	 	ANIAKCHAK N PRESERVE	AK	464,117.93
+
+My answer:
+ANIAKCHAK N PRESERVE
+
+
+2.Return to the code tab to modify the program.
+2.コードタブに戻り、プログラムを修正します。
+
+In an assignment statement, use the PRXMATCH function to create the column Position, which is equal to the starting 
+position of a string that represents national preserves. All national preserves will contain one of the following strings 
+followed by a space (\s): N PRES, N PRESERVE, NPRES, or NPRE.
+代入文の中で、PRXMATCH 関数を使用して、列「Position」を作成し、この列は、国別事前分布を表す文字列の開始位置と等しくなっています。
+この列は、国の保護区を表す文字列の開始位置と同じです。すべての国別保存液には、次のいずれかの文字列が含まれます。
+のいずれかと、その後にスペース(☑)が入ります。N PRES、N PRESERVE、NPRES、または NPRE。
+
+Add a subsetting IF statement to include only the rows where the Position values are greater than zero.
+サブセット IF ステートメントを追加して、Position 値が 0 より大きい行のみを含めるようにします。
+
+Run the program and verify the results. 
+プログラムを実行し、結果を確認します。
+
+How many rows are returned for national preserves?  Note: Type a numeric value.
+国立保護区では、何行が返されますか？ 注：数値を入力してください。
+
+1点
+こちらに回答を入力
+9
+
+正解
+Nine rows are returned. 
+
+/*
+data work.NationalPreserves;
+    set pg3.np_acres;
+    Position=prxmatch('/N PRES\s|N PRESERVE\s|NPRES\s|NPRE\s/',ParkName);
+    if Position ne 0;
+run;
+
+title 'National Preserves (NPRE)';
+proc print data=work.NationalPreserves;
+run;
+title;
+*/
+
+
+
+3.Add an assignment statement that calls the PRXCHANGE function to change the strings N PRES, N PRESERVE, or NPRES to be NPRE.
+Store the changed values in a column named NewName.
+3.PRXCHANGE関数を呼び出して、文字列N PRES、N PRESERVE、またはNPRESをNPREに変更する代入文を追加します。
+変更した値をNewNameという名前の列に格納する。
+
+Run the program and verify that NPRE is displayed in the NewName column for all rows in the table. 
+プログラムを実行し、テーブルのすべての行の NewName 列に NPRE が表示されていることを確認します。
+
+How many national preserves are in the state of Alaska (AK)? Note: Type a numeric value.
+アラスカ州（AK）には、いくつの国立保護区がありますか？注：数値を入力してください。
+
+4
+
+正解
+Four of the national preserves are in Alaska.  
+
+
+/*
+ /* p302p04_s.sas */
+
+data work.NationalPreserves;
+    set pg3.np_acres;
+    Position=prxmatch('/N PRES\s|N PRESERVE\s|NPRES\s|NPRE\s/',ParkName);
+    if Position ne 0;
+    NewName=prxchange('s/N PRES\s|N PRESERVE\s|NPRES\s/NPRE /',1,ParkName);
+run;
+
+title 'National Preserves (NPRE)';
+proc print data=work.NationalPreserves;
+run;
+title;
+*/
+
