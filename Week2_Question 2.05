@@ -1,0 +1,31 @@
+
+1.The vertical bar is a logical OR operator. 
+Which Perl regular expression will find tornados with a value of EF3, EF-3, EF4, or EF-4? Select all that apply.  
+縦棒は論理和演算子である。EF3、EF-3、EF4、またはEF-4の値を持つトルネードを見つけるPerlの正規表現はどれでしょう？該当するものをすべて選びなさい。  
+
+(...)         parentheses are for grouping
+|             vertical line is for OR situation             縦線はORの場合
+?             matches the preceding character 0 or 1 times  前の文字に0回または1回マッチします。
+[...]         matches a character in the brackets           大括弧内の文字にマッチする。
+.             matches any character                         任意の文字にマッチ
+
+
+1点
+
+'/EF-(3|4)/'
+
+
+'/(EF-?3|EF-?4)/'
+
+
+'/EF.[34]/'
+
+
+'/(EF3|EF-3|EF4|EF-4)/'  
+
+
+'/EF-?[34]/'
+
+
+
+
