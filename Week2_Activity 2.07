@@ -1,0 +1,71 @@
+
+
+1.If necessary, start SAS Studio before you begin. If you restarted your SAS session, submit your libname.sas program to access the practice data.
+
+Open p302a07.sas from the activities folder and perform the following tasks:
+アクティビティフォルダからp302a07.sasを開き、以下のタスクを実行します。
+
+Run the program and view the results. 
+プログラムを実行し、結果を表示します。
+
+What does the value in the Loc column represent?
+Loc 欄の値は何を表していますか。
+
+
+Note: This is a free response question and all attempts receive credit. Type your response and  compare your answer to the answer provided. 
+注：これは自由回答問題であり、すべての試行が評価されます。あなたの答えを入力し、提供された答えとあなたの答えを比較してください。
+
+Number of character counts with EF- displayed
+
+
+
+
+2.Modify the program as follows:
+2.プログラムを以下のように修正します。
+Uncomment the Narrative_New assignment statement.
+Narrative_Newの代入文のコメントを解除する。
+
+Modify the first argument of the PRXCHANGE function to find the pattern of EF- and change it to the value EF.
+PRXCHANGE関数の第1引数を変更して、EF-のパターンを見つけ、それを値EFに変更する。
+
+Modify the second argument of the PRXCHANGE function so that all occurrences of the pattern are substituted.
+PRXCHANGE関数の第2引数を変更し、パターンのすべての出現箇所を置換するようにする。
+
+Run the program. 
+プログラムを実行します。
+
+For row 7, how many EF- values were changed to EF.  Note: Type a numeric value.
+7行目について、何個のEF-値がEFに変更されたか。 注：数値を入力してください。
+
+1点
+
+3
+
+正解
+Three values were changed in row 7.  
+
+/*
+data work.tornadoEF;
+    set pg3.tornado_2017narrative;
+    length Narrative_New $ 4242;
+    Pos=prxmatch('/EF-/',Narrative);
+    Narrative_New=prxchange('s/EF-/EF/',-1,Narrative);
+run;
+
+title 'US Tornados';
+proc print data=work.tornadoEF;
+run;
+title;
+*/
+Specifying -1 as the second argument tells SAS to search and replace until the end of the source is reached.
+2 番目の引数に -1 を指定すると、ソースの最後に達するまで検索と置換を行うように SAS に指示します。
+
+Note: The default byte size of a column created based on a PRX function is 200 bytes. 
+注：PRX 関数に基づいて作成された列のデフォルトのバイトサイズは 200 バイトです。
+This program uses a LENGTH statement to define Narrative_New as a 4242 byte character column, 
+the same length as the Narrative column in the input table, pg3.tornado2017narrative. 
+このプログラムでは、LENGTHステートメントを使用して、Narrative_Newを4242バイトの文字列として定義しています。
+これは、入力テーブルであるpg3.tornado2017narrativeのNarrative列と同じ長さになります。
+
+
+
