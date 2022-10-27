@@ -1,0 +1,34 @@
+Question 3.04
+
+1.Which ARRAY statements have incorrect syntax for a one-dimensional array? Select all that apply.  
+1次元配列の構文が正しくない ARRAY ステートメントはどれですか? 該当するものをすべて選択。
+
+1点
+
+array bike[5] Week1 Week2 Week3 Week4; 
+correct
+正解
+The number of array-elements must match the number-of-elements.  
+
+array hobby[3] _temporary_ $ 10 ('running', 'reading', 'traveling'); 
+correct
+正解
+The keyword _TEMPORARY_ must be specified right before the initial value list.  
+
+
+array yr[2013:2018] Year2013-Year2018; 
+uncorrect  
+
+array student[3] $ 12;  
+uncorrect
+これを選択しないでください
+This is correct.
+
+array increase[4] (1.05, 1.09, 1.07, 1.10); 
+uncorrect
+
+
+1点
+
+
+
