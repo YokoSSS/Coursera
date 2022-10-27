@@ -1,0 +1,109 @@
+Practice Level 2: Using the PRXCHANGE Function with Capture Buffers
+
+
+1.If necessary, start SAS Studio before you begin. If you restarted your SAS session, submit your libname.sas program to access the practice data.
+必要であれば、事前に SAS Studio を起動してください。SAS セッションを再起動した場合は、練習データにアクセスするために libname.sas プログラムを送信してください。
+
+The sashelp.baseball data set contains salary and performance information for Major League Baseball players (excluding pitchers) who 
+played at least one game in both the 1986 and 1987 seasons. The Name column contains the player's name in the form LastName, 
+FirstName (that is, Mattingly, Don). For each player, rearrange the order of the player's name to be in the form FirstName LastName (that is, Don Mattingly).  
+sashelp.baseball データセットには、1986年と1987年の両シーズンに少なくとも1試合出場したメジャーリーグ選手（投手を除く）の年俸と成績の情報が含まれています。
+Name 列には、LastName, FirstName の形式で選手の名前が含まれています (つまり、Mattingly, Don). 各選手について、FirstName LastName (つまり、Don Mattingly) と
+いう形式になるように、選手名の順序を並べ替えます。 
+
+Open the p302p05.sas program in the practices folder. 
+practices フォルダにある p302p05.sas プログラムを開いてください。
+
+Run the program. 
+プログラムを実行します。
+
+What are the values of Name for rows 41 and 236?  
+行41と行236のNameの値は何ですか。 
+
+Note: This is a free response question and all attempts receive credit. Type your response and compare your answer to the answer provided. 
+注：これは自由回答問題であり、すべての試行が評価されます。あなたの答えを入力し、提供された答えと比較してください。
+ 
+
+1点
+どのように思われますか？
+回答は1000文字以内でお願いします。
+
+Name for rows 41 is Robidoux, Billy Jo. 
+Name for rows 236 is O'Brien, Pete
+
+
+正解
+Row 41: Robidoux, Billy Jo
+
+Row 236: O'Brien, Pete  
+
+
+ 
+
+1点
+どのように思われますか？
+回答は1000文字以内でお願いします。
+
+
+2.1) In an assignment statement, create a column named FirstLastName based on using the PRXCHANGE function to rearrange the 
+order of the Name column. Use three sets of parentheses to create three capture buffers that represent the pattern of the Name column:
+1) 代入文の中で、PRXCHANGE 関数を使用して Name 列の順序を並べ替えることに基づいて、FirstLastName という名前の列を作成しなさい。
+3 組の括弧を使用して、Name 列のパターンを表す 3 つのキャプチャバッファを作成します。
+The first set of parentheses represents the last name. The last name can contain an embedded blank (for example, Van Slyke) or 
+a special character (for example, O'Brien).
+最初の括弧のセットは、姓を表します。姓には、空白文字（たとえば、Van Slyke）や特殊文字（たとえば、O'Brien）を埋め込むことができます。
+
+The second set of parentheses represents the comma and space.
+2つ目の括弧は、カンマとスペースを表します。
+
+The third set of parentheses represents the first name. The first name can contain an embedded blank (that is, Billy Jo).
+Include a word boundary metacharacter at the end of the pattern to avoid trailing spaces on the first name.
+3つ目の括弧は、最初の名前を表します。最初の名前には、空白を埋め込むことができます (つまり、Billy Jo)。
+最初の名前に空白が残らないように、パターンの最後にワードバウンダリーメタキャラクタを含めます。
+
+2) Use capture buffer references to rearrange the order of the capture buffers so that the player's name is in the form of FirstName LastName.  
+2) キャプチャバッファの参照を使用して、プレイヤーの名前が FirstName LastName の形式になるようにキャプチャバッファの順序を並べ替えます。 
+
+3) Run the program and view the results.
+3) プログラムを実行し、結果を表示する。
+
+What is the value of FirstLastName for row 41?
+41行目のFirstLastNameの値は何ですか？
+
+What is the value of FirstLastName for row 236?
+236行目のFirstLastNameの値は何ですか？
+
+What is the byte size of the FirstLastName column?
+FirstLastName列のバイトサイズは何ですか？
+
+Note: This is a free response question and all attempts receive credit. Type your response and compare your answer to the answer provided. 
+注：これは自由回答問題であり、すべての試行が評価されます。あなたの答えを入力し、提供された答えとあなたの答えを比較します。
+ 
+
+
+1点
+どのように思われますか？
+回答は1000文字以内でお願いします。
+
+The value of FirstLastName for row 41 is  Billy Jo Robidoux. 
+The value of FirstLastName for row 236 is Pete	Pete O'Brien
+The byte size of the FirstLastName column is 200 bytes
+
+
+41	Robidoux, Billy Jo	Billy Jo Robidoux
+236	O'Brien, Pete	Pete O'Brien
+
+/*
+/* p302p05_s.sas */
+
+data work.BaseballPlayers; 
+    set sashelp.baseball(keep=Name);  
+    FirstLastName=prxchange('s/(\w+\D*\w*)(, )(\w+\s*\w*\b)/$3 $1/',-1,Name); 
+run; 
+
+title 'Names of Baseball Players'; 
+proc print data=work.BaseballPlayers; 
+run; 
+title;
+*/
+
