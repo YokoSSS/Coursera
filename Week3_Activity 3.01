@@ -1,0 +1,47 @@
+Activity 3.01
+
+1.If necessary, start SAS Studio before you begin. If you restarted your SAS session, submit your 
+libname.sas program to access the practice data.
+1.必要であれば、事前にSAS Studioを起動してください。SASセッションを再起動した場合は、練習データにアクセスするための 
+libname.sas プログラムを送信し、練習データにアクセスします。
+
+Open p303a01.sas from the activities folder and perform the following tasks:
+アクティビティフォルダからp303a01.sasを開き、以下の作業を行います。
+
+Replace the number signs (#) to reference the appropriate number of 2017 temperature columns.
+番号記号 (#) を置き換えて、2017 年の温度列の適切な数を参照します。
+
+Modify the temperature-conversion assignment statement by replacing the ??? with the name of the column being incremented.
+温度変換の代入文の「?」をインクリメントされる列の名前に置き換えて修正する。
+
+Run the program and confirm that you are now seeing Celsius temperatures. 
+プログラムを実行し、摂氏温度が表示されるようになったことを確認します。
+
+What is the lowest average Celsius temperature for Dublin in 2017? 
+Note: Type the answer as it appears in the results.
+2017年のダブリンの平均摂氏温度の最低値は何度ですか？
+注：結果に表示されるように答えを入力してください。
+
+
+1点
+
+My answer: 5.3
+正解
+The lowest average Celsius temperature for Dublin is 5.3.  
+
+/*
+data work.DublinMadrid2017(drop=Month);
+    set pg3.weather_dublinmadrid_monthly2017
+       (keep=City Temp1-Temp12);
+    array Temperature[12] Temp1-Temp12;
+    do Month=1 to 12;
+       Temperature[Month]=(Temperature[Month]-32)*5/9;
+    end;
+    format Temp1-Temp12 6.1;
+run;
+
+title 'Average Monthly Celsius Temperatures for 2017';
+proc print data=work.DublinMadrid2017;
+run;
+title;
+*/
