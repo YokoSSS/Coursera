@@ -1,0 +1,45 @@
+Activity 3.02
+
+1.If necessary, start SAS Studio before you begin. If you restarted your SAS session, submit your libname.sas program to access the practice data.
+必要であれば、事前に SAS Studio を起動してください。SAS セッションを再起動した場合は、練習データにアクセスするために libname.sas プログラムを提出します。
+
+Open p303a02.sas from the activities folder and perform the following tasks:
+アクティビティフォルダから p303a02.sas を開き、以下の作業を行います。
+
+Modify the ARRAY statement to use an asterisk in place of the number of elements and to reference all 2018 temperature columns that start with Temp.
+ARRAY ステートメントを修正して、要素数の代わりにアスタリスクを使用し、Temp で始まる 2018 年のすべての温度列を参照するようにします。
+
+In the DO statement, replace the value of 12 with the DIM function referencing the Temperature array.
+DO ステートメントで、Temperature 配列を参照する DIM 関数で 12 という値を置き換えます。
+
+Run the program. 
+プログラムを実行します。
+
+Based on the results, how many temperature columns are in the array or the 2018 data? Note: Type a numeric value.
+その結果に基づいて、配列または2018年のデータに含まれる温度列の数はいくつですか。注：数値を入力してください。
+
+1点
+
+My answer:
+temperature columns are 5.
+正解
+
+/*
+Five temperature columns are in the array for the 2018 data.  
+data work.DublinMadrid2018(drop=Month);
+    set pg3.weather_dublinmadrid_monthly2018
+       (keep=City Temp:);
+    array Temperature[*] Temp:;
+    do Month=1 to dim(Temperature);
+       Temperature[Month]=(Temperature[Month]-32)*5/9;
+    end;
+    format Temp: 6.1;
+run;
+
+title 'Average Monthly Celsius Temperatures for 2018';
+proc print data=work.DublinMadrid2018;
+run;
+title;
+*/
+
+
