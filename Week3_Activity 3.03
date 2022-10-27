@@ -1,0 +1,77 @@
+Activity 3.03
+
+
+1.If necessary, start SAS Studio before you begin. If you restarted your SAS session,
+submit your libname.sas program to access the practice data.
+1.必要であれば、事前にSAS Studioを起動してください。SAS セッションを再起動した場合は、
+練習データにアクセスするために libname.sas プログラムを提出します。
+
+Suppose we need the average precipitation values in centimeters instead of inches. 
+Open p303a03.sas from the activities folder and perform the following tasks:
+インチではなく、センチメートルでの平均降水量の値が必要だとします。
+アクティビティフォルダから p303a03.sas を開き、以下の作業を行います。
+
+Run the DATA step (which does not include the ARRAY syntax). 
+DATA ステップ (ARRAY 構文が含まれていない) を実行します。
+
+How many rows of rotated data does the new table contain? Note: type a numeric value.
+新しいテーブルには、回転したデータが何行含まれますか? 注：数値を入力してください。
+
+1点
+こちらに回答を入力
+
+20
+正解
+The table contains 20 rows. 
+
+
+2.Modify the DATA step to use ARRAY syntax to rotate the data.
+2.データを回転させるためにARRAY構文を使用するように、DATAステップを修正します。
+
+Run the DATA step which now includes the ARRAY syntax. 
+ARRAY構文が含まれるDATAステップを実行します。
+
+How many rows of rotated data does the new table contain?
+新しいテーブルには、回転したデータが何行含まれますか。
+
+1点
+こちらに回答を入力
+
+20
+正解
+20 rows
+
+/*
+data work.DublinPrecipRotate;
+    set pg3.weather_dublinmadrid_monthly5yr
+       (keep=City Year PrecipQ1-PrecipQ4);
+    where City='Dublin';
+    array P[4] PrecipQ1-PrecipQ4;
+    do Quarter=1 to 4;
+       Precip=P[Quarter]*2.54;  
+       output;
+    end;
+    format Precip 6.2;
+    drop PrecipQ1-PrecipQ4;
+run;
+*/
+
+
+
+3.Run the PROC SGPLOT step to create the desired bar chart. 
+3.PROC SGPLOT ステップを実行し、目的の棒グラフを作成します。
+
+What is the highest average quarterly precipitation in centimeters for Dublin?  
+Note: Type the value as it is shown in the results.
+ダブリンの四半期平均降水量（センチメートル単位）の最高値は何ですか。 
+注：結果に表示されている値を入力してください。
+
+1点
+
+5
+
+不正解
+23.16 cm for quarter 4  
+
+
+
