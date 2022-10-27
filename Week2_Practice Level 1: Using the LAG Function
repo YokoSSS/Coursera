@@ -1,0 +1,136 @@
+
+1.If necessary, start SAS Studio before you begin. If you restarted your SAS session, 
+submit your libname.sas program to access the practice data.
+
+The pg3.np_2016traffic table contains monthly traffic counts for national parks for the year 2016. 
+There are 12 rows for each value of ParkCode, and each row gives the traffic count for months 1 through 12. 
+Calculate the change in traffic count between consecutive months for each park.
+pg3.np_2016traffic テーブルには、2016 年の国立公園の月間トラフィックカウントが含まれています。
+ParkCode の値ごとに 12 行があり、各行には月 1 から 12 までのトラフィックカウントが記載されています。
+各公園について、連続した月間のトラフィックカウントの変化を計算します。
+
+Open the p302p01.sas program in the practices folder and review the code. 
+practice フォルダにある p302p01.sas プログラムを開き、コードを確認します。
+
+Which column is named in the BY statement, and what 2 variables are available as a result?
+BY文の列名はどれか、その結果利用できる2つの変数は何か。
+
+
+Note: This is a free response question and all attempts receive credit. Type your response and  
+compare your answer to the answer provided. 
+注：これは自由回答問題であり、すべての試行が信用されます。あなたの答えを入力し、提供された答えと比較してください。
+
+
+1点
+どのように思われますか？
+回答は1000文字以内でお願いします。
+My answer:
+The column name of the BY statement is ParkCode and the two variables available as a result are PG3.NP_2016TRAFFIC and PG3.
+不正解
+ParkCode is named in the BY statement, making FIRST.ParkCode and LAST.ParkCode available.  
+
+2.Run the program to view the 2016 traffic count data. The report includes the numeric columns 
+Year, Month, and TrafficCount. 
+このプログラムを実行すると、2016 年の交通量データが表示されます。レポートには、年、月、TrafficCount の数値列が含まれます。
+
+Return to the code.
+コードに戻ります。
+
+In an assignment statement, use the LAG function to create the column PrevMthTC, which is the 
+previous value of TrafficCount.
+代入文で、LAG 関数を使用して、TrafficCount の前の値である列 PrevMthTC を作成します。
+
+PrevMthTC=lag1(TrafficCount) 
+
+In another assignment statement, create the column OneMthChange, which is TrafficCount minus PrevMthTC.
+別の代入文で、TrafficCountからPrevMthTCを引いた列OneMthChangeを作成します。
+
+OneMthChange=lag1(TrafficCount) -lag2(PrevMthTC) 
+
+Run the program and view the results. 
+プログラムを実行し、結果を表示します。
+
+What is the value of PrevMthTC for row 13, the first row for the park code ACAD? 
+Note: Type the value as it is shown in the results.
+パークコードACADの最初の行である13行目のPrevMthTCの値は何ですか？注：結果に表示されている値をそのまま入力してください。
+
+
+
+1点
+こちらに回答を入力
+
+2265.00
+correct
+The value of PrevMthTC for row 13 is 2265.00. 
+
+/*
+data work.ParkTraffic2016;
+    set pg3.np_2016traffic;
+    by ParkCode;
+    PrevMthTC=lag1(TrafficCount);
+    OneMthChange=TrafficCount-PrevMthTC;   
+run;
+*/
+
+
+title '2016 National Park Traffic Counts';
+proc print data=work.ParkTraffic2016;
+run;
+
+3.Is this value correct?
+この値は正しいですか？
+1点
+
+Yes
+correct
+不正解
+This is not correct. 
+
+In order to calculate the change in traffic count between consecutive months for each park, the first row for each park should be set to a missing value.  
+
+
+No
+correct
+正解
+This is not correct. 
+In order to calculate the change in traffic count between consecutive months for each park, the first row for each park should be set to a missing value.  
+
+
+4.Before the OneMthChange assignment statement, add an IF/THEN statement that changes the 
+PrevMthTC value to missing for the first occurrence of a park code.  
+OneMthChange代入文の前に、公園コードの最初の出現に対してPrevMthTC値を欠落に変更するIF/THEN文を追加します。 
+
+
+Run the program and verify the results. 
+プログラムを実行し、結果を確認します。
+
+What is the value of OneMthChange when Month is equal to 1 for ParkCode values ACAD and ALPO?  
+パークコード値 ACAD および ALPO で Month が 1 に等しいときの OneMthChange の値は何ですか。 
+
+1点
+
+. (missing)
+correct
+正解
+OneMthChange has a numeric missing value in the first row for each park code.  
+
+0
+
+/*
+/* p302p01_s.sas */
+
+data work.ParkTraffic2016;
+    set pg3.np_2016traffic;
+    by ParkCode;
+    PrevMthTC=lag1(TrafficCount);
+    if first.ParkCode=1 then PrevMthTC=.;
+    OneMthChange=TrafficCount-PrevMthTC;
+run;
+
+title '2016 National Park Traffic Counts';
+proc print data=work.ParkTraffic2016;
+run;
+
+*/
+
+
