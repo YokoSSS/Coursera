@@ -1,0 +1,100 @@
+Practice Level 1: Using One-Dimensional Arrays on Numeric Data
+演習レベル1：数値データに対する一次元配列の使用
+
+
+1.If necessary, start SAS Studio before you begin. If you restarted your SAS session, submit your libname.sas program to access the practice data.
+1.必要であれば、事前にSAS Studioを起動してください。SASセッションを再起動した場合は、練習用データにアクセスするためのlibname.sasプログラムを提出します。
+
+The pg3.eu_occ table contains monthly occupancy rates broken down by type of property (Hotel, ShortStay, and Camp) for European countries from January 2004 through September 2017. Calculate the percentage that each type of property represents of the total occupancy for each month and year by country.  
+pg3.eu_occ テーブルには、2004 年 1 月から 2017 年 9 月までのヨーロッパ諸国の物件タイプ別（Hotel、ShortStay、Camp）に分類された月別の稼働率が含まれています。国別の各月、各年の総稼働率に対して、各タイプのプロパティが占める割合を計算します。 
+
+Open the p303p01.sas program in the practices folder. 
+practices フォルダにある p303p01.sas プログラムを開く。
+
+Run the program to view the European occupancy data.
+プログラムを実行し、ヨーロッパの稼働率データを表示します。
+
+Add an ARRAY statement to create an array named OccType that references the three existing columns of property type: Hotel, ShortStay, and Camp.
+ARRAY ステートメントを追加して、プロパティタイプの 3 つの既存の列を参照する OccType という名前の配列を作成します。
+Hotel、ShortStay、Camp の 3 つの既存のプロパティタイプの列を参照する OccType という名前の配列を作成する ARRAY 文を追加します。
+
+
+Add another ARRAY statement to create an array named OccPct that creates the numeric columns HotelPct, ShortStayPct, and CampPct.
+別の ARRAY 文を追加して、OccPct という名前の配列を作成し、HotelPct、ShortStayPct、および CampPct という数値列を作成します。
+
+Add a DO loop with the index column Num. Use a start value of 1 and an end value of 3.
+インデックス列 Num で DO ループを追加します。 開始値 1、終了値 3 を使用します。
+
+Within the DO loop, add an assignment statement using array references to calculate the percentage of occupancy rate. 
+The percentage (HotelPct, ShortStayPct, and CampPct) is equal to the property type (Hotel, ShortStay, and Camp) divided by the total occupancy (OccTotal).
+DO ループ内に、配列参照を使用した代入文を追加し、稼働率のパーセンテージを計算します。
+パーセンテージ (HotelPct, ShortStayPct, CampPct) は、プロパティタイプ (Hotel, ShortStay, Camp) を総稼働数 (OccTotal) で割ったものとなります。
+
+Add a DROP statement to eliminate the Num column from the output table.
+出力テーブルから Num 列を削除するために DROP 文を追加します。
+
+Run the program.
+プログラムを実行します。
+
+What is the value of HotelPct for row 1?  Note: Copy and paste from the PROC PRINT results or type the answer exactly as shown in the results.
+行 1 の HotelPct の値は何ですか?  注：PROC PRINT の結果からコピーして貼り付けるか、結果に示されたとおりに答えを入力してください。
+
+1点
+こちらに回答を入力
+0.79709
+
+不正解
+Solution code:
+/*
+data work.MonthlyOcc;
+    set pg3.eu_occ(drop=Geo);
+    OccTotal=sum(Hotel,ShortStay,Camp);
+    array OccType[3] Hotel ShortStay Camp;
+    array OccPct[3] HotelPct ShortStayPct CampPct;
+    do Num=1 to 3;
+       OccPct[Num]=OccType[Num]/OccTotal;
+    end;
+    format Hotel ShortStay Camp OccTotal comma16.;
+    drop Num;
+run;
+
+title 'Percentage of Occupancy by Type';
+proc print data=work.MonthlyOcc;
+run;
+title;
+*/
+
+
+
+
+2.Add to the FORMAT statement to format HotelPct, ShortStayPct, and CampPct using the PERCENT8.1 format.  
+2.FORMAT ステートメントに追加して、HotelPct、ShortStayPct、および CampPct を PERCENT8.1 形式を使用してフォーマットします。 
+
+Run the program. 
+プログラムを実行します。
+
+What is the value of HotelPct for row 1?  Note: Copy and paste from the results or type the answer exactly as shown in the results.
+1行目のHotelPctの値は何ですか？ 注：結果からコピー＆ペーストするか、結果に表示されているとおりに答えを入力してください。
+
+1点
+
+/*
+data work.MonthlyOcc;
+    set pg3.eu_occ(drop=Geo);
+    OccTotal=sum(Hotel,ShortStay,Camp);
+    array OccType[3] Hotel ShortStay Camp;
+    array OccPct[3] HotelPct ShortStayPct CampPct;
+    do Num=1 to 3;
+       OccPct[Num]=OccType[Num]/OccTotal;
+    end;
+    format Hotel ShortStay Camp OccTotal comma16. 
+           HotelPct ShortStayPct CampPct percent8.1;
+    drop Num;
+run;
+
+title 'Percentage of Occupancy by Type';
+proc print data=work.MonthlyOcc;
+run;
+title;
+*/
+
