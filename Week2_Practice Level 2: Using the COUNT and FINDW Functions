@@ -1,0 +1,108 @@
+Practice Level 2: Using the COUNT and FINDW Functions
+
+1.If necessary, start SAS Studio before you begin. If you restarted your SAS session, submit your libname.sas program to access the practice data.
+1.必要であれば、事前にSAS Studioを起動してください。SAS セッションを再起動した場合は、練習データにアクセスするために libname.sas プログラムを送信してください。
+
+The pg3.np_grandcanyon table contains comments regarding Grand Canyon National Park. 
+The canyon consists of the North Rim and the South Rim. Determine how many times the word South appears in each comment. 
+Also, retrieve the word after the first occurrence of the word South in each comment.  
+pg3.np_grandcanyon テーブルは、グランドキャニオン国立公園に関するコメントを含んでいます。
+渓谷は、ノースリムとサウスリムから構成されています。各コメントに South という単語が何回出現するかを判定します。
+また、各コメントで South という単語が最初に出現した後の単語を取得します。 
+
+Open the p302p02.sas program in the practices folder. 
+practices フォルダにある p302p02.sas プログラムを開いてください。
+
+Run the program to view the Grand Canyon comments. 
+プログラムを実行し、グランドキャニオンのコメントを表示します。
+
+How many rows are in the report?  
+レポートには何行ありますか。 
+
+1点
+こちらに回答を入力
+
+76
+正解
+There are 76 rows in the report.
+
+2.Modify the program.
+2.プログラムを修正します。
+
+Use the COUNT function to create a column named NumSouth that is equal to the number of times the word South appears in each comment.
+Use the modifier i to ignore case.
+COUNT関数を使って、各コメントにSouthという単語が現れる回数に等しいNumSouthという列を作成しなさい。大文字と小文字を区別しないように、修飾子 i を使用します。
+
+NumSouth = count(Comments,"South",i)
+
+
+Subset the data to include only the rows that contain a comment with the word South.
+Southという単語を含むコメントを含む行だけを含むように、データをサブセットする。
+
+Run the program. 
+プログラムを実行する。
+
+How many rows contain a comment with the word South?  
+South という単語を含むコメントを含む行はいくつあるか？ 
+
+
+1点
+こちらに回答を入力
+19
+
+正解
+19 rows contain a comment with the word South.  
+/*
+data work.SouthRim;
+    set pg3.np_grandcanyon;
+    NumSouth=count(Comments,'South','i');  
+    if NumSouth>0;
+run;
+
+title 'Grand Canyon Comments Regarding South Rim';
+proc print data=work.SouthRim;
+run;
+title;
+*/
+
+
+3.Return to the code tab to modify the program.
+3.コードタブに戻り、プログラムを修正します。
+
+Use the FINDW function to create a column named SouthWordPos that is equal to the word number for the first occurrence of the word South in each comment.
+FINDW 関数を使用して、各コメントで South という単語が最初に出現する単語番号に等しい SouthWordPos という名前の列を作成します。
+
+Specify the space and period as the delimiters that separate words.
+単語を区切るデリミターとして、スペースとピリオドを指定する。
+
+Use the modifier i to ignore case and the modifier e to return the word number instead of the starting position.
+大文字と小文字を無視するには修飾子iを、開始位置の代わりに単語番号を返すには修飾子eを使用します。
+
+Use the SCAN function to create a column named AfterSouth that is equal to the word after the first occurrence of the word South. Use the same delimiters in the SCAN function as the FINDW function.
+SCAN関数を使って、AfterSouthという名前の列を作成し、Southという単語が最初に出現した後の単語と等しくなるようにする。SCAN関数では、FINDW関数と同じ区切り記号を使用します。
+
+Run the program and view the results. 
+プログラムを実行し、結果を表示します。
+
+What word occurs most often after the word South?
+Southという単語の後に最も多く出現する単語は何ですか？
+1点
+
+My answer: Entrance
+正解
+The word Entrance occurs most often.
+ 
+/*
+data work.SouthRim;
+    set pg3.np_grandcanyon;
+    NumSouth=count(Comments,'South','i');  
+    if NumSouth>0;
+    SouthWordPos=findw(Comments,'South','  .','ei');
+    AfterSouth=scan(Comments,SouthWordPos+1,' .');
+run;
+
+title 'Grand Canyon Comments Regarding South Rim';
+proc print data=work.SouthRim;
+run;
+title;
+*/
