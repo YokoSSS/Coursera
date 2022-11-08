@@ -1,0 +1,41 @@
+Activity 3.06
+
+
+1.
+質問 1
+If necessary, start SAS Studio before you begin. If you restarted your SAS session, submit your libname.sas program to access the practice data.
+
+Open p303a05.sas from the activities folder and perform the following tasks:  
+
+Add an ARRAY statement to create a two-dimensional array.
+
+Name the array PMT.
+
+The row dimension should reference the values 2015, 2016, and 2017.
+
+The column dimension should reference the values 1 to 2.
+
+The array elements should be temporary.
+
+Use the following as the six initial values:
+
+Year  PrecipTotal1  PrecipTotal2
+2015  2.29          1.04
+2016  4.15          2.35
+2017  0.90          2.44
+
+Run the program and view the results. 
+
+How many dates have daily precipitation greater than 0.3 inches and greater than 20% of the monthly precipitation?
+Note: Type a numeric value.
+
+1点
+こちらに回答を入力
+
+4
+正解
+Four dates
+
+Array PMT[2015:2017,2] _temporary_ (2.29, 1.04, 4.15, 2.34, 0.90, 2.44);  
+
+
