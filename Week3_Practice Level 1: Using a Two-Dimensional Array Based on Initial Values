@@ -1,0 +1,35 @@
+1.
+質問 1
+If necessary, start SAS Studio before you begin. If you restarted your SAS session, submit your libname.sas program to 
+access the practice data.
+
+The pg3.storm_stats table contains statistics such as MaxWindMPH for storms from seasons 1980 to 2016. 
+For the storms in season 1980 and 1981, calculate the difference in a storm's MaxWindMPH compared to the 
+quarterly maximum wind speed per season as shown below.
+
+
+Open the p303p04.sas program in the practices folder. 
+
+Run the program to view the MaxWindMPH for storms from seasons 1980 and 1981.
+
+Add an ARRAY statement to create a temporary two-dimensional array named MWtable. 
+The row dimension is based on two rows with a lower boundary of 1980 and an upper boundary of 1981.
+The column dimension is based on four columns corresponding to the four quarters. The array elements 
+should include the initial values as shown in the table above.
+
+Add an assignment statement to create a column named MaxWindSQ. The value of this column will be retrieved 
+from the MWtable array using Season for the row dimension and Qtr for the column dimension.
+
+Add MaxWindSQ to the VAR statement in the PROC PRINT step. 
+
+Run the program and view the results.
+
+Add an assignment statement to create a column named Difference that is equal to MaxWindMPH minus MaxWindSQ.
+
+Add Difference to the VAR statement in the PROC PRINT step. 
+
+Run the program and view the results. 
+
+What is the value of Difference for the 1980 storm named Lester (row 55)? Note: Type your answer as shown in the results.
+
+
