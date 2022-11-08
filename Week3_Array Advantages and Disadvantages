@@ -1,0 +1,18 @@
+Array Advantages and Disadvantages
+
+Array Advantages and Disadvantages
+There are advantages and disadvantages when using arrays.
+
+-Advantages of Arrays-
+simplifies programs for processing repetitive code, rotating data, and performing table lookup
+fast processing time because the array is stored in memory
+potentially eliminates the need for multiple steps
+ability to use non-sorted data
+
+-Disadvantages of Arrays-
+size of array defined at compile time
+cannot combine character and numeric elements in an array
+must use a numeric value to reference an element
+returns only a single value when referencing an element
+
+  
