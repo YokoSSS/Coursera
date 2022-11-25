@@ -1,0 +1,29 @@
+1.
+Open the Programming: SAS® 9.4 and SAS® Viya® documentation.
+
+Under DATA Step, select Component Objects. 
+
+Under Dictionary of Hash and Hash Iterator Object Language Elements, select DECLARE Statement, Hash and Hash Iterator Objects.
+
+How many argument_tag:values are valid for the DECLARE statement? Note: Type a numeric value.
+
+Answer：　7
+
+正解
+In SAS 9.4M6, there are seven valid argument and value tags valid for the DECLARE statement:
+
+dataset: 'dataset_name <(datasetoption)>'
+
+duplicate: 'option'
+
+hashexp: n
+
+keysum:'variable-name'
+
+multidata: 'option'
+
+ordered: 'option'
+
+suminc: 'variable-name'
+
+
