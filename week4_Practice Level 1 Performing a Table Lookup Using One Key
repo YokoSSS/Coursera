@@ -1,0 +1,93 @@
+Practice Level 1: Performing a Table Lookup Using One Key
+
+1.
+If necessary, start SAS Studio before you begin. If you restarted your SAS session, 
+submit your libname.sas program to access the practice data.
+
+Create a hash object based on the pg3.np_codelookup table. This table contains national park 
+information. Read the columns ParkCode, 
+State, and GrossAcres from the pg3.np_acres2 table. 
+This table contains acreage amounts for the national parks. 
+Look up the uppercase value of ParkCode in the hash object to retrieve values of ParkName and Type.
+pg3.np_codelookup テーブルに基づいてハッシュ オブジェクトを作成します。このテーブルには、国立公園の情報が含まれています。 
+pg3.np_acres2 テーブルから列 ParkCode、State、および GrossAcres を読み取ります。この表には、国立公園の面積が含まれています。
+ハッシュ オブジェクトで ParkCode の大文字の値を検索して、ParkName と Type の値を取得します。
+
+
+Open the p304p01.sas program in the practices folder. Review the DATA step syntax. 
+プラクティス フォルダーにある p304p01.sas プログラムを開きます。 DATA ステップの構文を確認します。
+
+What is the name of the hash object being created? 
+作成されるハッシュ オブジェクトの名前は?
+
+What table is loading the hash object? 
+ハッシュ オブジェクトをロードしているテーブルは?
+
+What is the name of the key component? 
+主要コンポーネントの名前は?
+
+What are the names of the data components?  
+データ コンポーネントの名前は何ですか?
+
+Note: This is a free response question and all attempts receive credit. Type your response and compare your 
+answer to the answer provided. 
+注: これは自由回答の質問であり、すべての回答にクレジットが与えられます。回答を入力し、提供された回答と比較します。
+
+
+1点
+どのように思われますか？
+回答は1000文字以内でお願いします。
+
+2.:Add an assignment statement to the DATA step to create the column RC, which is equal to the return code from finding 
+the ParkCode value in the hash object.
+代入ステートメントを DATA ステップに追加して、列 RC を作成します。これは、ハッシュ オブジェクトで ParkCode 値を
+検索することからの戻りコードと同じです。
+
+Run the DATA step. View the log and the output table. 
+DATA ステップを実行します。ログと出力テーブルを表示します。
+
+Based on the log: 
+ログに基づいて：
+
+How many rows from the pg3.np_codelookup table were read into the hash object? 
+pg3.np_codelookup テーブルからハッシュ オブジェクトに読み込まれた行数は?
+
+How many rows were read from the pg3.np_acres2 table? 
+pg3.np_acres2 テーブルから読み取られた行数は?
+
+How many rows are in the output table? 
+出力テーブルには何行ありますか?
+
+Based on the output table, 
+出力テーブルに基づいて、
+
+How many ParkCode values are not found in the hash object (RC not equal to 0)?
+ハッシュ オブジェクトで見つからない ParkCode 値 (RC が 0 でない) はいくつですか?
+
+Note: This is a free response question and all attempts receive credit. Type your response and compare 
+your answer to the answer provided. 
+注: これは自由回答の質問であり、すべての回答にクレジットが与えられます。回答を入力し、提供された回答と比較します。
+
+
+1点
+どのように思われますか？
+回答は1000文字以内でお願いします。
+
+
+3.Add a subsetting IF statement to output only the RC values that are equal to 0 (matches). 
+サブセット化 IF ステートメントを追加して、0 に等しい (一致する) RC 値のみを出力します。
+
+Add a DROP statement to eliminate the RC column.  
+DROP ステートメントを追加して、RC 列を除去します。
+
+Run the program and view the results. 
+プログラムを実行し、結果を表示します。
+
+How many data rows are in the results?  Note: Type a numeric value.
+結果にはいくつのデータ行がありますか?注: 数値を入力します。
+
+
+
+
+
+
