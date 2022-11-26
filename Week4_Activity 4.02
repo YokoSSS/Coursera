@@ -1,0 +1,15 @@
+1.
+If necessary, start SAS Studio before you begin. If you restarted your SAS session, submit your libname.sas program to access the practice data.
+
+Open p304a02.sas from the activities folder and add two statements to the DATA step for the Monthly hash object:
+
+DEFINEKEY method referencing the keys of City and Month
+
+DEFINEDATA method referencing the data of TempMonAvg and PrecipMonSum
+
+Run the DATA step and confirm no errors in your SAS log. 
+
+How many rows were read from the input table into the hash object?  Note: Type a numeric value.
+
+
+
