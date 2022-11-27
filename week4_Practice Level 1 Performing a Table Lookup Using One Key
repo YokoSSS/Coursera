@@ -19,15 +19,19 @@ Open the p304p01.sas program in the practices folder. Review the DATA step synta
 
 What is the name of the hash object being created? 
 作成されるハッシュ オブジェクトの名前は?
+Answer: ParkDesc
 
 What table is loading the hash object? 
 ハッシュ オブジェクトをロードしているテーブルは?
+Answer: pg3.np_codelookup
 
 What is the name of the key component? 
 主要コンポーネントの名前は?
+Answer: ParkCode
 
 What are the names of the data components?  
 データ コンポーネントの名前は何ですか?
+Answer: Parkname and Type 
 
 Note: This is a free response question and all attempts receive credit. Type your response and compare your 
 answer to the answer provided. 
@@ -37,6 +41,19 @@ answer to the answer provided.
 1点
 どのように思われますか？
 回答は1000文字以内でお願いします。
+
+正解
+What is the name of the hash object being created? 
+Answer: ParkDesc
+
+What table is loading the hash object? 
+Answer: pg3.np_codelookup
+
+What is the name of the key component?
+Answer:  ParkCode
+
+What are the names of the data components? 
+Answer: Parkname and Type  
 
 2.:Add an assignment statement to the DATA step to create the column RC, which is equal to the return code from finding 
 the ParkCode value in the hash object.
@@ -51,18 +68,20 @@ Based on the log:
 
 How many rows from the pg3.np_codelookup table were read into the hash object? 
 pg3.np_codelookup テーブルからハッシュ オブジェクトに読み込まれた行数は?
+Answer: 713
 
 How many rows were read from the pg3.np_acres2 table? 
 pg3.np_acres2 テーブルから読み取られた行数は?
+Answer: 368
 
 How many rows are in the output table? 
 出力テーブルには何行ありますか?
+Answer: 368  
 
 Based on the output table, 
-出力テーブルに基づいて、
-
 How many ParkCode values are not found in the hash object (RC not equal to 0)?
-ハッシュ オブジェクトで見つからない ParkCode 値 (RC が 0 でない) はいくつですか?
+出力テーブルに基づいて、ハッシュ オブジェクトで見つからない ParkCode 値 (RC が 0 でない) はいくつですか?
+Answer:  2 (rows 10 and 30) 
 
 Note: This is a free response question and all attempts receive credit. Type your response and compare 
 your answer to the answer provided. 
@@ -72,6 +91,20 @@ your answer to the answer provided.
 1点
 どのように思われますか？
 回答は1000文字以内でお願いします。
+
+正解
+Based on the log: 
+
+How many rows from the pg3.np_codelookup table were read into the hash object? 713  
+
+How many rows were read from the pg3.np_acres2 table? 368  
+
+How many rows are in the output table? 368  
+
+Based on the output table, 
+
+How many ParkCode values are not found in the hash object (RC not equal to 0)? 2 (rows 10 and 30) 
+
 
 
 3.Add a subsetting IF statement to output only the RC values that are equal to 0 (matches). 
@@ -87,7 +120,8 @@ How many data rows are in the results?  Note: Type a numeric value.
 結果にはいくつのデータ行がありますか?注: 数値を入力します。
 
 
-
-
+Answer:
+不正解
+There are 366 rows in the results.
 
 
