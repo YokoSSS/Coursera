@@ -1,0 +1,78 @@
+Practice Level 2: Performing a Table Lookup Using Three Keys
+実践レベル2：3つのキーを使ってテーブル検索を実行する
+
+1.If necessary, start SAS Studio before you begin. If you restarted your SAS session, 
+submit your libname.sas program to access the practice data.
+1.必要であれば、事前にSAS Studioを起動してください。SAS セッションを再起動した場合は、
+練習データにアクセスするための libname.sas プログラムを送信します。
+
+Create a hash object based on the pg3.storm_range table. 
+pg3.storm_range テーブルを基にハッシュオブジェクトを作成します。
+This table contains four wind measurements for each combination of StartYear, Name, and Basin. 
+このテーブルは、StartYear、Name、Basinの組み合わせごとに4つの風の測定値を含んでいます。
+Read the columns from the pg3.storm_summary_cat345 table. 
+pg3.storm_summary_cat345テーブルから列を読み取ります。
+This table contains information such as MaxWindMPH and MinPressure for each combination of StartDate, Name, and Basin for 
+category 3, 4, and 5 storms. Look up the appropriate values in the hash object to retrieve the four wind measurements.  
+このテーブルは、カテゴリー3、4、5の嵐について、StartDate、Name、Basinの各組み合わせについて、
+MaxWindMPHやMinPressureなどの情報を含んでいます。4つの風の測定値を取得するために、ハッシュオブジェクトで適切な値を調べます。 
+
+
+1)  Open the p304p02.sas program in the practices folder. Add statements to the DATA step to create a hash object named Storm.
+1) practices フォルダにある p304p02.sas プログラムを開く。DATA ステップにステートメントを追加し、Storm という名前のハッシュオブジェクトを作成します。
+Add a DECLARE statement to load the hash object Storm with the table pg3.storm_range.
+DECLARE文を追加して、テーブルpg3.storm_rangeでハッシュオブジェクトStormをロードします。
+
+Use the DEFINEKEY method to specify the key components of StartYear, Name, and Basin.
+DECLARE ステートメントを追加し、ハッシュオブジェクト Storm にテーブル pg3.storm_range をロードします。
+
+Use the DEFINEDATA method to specify the data components of Wind1, Wind2, Wind3, and Wind4.
+DEFINEKEY メソッドを使用して、StartYear、Name、および Basin のキーコンポーネントを指定します。
+
+Use the DEFINEDONE method to complete the hash object.
+DEFINEDONE メソッドを使用して、ハッシュオブジェクトを完成させます。
+
+2)  Add an assignment statement to create the column ReturnCode, which is equal to the return code from finding the key values in the hash object. 
+You will need to use the YEAR function on StartDate for the first key value followed by the key values of Name and Basin. 
+Note: Key values must be specified in the FIND method in the same order as specified with the DEFINEKEY method.
+2) 代入文を追加して、ReturnCode 列を作成します。この列は、ハッシュオブジェクトのキー値を検索して得られたリターンコードと等しくなります。
+最初のキー値として StartDate の YEAR 関数を使用し、その後に Name と Basin のキー値を使用する必要があります。
+注：キー値は、DEFINEKEYメソッドで指定したのと同じ順序でFINDメソッドに指定する必要があります。
+
+3)  Run the DATA step. View the log and the results.
+3) DATAステップを実行する。ログと結果を表示します。
+
+How many rows from the pg3. storm_range table were read into the hash object? 
+pg3.storm_rangeテーブルから何行がハッシュオブジェクトに読み込まれましたか？
+
+How many rows were read from the pg3. storm_summary_cat345 table? 
+pg3.storm_summary_cat345テーブルから何行が読み込まれましたか? 
+
+How many rows are in the output table? 
+出力テーブルには何行ありますか? 
+
+How many key values are not found in the hash object (ReturnCode not equal to 0)? 
+ハッシュ・オブジェクトで見つからないキー値はいくつありますか (ReturnCode not equal to 0)？
+
+Why is the StartYear column set to missing values?  
+なぜStartYear列は値が見つからないように設定されているのですか？ 
+
+Note: This is a free response question and all attempts receive credit. Type your response and compare your answer to the answer provided. 
+注：これは自由回答問題であり、すべての試行がクレジットされます。あなたの答えを入力し、提供された答えと比較してください。
+1点
+
+
+
+2.Modify the assignment statement to be a subsetting IF statement to output only the FIND values that are equal to 0 (matches). 
+2.代入文をサブセットIF文に変更し、0に等しいFIND値（一致）だけを出力するようにします。
+
+Drop the StartYear column.  
+StartYear列を削除する。 
+
+Run the program and verify the results. 
+3.プログラムを実行し、結果を確認する。
+
+How many data rows are in the results?  Note: Type a numeric value.
+結果に含まれるデータ行は何行ですか？ 注：数値を入力してください。
+
+
