@@ -1,0 +1,83 @@
+1.
+質問 1
+If necessary, start SAS Studio before you begin. If you restarted your SAS session, submit your libname.sas program to access the practice data.
+必要であれば、事前に SAS Studio を起動してください。SAS セッションを再起動した場合は、練習用データにアクセスするために libname.sas プログラムを送信します。
+This practice involves looking up the values of StartYear, Name, and Basin to retrieve four wind measurement values. 
+この練習では、StartYear、Name、Basinの値を調べて、4つの風の測定値を取得します。
+The final output table, work.storm_cat345_facts, contains storm information in default sorted order of Season and Name. 
+最終的な出力テーブルである work.storm_cat345_facts には、Season と Name のデフォルトのソート順で嵐情報が含まれています。
+Modify the starter program to create an additional output table, work.cat345_sort, that contains the data in sorted order by 
+descending MaxWindMPH, Season, and Name.
+スタータープログラムを修正して、MaxWindMPH、Season、Nameの降順でソートされたデータを含む出力テーブルwork.cat345_sortを追加作成します。
+
+Open the p304p05.sas program in the practices folder. 
+practices フォルダにある p304p05.sas プログラムを開きます。
+
+Run the DATA step and verify that the output table is sorted by ascending Season and Name. 
+DATAステップを実行し、出力テーブルがSeasonとNameの昇順でソートされていることを確認します。
+
+Run the PROC SORT and PROC PRINT steps. Verify that the results are sorted by descending MaxWindMPH, Season, and Name.
+PROC SORT および PROC PRINT ステップを実行します。結果が MaxWindMPH、Season、Name の降順でソートされていることを確認します。
+
+In the DATA step, declare and define a hash object named StormSort. Specify an ORDERED argument of DESCENDING and a MULTIDATA argument of YES. 
+DATA ステップで、StormSort という名前のハッシュオブジェクトを宣言し、定義します。ORDERED 引数を DESCENDING に、MULTIDATA 引数を YES に指定します。
+
+Define key components for the StormSort hash object based on the columns specified in the BY statement of the PROC SORT step.
+PROC SORT ステップの BY 文で指定された列に基づいて、StormSort ハッシュオブジェクトのキーコンポーネントを定義する。
+
+Define data components for the StormSort hash object based on the columns specified in the KEEP= option in the PROC SORT statement. 
+PROC SORT ステートメントの KEEP= オプションで指定された列に基づいて、StormSort ハッシュオブジェクトのデータコンポーネントを定義します。
+
+Change the subsetting IF statement to be a conditional IF-THEN statement. If the FIND method is equal to 0, then add the data to 
+the StormSort hash object. 
+サブセットIF文を条件付きIF-THEN文に変更する。FINDメソッドの値が0になったら、StormSortハッシュオブジェクトにデータを追加する。
+
+Add an END= option to the SET statement to create a column named Last. 
+SET文にEND=オプションを追加して、Lastという名前の列を作成します。
+
+Add an IF-THEN statement before the KEEP statement to output the hash object StormSort to a table named work.cat345_sort if 
+the last row has been read from the input table.
+KEEP文の前にIF-THEN文を追加して、入力テーブルから最後の行を読み込んだらハッシュオブジェクトStormSortをwork.cat345_sortというテーブルへ出力します。
+
+Delete the PROC SORT step. 
+PROC SORT ステップを削除します。
+
+Run the program and view the PROC PRINT results. 
+プログラムを実行し、PROC PRINT の結果を表示します。
+
+How many storms have a maximum wind speed of 173 mph? Note: Type a numeric value.
+最大風速が 173 mph の嵐はいくつありますか？注：数値を入力してください。
+
+Answer:6
+  Correct
+
+/*
+data work.storm_cat345_facts;
+    if _N_=1 then do;
+       if 0 then set pg3.storm_range;
+       declare hash Storm(dataset:'pg3.storm_range');
+       Storm.definekey('StartYear','Name','Basin');
+       Storm.definedata('Wind1','Wind2','Wind3','Wind4');
+       Storm.definedone(); 
+       declare hash StormSort(ordered:'descending', 
+                              multidata:'yes');
+       StormSort.definekey('MaxWindMPH','Season','Name');
+       StormSort.definedata('Season','Name','Wind1','Wind2',
+                            'Wind3','Wind4','MaxWindMPH');
+       StormSort.definedone();
+    end;
+    set pg3.storm_summary_cat345 end=Last;
+    if Storm.find(key:year(StartDate),key:Name,key:Basin)=0 
+       then StormSort.add();
+    if Last=1 then StormSort.output(dataset:'work.cat345_sort');
+    keep Name Basin Wind1-Wind4 Season MaxWindMPH StartDate; 
+run;
+
+title1 'Storm Statistics for Category 3, 4, and 5';
+title2 'sorted by descending (MaxWindMPH, Season, and Name)';
+proc print data=work.cat345_sort;  
+run;
+title;
+*/
+
+
