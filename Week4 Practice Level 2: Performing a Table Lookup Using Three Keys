@@ -1,0 +1,104 @@
+1.
+
+If necessary, start SAS Studio before you begin. If you restarted your SAS session, submit your libname.sas program to access the practice data.
+必要であれば、事前にSAS Studioを起動してください。SAS セッションを再起動した場合は、練習データにアクセスするために libname.sas プログラムを送信します。
+Create a hash object based on the pg3.storm_range table. This table contains four wind measurements for each combination of StartYear, Name, 
+and Basin. Read the columns from the pg3.storm_summary_cat345 table. This table contains information such as MaxWindMPH and MinPressure for each 
+combination of StartDate, Name, and Basin for category 3, 4, and 5 storms. Look up the appropriate values in the hash object to retrieve the four 
+wind measurements.  
+pg3.storm_range テーブルを基にハッシュオブジェクトを作成します。このテーブルは、StartYear、Name、Basinの組み合わせごとに4つの風の測定値を含んでいます。
+pg3.storm_summary_cat345テーブルから列を読み取ります。このテーブルは、カテゴリー3、4、5の嵐について、StartDate、Name、Basinの各組み合わせについて、
+MaxWindMPHやMinPressureなどの情報を含んでいます。4つの風の測定値を取得するために、ハッシュオブジェクトで適切な値を調べます。 
+
+1)  Open the p304p02.sas program in the practices folder. Add statements to the DATA step to create a hash object named Storm.
+1) practices フォルダにある p304p02.sas プログラムを開く。DATA ステップにステートメントを追加し、Storm という名前のハッシュオブジェクトを作成します。
+
+Add a DECLARE statement to load the hash object Storm with the table pg3.storm_range.
+DECLARE ステートメントを追加し、ハッシュオブジェクト Storm にテーブル pg3.storm_range をロードします。
+
+Use the DEFINEKEY method to specify the key components of StartYear, Name, and Basin.
+DEFINEKEY メソッドを使用して、StartYear、Name、および Basin のキーコンポーネントを指定します
+
+Use the DEFINEDATA method to specify the data components of Wind1, Wind2, Wind3, and Wind4.
+DEFINEDATAメソッドを使用して、Wind1、Wind2、Wind3、およびWind4というデータコンポーネントを指定します。
+
+Use the DEFINEDONE method to complete the hash object.
+DEFINEDONE メソッドを使用して、ハッシュオブジェクトを完成させます。
+
+2)  Add an assignment statement to create the column ReturnCode, which is equal to the return code from finding the key values in the hash object. 
+You will need to use the YEAR function on StartDate for the first key value followed by the key values of Name and Basin. 
+Note: Key values must be specified in the FIND method in the same order as specified with the DEFINEKEY method.
+2) 代入文を追加して、ReturnCode 列を作成します。これは、ハッシュオブジェクトのキー値を検索して得られたリターンコードと等しくなります。
+最初のキー値として StartDate の YEAR 関数を使用し、その後に Name と Basin のキー値を使用する必要があります。注：キー値は、DEFINEKEYメソッドで
+指定したのと同じ順序でFINDメソッドに指定する必要があります。
+
+3)  Run the DATA step. View the log and the results.
+3) DATAステップを実行する。ログと結果を表示します。
+
+How many rows from the pg3. storm_range table were read into the hash object? 
+pg3.storm_rangeテーブルから何行がハッシュオブジェクトに読み込まれましたか？
+Answer:2959
+
+How many rows were read from the pg3. storm_summary_cat345 table? 
+pg3.storm_summary_cat345テーブルから何行が読み込まれましたか? 
+Answer:570
+
+How many rows are in the output table? 
+出力テーブルには何行ありますか? 
+Answer:570
+
+
+How many key values are not found in the hash object (ReturnCode not equal to 0)? 
+ハッシュ・オブジェクトで見つからなかったキー値はいくつありますか (ReturnCode not equal to 0)？
+Answer:2
+
+Why is the StartYear column set to missing values?  
+なぜStartYear列は値が見つからないように設定されているのですか？ 
+StartYear is a key component. 
+Key components are not copied to the PDV. 
+Only data components are copied to the PDV. 
+Basin and Name are also key components, but those values are not missing 
+because the values are read from pg3.storm_summary_cat345.  
+
+
+Note: This is a free response question and all attempts receive credit. Type your response and compare your answer to the answer provided. 
+注：これは自由回答問題であり、すべての試行がクレジットされます。あなたの答えを入力し、提供された答えと比較してください。
+
+Example Answer:
+  How many rows from the pg3. storm_range table were read into the hash object?  2959
+
+  How many rows were read from the pg3. storm_summary_cat345 table?  570
+
+  How many rows are in the output table?  570
+
+  How many key values are not found in the hash object (ReturnCode not equal to 0)?  Two (rows 505 and 539)
+
+  Why is the StartYear column set to missing values?  
+    StartYear is a key component. 
+    StartYearはキーコンポーネントです。
+    Key components are not copied to the PDV. 
+    キーコンポーネントは PDV にコピーされません。
+    Only data components are copied to the PDV. 
+    PDVにコピーされるのはデータコンポーネントのみです。
+    Basin and Name are also key components, but those values are not missing 
+    Basin と Name もキーコンポーネントですが、これらの値が欠落することはありません。
+    because the values are read from pg3.storm_summary_cat345.  
+    pg3.storm_summary_cat345から読み込まれているため、これらの値は欠落していません。
+
+
+2.
+Modify the assignment statement to be a subsetting IF statement to output only the FIND values that are equal to 0 (matches). 
+2. 代入文をサブセット IF 文に変更し、0 に等しい FIND 値 (一致) のみを出力するようにします。
+
+Drop the StartYear column.  
+StartYear 列を削除します。 
+
+Run the program and verify the results. 
+プログラムを実行し、結果を確認します。
+
+How many data rows are in the results?  Note: Type a numeric value.
+結果に含まれるデータ行は何行ですか？ 注：数値を入力してください。
+
+Answer: 568
+
+
