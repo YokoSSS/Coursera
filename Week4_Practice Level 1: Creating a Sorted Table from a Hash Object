@@ -1,0 +1,75 @@
+1.
+質問 1
+If necessary, start SAS Studio before you begin. If you restarted your SAS session, submit your libname.sas program to access the practice data.
+必要であれば、事前に SAS Studio を起動してください。SAS セッションを再起動した場合は、練習用データにアクセスするために libname.sas プログラムを送信します。
+
+This practice involves looking up the values of ParkCode in a hash object to retrieve values of ParkName and Type. 
+この実習では、ParkCode の値をハッシュオブジェクトで検索して、ParkName と Type の値を取得します。
+
+The output table work.acreage contains national park information in the default sorted order of ParkCode. 
+Modify the starter program to create an additional output table, work.acreage_sort, which contains the same data as work.acreage but in sorted order by descending GrossAcres.  
+Open the p304p04.sas program in the practices folder. 
+出力テーブル work.acreage には、ParkCode のデフォルトのソート順で国立公園情報が含まれています。
+スタータープログラムを変更して、追加の出力テーブル work.acreage_sort を作成します。
+このテーブルには work.acreage と同じデータが含まれますが、GrossAcres の降順でソートされた順序で出力されます。 
+
+This program contains the solution to practice 1. Review the DATA step syntax. 
+Practices フォルダにある p304p04.sas プログラムを開いてください。
+
+Run the program and view the results. 
+プログラムを実行し、結果を表示します。
+
+Declare and define a hash object named Acreage. 
+Acreage という名前のハッシュ・オブジェクトを宣言し、定義します。
+Specify an ORDERED argument of DESCENDING and a MULTIDATA argument of YES. 
+ORDERED 引数を DESCENDING に、MULTIDATA 引数を YES に指定します。
+Define a key component of GrossAcres and data components of ParkCode, ParkName, Type, State, and GrossAcres.
+GrossAcresというキーコンポーネントと、ParkCode、ParkName、Type、State、およびGrossAcresというデータコンポーネントを定義します。
+Change the subsetting IF statement for RC to be a conditional IF-THEN statement. If RC is equal to 0, then add the data to the Acreage hash object. 
+RCのサブセットIF文を、条件付きIF-THEN文に変更する。RCが0に等しい場合、そのデータをAcreageハッシュオブジェクトに追加します。
+Add an IF-THEN statement before the DROP statement to output the hash object Acreage to a table named work.acreage_sort if the last row has been read from the input table. 
+DROP文の前にIF-THEN文を追加し、入力テーブルから最後の行が読み込まれた場合、ハッシュオブジェクトAcreageをwork.acreage_sortというテーブルに出力するようにします。
+Add an END= option to the SET statement to create a column named Last.
+SET文にEND=オプションを追加して、Lastという名前の列を作成します。
+
+Add a PROC PRINT step for the table work.acreage_sort. 
+テーブルwork.acreage_sortに対してPROC PRINTステップを追加します。
+
+What is the smallest value of GrossAcres? Note: Type the value as it appears in the results.
+GrossAcresの最小値は何ですか？注：結果に表示される値を入力してください。
+Answer:0.02
+
+
+/*
+data work.acreage;
+    length ParkCode $ 4 ParkName $ 115 Type $ 28;
+    if _N_=1 then do;
+       declare hash ParkDesc(dataset:'pg3.np_codelookup');
+       ParkDesc.definekey('ParkCode');
+       ParkDesc.definedata('ParkName','Type');
+       ParkDesc.definedone();
+       call missing(ParkCode,ParkName,Type);
+       declare hash Acreage(ordered:'descending', multidata:'yes');
+       Acreage.definekey('GrossAcres');
+       Acreage.definedata('ParkCode','ParkName','Type',
+                          'State','GrossAcres');
+       Acreage.definedone();
+    end;
+    set pg3.np_acres2 end=Last;
+    ParkCode=upcase(ParkCode);
+    RC=ParkDesc.find(key:ParkCode);  
+    if RC=0 then Acreage.add();
+    if Last=1 then Acreage.output(dataset:'work.acreage_sort');
+    drop RC;
+run; 
+
+title 'Gross Acres for National Parks Sorted by ParkCode';
+proc print data=work.acreage; 
+run; 
+title;
+
+title 'Gross Acres for National Parks Sorted by Gross Acres';
+proc print data=work.acreage_sort; 
+run; 
+title;
+*/
