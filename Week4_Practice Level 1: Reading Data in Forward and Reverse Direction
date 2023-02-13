@@ -1,0 +1,31 @@
+1.
+If necessary, start SAS Studio before you begin. If you restarted your SAS session, submit your libname.sas program to access the practice data.
+必要であれば、事前に SAS Studio を起動してください。SAS セッションを再起動した場合は、練習用データにアクセスするために libname.sas プログラムを送信します。
+The pg3.np_acres table contains acreage amounts for national parks. 
+Use a hash iterator to create work.LowAcres, which contains the 10 parks with the lowest number of acres, and work.HighAcres, 
+which contains the 10 parks with the highest number of acres.
+pg3.np_acres テーブルは、国立公園の地積量を含んでいます。
+Open the p304p07.sas program in the practices folder. Review the DATA step syntax that is creating the Acres hash object. 
+ハッシュ・イテレータを使用して、エーカー数が最も少ない 10 の公園を含む work.LowAcres と、エーカー数が最も多い 10 の公園を含む work.HighAcres を作成してください。
+
+Add a DECLARE statement to create the hash iterator named A, which is associated with the Acres hash object.
+practices フォルダにある p304p07.sas プログラムを開いてください。Acres ハッシュオブジェクトを作成している DATA ステップの構文を確認してください。
+
+In the first DO loop, read the first 10 rows of the hash iterator, which will be the national parks with the lowest number of acres. 
+Output each row to work.LowAcres. 
+DECLARE ステートメントを追加して、Acres ハッシュオブジェクトに関連する A という名前のハッシュイテレータを作成してください。
+
+In the last DO loop, read the last 10 rows of the hash iterator, which will be the national parks with the highest number of acres. 
+Output each row to work.HighAcres.
+最初の DO ループで、ハッシュ・イテレータの最初の 10 行を読み込みます。これは、エーカー数が最も少ない国立公園となります。それぞれの行を work.LowAcres に出力します。
+
+Run the program and view the results. 
+プログラムを実行し、結果を表示します。
+
+What is the GrossAcres value for the national park with the 10th highest acreage?  
+エーカー数が 10 番目に多い国立公園の GrossAcres 値は何ですか?  
+Note: Copy and paste from the results or type the answer exactly as shown in the results.
+注: 結果からコピーして貼り付けるか、結果に示されたとおりの答えを入力してください。
+
+Answer:3,281,789.43	
+
