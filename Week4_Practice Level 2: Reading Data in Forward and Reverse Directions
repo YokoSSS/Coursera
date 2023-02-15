@@ -1,0 +1,85 @@
+1.
+If necessary, start SAS Studio before you begin. If you restarted your SAS session, 
+submit your libname.sas program to access the practice data.
+必要であれば、事前に SAS Studio を起動してください。SAS セッションを再起動した場合は、
+練習データにアクセスするために libname.sas プログラムを送信してください。
+
+The pg3.storm_final table contains storm statistics such as MaxWindMPH for seasons 1980 through 2017. 
+Use a hash iterator to create work.LowWind, which contains the five storms with the lowest maximum wind speeds, 
+and work.HighWind, which contains the five storms with the highest maximum wind speeds.
+pg3.storm_final テーブルには、1980 年から 2017 年までのシーズンの MaxWindMPH などの暴風雨統計が含まれています。
+ハッシュイテレータを使用して、最大風速が最も低い5つの嵐を含む work.LowWind と、
+最大風速が最も高い5つの嵐を含む work.HighWind を作成します。
+
+Open the p304p08.sas program in the practices folder. 
+practices フォルダにある p304p08.sas プログラムを開いてください。
+
+Review the DATA step syntax that is defining the Storm hash object.
+Storm ハッシュオブジェクトを定義している DATA ステップ構文を見直してください。
+
+Add a DECLARE statement to declare the hash object named Storm. 
+DECLARE ステートメントを追加して、Storm という名前のハッシュオブジェクトを宣言してください。
+Load the hash object with the pg3.storm_final table, excluding the MaxWindMPH values that are missing. 
+ハッシュオブジェクトに pg3.storm_final テーブルをロードし、不足している MaxWindMPH 値を除きます。
+Specify the ORDERED argument with a value of ASCENDING and the MULTIDATA argument with a value of YES. 
+ORDERED引数の値をASCENDINGに、MULTIDATA引数の値をYESに指定します。
+
+Add another DECLARE statement to create the hash iterator names Stm, which is associated with the Storm hash object.
+別の DECLARE 文を追加して、Storm ハッシュ・オブジェクトに関連するハッシュ・イテレータ名 Stm を作成します。
+
+In the first DO loop, read the first five rows of the hash iterator, which will be the storms with the lowest maximum winds. 
+Output each row to work.LowWind. 
+最初の DO ループで、ハッシュ・イテレータの最初の 5 行を読み込みます。これは、
+最大風速が最も小さい嵐になります。それぞれの行を work.LowWind に出力します。
+
+In the last DO loop, read the last five rows of the hash iterator, which will be the storms with the highest maximum winds. 
+最後のDOループでは、ハッシュイテレータの最後の5行を読み込みます。
+Output each row to work.HighWind.
+それぞれの行を work.HighWind に出力します。
+
+Run the program and view the results. 
+プログラムを実行し、結果を表示します。
+
+Based on the SAS log, how many observations were read from the data set and loaded into the hash object?
+SAS ログに基づき、何個の観測値がデータセットから読み込まれ、ハッシュオブジェクトにロードされましたか？
+
+Answer:3071
+Correct
+
+/*
+data work.LowWind work.HighWind; 
+    if _N_=1 then do;  
+       if 0 then set pg3.storm_final
+                (keep=Season Name BasinName MaxWindMPH);
+ 	   declare hash Storm
+               (dataset:'pg3.storm_final(where=(MaxWindMPH ne .))', 
+                ordered:'ascending', multidata:'yes');
+	   Storm.definekey('MaxWindMPH');
+	   Storm.definedata('Season','Name','BasinName','MaxWindMPH');
+	   Storm.definedone();
+	   declare hiter Stm('Storm');
+    end;
+    do i=1 to 5;
+       if i=1 then Stm.first();
+       else Stm.next();
+       output work.LowWind;
+    end;
+    do i=1 to 5;
+       if i=1 then Stm.last();
+       else Stm.prev();
+       output work.HighWind;
+    end;
+    drop i;
+run;
+
+title 'Storms with Lowest Maximum Winds';
+proc print data=work.LowWind;
+run;
+title;
+
+title 'Storms with Highest Maximum Winds';
+proc print data=work.HighWind;
+run;
+title;
+*/
+
