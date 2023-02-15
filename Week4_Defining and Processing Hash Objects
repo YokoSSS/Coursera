@@ -1,0 +1,165 @@
+1.Which statement is true regarding a hash object?
+
+Hash objects are global components, available to use in DATA or PROC steps.
+ハッシュオブジェクトはグローバルコンポーネントであり、DATAまたはPROCのステップで使用することができます。
+
+A hash object makes storing and retrieving data complex and time-consuming.
+ハッシュ・オブジェクトは、データの保存と検索を複雑で時間のかかるものにします。
+
+Search time varies for hash objects depending on the object's size (ie: an object with 10 rows will be 
+searched much quicker than an object with 10,000 rows.)
+ハッシュオブジェクトの検索時間はオブジェクトのサイズによって異なる
+(例：10行のオブジェクトは、10,000行のオブジェクトよりもはるかに速く検索される)。
+
+Hash objects are defined at execution.
+ハッシュ・オブジェクトは実行時に定義されます。
+correct
+
+2.Both data components and key components must be defined as PDV columns.
+データコンポーネントとキーコンポーネントの両方は、PDVカラムとして定義されなければならない。
+
+True
+correct
+
+
+False
+真または偽
+
+
+3.Which DECLARE statement does not have correct syntax? 
+3.どのDECLARE文が正しい構文を持っていないのですか？
+
+declare hash Sales(dataset: 'abcCompany.salesReport (where=(Sales2021>10000))');
+
+declare hash Sales ( );
+correct
+
+declare hash class(dataset: abcCompany.salesReport);
+
+declare hash class(dataset: 'abcCompany.salesReport');
+
+
+4.Which of the following statements is true regarding the IF/THEN SET statement?
+4.IF/THENのSET文について、次の記述のうち正しいものはどれですか。
+
+if _N_=1 then do;
+    if 0 then set abcCompany.sales(keep=Sales 
+       Location Date);
+end; 
+
+The Sales, Location, and Date columns are added to the PDV during compilation.
+Sales、Location、Date の各列はコンパイル時に PDV に追加されます。
+
+The Sales, Location, and Date columns are reset to missing each time the PDV reinitialized.
+PDV が再初期化されるたびに、Sales、Location、Date の各列は欠落にリセットされます。
+correct
+
+The initial column values are read from the first row of the input table.
+列の初期値は入力テーブルの最初の行から読み込まれます。
+
+The SET statement executes for the first iteration of the DATA step
+SET文はDATAステップの最初の繰り返しで実行されます。
+
+
+5.Which syntax correctly defines a hash object with one key component and two data components?
+5.1つのキーコンポーネントと2つのデータコンポーネントを持つハッシュオブジェクトを正しく定義する構文はどれですか？
+
+Tests.definekey(Name);
+Tests.definedata(Test4,Final);
+
+Tests.definekey(Name);
+Tests.definedata(Test4 Final);
+
+Tests.definekey('Name');
+Tests.definedata('Test4' 'Final');
+
+Tests.definekey('Name');
+Tests.definedata('Test4','Final');
+correct
+
+6.Complete the IF statement to output rows only when the value of the Name column is not found in the Tests hash object.
+6.TestsハッシュオブジェクトにName列の値がないときのみ、行を出力するIF文を完成させます。
+
+if __________________ then output; 
+
+Tests.find(key:Name)=0
+correct
+Tests.find(key:Name) ne 0
+
+Tests.find(key:'Name') ne 0
+
+Tests.find(key:'Name')=0
+
+
+7.Which of the following DECLARE statements will create an ascending sorted table using the OUTPUT method? Select all that apply.
+7.次のDECLARE文のうち、OUTPUTメソッドを使用して昇順ソートされたテーブルを作成するものはどれですか。該当するものをすべて選択してください。
+
+declare hash StateSort(ordered: 'yes');
+. . .
+StateSort.output(dataset: 'work.USstates');
+
+
+declare hash StateSort(ordered: 'asc');
+. . .
+StateSort.output(dataset: 'work.USstates');
+
+
+declare hash StateSort(ordered: 'ascending');
+. . .
+StateSort.output(dataset: 'work.USstates');
+
+
+declare hash StateSort(ordered);
+. . .
+StateSort.output(dataset: 'work.USstates');
+
+
+8.In the following code, both StateName and StatePop2017 will be stored in the output table. 
+8.次のコードでは、StateNameとStatePop2017の両方が出力テーブルに格納されます。
+
+declare hash StateSort(ordered: 'ascending');
+StateSort.definekey('StateName');
+StateSort.definedata('StatePop2017');
+. . .
+StateSort.output(dataset: 'work.USstates'); 
+
+
+True
+
+False
+correct
+
+
+9.Which of the following statements is true regarding the hash iterator (hiter) object?
+9.ハッシュイテレータ（hiter）オブジェクトに関する次の記述のうち、正しいものはどれですか。
+
+
+You can move through the hiter object using either the key or data components.
+キーまたはデータコンポーネントのいずれかを使用して、ハイターオブジェクト内を移動することができます。
+
+You must declare and define the hash object, which is referenced by the hiter object, before the DECLARE statement for the hiter object.
+hiterオブジェクトのDECLARE文の前に、hiterオブジェクトから参照されるhashオブジェクトを宣言し定義する必要があります。
+Correct
+
+Ascending is the only valid direction for moving through the hiter object.
+ハイターオブジェクトを移動する際の有効な方向は、昇順のみです。
+
+A hiter object points to an external SAS table.
+hiterオブジェクトは、外部のSASテーブルを指します。
+
+
+10.Based on the following DECLARE statement, which method correctly reads the rows before and after the current data object?
+10.次のDECLARE文に基づき、どのメソッドが現在のデータオブジェクトの前後の行を正しく読みますか。
+
+declare hiter Name('NameSort'); 
+
+first.name() and prev.name()
+
+Name.before() and Name.after()
+
+Name.prev() and Name.next()
+correct
+
+Name.first() and Name.last()
+
+
