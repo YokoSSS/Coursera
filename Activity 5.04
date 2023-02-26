@@ -1,0 +1,50 @@
+1.If necessary, start SAS Studio before you begin. If you restarted your SAS session, submit your libname.sas program to access the practice data.
+1.必要であれば、事前にSAS Studioを起動してください。SAS セッションを再起動した場合は、練習データにアクセスするために libname.sas プログラムを提出します。
+
+Create a custom function to convert values in inches to values in centimeters. Open p305a04.sas from the activities 
+folder and create another custom function in the PROC FCMP step:
+インチ単位の値をセンチメートル単位の値に変換するカスタム関数を作成します。アクティビティフォルダから p305a04.sas を開き、カスタム関数を作成します。
+を開き、PROC FCMP ステップで別のカスタム関数を作成します。
+
+
+In the PROC FCMP step, add a FUNCTION statement to create a function named INtoCM that has a numeric argument of Pin.
+PROC FCMP ステップで、FUNCTION ステートメントを追加して、数値引数 Pin を持つ INtoCM という名前の関数を作成します。
+
+Add the following assignment statement: Pcm=Pin*2.54;
+次の代入文を追加します。Pcm=Pin*2.54;
+
+Add a RETURN statement to return the value of Pcm.
+RETURN文を追加して、Pcmの値を返します。
+
+Add an ENDSUB statement.
+ENDSUBステートメントを追加します。
+
+Run the entire program. 
+プログラム全体を実行する。
+
+What is the PrecipCM value on 03JAN2017 when the Precip value is 0.46? Note:  Type the value as shown in the results. 
+2017年03JANのPrecip値が0.46のとき、PrecipCM値はいくらか。注：結果の通りに値を入力すること。
+
+
+Answer: 1.1684
+
+
+The PrecipCM value is 1.1684
+/*
+proc fcmp outlib=pg3.funcs.weather;
+    function FtoC(TempF);
+       TempC=round((TempF-32)*5/9,.01);
+       return(TempC);
+    endsub;
+    function INtoCM(Pin);
+       Pcm=Pin*2.54;
+       return(Pcm);
+    endsub;
+run;
+
+proc sql;
+    select Date, Tavg, Tunit, FtoC(Tavg) as TavgC, 
+           Precip, Punit, INtoCM(Precip) as PrecipCM
+    from pg3.weather_ny_daily2017;
+quit;
+*/
