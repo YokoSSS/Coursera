@@ -394,3 +394,219 @@ StateSort.prev() and StateSort.next()
 The syntax for the FIRST and LAST methods is:
 
 
+
+******************************************************************************************************************
+3回目テスト
+1.Which statement about hash objects is false? 
+1.ハッシュオブジェクトに関する記述のうち、誤っているものはどれか。
+
+
+The hash object is created at execution time.
+ハッシュ・オブジェクトは、実行時に作成される。
+uncorrect
+
+A hash object is an in-memory table that contains key and data components.
+ハッシュオブジェクトは、キーコンポーネントとデータコンポーネントを含むインメモリテーブルである。
+uncorrect
+
+The data must be in sorted order by the key components.
+データは、キーコンポーネントによってソートされた順序でなければならない。
+correct
+
+The key and data components can be numeric, character, or both.
+キーコンポーネントとデータコンポーネントは、数値、文字、またはその両方にすることができる。
+uncorrect
+
+正解
+The data does not need to be sorted by the key components.
+データは主要な構成要素でソートする必要はない。
+
+2.Where can hash objects be used in a program?
+2.ハッシュオブジェクトはプログラムのどこで使えるの？
+1点
+
+all of the above
+
+DATA steps
+correct
+
+Global statements
+
+PROC steps
+
+正解
+Hash objects are DATA step component objects.
+ハッシュオブジェクトは、DATAステップのコンポーネントオブジェクトです。
+
+3.Which DECLARE statement has correct syntax?
+3.どのDECLARE文が正しい構文ですか？
+1点
+
+
+declare hash States ( );
+correct
+
+declare States hash ( );
+
+declare States hash;
+
+declare hash States;
+
+
+正解
+The DECLARE statement creates an instance of an object and optionally initializes it. 
+Following the keyword DECLARE, the object type and name are specified. 
+Parentheses are required even when no arguments are specified.
+正解
+DECLARE文は、オブジェクトのインスタンスを作成し、オプションでそれを初期化します。
+キーワード DECLARE に続いて、オブジェクトの型と名前が指定されます。引数が指定されていない場合でも、括弧は必要です。
+
+
+4.What happens when you add the following IF/THEN SET statement to your program?
+4.次のIF/THEN SET文をプログラムに追加すると、どうなるか？
+
+if _N_=1 then do; 
+    if 0 then set pg3.stocks(keep=Stock Date 
+       Open Close);
+end; 
+
+
+
+SAS adds the columns to the PDV.
+SASがPDVに列を追加する。
+
+all of the above
+
+
+The columns are initialized to missing.
+列は見つからないように初期化されます。
+correct
+
+The SET statement does not execute.
+SET文は実行されません。
+
+不正解
+This is only partially correct. The non-executing SET statement creates the columns 
+in the PDV and initializes the columns to missing. Review .
+これは部分的にしか正しくありません。実行しないSET文はPDVに列を作成し、列を欠落に初期化する。レビュー.
+
+
+5.Which syntax correctly defines a hash object with one key component and two data components?
+5.どの構文は、1つのキーコンポーネントと2つのデータコンポーネントを持つハッシュオブジェクトを正しく定義していますか？
+
+1点
+
+
+Tests.definekey(Name);
+Tests.definedata(Test4,Final);
+
+Tests.definekey('Name');
+Tests.definedata('Test4','Final');
+correct
+
+Tests.definekey('Name');
+Tests.definedata('Test4' 'Final');
+
+Tests.definekey(Name);
+Tests.definedata(Test4 Final);
+
+
+正解
+Components must be specified in quotes. Multiple components must be separated by commas.
+構成要素は、引用符で囲んで指定する必要があります。複数のコンポーネントはカンマで区切る必要があります。
+
+
+6.The FIND method returns a one if the key value is found (match) in the associated hash object.
+FINDメソッドは、関連するハッシュオブジェクトの中でキー値が見つかった（一致した）場合に1を返します。
+
+
+True
+
+
+False
+correct
+
+正解
+The FIND method returns a zero if the key value is found (match) in the associated hash object. 
+A nonzero value is returned when a key value is not found (non-match).
+正解
+FINDメソッドは、関連するハッシュオブジェクトにキー値が見つかった（マッチした）場合、0を返します。
+キー値が見つからない (非一致) ときは 0 以外の値を返す。
+
+
+7.Based on the following DECLARE statement, will the OUTPUT method create a sorted table? 
+7.次のDECLARE文に基づき、OUTPUTメソッドはソートされたテーブルを作成するか。
+
+declare hash StateSort(ordered);
+. . .
+StateSort.output(dataset: 'work.USstates'); 
+
+
+Yes
+uncorrect
+
+No　correct
+
+
+不正解
+The ORDERED argument with a value of 'ascending' or 'descending' is needed on the DECLARE statement. Review .
+DECLARE文では、ORDERED引数に'ascending'または'descending'の値が必要です。レビュー .
+
+8.By default, only key components are stored in the output table.
+8.デフォルトでは、キーコンポーネントのみが出力テーブルに格納されます。
+
+
+True
+
+False
+correct
+
+正解
+By default, only data components are stored in the output table.
+デフォルトでは、データ成分のみが出力テーブルに格納されます。
+
+
+9.Which of the following statements is false regarding the hash iterator (hiter) object?
+9.ハッシュイテレータ（hiter）オブジェクトに関する次の記述のうち、誤っているものはどれですか。
+1点
+
+The hash object must be declared and defined before declaring the hash iterator object.
+ハッシュオブジェクトは、ハッシュイテレータオブジェクトを宣言する前に宣言し、定義しておく必要があります。
+uncorrect
+
+None of the statements are false.
+どの文も偽りではありません
+
+Hash iterator object methods are used to traverse a hash object.
+ハッシュイテレータオブジェクトのメソッドは、ハッシュオブジェクトをトラバースするために使用されます。
+
+A hash iterator object is associated with a hash object.
+ハッシュイテレータオブジェクトは、ハッシュオブジェクトと関連付けられています。
+
+
+不正解
+This statement is true. Review 
+この文は真実である。復習
+
+10.Based on the following DECLARE statement, which method correctly reads the first and last rows 
+in the hash iterator object?
+次の DECLARE ステートメントに基づき、どのメソッドがハッシュイテレータオブジェクトの最初と最後の行を正しく読み取るか。
+
+declare hiter State('StateSort'); 
+
+1点
+
+
+StateSort.first() and StateSort.last()
+
+State.prev() and State.next()
+uncorrect
+
+StateSort.prev() and StateSort.next()
+
+State.first() and State.last()
+
+
+不正解
+Use the FIRST and LAST methods instead:
+代わりにFIRSTメソッドとLASTメソッドを使用します。
