@@ -1,0 +1,25 @@
+
+1.Which directives create the following custom datetime value?
+
+2019.01.02 @ 9:13:05 PM  
+
+
+
+%Y.%m.%d @ %H:%M:%S %p 
+uncorrect
+
+%y.%m.%d @ %I:%0M:%0S %p
+
+
+%Y.%0m.%0d @ %I:%0M:%0S %p
+correct
+
+%0y.%0m.%0d @ %H:%0M:%0S %p  
+
+
+
+/*
+picture MyDateTime (default=24) 
+        low-high = '%Y.%0m.%0d @ %I:%0M:%0S %p' 
+        (datatype=datetime);
+*/
