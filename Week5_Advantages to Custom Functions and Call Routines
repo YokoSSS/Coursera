@@ -1,0 +1,18 @@
+There are several advantages to using custom functions and custom CALL routines:
+カスタム関数やカスタムCALLルーチンを使用することには、いくつかの利点があります。
+1)  Programs are easier to read, write, and modify.
+ 1) プログラムの読み、書き、修正が容易になる。
+
+2)  Functions and CALL routines are independent and reusable.
+2) 関数とCALLルーチンは独立しており、再利用可能である。 
+
+A program that calls a routine is not affected by the routine's implementation.
+ルーチンを呼び出すプログラムは、ルーチンの実装に影響されない。
+ 
+Any program that has access to the data set where the function or routine is stored can call the routine.
+関数やルーチンが格納されているデータセットにアクセスできるプログラムであれば、誰でもそのルーチンを呼び出すことができます。 
+
+Note: PROC FCMP routines that you create cannot have the same name as built-in SAS functions. If the names are the same, 
+then SAS generates an error message.  
+メモ： 作成するPROC FCMPルーチンは、組み込みのSAS関数と同じ名前にすることはできません。名前が同じ場合、SASはエラーメッセージを生成します。 
+
