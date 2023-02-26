@@ -1,0 +1,69 @@
+1.If necessary, start SAS Studio before you begin. If you restarted your SAS session, submit your libname.sas program to access the practice data.
+1.必要であれば、事前にSAS Studioを起動してください。SAS セッションを再起動した場合は、練習データにアクセスするために libname.sas プログラムを送信してください。
+
+The pg3.storm_final table contains storm information such as StartDate and EndDate for storms from the 1980 through 2017 storm seasons. 
+Create a custom date format with the following layout: three-letter-weekday.full-month-name.two-digit-day-of-month.two-digit-year 
+(for example, Sat.September.09.17).
+pg3.storm_final テーブルには、1980 年から 2017 年までのストームシーズンの嵐の StartDate と EndDate などの嵐情報が含まれています。
+次のレイアウトでカスタム日付形式を作成します：3文字weekday.full-month-name.two-digit-day-of-month.two-digit year 
+(例：Sat.September.09.17)。
+
+
+Open the p305p01.sas program in the practices folder. 
+practicesフォルダーにあるp305p01.sasプログラムを開いてください。
+
+Run the program. Notice the formatted values of StartDate and EndDate based on the WORDDATE format.
+プログラムを実行します。WORDDATE形式に基づいて、StartDateとEndDateの値がフォーマットされていることに注目してください。
+
+In the PROC FORMAT step, add a PICTURE statement to create a custom date format. Name the format NewDate.
+PROC FORMATのステップで、PICTURE文を追加して、カスタム日付書式を作成します。この書式にNewDateという名前を付けます。
+
+
+Set an appropriate default length for NewDate that accommodates the formatted date values, such as: Sat.September.09.17.
+ NewDateには、書式付き日付値に対応する適切な既定の長さを設定します。例えば、Sat.September.09.17.
+
+Specify a date range from LOW to HIGH.
+ Use the appropriate date directives to produce a template with the following layout: 
+ three-letter-weekday.full-month-name.two-digit-day-of-month.two-digit-year.
+ Specify the appropriate DATATYPE= option.
+LOWからHIGHまでの日付範囲を指定する。
+ 適切な日付ディレクティブを使用して、以下のレイアウトのテンプレートを作成する。
+ 3文字-曜日.完全な月名.2桁-曜日.2桁-年。
+ 適切な DATATYPE= オプションを指定する。
+
+Modify the FORMAT statement in the PROC PRINT step to use the custom date format for the StartDate and EndDate columns.
+PROC PRINTステップのFORMATステートメントを変更して、StartDate列とEndDate列にカスタム日付形式を使用するようにします。
+Run the program and verify the results. 
+プログラムを実行し、結果を確認します。
+
+What is the formatted StartDate value for the last storm that occurred in the year 2016?  
+2016 年に発生した最後の嵐の書式設定された StartDate 値は?
+
+Note: Copy and paste from the results or type the answer exactly as shown in the results.
+注：結果からコピー＆ペーストするか、結果に示されたとおりに答えを入力してください。
+
+Answer:
+20DEC2016
+火.12月.20.16	
+Tue.December.20.16    correct
+
+3文字-曜日.完全な月名.2桁-日.2桁-年。
+
+/*
+proc format;
+    picture NewDate (default=19) 
+            low-high = '%a.%B.%0d.%0y' (datatype=date);
+run;
+
+proc sort data=pg3.storm_final out=work.storm_final;
+    by descending StartDate;
+run;
+
+title 'Detail Storm Report by Descending Start Date';
+proc print data=work.storm_final;
+    var Name BasinName StartDate EndDate MaxWindMPH MinPressure;
+    format StartDate EndDate NewDate.;
+run;
+title;
+*/
+
