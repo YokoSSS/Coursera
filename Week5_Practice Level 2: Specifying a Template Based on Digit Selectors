@@ -1,0 +1,64 @@
+1.
+質問 1
+If necessary, start SAS Studio before you begin. If you restarted your SAS session, submit your libname.sas program to access the practice data.
+必要であれば、事前に SAS Studio を起動してください。SAS セッションを再起動した場合は、練習データにアクセスするために libname.sas プログラムを送信してください。
+The pg3.stocks table contains stock market data for the first weekday of the month for the years 2010 through 2017. Create custom formats to display 
+the DailyChange value with a suffix of USD and the Volume value with a suffix of shares.
+pg3.stocks テーブルには、2010 年から 2017 年までの月の最初の平日の株式市場データが含まれています。
+接尾辞が USD の DailyChange 値と接尾辞が shares の Volume 値を表示するカスタム形式を作成します。
+
+Open the p305p02.sas program in the practices folder. 
+practices フォルダにある p305p02.sas プログラムを開いてください。
+
+Run the DATA step and PROC PRINT step. View the results. Notice how the values of VolumeChar and DailyChangeChar are left-justified 
+because they are character columns based on the CATX function. Because of this left justification, 
+the commas, decimal points, and words are not aligned.
+DATAステップとPROC PRINTステップを実行します。結果を表示します。VolumeChar と DailyChangeChar の値は、CATX 関数に基づく文字列であるため、
+左揃えになっていることに注目してください。この左寄せのために、カンマ、小数点、単語の位置がずれています。
+
+In the PROC FORMAT step, add an additional PICTURE statement to create a custom format named usd.  Set the default length to 11.
+PROC FORMAT ステップで、追加の PICTURE ステートメントを追加して、usd という名前のカスタム フォーマットを作成します。 デフォルトの長さを11に設定します。 
+
+For the usd format, specify a numeric range of LOW through less than 0 to account for negative values. Use a template 
+of '009.99 USD' with a prefix of a negative sign.
+usd書式では、負の値を考慮し、LOWから0未満の数値範囲を指定します。テンプレートは'009.99 USD'で、接頭辞に負の符号を使用します。 
+
+For the usd format, specify a numeric range of 0 to HIGH to account for positive values. Use a template of '009.99 USD'.
+usd形式では、正の値を考慮し、0からHIGHの数値範囲を指定する。テンプレートは'009.99 USD'を使用します。 
+ 
+ 
+
+Add a FORMAT statement to the DATA step to format Volume with the shares format and DailyChange with the usd format.
+DATAステップにFORMATステートメントを追加して、Volumeをsharesフォーマットで、DailyChangeをusdフォーマットでフォーマットします。 
+ 
+ 
+
+Run the program and view the results. Notice how the values of Volume and DailyChange are right-justified 
+because they are numeric columns. Because of the right justification, the commas, decimal points, and words line up. 
+プログラムを実行し、結果を表示します。VolumeとDailyChangeの値が数値列であるため、右寄せになっていることに注目してください。
+右寄せのため、カンマ、小数点、単語が一列に並びます。
+
+Do the DailyChange values match the DailyChangeChar values in the results, other than in regard to justification?
+DailyChange の値は、両端揃え以外の点では、結果の DailyChangeChar の値と一致していますか？
+
+Yes  correct
+
+No
+
+/*
+proc format;
+    picture shares 
+            low-high='000,000,009 shares';                                    
+    picture usd (default=11)
+            low-<0='009.99 USD' (prefix='-')
+            0-high='009.99 USD';
+run;
+
+data work.stock_report;
+    set pg3.stocks(drop=High Low);
+    VolumeChar=catx(' ',put(Volume,comma18.),'shares');
+    DailyChange=Close-Open;
+    DailyChangeChar=catx(' ',DailyChange,'USD');
+    format Volume shares. DailyChange usd.;
+run;
+*/
