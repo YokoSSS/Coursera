@@ -1,0 +1,61 @@
+1.If necessary, start SAS Studio before you begin. If you restarted your SAS session, submit your libname.sas program to access the practice data.
+1.必要であれば、事前にSAS Studioを起動してください。SAS セッションを再起動した場合は、練習データにアクセスするために libname.sas プログラムを提出します。
+
+Open p305a02.sas from the activities folder and perform the following tasks:
+アクティビティフォルダからp305a02.sasを開き、以下の作業を行います。
+
+1)  Run the program and notice the formatting of BeginDate.
+1) プログラムを実行し、BeginDate の書式に注目します。
+
+2)  Add a PICTURE statement to create another date format:
+2) PICTURE ステートメントを追加して、別の日付書式を作成します。
+
+Name the format MyMonth.
+書式に MyMonth と名前を付ける。
+
+Specify a default length.
+デフォルトの長さを指定する。
+
+All date values should have the format layout similar to November of 2017. Hint: Use the %B and %Y directives.
+すべての日付の値は、2017年11月に似た書式レイアウトになるはずです。ヒント：%B と %Y ディレクティブを使用します。
+
+Declare the data type.
+データ型を宣言する。
+
+
+3)  Modify the FORMAT statement in the PROC FREQ step to use the new format. Run the program. 
+3) PROC FREQ ステップの FORMAT ステートメントを変更して、新しい書式を使用するようにします。プログラムを実行する。
+
+Which month has the most tornadoes?  
+どの月が最も竜巻が多いか？ 
+1点
+
+October
+
+
+June
+
+
+March
+correct
+
+
+正解
+March had the greatest number of tornadoes.
+
+1  proc format;
+2     picture MyDate (default=14) 
+3             low-high = '%A-%Y' (datatype=date);
+4     picture MyMonth (default=17)
+5             low-high='%B of %Y' (datatype=date);
+6  run;
+7  
+8  title 'Frequency of 2017 US Tornadoes';
+9  proc freq data=pg3.tornado_2017 order=freq;
+10     table BeginDate;
+11     format BeginDate MyMonth.;
+12 run;
+13 title;
+14
+
+
