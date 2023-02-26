@@ -1,0 +1,17 @@
+
+1.What are the formatted values of the PERCENT column based on the following PICTURE statement?
+1.次のPICTURE文に基づくPERCENT列のフォーマットされた値は何ですか。
+
+picture mypct low-high='009.99%' (multiplier=100);
+
+State  COUNT PERCENT
+AL     6     1.8987
+AR     22    6.9620
+CA     1     0.3165
+
+
+The values are formatted as percentages.
+State  COUNT PERCENT
+AL     6     1.89%
+AR     22    6.96%
+CA     1     0.31%
