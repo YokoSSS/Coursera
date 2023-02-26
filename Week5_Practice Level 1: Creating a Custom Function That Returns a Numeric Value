@@ -1,0 +1,91 @@
+1.If necessary, start SAS Studio before you begin. If you restarted your SAS session, submit your libname.sas program to access the practice data.
+必要であれば、事前に SAS Studio を起動してください。SAS セッションを再起動した場合は、libname.sas プログラムを送信して練習データにアクセスします。
+
+The pg3.class_tests table contains student scores (ranging from 1 to 10) for four tests and a final exam. 
+Create a function that calculates each student's final score. The final score is the average of six scores: 
+the four tests and the final exam, which is counted twice.
+pg3.class_tests テーブルには、4 つのテストと最終試験に対する生徒の得点 (1 から 10 まで) が含まれています。
+各生徒の最終スコアを計算する関数を作成します。最終的な得点は、6 つの得点の平均です。
+最終スコアは、4 つのテストと 2 回カウントされる最終試験の 6 つのスコアの平均です。
+
+1)  Open the p305p04.sas program in the practices folder. Highlight and run the DATA step and the PROC PRINT step to view the student scores.
+1) Practices フォルダにある p305p04.sas プログラムを開きます。DATA ステップと PROC PRINT ステップをハイライトして実行し、生徒の得点を表示します。
+
+2)  Create a custom function that calculates each student's final score:
+2) 各生徒の最終得点を計算するカスタム関数を作成します。
+
+Add a PROC FCMP statement that has an OUTLIB= option to store the custom function in pg3.myfunctions.class.
+OUTLIB= オプションを使用して、カスタム関数を pg3.myfunctions.class に格納する PROC FCMP ステートメントを追加します。 
+ 
+
+Add a FUNCTION statement to name the function CalcScore. The function should contain five arguments: T1, T2, T3, T4, and F.
+FUNCTION ステートメントを追加し、関数に CalcScore という名前を付けます。この関数は5つの引数を含む必要があります。T1、T2、T3、T4、そしてFです。 
+OK 
+
+Add this assignment statement:
+次の代入文を追加してください。
+ FScore=round(sum(of T1-T4, 2*F)/6,.01);
+OK
+
+Add a RETURN statement to return the value of FScore.
+FScore の値を返すために RETURN 文を追加します。
+OK
+
+Add an ENDSUB statement and a RUN statement.
+ENDSUB ステートメントと RUN ステートメントを追加します。
+OK
+
+3)  Highlight and run the PROC FCMP step. View the log and confirm that the function is saved.  
+3) PROC FCMPステップをハイライト表示し、実行する。ログを表示し、関数が保存されていることを確認します。 
+OK
+
+4)  After the PROC FCMP step and before the DATA step, add a global OPTIONS statement with the CMPLIB= option to specify 
+the table location of the function, pg3.myfunctions.
+4) PROC FCMP ステップの後、DATA ステップの前に、グローバル OPTIONS ステートメントを追加し、CMPLIB= オプションで、
+関数のテーブルの場所、pg3.myfunctions を指定します。
+OK
+
+5)  In the DATA step, add an assignment to create FinalScore. 
+5) DATAステップで、FinalScoreを作成するための代入を追加します。
+This column is equal to the CalcScore function with the arguments Test1, Test2, Test3, Test4, and Final.
+この列は CalcScore 関数の引数 Test1, Test2, Test3, Test4, および Final と等しくなります。
+
+
+6)  Run the program and verify the results. 
+6)  プログラムを実行し、結果を確認します。
+
+How many students have a final score greater than 9.00?  Note: Type a numeric value.
+最終スコアが 9.00 より大きい学生は何人いますか?  注：数値を入力してください。
+
+
+My answer:19 
+uncorrect
+
+
+My answer:2 
+correct
+
+
+正解
+Two students
+/*
+proc fcmp outlib=pg3.myfunctions.class;
+    function CalcScore(T1, T2, T3, T4, F);
+      FScore=round(sum(of T1-T4, 2*F)/6,.01);
+      return(FScore);
+    endsub;
+run;
+
+options cmplib=pg3.myfunctions;
+
+data work.scores;
+    set pg3.class_tests;
+    FinalScore=CalcScore(of Test1-Test4, Final);
+run;
+
+title 'Student Scores';
+proc print data=work.scores;
+run;
+title;
+*/
+
