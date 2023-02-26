@@ -1,0 +1,76 @@
+Practice Level 2: Creating a Custom Function That Returns a Character Value
+実践編2：文字値を返すカスタム関数の作成
+
+1.If necessary, start SAS Studio before you begin. If you restarted your SAS session, submit your libname.sas program to access the practice data.
+必要に応じて、事前にSAS Studioを起動してください。SAS セッションを再起動した場合は、練習データにアクセスするために libname.sas プログラムを送信してください。
+
+The sashelp.baseball table contains baseball statistics per each player. 
+sashelp.baseball テーブルは、各選手ごとの野球の統計情報を含んでいます。
+The Name column contains the player's name with the last name appearing before the first name (for example, Davis, Alan). 
+Name 列には、名字が名前の前に表示される選手の名前が含まれています (例: Davis, Alan)。
+Create a function that switches the order of the first and last names.
+姓と名の順番を入れ替える関数を作成します。
+
+1)  Open the p305p05.sas program in the practices folder.
+1) practices フォルダにある p305p05.sas プログラムを開く。
+
+2)  Add a PROC FCMP step to create a custom function.
+2) PROC FCMP のステップを追加して、カスタム関数を作成します。
+
+Store the function in a package named baseball within the pg3.myfunctions table.
+この関数は、pg3.myfunctions テーブル内の baseball という名前のパッケージに格納されます。 
+ 
+
+Name the function flip. The function should contain a character argument named LastFirst and return a character value with an appropriate length.
+関数に flip という名前を付けます。この関数は、LastFirst という名前の文字引数を含み、適切な長さの文字値を返す必要があります。 
+ 
+
+Use the following RETURN statement:
+次の RETURN ステートメントを使用します。
+
+123
+return(catx(' ',scan(LastFirst,2,','),
+                scan(LastFirst,1,',')));
+
+ 
+Highlight and run the PROC FCMP step. View the log and confirm that the function is saved.
+PROC FCMPステップをハイライト表示して実行します。ログを表示し、関数が保存されていることを確認します。
+
+3)  Add an OPTIONS statement with the CMPLIB= option to specify the table that SAS searches for the baseball package.
+3) OPTIONS ステートメントに CMPLIB= オプションを追加して、SAS が baseball パッケージを検索するテーブルを指定します。
+
+4)  In the DATA step, add an assignment to create Player. This column is equal to the flip function with the argument of Name.
+4) DATA ステップで、Player を作成するための代入を追加します。この列は、Name を引数とする flip 関数と等しくなります。
+
+5)  Run the program and verify the results. 
+5)  プログラムを実行し、結果を確認します。
+
+What is the name of the baseball player in row 21? Note: Type the answer as shown in the results.
+21行目にある野球選手の名前は何ですか？注意: 結果に表示されているように答えを入力してください。
+
+My Answer: Barry Bonds
+
+
+/*
+proc fcmp outlib=pg3.myfunctions.baseball;
+    function flip(LastFirst $) $ 18;
+      return(catx(' ',scan(LastFirst,2,','),
+                      scan(LastFirst,1,',')));
+    endsub;
+run;
+
+options cmplib=pg3.myfunctions;
+
+data work.FlipNames;
+    set sashelp.baseball(keep=Name Team);
+    Player=flip(Name);
+    drop Name;
+run;
+
+title 'Baseball Players and Teams';
+proc print data=work.FlipNames;
+    var Player Team;
+run;
+title;
+
+*/
